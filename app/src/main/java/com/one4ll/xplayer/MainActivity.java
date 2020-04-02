@@ -30,12 +30,21 @@ import com.google.android.exoplayer2.upstream.DataSource;
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
 import com.google.android.exoplayer2.util.Util;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+import butterknife.OnItemClick;
+
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
-    private PlayerView playerView;
-    private ProgressBar progressBar;
-    private ImageButton playButton;
-    private ImageButton pauseButton;
+    @BindView(R.id.player_view)
+     PlayerView playerView;
+    @BindView(R.id.progressBar)
+     ProgressBar progressBar;
+    @BindView(R.id.image_button_play)
+     ImageButton playButton;
+    @BindView(R.id.image_button_pause)
+     ImageButton pauseButton;
     private SimpleExoPlayer simpleExoPlayer;
 
 
@@ -43,36 +52,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        playerView = findViewById(R.id.player_view);
-        progressBar = findViewById(R.id.progressBar);
-        playButton = findViewById(R.id.image_button_play);
-        pauseButton = findViewById(R.id.image_button_pause);
-        playButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (simpleExoPlayer.getPlaybackState() == Player.STATE_ENDED){
-                    simpleExoPlayer.seekTo(0);
-                }
-                simpleExoPlayer.setPlayWhenReady(true);
-//                pauseButton.setVisibility(View.VISIBLE);
-                playButton.setVisibility(View.INVISIBLE);
-            }
-        });
-        playerView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                pauseButton.setVisibility(View.VISIBLE);
-            }
-        });
-        pauseButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                progressBar.setVisibility(View.GONE);
-                simpleExoPlayer.setPlayWhenReady(false);
-                pauseButton.setVisibility(View.INVISIBLE);
-                playButton.setVisibility(View.VISIBLE);
-            }
-        });
+        ButterKnife.bind(this);
+
          simpleExoPlayer = new SimpleExoPlayer.Builder(MainActivity.this).build();
         playerView.setPlayer(simpleExoPlayer);
         final Uri fileUri =Uri.parse("android.resource://"+ getPackageName() +"/"+ R.raw.video);
@@ -93,6 +74,28 @@ public class MainActivity extends AppCompatActivity {
         Log.d(TAG, "onCreate: exo player is loading" + simpleExoPlayer.isLoading());
 
     }
+    @OnClick(R.id.image_button_play)
+    public void play(){
+        Log.d(TAG, "play: clicked");
+        if (simpleExoPlayer.getPlaybackState() == Player.STATE_ENDED){
+            simpleExoPlayer.seekTo(0);
+        }
+        simpleExoPlayer.setPlayWhenReady(true);
+        playButton.setVisibility(View.INVISIBLE);
+    }
+    @OnClick(R.id.player_view)
+    public void onPlayViewClicked(){
+        pauseButton.setVisibility(View.VISIBLE);
+    }
+    @OnClick(R.id.image_button_pause)
+    public void pause(){
+        progressBar.setVisibility(View.GONE);
+        simpleExoPlayer.setPlayWhenReady(false);
+        pauseButton.setVisibility(View.INVISIBLE);
+        playButton.setVisibility(View.VISIBLE);
+    }
+
+
     private Player.EventListener eventListener = new Player.EventListener() {
         @Override
         public void onTimelineChanged(Timeline timeline, int reason) {
