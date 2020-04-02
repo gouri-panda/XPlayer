@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 import android.widget.Toolbar;
@@ -33,6 +34,9 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
     private PlayerView playerView;
     private ProgressBar progressBar;
+    private ImageButton playButton;
+    private ImageButton pauseButton;
+    private SimpleExoPlayer simpleExoPlayer;
 
 
     @Override
@@ -41,8 +45,35 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         playerView = findViewById(R.id.player_view);
         progressBar = findViewById(R.id.progressBar);
-        progressBar.setVisibility(View.VISIBLE);
-        SimpleExoPlayer simpleExoPlayer = new SimpleExoPlayer.Builder(MainActivity.this).build();
+        playButton = findViewById(R.id.image_button_play);
+        pauseButton = findViewById(R.id.image_button_pause);
+        playButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (simpleExoPlayer.getPlaybackState() == Player.STATE_ENDED){
+                    simpleExoPlayer.seekTo(0);
+                }
+                simpleExoPlayer.setPlayWhenReady(true);
+//                pauseButton.setVisibility(View.VISIBLE);
+                playButton.setVisibility(View.INVISIBLE);
+            }
+        });
+        playerView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                pauseButton.setVisibility(View.VISIBLE);
+            }
+        });
+        pauseButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                progressBar.setVisibility(View.GONE);
+                simpleExoPlayer.setPlayWhenReady(false);
+                pauseButton.setVisibility(View.INVISIBLE);
+                playButton.setVisibility(View.VISIBLE);
+            }
+        });
+         simpleExoPlayer = new SimpleExoPlayer.Builder(MainActivity.this).build();
         playerView.setPlayer(simpleExoPlayer);
         final Uri fileUri =Uri.parse("android.resource://"+ getPackageName() +"/"+ R.raw.video);
         Uri fileUri2 = Uri.parse("https://cdn.videvo.net/videvo_files/video/premium/video0029/small_watermarked/mara049_preview.webm");
@@ -52,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
         }
         Log.d(TAG, "onCreate: app name "+ getString(R.string.app_name));
         DataSource.Factory dataSourceFactory = new DefaultDataSourceFactory(MainActivity.this, Util.getUserAgent(MainActivity.this, getString(R.string.app_name)));
-        MediaSource mediaSource = new ProgressiveMediaSource.Factory(dataSourceFactory).createMediaSource(fileUri3);
+        MediaSource mediaSource = new ProgressiveMediaSource.Factory(dataSourceFactory).createMediaSource(fileUri2);
         simpleExoPlayer.prepare(mediaSource);
         simpleExoPlayer.addAudioListener(audioListener);
         Log.d(TAG, "onCreate: simple exo player is playing " + simpleExoPlayer.isPlaying());
@@ -104,6 +135,7 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 case Player.STATE_ENDED:
                     Log.d(TAG, "onPlayerStateChanged: state Ended");
+                    playButton.setVisibility(View.VISIBLE);
                     break;
 
             }
@@ -118,10 +150,8 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onIsPlayingChanged(boolean isPlaying) {
             Log.d(TAG, "onIsPlayingChanged: isPlaying" + isPlaying);
-            if (isPlaying){
+            if (isPlaying) {
                 progressBar.setVisibility(View.INVISIBLE);
-            }else {
-                progressBar.setVisibility(View.VISIBLE);
             }
 
         }
@@ -180,4 +210,9 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
+    @Override
+    protected void onDestroy() {
+        simpleExoPlayer.release();
+        super.onDestroy();
+    }
 }
