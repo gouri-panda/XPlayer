@@ -38,13 +38,13 @@ import butterknife.OnItemClick;
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
     @BindView(R.id.player_view)
-     PlayerView playerView;
+    PlayerView playerView;
     @BindView(R.id.progressBar)
-     ProgressBar progressBar;
+    ProgressBar progressBar;
     @BindView(R.id.image_button_play)
-     ImageButton playButton;
+    ImageButton playButton;
     @BindView(R.id.image_button_pause)
-     ImageButton pauseButton;
+    ImageButton pauseButton;
     private SimpleExoPlayer simpleExoPlayer;
 
 
@@ -54,15 +54,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-         simpleExoPlayer = new SimpleExoPlayer.Builder(MainActivity.this).build();
+        simpleExoPlayer = new SimpleExoPlayer.Builder(MainActivity.this).build();
         playerView.setPlayer(simpleExoPlayer);
-        final Uri fileUri =Uri.parse("android.resource://"+ getPackageName() +"/"+ R.raw.video);
-        Uri fileUri2 = Uri.parse("https://cdn.videvo.net/videvo_files/video/premium/video0029/small_watermarked/mara049_preview.webm");
+        final Uri fileUri = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.video);
+        Uri fileUri2 = Uri.parse("https://www.videvo.net/videvo_files/converted/2018_01/preview/171124_H1_005.mp436952.webm");
         Uri fileUri3 = Uri.parse("http://185.105.103.101/serial/Supernatural/S13/720p.x265/Supernatural.S13E07.720p.HDTV.2CH.x265.HEVC.Filmaneh.mkv");
-        if (fileUri.isAbsolute()){
+        if (fileUri.isAbsolute()) {
             Log.d(TAG, "onCreate: file uri is absolute");
         }
-        Log.d(TAG, "onCreate: app name "+ getString(R.string.app_name));
+        Log.d(TAG, "onCreate: app name " + getString(R.string.app_name));
         DataSource.Factory dataSourceFactory = new DefaultDataSourceFactory(MainActivity.this, Util.getUserAgent(MainActivity.this, getString(R.string.app_name)));
         MediaSource mediaSource = new ProgressiveMediaSource.Factory(dataSourceFactory).createMediaSource(fileUri2);
         simpleExoPlayer.prepare(mediaSource);
@@ -70,25 +70,25 @@ public class MainActivity extends AppCompatActivity {
         Log.d(TAG, "onCreate: simple exo player is playing " + simpleExoPlayer.isPlaying());
         simpleExoPlayer.setPlayWhenReady(true);
         simpleExoPlayer.addListener(eventListener);
-
-        Log.d(TAG, "onCreate: exo player is loading" + simpleExoPlayer.isLoading());
-
     }
+
     @OnClick(R.id.image_button_play)
-    public void play(){
+    public void play() {
         Log.d(TAG, "play: clicked");
-        if (simpleExoPlayer.getPlaybackState() == Player.STATE_ENDED){
+        if (simpleExoPlayer.getPlaybackState() == Player.STATE_ENDED) {
             simpleExoPlayer.seekTo(0);
         }
         simpleExoPlayer.setPlayWhenReady(true);
         playButton.setVisibility(View.INVISIBLE);
     }
+
     @OnClick(R.id.player_view)
-    public void onPlayViewClicked(){
+    public void onPlayViewClicked() {
         pauseButton.setVisibility(View.VISIBLE);
     }
+
     @OnClick(R.id.image_button_pause)
-    public void pause(){
+    public void pause() {
         progressBar.setVisibility(View.GONE);
         simpleExoPlayer.setPlayWhenReady(false);
         pauseButton.setVisibility(View.INVISIBLE);
@@ -100,13 +100,13 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onTimelineChanged(Timeline timeline, int reason) {
             Log.d(TAG, "onTimelineChanged: timeline " + timeline);
-            Log.d(TAG, "onTimelineChanged: reason "+ reason);
+            Log.d(TAG, "onTimelineChanged: reason " + reason);
         }
 
         @Override
         public void onTimelineChanged(Timeline timeline, @Nullable Object manifest, int reason) {
             Log.d(TAG, "onTimelineChanged: timeline " + timeline);
-            Log.d(TAG, "onTimelineChanged: reason "+ reason);
+            Log.d(TAG, "onTimelineChanged: reason " + reason);
 
         }
 
@@ -117,9 +117,9 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public void onLoadingChanged(boolean isLoading) {
-            if (isLoading){
+            if (isLoading) {
                 progressBar.setVisibility(View.VISIBLE);
-            }else {
+            } else {
                 progressBar.setVisibility(View.GONE);
             }
 
@@ -127,12 +127,12 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public void onPlayerStateChanged(boolean playWhenReady, int playbackState) {
-            switch (playbackState){
+            switch (playbackState) {
                 case Player.STATE_READY:
                     Log.d(TAG, "onPlayerStateChanged: state ready");
                     progressBar.setVisibility(View.INVISIBLE);
                     break;
-                case  Player.STATE_BUFFERING:
+                case Player.STATE_BUFFERING:
                     progressBar.setVisibility(View.VISIBLE);
                     Log.d(TAG, "onPlayerStateChanged: state buffering");
                     break;
@@ -172,7 +172,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onPlayerError(ExoPlaybackException error) {
             error.printStackTrace();
-            Log.d(TAG, "onPlayerError:" +error.getMessage());
+            Log.d(TAG, "onPlayerError:" + error.getMessage());
             Toast.makeText(MainActivity.this, error.getMessage(), Toast.LENGTH_LONG).show();
 
         }
@@ -194,15 +194,15 @@ public class MainActivity extends AppCompatActivity {
     private AudioListener audioListener = new AudioListener() {
         @Override
         public void onAudioSessionId(int audioSessionId) {
-            Log.d(TAG, "onAudioSessionId: "+ audioSessionId);
+            Log.d(TAG, "onAudioSessionId: " + audioSessionId);
         }
 
         @Override
         public void onAudioAttributesChanged(AudioAttributes audioAttributes) {
-            Log.d(TAG, "onAudioAttributesChanged: audioAttributes content type"+ audioAttributes.contentType);
-            Log.d(TAG, "onAudioAttributesChanged: audioAttributes flags"+ audioAttributes.flags);
-            Log.d(TAG, "onAudioAttributesChanged: audioAttributes usage"+ audioAttributes.usage);
-            Log.d(TAG, "onAudioAttributesChanged: audioAttributes allowed capture policy"+ audioAttributes.allowedCapturePolicy);
+            Log.d(TAG, "onAudioAttributesChanged: audioAttributes content type" + audioAttributes.contentType);
+            Log.d(TAG, "onAudioAttributesChanged: audioAttributes flags" + audioAttributes.flags);
+            Log.d(TAG, "onAudioAttributesChanged: audioAttributes usage" + audioAttributes.usage);
+            Log.d(TAG, "onAudioAttributesChanged: audioAttributes allowed capture policy" + audioAttributes.allowedCapturePolicy);
 
 
         }
