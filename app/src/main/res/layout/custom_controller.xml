@@ -1,23 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <ImageButton
         android:id="@+id/image_button_play"
+        style="@style/ExoMediaButton.Play"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        style="@style/ExoMediaButton.Play"
-        android:visibility="gone"
+        android:layout_gravity="center"
         android:background="@color/semiTransparent"
-        android:layout_gravity="center"/>
+        android:visibility="gone" />
+
     <ImageButton
         android:id="@+id/image_button_pause"
+        style="@style/ExoMediaButton.Pause"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        style="@style/ExoMediaButton.Pause"
-        android:visibility="gone"
+        android:layout_gravity="center"
         android:background="@color/semiTransparent"
-        android:layout_gravity="center"/>
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/bottom_linear_layout"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_gravity="bottom"
+        android:background="@color/semiTransparent"
+        android:orientation="horizontal">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageButton
+                android:id="@+id/imageButton5"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="64dp"
+                android:background="@drawable/ic_lock_white_24dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageButton
+                android:id="@+id/imageButtonPrevious"
+                style="@style/ExoMediaButton.Previous"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="64dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageButton5"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageButton
+                android:id="@+id/image_button_play_2"
+                style="@style/ExoMediaButton.Play"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/imageButtonNext"
+                app:layout_constraintStart_toEndOf="@+id/imageButtonPrevious"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageButton
+                android:id="@+id/image_button_pause_2"
+                style="@style/ExoMediaButton.Pause"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/imageButtonNext"
+                app:layout_constraintStart_toEndOf="@+id/imageButtonPrevious"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <ImageButton
+                android:id="@+id/imageButtonNext"
+                style="@style/ExoMediaButton.Next"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:layout_marginEnd="64dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/imageButton4"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageButton
+                android:id="@+id/imageButton4"
+                style="@style/ExoMediaButton.VR"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:layout_marginEnd="64dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </LinearLayout>
 
 
 </FrameLayout>
