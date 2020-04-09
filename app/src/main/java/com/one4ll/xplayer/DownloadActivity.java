@@ -33,7 +33,6 @@ public class DownloadActivity extends AppCompatActivity {
         DownloadManager.Request request = new DownloadManager.Request(uri);
         request.setVisibleInDownloadsUi(true);
         request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_MOBILE|DownloadManager.Request.NETWORK_WIFI);
-        request.setTitle("xplayer");
         request.setDescription("description");
         request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, "image");
         request.allowScanningByMediaScanner();

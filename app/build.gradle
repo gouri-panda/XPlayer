@@ -15,6 +15,7 @@ android {
     }
     compileOptions {
         targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility = 1.8
     }
 
     buildTypes {
@@ -27,6 +28,8 @@ android {
 }
 
 dependencies {
+    def rxjava_version = '2.2.7'
+    def rxandroid_version = '2.1.1'
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     implementation 'androidx.appcompat:appcompat:1.1.0'
@@ -41,4 +44,10 @@ dependencies {
     implementation 'com.jakewharton:butterknife:10.2.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.1'
     implementation 'androidx.localbroadcastmanager:localbroadcastmanager:1.0.0'
+
+    // RxJava
+    implementation "io.reactivex.rxjava2:rxjava:$rxjava_version"
+
+    // RxAndroid
+    implementation "io.reactivex.rxjava2:rxandroid:$rxandroid_version"
 }
