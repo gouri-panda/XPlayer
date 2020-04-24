@@ -20,9 +20,6 @@ public class MyContentProvider extends ContentProvider {
     public Context context;
     public final int TASKS  =100;
     public final int TASKS_MID = 101;
-
-
-
     static {
     }
 
