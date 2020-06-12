@@ -40,6 +40,7 @@ import com.google.android.exoplayer2.upstream.DataSource;
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
 import com.google.android.exoplayer2.util.Util;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
@@ -77,22 +78,22 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        simpleExoPlayer = new SimpleExoPlayer.Builder(MainActivity.this).build();
+        simpleExoPlayer = new SimpleExoPlayer.Builder(this).build();
         playerView.setPlayer(simpleExoPlayer);
-        final Uri fileUri = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.video);
-        Uri fileUri2 = Uri.parse("https://www.videvo.net/videvo_files/converted/2018_01/preview/171124_H1_005.mp436952.webm");
-        Uri fileUri3 = Uri.parse("http://185.105.103.101/serial/Supernatural/S13/720p.x265/Supernatural.S13E07.720p.HDTV.2CH.x265.HEVC.Filmaneh.mkv");
-        if (fileUri.isAbsolute()) {
-            Log.d(TAG, "onCreate: file uri is absolute");
-        }
+        Intent intent = getIntent();
+        String videoUriPath = intent.getStringExtra("video");
+
+//        final Uri fileUri = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.video);
+//        Uri fileUri2 = Uri.parse("https://www.videvo.net/videvo_files/converted/2018_01/preview/171124_H1_005.mp436952.webm");
+//        Uri fileUri3 = Uri.parse("http://185.105.103.101/serial/Supernatural/S13/720p.x265/Supernatural.S13E07.720p.HDTV.2CH.x265.HEVC.Filmaneh.mkv");
+
         Log.d(TAG, "onCreate: app name " + getString(R.string.app_name));
         DataSource.Factory dataSourceFactory = new DefaultDataSourceFactory(MainActivity.this, Util.getUserAgent(MainActivity.this, getString(R.string.app_name)));
-        MediaSource mediaSource = new ProgressiveMediaSource.Factory(dataSourceFactory).createMediaSource(fileUri2);
+        MediaSource mediaSource = new ProgressiveMediaSource.Factory(dataSourceFactory).createMediaSource(Uri.parse(videoUriPath));
         simpleExoPlayer.prepare(mediaSource);
         simpleExoPlayer.addAudioListener(audioListener);
         simpleExoPlayer.setPlayWhenReady(true);
         simpleExoPlayer.addListener(eventListener);
-        calculateAndGetUriAndFolders();
          LocalBroadcastManager.getInstance(this).registerReceiver(broadcastReceiver,new IntentFilter("customIntent"));
 //         new TestingLocalBroadCast().execute();
 
@@ -321,52 +322,5 @@ public class MainActivity extends AppCompatActivity {
         DateFormat dateFormat = new SimpleDateFormat("HH 'hours' ,mm 'mins',ss 'secs' ");
         Log.d(TAG, "setTime: date format" + dateFormat.format(new Date(timeInMills)));
     }
-
-    private void calculateAndGetUriAndFolders() {
-        String[] projection = {MediaStore.Video.Media._ID, MediaStore.Video.Media.ALBUM, MediaStore.Video.Media.DATE_ADDED, MediaStore.Video.Media.CONTENT_TYPE};
-        Cursor cursor = getContentResolver().query(MediaStore.Images.Media.INTERNAL_CONTENT_URI,null,null,null,null );
-        if (cursor == null){
-            Log.d(TAG, "calculateAndGetUriAndFolders: cursror is null");
-        }
-        while (cursor != null && cursor.moveToFirst()){
-           String  stringUri = cursor.getString(cursor.getColumnIndex(MediaStore.Images.Media.DISPLAY_NAME.toString()));
-            Log.d(TAG, "calculateAndGetUriAndFolders: string uri" + stringUri);
-        }
-        if (cursor != null){
-            cursor.close();
-        }
-
-    }
-
-
-    //Stupid timing set
-//    private void setTime(long timeInMils){
-//        int hour  = -1;
-//        int minute = -1;
-//        int sec = -1;
-//
-//        if (timeInMils > 3600000){
-//            hour =(int) timeInMils / 3600000;
-//            minute =(int) timeInMils / 360000;
-//            sec  =(int) timeInMils /1000;
-//        }else if (timeInMils < 3600000 && timeInMils > 360000){
-//            minute =(int) (timeInMils / 1000 ) / 60;
-
-//            sec  =(int) (timeInMils /360000) % 60;
-//        }else {
-//            sec  =(int) (timeInMils /360000) % 60;
-//        }
-//        if (hour != -1){
-//            if (minute != -1){
-//                if (sec != -1){
-//                    Log.d(TAG, "setTime: hour" + hour +"minute"+ minute + "sec" + sec );
-//                }
-//            }
-//        }else if (minute != -1 && sec != -1){
-//            Log.d(TAG, "setTime: minute" + minute + "sec " + sec);
-//        }else{
-//            Log.d(TAG, "setTime: sec" + sec);
-//        }
-//    }
 
 }
