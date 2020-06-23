@@ -1,7 +1,6 @@
 package com.one4ll.xplayer;
 
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
@@ -10,18 +9,9 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.database.Cursor;
-import android.icu.text.DateFormat;
-import android.icu.text.SimpleDateFormat;
 import android.net.Uri;
-import android.os.AsyncTask;
-import android.os.Build;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.util.Log;
-import android.view.View;
-import android.widget.ImageButton;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.exoplayer2.ExoPlaybackException;
@@ -40,13 +30,8 @@ import com.google.android.exoplayer2.upstream.DataSource;
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
 import com.google.android.exoplayer2.util.Util;
 
-import java.io.Serializable;
-import java.util.Date;
-import java.util.concurrent.TimeUnit;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
@@ -54,20 +39,20 @@ public class MainActivity extends AppCompatActivity {
     ConstraintLayout constraintLayout;
     @BindView(R.id.player_view)
     PlayerView playerView;
-    @BindView(R.id.progressBar)
-    ProgressBar progressBar;
-    @BindView(R.id.image_button_play)
-    ImageButton playButton;
-    @BindView(R.id.image_button_pause)
-    ImageButton pauseButton;
-    @BindView(R.id.image_button_play_2)
-    ImageButton playButton2;
-    @BindView(R.id.image_button_pause_2)
-    ImageButton pauseButton2;
-    @BindView(R.id.imageButtonPrevious)
-    ImageButton imageButtonPrevious;
-    @BindView(R.id.imageButtonNext)
-    ImageButton imageButtonNext;
+//    @BindView(R.id.progressBar)
+//    ProgressBar progressBar;
+//    @BindView(R.id.image_button_play)
+//    ImageButton playButton;
+//    @BindView(R.id.image_button_pause)
+//    ImageButton pauseButton;
+//    @BindView(R.id.image_button_play_2)
+//    ImageButton playButton2;
+//    @BindView(R.id.image_button_pause_2)
+//    ImageButton pauseButton2;
+//    @BindView(R.id.imageButtonPrevious)
+//    ImageButton imageButtonPrevious;
+//    @BindView(R.id.imageButtonNext)
+//    ImageButton imageButtonNext;
 
     private SimpleExoPlayer simpleExoPlayer;
 
@@ -95,7 +80,6 @@ public class MainActivity extends AppCompatActivity {
         simpleExoPlayer.setPlayWhenReady(true);
         simpleExoPlayer.addListener(eventListener);
          LocalBroadcastManager.getInstance(this).registerReceiver(broadcastReceiver,new IntentFilter("customIntent"));
-//         new TestingLocalBroadCast().execute();
 
     }
     private  BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
@@ -105,59 +89,59 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
-    @OnClick(R.id.image_button_play)
-    public void play() {
-        playVideo();
-    }
+//    @OnClick(R.id.image_button_play)
+//    public void play() {
+//        playVideo();
+//    }
 
-    @OnClick(R.id.image_button_play_2)
-    public void play2() {
-        playVideo();
-    }
+//    @OnClick(R.id.image_button_play_2)
+//    public void play2() {
+//        playVideo();
+//    }
 
-    private void playVideo() {
-        Log.d(TAG, "play: clicked");
-        if (simpleExoPlayer.getPlaybackState() == Player.STATE_ENDED) {
-            simpleExoPlayer.seekTo(0);
-        }
-        simpleExoPlayer.setPlayWhenReady(true);
-        playButton.setVisibility(View.INVISIBLE);
-        playButton2.setVisibility(View.INVISIBLE);
-        pauseButton2.setVisibility(View.VISIBLE);
+//    private void playVideo() {
+//        Log.d(TAG, "play: clicked");
+//        if (simpleExoPlayer.getPlaybackState() == Player.STATE_ENDED) {
+//            simpleExoPlayer.seekTo(0);
+//        }
+//        simpleExoPlayer.setPlayWhenReady(true);
+//        playButton.setVisibility(View.INVISIBLE);
+//        playButton2.setVisibility(View.INVISIBLE);
+//        pauseButton2.setVisibility(View.VISIBLE);
+//
+//    }
 
-    }
 
+//    @OnClick(R.id.player_view)
+//    public void onPlayViewClicked() {
+//        pauseButton.setVisibility(View.VISIBLE);
+//        pauseButton2.setVisibility(View.VISIBLE);
+//    }
 
-    @OnClick(R.id.player_view)
-    public void onPlayViewClicked() {
-        pauseButton.setVisibility(View.VISIBLE);
-        pauseButton2.setVisibility(View.VISIBLE);
-    }
+//    @OnClick(R.id.image_button_pause)
+//    public void pause() {
+//        pauseVideo();
+//    }
 
-    @OnClick(R.id.image_button_pause)
-    public void pause() {
-        pauseVideo();
-    }
+//    @OnClick(R.id.image_button_pause_2)
+//    public void pause2() {
+//        pauseVideo();
+//    }
 
-    @OnClick(R.id.image_button_pause_2)
-    public void pause2() {
-        pauseVideo();
-    }
+//    @OnClick(R.id.imageButtonPrevious)
+//    public void goToPrevious() {
+//        int state = simpleExoPlayer.getPlaybackState();
+//    }
 
-    @OnClick(R.id.imageButtonPrevious)
-    public void goToPrevious() {
-        int state = simpleExoPlayer.getPlaybackState();
-    }
-
-    private void pauseVideo() {
-        progressBar.setVisibility(View.GONE);
-        simpleExoPlayer.setPlayWhenReady(false);
-        pauseButton.setVisibility(View.INVISIBLE);
-        pauseButton2.setVisibility(View.INVISIBLE);
-        playButton.setVisibility(View.VISIBLE);
-        playButton2.setVisibility(View.VISIBLE);
-
-    }
+//    private void pauseVideo() {
+//        progressBar.setVisibility(View.GONE);
+//        simpleExoPlayer.setPlayWhenReady(false);
+//        pauseButton.setVisibility(View.INVISIBLE);
+//        pauseButton2.setVisibility(View.INVISIBLE);
+//        playButton.setVisibility(View.VISIBLE);
+//        playButton2.setVisibility(View.VISIBLE);
+//
+//    }
 
 
     private Player.EventListener eventListener = new Player.EventListener() {
@@ -181,31 +165,31 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public void onLoadingChanged(boolean isLoading) {
-            if (isLoading) {
-                progressBar.setVisibility(View.VISIBLE);
-            } else {
-                progressBar.setVisibility(View.GONE);
-            }
+//            if (isLoading) {
+//                progressBar.setVisibility(View.VISIBLE);
+//            } else {
+//                progressBar.setVisibility(View.GONE);
+//            }
 
         }
 
         @Override
         public void onPlayerStateChanged(boolean playWhenReady, int playbackState) {
-            switch (playbackState) {
-                case Player.STATE_READY:
-                    Log.d(TAG, "onPlayerStateChanged: state ready");
-                    progressBar.setVisibility(View.INVISIBLE);
-                    break;
-                case Player.STATE_BUFFERING:
-                    progressBar.setVisibility(View.VISIBLE);
-                    Log.d(TAG, "onPlayerStateChanged: state buffering");
-                    break;
-                case Player.STATE_ENDED:
-                    Log.d(TAG, "onPlayerStateChanged: state Ended");
-                    playButton.setVisibility(View.VISIBLE);
-                    break;
-
-            }
+//            switch (playbackState) {
+//                case Player.STATE_READY:
+//                    Log.d(TAG, "onPlayerStateChanged: state ready");
+//                    progressBar.setVisibility(View.INVISIBLE);
+//                    break;
+//                case Player.STATE_BUFFERING:
+//                    progressBar.setVisibility(View.VISIBLE);
+//                    Log.d(TAG, "onPlayerStateChanged: state buffering");
+//                    break;
+//                case Player.STATE_ENDED:
+//                    Log.d(TAG, "onPlayerStateChanged: state Ended");
+//                    playButton.setVisibility(View.VISIBLE);
+//                    break;
+//
+//            }
 
         }
 
@@ -217,9 +201,9 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onIsPlayingChanged(boolean isPlaying) {
             Log.d(TAG, "onIsPlayingChanged: isPlaying" + isPlaying);
-            if (isPlaying) {
-                progressBar.setVisibility(View.INVISIBLE);
-            }
+//            if (isPlaying) {
+//                progressBar.setVisibility(View.INVISIBLE);
+//            }
 
         }
 
@@ -285,42 +269,32 @@ public class MainActivity extends AppCompatActivity {
         LocalBroadcastManager.getInstance(this).unregisterReceiver(broadcastReceiver);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
-    private void setTime(long timeInMills) {
-        String timeString;
-        int hour = -1;
-        int minutes = -1;
-        int secs = -1;
-        hour = (int) TimeUnit.MILLISECONDS.toHours(timeInMills);
-        minutes = (int) TimeUnit.MILLISECONDS.toMinutes(timeInMills);
-        secs = (int) TimeUnit.MILLISECONDS.toSeconds(timeInMills);
-
-
-        Log.d(TAG, "pauseVideo: duration " + timeInMills);
-        Log.d(TAG, "onCreate: hour " + hour);
-        Log.d(TAG, "onCreate: minute " + minutes);
-        Log.d(TAG, "onCreate: time" + secs);
-        if (hour != 0 && minutes != 0 && secs != 0) {
-            String stringHour = String.valueOf(hour);
-            String stringMinutes = String.valueOf(minutes);
-            String stringSeconds = String.valueOf(secs);
-            timeString = stringHour + stringMinutes + stringSeconds;
-            Log.d(TAG, "setTime: " + timeString);
-
-        } else if (minutes != 0 && secs != 0) {
-            String stringMinutes = String.valueOf(minutes);
-            String stringSeconds = String.valueOf(secs);
-            timeString = stringMinutes + stringSeconds;
-            Log.d(TAG, "setTime: " + timeString);
-
-        } else {
-            String stringSeconds = String.valueOf(secs);
-            timeString = stringSeconds;
-            Log.d(TAG, "setTime: " + timeString);
-
+    public String convertDuration(long duration){
+        String out = null;
+        long hours = 0;
+        try {
+            hours = (duration / 3600000);
+        }catch (Exception e ){
+            e.printStackTrace();
         }
-        DateFormat dateFormat = new SimpleDateFormat("HH 'hours' ,mm 'mins',ss 'secs' ");
-        Log.d(TAG, "setTime: date format" + dateFormat.format(new Date(timeInMills)));
+        long remainingMinutes = (duration - (hours * 3600000)) / 60000;
+        String minutes = String.valueOf(remainingMinutes);
+        if (minutes.equals("0")) {
+            minutes = "00";
+        }
+        long remainingSecs = (duration - (hours * 3600000))  - (remainingMinutes * 60000);
+        String seconds = String.valueOf(remainingSecs);
+        if (seconds.length() < 2){
+            seconds = "00";
+        }else {
+            seconds = seconds.substring(0, 2);
+        }
+        if (hours > 0){
+            out = hours +":" + minutes+ ":" + seconds;
+        }else {
+            out = minutes + ":" + seconds;
+        }
+       return out;
     }
 
 }
