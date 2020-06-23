@@ -29,7 +29,7 @@ class RecylerViewAdapter(var list: ArrayList<Video>) :
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.title.text= list[position].name
         holder.duration.text = list[position].duration
-        holder.videoView.setBackgroundDrawable(BitmapDrawable(list[position].thumbnail))
+//        holder.videoView.setBackgroundDrawable(BitmapDrawable(list[position].thumbnail))
         holder.videoView.seekTo(1)
         holder.itemView.setOnClickListener {
             val intent = Intent(holder.itemView.context,MainActivity::class.java)

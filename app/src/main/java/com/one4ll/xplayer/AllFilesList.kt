@@ -2,7 +2,6 @@ package com.one4ll.xplayer
 
 import android.Manifest
 import android.content.pm.PackageManager
-import android.graphics.Bitmap
 import android.media.ThumbnailUtils
 import android.os.Build
 import android.os.Bundle
@@ -13,7 +12,13 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.one4ll.xplayer.database.MediaDatabase
+import com.one4ll.xplayer.models.Medium
 import kotlinx.android.synthetic.main.activity_all_files_list.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
 import java.io.File
 
 private const val READ_AND_WRITE_STORAGE_PERMISSION = 3
@@ -21,6 +26,7 @@ class AllFilesList : AppCompatActivity() {
     private val TAG: String = "MainActivity"
     private var thumbnail = File("")
     private lateinit  var recylerViewAdapter : RecylerViewAdapter
+    private lateinit var mediaDatabase: MediaDatabase
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,19 +38,39 @@ class AllFilesList : AppCompatActivity() {
          recylerViewAdapter = RecylerViewAdapter(videoList)
         video_list_recycler_view.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         video_list_recycler_view.adapter = recylerViewAdapter
+         mediaDatabase  = MediaDatabase.getInstance(this)
         if (readAndWriteExternalStoragePermission()){
             getVideoList()
         }
 
 
 
+
     }
 
-    private fun getVideoList() {
+    private  fun getVideoList() {
         val externalVideoList = getExternalContentVidoUri()
         val intenalVideoList = getInternalContentVidoUri()
         externalVideoList.addAll(intenalVideoList)
         recylerViewAdapter.loadVideo(externalVideoList)
+        CoroutineScope(IO).async {
+            async {
+                var count = 0
+                //todo fix  - remove delete all
+                mediaDatabase.mediumDao().deleteAll()
+            externalVideoList.forEach {
+                val medium = Medium(count++,it.name,it.path,it.duration)
+                mediaDatabase.mediumDao().insert(medium)
+            }}.await().run {
+                Log.d(TAG, "after update data base")
+                mediaDatabase.mediumDao().getAll().forEach {
+                    Log.d(TAG, "form media data base ${it.toString()}")
+                }
+            }
+
+        }
+
+
     }
 
     private fun getExternalContentVidoUri(): ArrayList<Video> {
@@ -80,17 +106,18 @@ class AllFilesList : AppCompatActivity() {
                         it.getString(videoExternalCursor.getColumnIndex(MediaStore.Video.Media.DATA))
                 Log.d(TAG, "getExternalContentVidoUri: path $path")
                 try {
-                    var bitMap: Bitmap? = null
-                    bitMap = ThumbnailUtils.createVideoThumbnail(
-                            path,
-                            MediaStore.Video.Thumbnails.MINI_KIND
-                    )
+//                    var bitMap: Bitmap? = null
+//                    bitMap = ThumbnailUtils.createVideoThumbnail(
+//                            path,
+//                            MediaStore.Video.Thumbnails.MINI_KIND
+//                    )
 
-                    bitMap?.let {
+//                    bitMap?.let {
                         val n  = convertDuration(duration.toLong())
-                        val video = Video(videoName, n.toString(), size, bitMap!!,path)
+                        val video = Video(videoName, n.toString(), size,path)
+
                         videoList.add(video)
-                    }
+//                    }
                 } catch (e: Exception) {
                     Log.e(TAG, "getExternalContentVidoUri: ${e.message}");
                 }
@@ -134,7 +161,7 @@ class AllFilesList : AppCompatActivity() {
                             MediaStore.Video.Thumbnails.MINI_KIND
                     )
                     val n = convertDuration(duration.toLong())
-                    val video = Video(videoName, n.toString(), size, bitmap,path)
+                    val video = Video(videoName, n.toString(), size,path)
 
                     videoList.add(video)
                 } catch (e: Exception) {
@@ -204,4 +231,7 @@ class AllFilesList : AppCompatActivity() {
         return out
     }
 
+}
+interface OnSaveDataInDataBase{
+    fun  onDatabased()
 }
