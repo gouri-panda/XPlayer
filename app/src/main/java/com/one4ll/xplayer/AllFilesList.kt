@@ -3,22 +3,22 @@ package com.one4ll.xplayer
 import android.Manifest
 import android.content.pm.PackageManager
 import android.media.ThumbnailUtils
-import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
+import android.view.MotionEvent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.one4ll.xplayer.database.MediaDatabase
+import com.one4ll.xplayer.helpers.IS_MARSHMALLOW_OR_LETTER
 import com.one4ll.xplayer.models.Medium
 import kotlinx.android.synthetic.main.activity_all_files_list.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.async
-import kotlinx.coroutines.launch
 import java.io.File
 
 private const val READ_AND_WRITE_STORAGE_PERMISSION = 3
@@ -44,19 +44,17 @@ class AllFilesList : AppCompatActivity() {
         }
 
 
-
-
     }
 
     private  fun getVideoList() {
         val externalVideoList = getExternalContentVidoUri()
-        val intenalVideoList = getInternalContentVidoUri()
-        externalVideoList.addAll(intenalVideoList)
+        val internalVideoList = getInternalContentVidoUri()
+        externalVideoList.addAll(internalVideoList)
         recylerViewAdapter.loadVideo(externalVideoList)
         CoroutineScope(IO).async {
             async {
                 var count = 0
-                //todo fix  - remove delete all
+                //todo fix  - remove delete all and fix auto increment id
                 mediaDatabase.mediumDao().deleteAll()
             externalVideoList.forEach {
                 val medium = Medium(count++,it.name,it.path,it.duration)
@@ -65,6 +63,7 @@ class AllFilesList : AppCompatActivity() {
                 Log.d(TAG, "after update data base")
                 mediaDatabase.mediumDao().getAll().forEach {
                     Log.d(TAG, "form media data base ${it.toString()}")
+
                 }
             }
 
@@ -72,7 +71,6 @@ class AllFilesList : AppCompatActivity() {
 
 
     }
-
     private fun getExternalContentVidoUri(): ArrayList<Video> {
         val videoList = ArrayList<Video>()
         //video projection
@@ -106,18 +104,10 @@ class AllFilesList : AppCompatActivity() {
                         it.getString(videoExternalCursor.getColumnIndex(MediaStore.Video.Media.DATA))
                 Log.d(TAG, "getExternalContentVidoUri: path $path")
                 try {
-//                    var bitMap: Bitmap? = null
-//                    bitMap = ThumbnailUtils.createVideoThumbnail(
-//                            path,
-//                            MediaStore.Video.Thumbnails.MINI_KIND
-//                    )
-
-//                    bitMap?.let {
                         val n  = convertDuration(duration.toLong())
                         val video = Video(videoName, n.toString(), size,path)
 
                         videoList.add(video)
-//                    }
                 } catch (e: Exception) {
                     Log.e(TAG, "getExternalContentVidoUri: ${e.message}");
                 }
@@ -177,7 +167,7 @@ class AllFilesList : AppCompatActivity() {
     }
 
     private fun readAndWriteExternalStoragePermission() : Boolean{
-        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP){
+        if (IS_MARSHMALLOW_OR_LETTER()){
             if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
                 ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE),
                         READ_AND_WRITE_STORAGE_PERMISSION)
@@ -203,7 +193,7 @@ class AllFilesList : AppCompatActivity() {
 
     }
 
-    fun convertDuration(duration: Long): String {
+    private fun convertDuration(duration: Long): String {
         var out: String? = null
         var hours: Long = 0
         try {
@@ -229,6 +219,11 @@ class AllFilesList : AppCompatActivity() {
             "$minutes:$seconds"
         }
         return out
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        mediaDatabase.close()
     }
 
 }
