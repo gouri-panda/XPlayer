@@ -252,8 +252,6 @@ public class MainActivity extends AppCompatActivity {
             Log.d(TAG, "onAudioAttributesChanged: audioAttributes flags" + audioAttributes.flags);
             Log.d(TAG, "onAudioAttributesChanged: audioAttributes usage" + audioAttributes.usage);
             Log.d(TAG, "onAudioAttributesChanged: audioAttributes allowed capture policy" + audioAttributes.allowedCapturePolicy);
-
-
         }
 
         @Override

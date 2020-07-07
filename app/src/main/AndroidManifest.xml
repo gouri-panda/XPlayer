@@ -14,23 +14,24 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-
-        <activity android:name=".AllFilesList" >
+        <activity
+            android:name=".GalleryView"
+            android:label="@string/title_activity_gallery_view"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".DownloadActivity">
+        <activity android:name=".AllFilesList">
 
         </activity>
+        <activity android:name=".DownloadActivity"></activity>
         <activity
             android:name=".MainActivity"
             android:screenOrientation="landscape"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" >
-
-        </activity>
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"></activity>
     </application>
 
 </manifest>
