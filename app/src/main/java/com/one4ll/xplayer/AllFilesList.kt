@@ -13,7 +13,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.one4ll.xplayer.database.MediaDatabase
-import com.one4ll.xplayer.helpers.IS_MARSHMALLOW_OR_LETTER
+import com.one4ll.xplayer.helpers.*
 import com.one4ll.xplayer.models.Medium
 import kotlinx.android.synthetic.main.activity_all_files_list.*
 import kotlinx.coroutines.CoroutineScope
@@ -47,8 +47,8 @@ class AllFilesList : AppCompatActivity() {
     }
 
     private  fun getVideoList() {
-        val externalVideoList = getExternalContentVidoUri()
-        val internalVideoList = getInternalContentVidoUri()
+        val externalVideoList = getExternalContentVidoUri(this)
+        val internalVideoList = getInternalContentVidoUri(this)
         externalVideoList.addAll(internalVideoList)
         recylerViewAdapter.loadVideo(externalVideoList)
         CoroutineScope(IO).async {
@@ -71,106 +71,14 @@ class AllFilesList : AppCompatActivity() {
 
 
     }
-    private fun getExternalContentVidoUri(): ArrayList<Video> {
-        val videoList = ArrayList<Video>()
-        //video projection
-        var videoProjection = arrayOf(
-                MediaStore.Video.VideoColumns.ALBUM,
-                MediaStore.Video.VideoColumns.DATE_ADDED,
-                MediaStore.Video.VideoColumns.DISPLAY_NAME,
-                MediaStore.Video.VideoColumns.DURATION,
-                MediaStore.Video.VideoColumns.SIZE,
-                MediaStore.Video.VideoColumns.DATA
-        )
-        //query from content resolver
-        var videoExternalCursor = contentResolver.query(
-                MediaStore.Video.Media.EXTERNAL_CONTENT_URI,
-                videoProjection,
-                null,
-                null,
-                null
-        )
 
-        //iterating cursor to get Video list
-        videoExternalCursor?.let {
-            while (it.moveToNext()) {
-                val videoName =
-                        it.getString(videoExternalCursor.getColumnIndex(MediaStore.Video.VideoColumns.DISPLAY_NAME))
-                var duration =
-                        it.getString(videoExternalCursor.getColumnIndex(MediaStore.Video.VideoColumns.DURATION))
-                val size =
-                        it.getString(videoExternalCursor.getColumnIndex(MediaStore.Video.VideoColumns.SIZE))
-                var path =
-                        it.getString(videoExternalCursor.getColumnIndex(MediaStore.Video.Media.DATA))
-                Log.d(TAG, "getExternalContentVidoUri: path $path")
-                try {
-                        val n  = convertDuration(duration.toLong())
-                        val video = Video(videoName, n.toString(), size,path)
 
-                        videoList.add(video)
-                } catch (e: Exception) {
-                    Log.e(TAG, "getExternalContentVidoUri: ${e.message}");
-                }
 
-            }
-        }
-        videoExternalCursor?.close()
-        return videoList
-    }
-
-    private fun getInternalContentVidoUri(): ArrayList<Video> {
-        val videoList = ArrayList<Video>()
-        var videoProjection = arrayOf(
-                MediaStore.Video.VideoColumns.ALBUM,
-                MediaStore.Video.VideoColumns.DATE_ADDED,
-                MediaStore.Video.VideoColumns.DISPLAY_NAME,
-                MediaStore.Video.VideoColumns.DURATION,
-                MediaStore.Video.VideoColumns.SIZE,
-                MediaStore.Video.VideoColumns.DATA
-        )
-        var videoInternalCursor = contentResolver.query(
-                MediaStore.Video.Media.INTERNAL_CONTENT_URI,
-                videoProjection,
-                null,
-                null,
-                null
-        )
-        videoInternalCursor?.let {
-            while (it.moveToNext()) {
-                val videoName =
-                        it.getString(videoInternalCursor.getColumnIndex(MediaStore.Video.VideoColumns.DISPLAY_NAME))
-                var duration =
-                        it.getString(videoInternalCursor.getColumnIndex(MediaStore.Video.VideoColumns.DURATION))
-                val size =
-                        it.getString(videoInternalCursor.getColumnIndex(MediaStore.Video.VideoColumns.SIZE))
-                val path =
-                        it.getString(videoInternalCursor.getColumnIndex(MediaStore.Video.VideoColumns.DATA))
-                try {
-                    val bitmap = ThumbnailUtils.createVideoThumbnail(
-                            path,
-                            MediaStore.Video.Thumbnails.MINI_KIND
-                    )
-                    val n = convertDuration(duration.toLong())
-                    val video = Video(videoName, n.toString(), size,path)
-
-                    videoList.add(video)
-                } catch (e: Exception) {
-                }
-
-                Log.d(TAG, "onCreate: video uri video name $videoName")
-                Log.d(TAG, "onCreate: video uri video duration $duration")
-                Log.d(TAG, "onCreate: video uri video size $size")
-            }
-        }
-        videoInternalCursor?.close()
-        return videoList
-    }
 
     private fun readAndWriteExternalStoragePermission() : Boolean{
         if (IS_MARSHMALLOW_OR_LETTER()){
-            if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
-                ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE),
-                        READ_AND_WRITE_STORAGE_PERMISSION)
+            if (!isHavePermission(this,Manifest.permission.WRITE_EXTERNAL_STORAGE)){
+                askPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE,Manifest.permission.WRITE_EXTERNAL_STORAGE,requestCode = READ_AND_WRITE_STORAGE_PERMISSION)
                 return false
             }
         }
@@ -193,33 +101,7 @@ class AllFilesList : AppCompatActivity() {
 
     }
 
-    private fun convertDuration(duration: Long): String {
-        var out: String? = null
-        var hours: Long = 0
-        try {
-            hours = duration / 3600000
-        } catch (e: Exception) {
-            e.printStackTrace()
-        }
-        val remainingMinutes = (duration - hours * 3600000) / 60000
-        var minutes = remainingMinutes.toString()
-        if (minutes == "0") {
-            minutes = "00"
-        }
-        val remainingSecs = duration - hours * 3600000 - remainingMinutes * 60000
-        var seconds = remainingSecs.toString()
-        seconds = if (seconds.length < 2) {
-            "00"
-        } else {
-            seconds.substring(0, 2)
-        }
-        out = if (hours > 0) {
-            "$hours:$minutes:$seconds"
-        } else {
-            "$minutes:$seconds"
-        }
-        return out
-    }
+
 
     override fun onDestroy() {
         super.onDestroy()
