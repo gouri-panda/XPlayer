@@ -190,7 +190,7 @@ fun getInternalContentImageUri(context: Context): ArrayList<Video> {
     imageExternalCursor?.close()
     return videoList
 }
-fun getInterenalContentMusicUri(context: Context): ArrayList<Video> {
+fun getInternalContentMusicUri(context: Context): ArrayList<Video> {
     val videoList = ArrayList<Video>()
     //video projection
     //query from content resolver
