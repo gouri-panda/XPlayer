@@ -9,7 +9,7 @@ import android.widget.TextView
 import android.widget.VideoView
 import androidx.recyclerview.widget.RecyclerView
 
-class RecylerViewAdapter(var list: ArrayList<Video>) :
+class RecylerViewAdapter(var list: java.util.ArrayList<Video>) :
     RecyclerView.Adapter<RecylerViewAdapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)

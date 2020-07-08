@@ -29,7 +29,7 @@ class AllFilesList : AppCompatActivity() {
         setContentView(R.layout.activity_all_files_list)
         thumbnail.delete()
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-        val videoList = ArrayList<Video>()
+        val videoList = ArrayList<com.one4ll.xplayer.Video>()
          recylerViewAdapter = RecylerViewAdapter(videoList)
         video_list_recycler_view.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         video_list_recycler_view.adapter = recylerViewAdapter
