@@ -31,9 +31,9 @@ fun convertDuration(duration: Long): String {
     }
     return out
 }
-fun getInternalContentVidoUri(context: Context): ArrayList<Video> {
+fun getInternalContentVideoUri(context: Context): ArrayList<Video> {
     val videoList = ArrayList<Video>()
-    var videoProjection = arrayOf(
+    val videoProjection = arrayOf(
             MediaStore.Video.VideoColumns.ALBUM,
             MediaStore.Video.VideoColumns.DATE_ADDED,
             MediaStore.Video.VideoColumns.DISPLAY_NAME,
@@ -41,7 +41,7 @@ fun getInternalContentVidoUri(context: Context): ArrayList<Video> {
             MediaStore.Video.VideoColumns.SIZE,
             MediaStore.Video.VideoColumns.DATA
     )
-    var videoInternalCursor = context.contentResolver.query(
+    val videoInternalCursor = context.contentResolver.query(
             MediaStore.Video.Media.INTERNAL_CONTENT_URI,
             videoProjection,
             null,
@@ -52,7 +52,7 @@ fun getInternalContentVidoUri(context: Context): ArrayList<Video> {
         while (it.moveToNext()) {
             val videoName =
                     it.getString(videoInternalCursor.getColumnIndex(MediaStore.Video.VideoColumns.DISPLAY_NAME))
-            var duration =
+            val duration =
                     it.getString(videoInternalCursor.getColumnIndex(MediaStore.Video.VideoColumns.DURATION))
             val size =
                     it.getString(videoInternalCursor.getColumnIndex(MediaStore.Video.VideoColumns.SIZE))
@@ -64,7 +64,7 @@ fun getInternalContentVidoUri(context: Context): ArrayList<Video> {
 //                            MediaStore.Video.Thumbnails.MINI_KIND
 //                    )
                 val n = convertDuration(duration.toLong())
-                val video = Video(videoName, n.toString(), size,path)
+                val video = Video(videoName, n, size,path)
 
                 videoList.add(video)
             } catch (e: Exception) {
@@ -74,10 +74,10 @@ fun getInternalContentVidoUri(context: Context): ArrayList<Video> {
     videoInternalCursor?.close()
     return videoList
 }
- fun getExternalContentVidoUri(context: Context): ArrayList<Video> {
+ fun getExternalContentVideoUri(context: Context): ArrayList<Video> {
     val videoList = ArrayList<Video>()
     //video projection
-    var videoProjection = arrayOf(
+    val videoProjection = arrayOf(
             MediaStore.Video.VideoColumns.ALBUM,
             MediaStore.Video.VideoColumns.DATE_ADDED,
             MediaStore.Video.VideoColumns.DISPLAY_NAME,
@@ -86,7 +86,7 @@ fun getInternalContentVidoUri(context: Context): ArrayList<Video> {
             MediaStore.Video.VideoColumns.DATA
     )
     //query from content resolver
-    var videoExternalCursor = context.contentResolver.query(
+    val videoExternalCursor = context.contentResolver.query(
             MediaStore.Video.Media.EXTERNAL_CONTENT_URI,
             videoProjection,
             null,
@@ -99,15 +99,15 @@ fun getInternalContentVidoUri(context: Context): ArrayList<Video> {
         while (it.moveToNext()) {
             val videoName =
                     it.getString(videoExternalCursor.getColumnIndex(MediaStore.Video.VideoColumns.DISPLAY_NAME))
-            var duration =
+            val duration =
                     it.getString(videoExternalCursor.getColumnIndex(MediaStore.Video.VideoColumns.DURATION))
             val size =
                     it.getString(videoExternalCursor.getColumnIndex(MediaStore.Video.VideoColumns.SIZE))
-            var path =
+            val path =
                     it.getString(videoExternalCursor.getColumnIndex(MediaStore.Video.Media.DATA))
             try {
                 val n  = convertDuration(duration.toLong())
-                val video = Video(videoName, n.toString(), size,path)
+                val video = Video(videoName, n, size,path)
 
                 videoList.add(video)
             } catch (e: Exception) {
@@ -116,5 +116,41 @@ fun getInternalContentVidoUri(context: Context): ArrayList<Video> {
         }
     }
     videoExternalCursor?.close()
+    return videoList
+}
+fun getExternalContentImageUri(context: Context): ArrayList<Video> {
+    val videoList = ArrayList<Video>()
+    //video projection
+    //query from content resolver
+    val imageExternalCursor = context.contentResolver.query(
+            MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
+            null,
+            null,
+            null,
+            null
+    )
+
+    //iterating cursor to get Video list
+    imageExternalCursor?.let {
+        while (it.moveToNext()) {
+            val videoName =
+                    it.getString(imageExternalCursor.getColumnIndex(MediaStore.Images.ImageColumns.DISPLAY_NAME))
+            val duration =
+                    it.getString(imageExternalCursor.getColumnIndex(MediaStore.Images.ImageColumns.DURATION))
+            val size =
+                    it.getString(imageExternalCursor.getColumnIndex(MediaStore.Images.ImageColumns.SIZE))
+            val path =
+                    it.getString(imageExternalCursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA))
+            try {
+                val n  = convertDuration(duration.toLong())
+                val video = Video(videoName, n, size,path)
+
+                videoList.add(video)
+            } catch (e: Exception) {
+            }
+
+        }
+    }
+    imageExternalCursor?.close()
     return videoList
 }

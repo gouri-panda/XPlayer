@@ -2,12 +2,14 @@ package com.one4ll.xplayer.database
 
 import android.content.Context
 import androidx.room.*
-import com.one4ll.xplayer.interfaces.MediumDao
-import com.one4ll.xplayer.models.Medium
+import com.one4ll.xplayer.interfaces.VideoDao
+import com.one4ll.xplayer.models.Image
+import com.one4ll.xplayer.models.Music
+import com.one4ll.xplayer.models.Video
 
-@Database(entities = [Medium::class],version = 1)
+@Database(entities = [Video::class,Image::class,Music::class],version = 1)
 abstract class MediaDatabase : RoomDatabase() {
-    abstract fun mediumDao() : MediumDao
+    abstract fun mediumDao() : VideoDao
 
     companion object {
         private var db: MediaDatabase? = null

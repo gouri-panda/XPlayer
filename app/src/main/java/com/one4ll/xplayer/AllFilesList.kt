@@ -2,19 +2,14 @@ package com.one4ll.xplayer
 
 import android.Manifest
 import android.content.pm.PackageManager
-import android.media.ThumbnailUtils
 import android.os.Bundle
-import android.provider.MediaStore
 import android.util.Log
-import android.view.MotionEvent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.one4ll.xplayer.database.MediaDatabase
 import com.one4ll.xplayer.helpers.*
-import com.one4ll.xplayer.models.Medium
+import com.one4ll.xplayer.models.Video
 import kotlinx.android.synthetic.main.activity_all_files_list.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.IO
@@ -47,8 +42,8 @@ class AllFilesList : AppCompatActivity() {
     }
 
     private  fun getVideoList() {
-        val externalVideoList = getExternalContentVidoUri(this)
-        val internalVideoList = getInternalContentVidoUri(this)
+        val externalVideoList = getExternalContentVideoUri(this)
+        val internalVideoList = getInternalContentVideoUri(this)
         externalVideoList.addAll(internalVideoList)
         recylerViewAdapter.loadVideo(externalVideoList)
         CoroutineScope(IO).async {
@@ -57,7 +52,7 @@ class AllFilesList : AppCompatActivity() {
                 //todo fix  - remove delete all and fix auto increment id
                 mediaDatabase.mediumDao().deleteAll()
             externalVideoList.forEach {
-                val medium = Medium(count++,it.name,it.path,it.duration)
+                val medium = Video(count++,it.name,it.path,it.duration)
                 mediaDatabase.mediumDao().insert(medium)
             }}.await().run {
                 Log.d(TAG, "after update data base")
