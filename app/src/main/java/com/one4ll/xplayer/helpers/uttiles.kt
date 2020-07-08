@@ -154,3 +154,111 @@ fun getExternalContentImageUri(context: Context): ArrayList<Video> {
     imageExternalCursor?.close()
     return videoList
 }
+fun getInternalContentImageUri(context: Context): ArrayList<Video> {
+    val videoList = ArrayList<Video>()
+    //video projection
+    //query from content resolver
+    val imageExternalCursor = context.contentResolver.query(
+            MediaStore.Images.Media.INTERNAL_CONTENT_URI,
+            null,
+            null,
+            null,
+            null
+    )
+
+    //iterating cursor to get Video list
+    imageExternalCursor?.let {
+        while (it.moveToNext()) {
+            val videoName =
+                    it.getString(imageExternalCursor.getColumnIndex(MediaStore.Images.ImageColumns.DISPLAY_NAME))
+            val duration =
+                    it.getString(imageExternalCursor.getColumnIndex(MediaStore.Images.ImageColumns.DURATION))
+            val size =
+                    it.getString(imageExternalCursor.getColumnIndex(MediaStore.Images.ImageColumns.SIZE))
+            val path =
+                    it.getString(imageExternalCursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA))
+            try {
+                val n  = convertDuration(duration.toLong())
+                val video = Video(videoName, n, size,path)
+
+                videoList.add(video)
+            } catch (e: Exception) {
+            }
+
+        }
+    }
+    imageExternalCursor?.close()
+    return videoList
+}
+fun getInterenalContentMusicUri(context: Context): ArrayList<Video> {
+    val videoList = ArrayList<Video>()
+    //video projection
+    //query from content resolver
+    val musicExternalCursor = context.contentResolver.query(
+            MediaStore.Audio.Media.INTERNAL_CONTENT_URI,
+            null,
+            null,
+            null,
+            null
+    )
+
+    //iterating cursor to get Video list
+    musicExternalCursor?.let {
+        while (it.moveToNext()) {
+            val videoName =
+                    it.getString(musicExternalCursor.getColumnIndex(MediaStore.Audio.AudioColumns.DISPLAY_NAME))
+            val duration =
+                    it.getString(musicExternalCursor.getColumnIndex(MediaStore.Audio.AudioColumns.DURATION))
+            val size =
+                    it.getString(musicExternalCursor.getColumnIndex(MediaStore.Audio.AudioColumns.SIZE))
+            val path =
+                    it.getString(musicExternalCursor.getColumnIndex(MediaStore.Audio.AudioColumns.DATA))
+            try {
+                val n  = convertDuration(duration.toLong())
+                val video = Video(videoName, n, size,path)
+
+                videoList.add(video)
+            } catch (e: Exception) {
+            }
+
+        }
+    }
+    musicExternalCursor?.close()
+    return videoList
+}
+fun getExternalContentMusicUri(context: Context): ArrayList<Video> {
+    val videoList = ArrayList<Video>()
+    //video projection
+    //query from content resolver
+    val musicExternalCursor = context.contentResolver.query(
+            MediaStore.Audio.Media.EXTERNAL_CONTENT_URI,
+            null,
+            null,
+            null,
+            null
+    )
+
+    //iterating cursor to get Video list
+    musicExternalCursor?.let {
+        while (it.moveToNext()) {
+            val videoName =
+                    it.getString(musicExternalCursor.getColumnIndex(MediaStore.Audio.AudioColumns.DISPLAY_NAME))
+            val duration =
+                    it.getString(musicExternalCursor.getColumnIndex(MediaStore.Audio.AudioColumns.DURATION))
+            val size =
+                    it.getString(musicExternalCursor.getColumnIndex(MediaStore.Audio.AudioColumns.SIZE))
+            val path =
+                    it.getString(musicExternalCursor.getColumnIndex(MediaStore.Audio.AudioColumns.DATA))
+            try {
+                val n  = convertDuration(duration.toLong())
+                val video = Video(videoName, n, size,path)
+
+                videoList.add(video)
+            } catch (e: Exception) {
+            }
+
+        }
+    }
+    musicExternalCursor?.close()
+    return videoList
+}
