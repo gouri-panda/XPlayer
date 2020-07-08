@@ -29,7 +29,7 @@ class AllFilesList : AppCompatActivity() {
         setContentView(R.layout.activity_all_files_list)
         thumbnail.delete()
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-        val videoList = ArrayList<com.one4ll.xplayer.Video>()
+        val videoList = ArrayList<com.one4ll.xplayer.Media>()
          recylerViewAdapter = RecylerViewAdapter(videoList)
         video_list_recycler_view.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         video_list_recycler_view.adapter = recylerViewAdapter
@@ -72,8 +72,8 @@ class AllFilesList : AppCompatActivity() {
 
     private fun readAndWriteExternalStoragePermission() : Boolean{
         if (IS_MARSHMALLOW_OR_LETTER()){
-            if (!isHavePermission(this,Manifest.permission.WRITE_EXTERNAL_STORAGE)){
-                askPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE,Manifest.permission.WRITE_EXTERNAL_STORAGE,requestCode = READ_AND_WRITE_STORAGE_PERMISSION)
+            if (!havePermission(this,Manifest.permission.WRITE_EXTERNAL_STORAGE)){
+                askPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE,Manifest.permission.WRITE_EXTERNAL_STORAGE,permissionId = READ_AND_WRITE_STORAGE_PERMISSION)
                 return false
             }
         }

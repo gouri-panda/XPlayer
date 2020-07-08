@@ -2,6 +2,7 @@ package com.one4ll.xplayer.helpers
 
 import android.app.Activity
 import android.content.Context
+import android.content.LocusId
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Environment
@@ -19,10 +20,15 @@ fun IS_PIE_OR_LETTER() = Build.VERSION.SDK_INT >= Build.VERSION_CODES.P
 
 
 
-fun isHavePermission(context: Context,permission: String) : Boolean =
+fun havePermission(context: Context, permission: String) : Boolean =
     ContextCompat.checkSelfPermission(context,permission) == PackageManager.PERMISSION_GRANTED
-fun askPermission(activity: Activity,vararg permissions : String,requestCode : Int){
-    ActivityCompat.requestPermissions(activity,permissions,requestCode)
+fun askPermission(activity: Activity,vararg permissions : String,permissionId : Int){
+    ActivityCompat.requestPermissions(activity,permissions,permissionId)
+}
+fun handlePermission(activity: Activity,permission: String,permissionId: Int) : Boolean{
+    if (havePermission(activity.applicationContext,permission)) return true
+    else askPermission(activity,permission,permissionId = permissionId)
+    return false
 }
 
 fun isExternalMounted() = Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())

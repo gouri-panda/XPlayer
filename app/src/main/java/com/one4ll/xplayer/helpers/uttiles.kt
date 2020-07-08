@@ -2,7 +2,7 @@ package com.one4ll.xplayer.helpers
 
 import android.content.Context
 import android.provider.MediaStore
-import com.one4ll.xplayer.Video
+import com.one4ll.xplayer.Media
 
 fun convertDuration(duration: Long): String {
     var out: String? = null
@@ -31,8 +31,8 @@ fun convertDuration(duration: Long): String {
     }
     return out
 }
-fun getInternalContentVideoUri(context: Context): ArrayList<Video> {
-    val videoList = ArrayList<Video>()
+fun getInternalContentVideoUri(context: Context): ArrayList<Media> {
+    val videoList = ArrayList<Media>()
     val videoProjection = arrayOf(
             MediaStore.Video.VideoColumns.ALBUM,
             MediaStore.Video.VideoColumns.DATE_ADDED,
@@ -64,7 +64,7 @@ fun getInternalContentVideoUri(context: Context): ArrayList<Video> {
 //                            MediaStore.Video.Thumbnails.MINI_KIND
 //                    )
                 val n = convertDuration(duration.toLong())
-                val video = Video(videoName, n, size,path)
+                val video = Media(videoName, n, size,path)
 
                 videoList.add(video)
             } catch (e: Exception) {
@@ -74,8 +74,8 @@ fun getInternalContentVideoUri(context: Context): ArrayList<Video> {
     videoInternalCursor?.close()
     return videoList
 }
- fun getExternalContentVideoUri(context: Context): ArrayList<Video> {
-    val videoList = ArrayList<Video>()
+ fun getExternalContentVideoUri(context: Context): ArrayList<Media> {
+    val videoList = ArrayList<Media>()
     //video projection
     val videoProjection = arrayOf(
             MediaStore.Video.VideoColumns.ALBUM,
@@ -107,7 +107,7 @@ fun getInternalContentVideoUri(context: Context): ArrayList<Video> {
                     it.getString(videoExternalCursor.getColumnIndex(MediaStore.Video.Media.DATA))
             try {
                 val n  = convertDuration(duration.toLong())
-                val video = Video(videoName, n, size,path)
+                val video = Media(videoName, n, size,path)
 
                 videoList.add(video)
             } catch (e: Exception) {
@@ -118,8 +118,8 @@ fun getInternalContentVideoUri(context: Context): ArrayList<Video> {
     videoExternalCursor?.close()
     return videoList
 }
-fun getExternalContentImageUri(context: Context): ArrayList<Video> {
-    val videoList = ArrayList<Video>()
+fun getExternalContentImageUri(context: Context): ArrayList<Media> {
+    val videoList = ArrayList<Media>()
     //video projection
     //query from content resolver
     val imageExternalCursor = context.contentResolver.query(
@@ -143,7 +143,7 @@ fun getExternalContentImageUri(context: Context): ArrayList<Video> {
                     it.getString(imageExternalCursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA))
             try {
                 val n  = convertDuration(duration.toLong())
-                val video = Video(videoName, n, size,path)
+                val video = Media(videoName, n, size,path)
 
                 videoList.add(video)
             } catch (e: Exception) {
@@ -154,8 +154,8 @@ fun getExternalContentImageUri(context: Context): ArrayList<Video> {
     imageExternalCursor?.close()
     return videoList
 }
-fun getInternalContentImageUri(context: Context): ArrayList<Video> {
-    val videoList = ArrayList<Video>()
+fun getInternalContentImageUri(context: Context): ArrayList<Media> {
+    val videoList = ArrayList<Media>()
     //video projection
     //query from content resolver
     val imageExternalCursor = context.contentResolver.query(
@@ -179,7 +179,7 @@ fun getInternalContentImageUri(context: Context): ArrayList<Video> {
                     it.getString(imageExternalCursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA))
             try {
                 val n  = convertDuration(duration.toLong())
-                val video = Video(videoName, n, size,path)
+                val video = Media(videoName, n, size,path)
 
                 videoList.add(video)
             } catch (e: Exception) {
@@ -190,8 +190,8 @@ fun getInternalContentImageUri(context: Context): ArrayList<Video> {
     imageExternalCursor?.close()
     return videoList
 }
-fun getInternalContentMusicUri(context: Context): ArrayList<Video> {
-    val videoList = ArrayList<Video>()
+fun getInternalContentMusicUri(context: Context): ArrayList<Media> {
+    val videoList = ArrayList<Media>()
     //video projection
     //query from content resolver
     val musicExternalCursor = context.contentResolver.query(
@@ -215,7 +215,7 @@ fun getInternalContentMusicUri(context: Context): ArrayList<Video> {
                     it.getString(musicExternalCursor.getColumnIndex(MediaStore.Audio.AudioColumns.DATA))
             try {
                 val n  = convertDuration(duration.toLong())
-                val video = Video(videoName, n, size,path)
+                val video = Media(videoName, n, size,path)
 
                 videoList.add(video)
             } catch (e: Exception) {
@@ -226,8 +226,8 @@ fun getInternalContentMusicUri(context: Context): ArrayList<Video> {
     musicExternalCursor?.close()
     return videoList
 }
-fun getExternalContentMusicUri(context: Context): ArrayList<Video> {
-    val videoList = ArrayList<Video>()
+fun getExternalContentMusicUri(context: Context): ArrayList<Media> {
+    val videoList = ArrayList<Media>()
     //video projection
     //query from content resolver
     val musicExternalCursor = context.contentResolver.query(
@@ -251,7 +251,7 @@ fun getExternalContentMusicUri(context: Context): ArrayList<Video> {
                     it.getString(musicExternalCursor.getColumnIndex(MediaStore.Audio.AudioColumns.DATA))
             try {
                 val n  = convertDuration(duration.toLong())
-                val video = Video(videoName, n, size,path)
+                val video = Media(videoName, n, size,path)
 
                 videoList.add(video)
             } catch (e: Exception) {

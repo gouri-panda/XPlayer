@@ -1,7 +1,6 @@
 package com.one4ll.xplayer
 
 import android.content.Intent
-import android.graphics.drawable.BitmapDrawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,7 +8,7 @@ import android.widget.TextView
 import android.widget.VideoView
 import androidx.recyclerview.widget.RecyclerView
 
-class RecylerViewAdapter(var list: java.util.ArrayList<Video>) :
+class RecylerViewAdapter(var list: List<Media>) :
     RecyclerView.Adapter<RecylerViewAdapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -21,7 +20,7 @@ class RecylerViewAdapter(var list: java.util.ArrayList<Video>) :
     override fun getItemCount(): Int {
         return list.size
     }
-    fun loadVideo(list: ArrayList<Video>){
+    fun loadVideo(list: ArrayList<Media>){
         this.list = list
         notifyDataSetChanged()
     }
