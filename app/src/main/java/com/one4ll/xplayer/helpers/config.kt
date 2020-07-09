@@ -9,6 +9,45 @@ import android.os.Environment
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 
+const val VIDEO_PATH = "video_path"
+const val IMAGE_PATH = "image_path"
+const val MUSIC_PATH = "music_path"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 fun IS_MARSHMALLOW_OR_LETTER() =  Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
 fun IS_NOUGHOT_OR_LETTER() = Build.VERSION.SDK_INT >= Build.VERSION_CODES.N
 fun IS_NOUGHOT_MR1_OR_LETTER() = Build.VERSION.SDK_INT >= Build.VERSION_CODES.N_MR1

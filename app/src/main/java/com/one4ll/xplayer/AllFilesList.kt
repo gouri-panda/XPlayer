@@ -50,13 +50,13 @@ class AllFilesList : AppCompatActivity() {
             async {
                 var count = 0
                 //todo fix  - remove delete all and fix auto increment id
-                mediaDatabase.mediumDao().deleteAll()
+                mediaDatabase.videoDao().deleteAll()
             externalVideoList.forEach {
                 val medium = Video(count++,it.name,it.path,it.duration)
-                mediaDatabase.mediumDao().insert(medium)
+                mediaDatabase.videoDao().insert(medium)
             }}.await().run {
                 Log.d(TAG, "after update data base")
-                mediaDatabase.mediumDao().getAll().forEach {
+                mediaDatabase.videoDao().getAll().forEach {
                     Log.d(TAG, "form media data base ${it.toString()}")
 
                 }

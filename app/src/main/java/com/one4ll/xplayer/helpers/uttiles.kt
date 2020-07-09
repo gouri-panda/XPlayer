@@ -136,7 +136,7 @@ fun getExternalContentImageUri(context: Context): ArrayList<Media> {
             val videoName =
                     it.getString(imageExternalCursor.getColumnIndex(MediaStore.Images.ImageColumns.DISPLAY_NAME))
             val duration =
-                    it.getString(imageExternalCursor.getColumnIndex(MediaStore.Images.ImageColumns.DURATION))
+                    it.getString(imageExternalCursor.getColumnIndex(MediaStore.Images.ImageColumns.DATE_TAKEN))
             val size =
                     it.getString(imageExternalCursor.getColumnIndex(MediaStore.Images.ImageColumns.SIZE))
             val path =
@@ -172,7 +172,7 @@ fun getInternalContentImageUri(context: Context): ArrayList<Media> {
             val videoName =
                     it.getString(imageExternalCursor.getColumnIndex(MediaStore.Images.ImageColumns.DISPLAY_NAME))
             val duration =
-                    it.getString(imageExternalCursor.getColumnIndex(MediaStore.Images.ImageColumns.DURATION))
+                    it.getString(imageExternalCursor.getColumnIndex(MediaStore.Images.ImageColumns.DATE_TAKEN))
             val size =
                     it.getString(imageExternalCursor.getColumnIndex(MediaStore.Images.ImageColumns.SIZE))
             val path =

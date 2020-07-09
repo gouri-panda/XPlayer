@@ -14,6 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity android:name=".FullImageActivity"></activity>
         <activity
             android:name=".GalleryView"
             android:label="@string/title_activity_gallery_view"
@@ -24,14 +25,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AllFilesList">
-
-        </activity>
-        <activity android:name=".DownloadActivity"></activity>
+        <activity android:name=".AllFilesList"></activity>
+        <activity android:name=".DownloadActivity" />
         <activity
             android:name=".MainActivity"
             android:screenOrientation="landscape"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"></activity>
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
     </application>
 
 </manifest>

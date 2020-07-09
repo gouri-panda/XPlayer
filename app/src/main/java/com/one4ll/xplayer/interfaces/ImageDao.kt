@@ -16,7 +16,7 @@ interface ImageDao {
     @Insert
     fun insertImages(image: List<Image>)
     @Query("SELECT * FROM image")
-    fun getAll() : List<Video>
+    fun getAll() : List<Image>
     @Query("DELETE  FROM image")
     fun deleteAll()
 }
