@@ -1,25 +1,20 @@
-package com.one4ll.xplayer.ui.gallery
+package com.one4ll.xplayer.ui.image
 
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.one4ll.xplayer.ImageRecylerViewAdapter
 import com.one4ll.xplayer.Media
 import com.one4ll.xplayer.R
-import com.one4ll.xplayer.RecylerViewAdapter
 import com.one4ll.xplayer.database.MediaDatabase
 import com.one4ll.xplayer.helpers.getExternalContentImageUri
 import com.one4ll.xplayer.helpers.getInternalContentImageUri
 import com.one4ll.xplayer.models.Image
-import kotlinx.android.synthetic.main.fragment_gallery.*
 import kotlinx.android.synthetic.main.fragment_gallery.view.*
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.runBlocking
@@ -27,7 +22,7 @@ import kotlinx.coroutines.withContext
 private val TAG = "galleryfragment"
 class GalleryFragment : Fragment() {
 
-    private lateinit var galleryViewModel: GalleryViewModel
+    private lateinit var imageViewModel: ImageViewModel
     private lateinit var root: View
     private lateinit var exImageUri: ArrayList<Media>
     private lateinit var inImageUri: List<Media>
@@ -38,8 +33,8 @@ class GalleryFragment : Fragment() {
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        galleryViewModel =
-                ViewModelProviders.of(this).get(GalleryViewModel::class.java)
+        imageViewModel =
+                ViewModelProviders.of(this).get(ImageViewModel::class.java)
         root = inflater.inflate(R.layout.fragment_gallery, container, false)
         if (dataBase == null) {
             dataBase = MediaDatabase.getInstance(root.context)

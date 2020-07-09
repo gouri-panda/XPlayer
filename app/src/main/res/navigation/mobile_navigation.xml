@@ -7,19 +7,19 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.one4ll.xplayer.ui.home.HomeFragment"
+        android:name="com.one4ll.xplayer.ui.video.VideoFragment"
         android:label="@string/Video"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/nav_gallery"
-        android:name="com.one4ll.xplayer.ui.gallery.GalleryFragment"
+        android:name="com.one4ll.xplayer.ui.image.GalleryFragment"
         android:label="@string/Audio"
         tools:layout="@layout/fragment_gallery" />
 
     <fragment
         android:id="@+id/nav_slideshow"
-        android:name="com.one4ll.xplayer.ui.slideshow.SlideshowFragment"
+        android:name="com.one4ll.xplayer.ui.Music.SlideshowFragment"
         android:label="@string/Image"
         tools:layout="@layout/fragment_slideshow" />
 </navigation>
