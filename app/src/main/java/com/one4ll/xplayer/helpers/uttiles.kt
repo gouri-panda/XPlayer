@@ -1,8 +1,14 @@
 package com.one4ll.xplayer.helpers
 
 import android.content.Context
+import android.graphics.Bitmap
+import android.media.ThumbnailUtils
 import android.provider.MediaStore
+import android.util.Size
+import android.widget.ImageView
 import com.one4ll.xplayer.Media
+import kotlinx.coroutines.*
+import java.io.File
 
 fun convertDuration(duration: Long): String {
     var out: String? = null
@@ -31,6 +37,7 @@ fun convertDuration(duration: Long): String {
     }
     return out
 }
+
 fun getInternalContentVideoUri(context: Context): ArrayList<Media> {
     val videoList = ArrayList<Media>()
     val videoProjection = arrayOf(
@@ -64,7 +71,7 @@ fun getInternalContentVideoUri(context: Context): ArrayList<Media> {
 //                            MediaStore.Video.Thumbnails.MINI_KIND
 //                    )
                 val n = convertDuration(duration.toLong())
-                val video = Media(videoName, n, size,path)
+                val video = Media(videoName, n, size, path)
 
                 videoList.add(video)
             } catch (e: Exception) {
@@ -74,7 +81,8 @@ fun getInternalContentVideoUri(context: Context): ArrayList<Media> {
     videoInternalCursor?.close()
     return videoList
 }
- fun getExternalContentVideoUri(context: Context): ArrayList<Media> {
+
+fun getExternalContentVideoUri(context: Context): ArrayList<Media> {
     val videoList = ArrayList<Media>()
     //video projection
     val videoProjection = arrayOf(
@@ -106,8 +114,8 @@ fun getInternalContentVideoUri(context: Context): ArrayList<Media> {
             val path =
                     it.getString(videoExternalCursor.getColumnIndex(MediaStore.Video.Media.DATA))
             try {
-                val n  = convertDuration(duration.toLong())
-                val video = Media(videoName, n, size,path)
+                val n = convertDuration(duration.toLong())
+                val video = Media(videoName, n, size, path)
 
                 videoList.add(video)
             } catch (e: Exception) {
@@ -118,6 +126,7 @@ fun getInternalContentVideoUri(context: Context): ArrayList<Media> {
     videoExternalCursor?.close()
     return videoList
 }
+
 fun getExternalContentImageUri(context: Context): ArrayList<Media> {
     val videoList = ArrayList<Media>()
     //video projection
@@ -142,8 +151,8 @@ fun getExternalContentImageUri(context: Context): ArrayList<Media> {
             val path =
                     it.getString(imageExternalCursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA))
             try {
-                val n  = convertDuration(duration.toLong())
-                val video = Media(videoName, n, size,path)
+                val n = convertDuration(duration.toLong())
+                val video = Media(videoName, n, size, path)
 
                 videoList.add(video)
             } catch (e: Exception) {
@@ -154,6 +163,7 @@ fun getExternalContentImageUri(context: Context): ArrayList<Media> {
     imageExternalCursor?.close()
     return videoList
 }
+
 fun getInternalContentImageUri(context: Context): ArrayList<Media> {
     val videoList = ArrayList<Media>()
     //video projection
@@ -178,8 +188,8 @@ fun getInternalContentImageUri(context: Context): ArrayList<Media> {
             val path =
                     it.getString(imageExternalCursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA))
             try {
-                val n  = convertDuration(duration.toLong())
-                val video = Media(videoName, n, size,path)
+                val n = convertDuration(duration.toLong())
+                val video = Media(videoName, n, size, path)
 
                 videoList.add(video)
             } catch (e: Exception) {
@@ -190,6 +200,7 @@ fun getInternalContentImageUri(context: Context): ArrayList<Media> {
     imageExternalCursor?.close()
     return videoList
 }
+
 fun getInternalContentMusicUri(context: Context): ArrayList<Media> {
     val videoList = ArrayList<Media>()
     //video projection
@@ -214,8 +225,8 @@ fun getInternalContentMusicUri(context: Context): ArrayList<Media> {
             val path =
                     it.getString(musicExternalCursor.getColumnIndex(MediaStore.Audio.AudioColumns.DATA))
             try {
-                val n  = convertDuration(duration.toLong())
-                val video = Media(videoName, n, size,path)
+                val n = convertDuration(duration.toLong())
+                val video = Media(videoName, n, size, path)
 
                 videoList.add(video)
             } catch (e: Exception) {
@@ -226,6 +237,7 @@ fun getInternalContentMusicUri(context: Context): ArrayList<Media> {
     musicExternalCursor?.close()
     return videoList
 }
+
 fun getExternalContentMusicUri(context: Context): ArrayList<Media> {
     val videoList = ArrayList<Media>()
     //video projection
@@ -250,8 +262,8 @@ fun getExternalContentMusicUri(context: Context): ArrayList<Media> {
             val path =
                     it.getString(musicExternalCursor.getColumnIndex(MediaStore.Audio.AudioColumns.DATA))
             try {
-                val n  = convertDuration(duration.toLong())
-                val video = Media(videoName, n, size,path)
+                val n = convertDuration(duration.toLong())
+                val video = Media(videoName, n, size, path)
 
                 videoList.add(video)
             } catch (e: Exception) {
@@ -262,3 +274,42 @@ fun getExternalContentMusicUri(context: Context): ArrayList<Media> {
     musicExternalCursor?.close()
     return videoList
 }
+
+fun setVideoThumbNail(fiePath: String, imageView: ImageView) = CoroutineScope(Dispatchers.Default).launch {
+    var bitMap: Bitmap? = null
+    async {
+        bitMap = ThumbnailUtils.createVideoThumbnail(fiePath, MediaStore.Images.Thumbnails.MINI_KIND)
+    }.await()
+    withContext(Dispatchers.Main) {
+        imageView.setImageBitmap(bitMap)
+    }
+}
+
+fun setImageThumbNail(fiePath: String, imageView: ImageView) = CoroutineScope(Dispatchers.Default).launch {
+    var bitMap: Bitmap? = null
+    async {
+        bitMap = ThumbnailUtils.createImageThumbnail(fiePath, MediaStore.Images.Thumbnails.MINI_KIND)
+    }.await()
+    withContext(Dispatchers.Main) {
+        imageView.setImageBitmap(bitMap)
+    }
+}
+fun setMusicThumbNail(fiePath: String, imageView: ImageView) = CoroutineScope(Dispatchers.Default).launch {
+    try {
+        var bitMap: Bitmap? = null
+        async {
+            bitMap = if (IS_Q_OR_LETTER()) {
+                ThumbnailUtils.createAudioThumbnail(File(fiePath), Size(100, 100), null)
+            } else {
+                ThumbnailUtils.createAudioThumbnail(File(fiePath).absolutePath, MediaStore.Images.Thumbnails.MINI_KIND)
+            }
+        }.await()
+        withContext(Dispatchers.Main) {
+            imageView.setImageBitmap(bitMap)
+        }
+    }catch (e : java.lang.Exception){
+        e.printStackTrace()
+    }
+
+}
+

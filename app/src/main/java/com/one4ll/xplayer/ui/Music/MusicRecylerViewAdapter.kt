@@ -6,11 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.VideoView
 import androidx.recyclerview.widget.RecyclerView
 import com.one4ll.xplayer.MainActivity
 import com.one4ll.xplayer.Media
 import com.one4ll.xplayer.R
+import com.one4ll.xplayer.helpers.setMusicThumbNail
 
 class MusicRecylerViewAdapter(var list: List<Media>) :
     RecyclerView.Adapter<MusicRecylerViewAdapter.ViewHolder>() {
@@ -32,16 +32,17 @@ class MusicRecylerViewAdapter(var list: List<Media>) :
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.title.text= list[position].name
         holder.duration.text = list[position].duration
-//        holder.videoView.setBackgroundDrawable(BitmapDrawable(list[position].thumbnail))
+        val path = list[position].path
+        setMusicThumbNail(path,holder.imageView)
         holder.itemView.setOnClickListener {
             val intent = Intent(holder.itemView.context, MainActivity::class.java)
-            intent.putExtra("video",list[position].path)
+            intent.putExtra("video",path)
             holder.itemView.context.startActivity(intent)
         }
     }
 
     class ViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
-        val videoView = itemView.findViewById<ImageView>(R.id.imageView)
+        val imageView = itemView.findViewById<ImageView>(R.id.imageView)
         val title = itemView.findViewById<TextView>(R.id.name)
         val duration = itemView.findViewById<TextView>(R.id.duration)
 

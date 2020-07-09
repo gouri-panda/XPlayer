@@ -30,8 +30,12 @@ import com.google.android.exoplayer2.upstream.DataSource;
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
 import com.google.android.exoplayer2.util.Util;
 
+import java.io.File;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
+
+import static com.one4ll.xplayer.helpers.ConfigKt.VIDEO_PATH;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
@@ -62,19 +66,20 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        playerView = findViewById(R.id.player_view);
 
         simpleExoPlayer = new SimpleExoPlayer.Builder(this).build();
         playerView.setPlayer(simpleExoPlayer);
         Intent intent = getIntent();
-        String videoUriPath = intent.getStringExtra("video");
+        String videoUriPath = intent.getStringExtra(VIDEO_PATH);
 
 //        final Uri fileUri = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.video);
 //        Uri fileUri2 = Uri.parse("https://www.videvo.net/videvo_files/converted/2018_01/preview/171124_H1_005.mp436952.webm");
 //        Uri fileUri3 = Uri.parse("http://185.105.103.101/serial/Supernatural/S13/720p.x265/Supernatural.S13E07.720p.HDTV.2CH.x265.HEVC.Filmaneh.mkv");
 
         Log.d(TAG, "onCreate: app name " + getString(R.string.app_name));
-        DataSource.Factory dataSourceFactory = new DefaultDataSourceFactory(MainActivity.this, Util.getUserAgent(MainActivity.this, getString(R.string.app_name)));
-        MediaSource mediaSource = new ProgressiveMediaSource.Factory(dataSourceFactory).createMediaSource(Uri.parse(videoUriPath));
+        DataSource.Factory dataSourceFactory = new DefaultDataSourceFactory(this, Util.getUserAgent(MainActivity.this, getString(R.string.app_name)));
+        MediaSource mediaSource = new ProgressiveMediaSource.Factory(dataSourceFactory).createMediaSource(Uri.fromFile(new File(videoUriPath)));
         simpleExoPlayer.prepare(mediaSource);
         simpleExoPlayer.addAudioListener(audioListener);
         simpleExoPlayer.setPlayWhenReady(true);

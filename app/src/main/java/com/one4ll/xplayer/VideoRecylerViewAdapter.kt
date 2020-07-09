@@ -11,6 +11,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.one4ll.xplayer.helpers.VIDEO_PATH
+import com.one4ll.xplayer.helpers.setVideoThumbNail
 import kotlinx.coroutines.*
 import kotlinx.coroutines.Dispatchers.Default
 import kotlinx.coroutines.Dispatchers.IO
@@ -37,11 +39,11 @@ class VideoRecylerViewAdapter(var list: List<Media>) :
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.title.text = list[position].name
         holder.duration.text = list[position].duration
-
-        setVideoThumbNail(list[position].path, holder.imageView)
+        val path = list[position].path
+        setVideoThumbNail(path, holder.imageView)
         holder.itemView.setOnClickListener {
             val intent = Intent(holder.itemView.context, MainActivity::class.java)
-            intent.putExtra("video", list[position].path)
+            intent.putExtra(VIDEO_PATH, path)
 
 
             holder.itemView.context.startActivity(intent)
@@ -52,15 +54,5 @@ class VideoRecylerViewAdapter(var list: List<Media>) :
         val imageView = itemView.findViewById<ImageView>(R.id.imageView)
         val title = itemView.findViewById<TextView>(R.id.name)
         val duration = itemView.findViewById<TextView>(R.id.duration)
-    }
-
-    private fun setVideoThumbNail(fiePath: String, imageView: ImageView) = CoroutineScope(Default).launch {
-        var bitMap: Bitmap? = null
-        async {
-            bitMap = ThumbnailUtils.createVideoThumbnail(fiePath, MediaStore.Images.Thumbnails.MINI_KIND)
-        }.await()
-        withContext(Main) {
-            imageView.setImageBitmap(bitMap)
-        }
     }
 }
