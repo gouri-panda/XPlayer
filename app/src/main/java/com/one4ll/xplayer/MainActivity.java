@@ -37,26 +37,13 @@ import butterknife.ButterKnife;
 
 import static com.one4ll.xplayer.helpers.ConfigKt.VIDEO_PATH;
 
+
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
     @BindView(R.id.main_activity_constraint_layout)
     ConstraintLayout constraintLayout;
     @BindView(R.id.player_view)
     PlayerView playerView;
-//    @BindView(R.id.progressBar)
-//    ProgressBar progressBar;
-//    @BindView(R.id.image_button_play)
-//    ImageButton playButton;
-//    @BindView(R.id.image_button_pause)
-//    ImageButton pauseButton;
-//    @BindView(R.id.image_button_play_2)
-//    ImageButton playButton2;
-//    @BindView(R.id.image_button_pause_2)
-//    ImageButton pauseButton2;
-//    @BindView(R.id.imageButtonPrevious)
-//    ImageButton imageButtonPrevious;
-//    @BindView(R.id.imageButtonNext)
-//    ImageButton imageButtonNext;
 
     private SimpleExoPlayer simpleExoPlayer;
 
@@ -72,10 +59,6 @@ public class MainActivity extends AppCompatActivity {
         playerView.setPlayer(simpleExoPlayer);
         Intent intent = getIntent();
         String videoUriPath = intent.getStringExtra(VIDEO_PATH);
-
-//        final Uri fileUri = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.video);
-//        Uri fileUri2 = Uri.parse("https://www.videvo.net/videvo_files/converted/2018_01/preview/171124_H1_005.mp436952.webm");
-//        Uri fileUri3 = Uri.parse("http://185.105.103.101/serial/Supernatural/S13/720p.x265/Supernatural.S13E07.720p.HDTV.2CH.x265.HEVC.Filmaneh.mkv");
 
         Log.d(TAG, "onCreate: app name " + getString(R.string.app_name));
         DataSource.Factory dataSourceFactory = new DefaultDataSourceFactory(this, Util.getUserAgent(MainActivity.this, getString(R.string.app_name)));
@@ -272,32 +255,5 @@ public class MainActivity extends AppCompatActivity {
         LocalBroadcastManager.getInstance(this).unregisterReceiver(broadcastReceiver);
     }
 
-    public String convertDuration(long duration){
-        String out = null;
-        long hours = 0;
-        try {
-            hours = (duration / 3600000);
-        }catch (Exception e ){
-            e.printStackTrace();
-        }
-        long remainingMinutes = (duration - (hours * 3600000)) / 60000;
-        String minutes = String.valueOf(remainingMinutes);
-        if (minutes.equals("0")) {
-            minutes = "00";
-        }
-        long remainingSecs = (duration - (hours * 3600000))  - (remainingMinutes * 60000);
-        String seconds = String.valueOf(remainingSecs);
-        if (seconds.length() < 2){
-            seconds = "00";
-        }else {
-            seconds = seconds.substring(0, 2);
-        }
-        if (hours > 0){
-            out = hours +":" + minutes+ ":" + seconds;
-        }else {
-            out = minutes + ":" + seconds;
-        }
-       return out;
-    }
 
 }
