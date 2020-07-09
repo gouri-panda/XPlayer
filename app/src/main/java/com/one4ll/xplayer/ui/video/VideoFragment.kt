@@ -10,7 +10,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.one4ll.xplayer.Media
 import com.one4ll.xplayer.R
-import com.one4ll.xplayer.RecylerViewAdapter
+import com.one4ll.xplayer.VideoRecylerViewAdapter
 import com.one4ll.xplayer.helpers.getExternalContentVideoUri
 import com.one4ll.xplayer.helpers.getInternalContentVideoUri
 import kotlinx.android.synthetic.main.fragment_home.view.*
@@ -63,7 +63,7 @@ private val TAG = "homefragment"
         Log.d(TAG, "getVideoList: set adapter thread ${Thread.currentThread().name}")
 
         Log.d(TAG, "onCreateView: exsize ${videoList.size}")
-        val adapter = RecylerViewAdapter(videoList)
+        val adapter = VideoRecylerViewAdapter(videoList)
         root.video_list_recycler_view.adapter = adapter
         val lineaLayoutManager = LinearLayoutManager(root.context,LinearLayoutManager.VERTICAL,false)
         root.video_list_recycler_view.layoutManager = lineaLayoutManager

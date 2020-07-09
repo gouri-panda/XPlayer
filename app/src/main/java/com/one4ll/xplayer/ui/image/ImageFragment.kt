@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.one4ll.xplayer.ImageRecylerViewAdapter
 import com.one4ll.xplayer.Media
 import com.one4ll.xplayer.R
 import com.one4ll.xplayer.database.MediaDatabase

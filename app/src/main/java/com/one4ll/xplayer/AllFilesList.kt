@@ -20,7 +20,7 @@ private const val READ_AND_WRITE_STORAGE_PERMISSION = 3
 class AllFilesList : AppCompatActivity() {
     private val TAG: String = "MainActivity"
     private var thumbnail = File("")
-    private lateinit  var recylerViewAdapter : RecylerViewAdapter
+    private lateinit  var videoRecylerViewAdapter : VideoRecylerViewAdapter
     private lateinit var mediaDatabase: MediaDatabase
 
 
@@ -30,9 +30,9 @@ class AllFilesList : AppCompatActivity() {
         thumbnail.delete()
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
         val videoList = ArrayList<com.one4ll.xplayer.Media>()
-         recylerViewAdapter = RecylerViewAdapter(videoList)
+         videoRecylerViewAdapter = VideoRecylerViewAdapter(videoList)
         video_list_recycler_view.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        video_list_recycler_view.adapter = recylerViewAdapter
+        video_list_recycler_view.adapter = videoRecylerViewAdapter
          mediaDatabase  = MediaDatabase.getInstance(this)
         if (readAndWriteExternalStoragePermission()){
             getVideoList()
@@ -45,7 +45,7 @@ class AllFilesList : AppCompatActivity() {
         val externalVideoList = getExternalContentVideoUri(this)
         val internalVideoList = getInternalContentVideoUri(this)
         externalVideoList.addAll(internalVideoList)
-        recylerViewAdapter.loadVideo(externalVideoList)
+        videoRecylerViewAdapter.loadVideo(externalVideoList)
         CoroutineScope(IO).async {
             async {
                 var count = 0

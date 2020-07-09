@@ -1,15 +1,19 @@
-package com.one4ll.xplayer
+package com.one4ll.xplayer.ui.Music
 
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.VideoView
 import androidx.recyclerview.widget.RecyclerView
+import com.one4ll.xplayer.MainActivity
+import com.one4ll.xplayer.Media
+import com.one4ll.xplayer.R
 
-class RecylerViewAdapter(var list: List<Media>) :
-    RecyclerView.Adapter<RecylerViewAdapter.ViewHolder>() {
+class MusicRecylerViewAdapter(var list: List<Media>) :
+    RecyclerView.Adapter<MusicRecylerViewAdapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         val view = layoutInflater.inflate(R.layout.video_list,parent,false)
@@ -20,7 +24,7 @@ class RecylerViewAdapter(var list: List<Media>) :
     override fun getItemCount(): Int {
         return list.size
     }
-    fun loadVideo(list: ArrayList<Media>){
+    fun loadVideo(list: List<Media>){
         this.list = list
         notifyDataSetChanged()
     }
@@ -29,16 +33,15 @@ class RecylerViewAdapter(var list: List<Media>) :
         holder.title.text= list[position].name
         holder.duration.text = list[position].duration
 //        holder.videoView.setBackgroundDrawable(BitmapDrawable(list[position].thumbnail))
-        holder.videoView.seekTo(1)
         holder.itemView.setOnClickListener {
-            val intent = Intent(holder.itemView.context,MainActivity::class.java)
+            val intent = Intent(holder.itemView.context, MainActivity::class.java)
             intent.putExtra("video",list[position].path)
             holder.itemView.context.startActivity(intent)
         }
     }
 
     class ViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
-        val videoView = itemView.findViewById<VideoView>(R.id.videoView)
+        val videoView = itemView.findViewById<ImageView>(R.id.imageView)
         val title = itemView.findViewById<TextView>(R.id.name)
         val duration = itemView.findViewById<TextView>(R.id.duration)
 

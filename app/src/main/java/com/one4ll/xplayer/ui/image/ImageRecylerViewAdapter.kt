@@ -1,12 +1,16 @@
-package com.one4ll.xplayer
+package com.one4ll.xplayer.ui.image
 
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.VideoView
 import androidx.recyclerview.widget.RecyclerView
+import com.one4ll.xplayer.FullImageActivity
+import com.one4ll.xplayer.Media
+import com.one4ll.xplayer.R
 import com.one4ll.xplayer.helpers.IMAGE_PATH
 
 class ImageRecylerViewAdapter(var list: List<Media>) :
@@ -30,16 +34,15 @@ class ImageRecylerViewAdapter(var list: List<Media>) :
         holder.title.text= list[position].name
         holder.duration.text = list[position].duration
 //        holder.videoView.setBackgroundDrawable(BitmapDrawable(list[position].thumbnail))
-        holder.videoView.seekTo(1)
         holder.itemView.setOnClickListener {
-            val intent = Intent(holder.itemView.context,FullImageActivity::class.java)
+            val intent = Intent(holder.itemView.context, FullImageActivity::class.java)
             intent.putExtra(IMAGE_PATH,list[position].path)
             holder.itemView.context.startActivity(intent)
         }
     }
 
     class ViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
-        val videoView = itemView.findViewById<VideoView>(R.id.videoView)
+        val videoView = itemView.findViewById<ImageView>(R.id.imageView)
         val title = itemView.findViewById<TextView>(R.id.name)
         val duration = itemView.findViewById<TextView>(R.id.duration)
 
