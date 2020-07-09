@@ -8,18 +8,18 @@
     <fragment
         android:id="@+id/nav_home"
         android:name="com.one4ll.xplayer.ui.home.HomeFragment"
-        android:label="@string/menu_home"
+        android:label="@string/Video"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/nav_gallery"
         android:name="com.one4ll.xplayer.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
+        android:label="@string/Audio"
         tools:layout="@layout/fragment_gallery" />
 
     <fragment
         android:id="@+id/nav_slideshow"
         android:name="com.one4ll.xplayer.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
+        android:label="@string/Image"
         tools:layout="@layout/fragment_slideshow" />
 </navigation>
