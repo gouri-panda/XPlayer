@@ -1,5 +1,6 @@
 package com.one4ll.xplayer.ui.video
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -7,10 +8,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.one4ll.xplayer.Media
 import com.one4ll.xplayer.R
 import com.one4ll.xplayer.adapter.VideoRecylerViewAdapter
+import com.one4ll.xplayer.helpers.IS_GRID_LAYOUT
+import com.one4ll.xplayer.helpers.SHARED_PREF_SETTINGS
 import com.one4ll.xplayer.helpers.getExternalContentVideoUri
 import com.one4ll.xplayer.helpers.getInternalContentVideoUri
 import kotlinx.android.synthetic.main.fragment_home.view.*
@@ -60,12 +64,18 @@ class VideoFragment : Fragment() {
     }
 
     private fun setAdapter(videoList: ArrayList<Media>) = CoroutineScope(Main).launch {
-        Log.d(TAG, "getVideoList: set adapter thread ${Thread.currentThread().name}")
+        val sharedPreferences = root.context.getSharedPreferences(SHARED_PREF_SETTINGS, Context.MODE_PRIVATE)
+        if (sharedPreferences.getBoolean(IS_GRID_LAYOUT,false)){
+            val adapter = VideoRecylerViewAdapter(videoList)
+            root.video_list_recycler_view.adapter = adapter
+            val gridLayoutManager = GridLayoutManager(root.context,2)
+            root.video_list_recycler_view.layoutManager = gridLayoutManager
+        }else{
+            val adapter = VideoRecylerViewAdapter(videoList)
+            root.video_list_recycler_view.adapter = adapter
+            val lineaLayoutManager = LinearLayoutManager(root.context, LinearLayoutManager.VERTICAL, false)
+            root.video_list_recycler_view.layoutManager = lineaLayoutManager
+        }
 
-        Log.d(TAG, "onCreateView: exsize ${videoList.size}")
-        val adapter = VideoRecylerViewAdapter(videoList)
-        root.video_list_recycler_view.adapter = adapter
-        val lineaLayoutManager = LinearLayoutManager(root.context, LinearLayoutManager.VERTICAL, false)
-        root.video_list_recycler_view.layoutManager = lineaLayoutManager
     }
 }

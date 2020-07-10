@@ -3,6 +3,7 @@ package com.one4ll.xplayer.helpers
 import android.app.Activity
 import android.content.Context
 import android.content.LocusId
+import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Environment
@@ -12,7 +13,8 @@ import androidx.core.content.ContextCompat
 const val VIDEO_PATH = "video_path"
 const val IMAGE_PATH = "image_path"
 const val MUSIC_PATH = "music_path"
-
+const val SHARED_PREF_SETTINGS = "shared_pref_settings"
+const val IS_GRID_LAYOUT = "is_grid_layout"
 
 
 

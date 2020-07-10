@@ -1,5 +1,6 @@
 package com.one4ll.xplayer.adapter
 
+import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
@@ -10,14 +11,23 @@ import androidx.recyclerview.widget.RecyclerView
 import com.one4ll.xplayer.MainActivity
 import com.one4ll.xplayer.Media
 import com.one4ll.xplayer.R
+import com.one4ll.xplayer.helpers.IS_GRID_LAYOUT
+import com.one4ll.xplayer.helpers.SHARED_PREF_SETTINGS
 import com.one4ll.xplayer.helpers.VIDEO_PATH
 import com.one4ll.xplayer.helpers.setVideoThumbNail
 
 class VideoRecylerViewAdapter(var list: List<Media>) :
         RecyclerView.Adapter<VideoRecylerViewAdapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val view: View?
         val layoutInflater = LayoutInflater.from(parent.context)
-        val view = layoutInflater.inflate(R.layout.video_list, parent, false)
+        val sharedPreferences = parent.context.getSharedPreferences(SHARED_PREF_SETTINGS, Context.MODE_PRIVATE)
+        val isGrid = sharedPreferences.getBoolean(IS_GRID_LAYOUT, false)
+        view = if (isGrid) {
+            layoutInflater.inflate(R.layout.file_list_in_grid, parent, false)
+        } else {
+            layoutInflater.inflate(R.layout.video_list, parent, false)
+        }
         return ViewHolder(view)
 
     }

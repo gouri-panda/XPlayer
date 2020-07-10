@@ -6,4 +6,9 @@
         android:orderInCategory="100"
         android:title="@string/action_settings"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/display_in_grid"
+        android:orderInCategory="100"
+        android:title="@string/display_in_grid"
+        app:showAsAction="never" />
 </menu>
