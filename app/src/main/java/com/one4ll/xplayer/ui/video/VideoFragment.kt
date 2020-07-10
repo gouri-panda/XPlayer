@@ -15,13 +15,15 @@ import com.one4ll.xplayer.helpers.getExternalContentVideoUri
 import com.one4ll.xplayer.helpers.getInternalContentVideoUri
 import kotlinx.android.synthetic.main.fragment_home.view.*
 import kotlinx.coroutines.*
+import kotlinx.coroutines.Dispatchers.Default
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
 
-class VideoFragment : Fragment() {
 private val TAG = "homefragment"
+
+class VideoFragment : Fragment() {
     private lateinit var videoViewModel: VideoViewModel
-    private lateinit var root : View
+    private lateinit var root: View
 
 
     override fun onCreateView(
@@ -31,10 +33,8 @@ private val TAG = "homefragment"
     ): View? {
         videoViewModel =
                 ViewModelProviders.of(this).get(VideoViewModel::class.java)
-         root = inflater.inflate(R.layout.fragment_home, container, false)
-        runBlocking {
-            getVideoList()
-        }
+        root = inflater.inflate(R.layout.fragment_home, container, false)
+        getVideoList()
 
 
 
@@ -45,27 +45,28 @@ private val TAG = "homefragment"
         super.onCreate(savedInstanceState)
 
     }
-    private suspend fun getVideoList() = CoroutineScope(IO).launch {
+
+    private fun getVideoList() = CoroutineScope(IO).launch {
         Log.d(TAG, "getVideoList: video list 1 thread ${Thread.currentThread().name}")
         var exUri = ArrayList<Media>()
         var inUri = ArrayList<Media>()
         val job = async() {
-        Log.d(TAG, "getVideoList: video list 2 thread ${Thread.currentThread().name}")
-             exUri =  getExternalContentVideoUri(root.context)
-             inUri = getInternalContentVideoUri(root.context)
+            Log.d(TAG, "getVideoList: video list 2 thread ${Thread.currentThread().name}")
+            exUri = getExternalContentVideoUri(root.context)
+            inUri = getInternalContentVideoUri(root.context)
             exUri.addAll(inUri)
         }
         job.await()
         setAdapter(exUri)
-
     }
-    private suspend fun setAdapter(videoList : ArrayList<Media>) = withContext(Main){
+
+    private fun setAdapter(videoList: ArrayList<Media>) = CoroutineScope(Main).launch {
         Log.d(TAG, "getVideoList: set adapter thread ${Thread.currentThread().name}")
 
         Log.d(TAG, "onCreateView: exsize ${videoList.size}")
         val adapter = VideoRecylerViewAdapter(videoList)
         root.video_list_recycler_view.adapter = adapter
-        val lineaLayoutManager = LinearLayoutManager(root.context,LinearLayoutManager.VERTICAL,false)
+        val lineaLayoutManager = LinearLayoutManager(root.context, LinearLayoutManager.VERTICAL, false)
         root.video_list_recycler_view.layoutManager = lineaLayoutManager
     }
 }

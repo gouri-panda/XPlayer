@@ -33,7 +33,7 @@ class MusicRecylerViewAdapter(var list: List<Media>) :
         holder.title.text= list[position].name
         holder.duration.text = list[position].duration
         val path = list[position].path
-        setMusicThumbNail(path,holder.imageView)
+        setMusicThumbNail(holder.itemView.context,path,holder.imageView)
         holder.itemView.setOnClickListener {
             val intent = Intent(holder.itemView.context, MainActivity::class.java)
             intent.putExtra("video",path)
