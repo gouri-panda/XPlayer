@@ -8,6 +8,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.one4ll.xplayer.R
+import com.one4ll.xplayer.adapter.MusicRecylerViewAdapter
 import kotlinx.android.synthetic.main.fragment_slideshow.view.*
 import kotlinx.android.synthetic.main.fragment_slideshow.view.button
 

@@ -10,12 +10,11 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.one4ll.xplayer.Media
 import com.one4ll.xplayer.R
-import com.one4ll.xplayer.VideoRecylerViewAdapter
+import com.one4ll.xplayer.adapter.VideoRecylerViewAdapter
 import com.one4ll.xplayer.helpers.getExternalContentVideoUri
 import com.one4ll.xplayer.helpers.getInternalContentVideoUri
 import kotlinx.android.synthetic.main.fragment_home.view.*
 import kotlinx.coroutines.*
-import kotlinx.coroutines.Dispatchers.Default
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
 

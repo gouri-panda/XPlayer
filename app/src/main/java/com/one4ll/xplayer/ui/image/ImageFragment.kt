@@ -10,13 +10,11 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.one4ll.xplayer.Media
 import com.one4ll.xplayer.R
-import com.one4ll.xplayer.database.MediaDatabase
+import com.one4ll.xplayer.adapter.ImageRecylerViewAdapter
 import com.one4ll.xplayer.helpers.getExternalContentImageUri
 import com.one4ll.xplayer.helpers.getInternalContentImageUri
-import com.one4ll.xplayer.models.Image
 import kotlinx.android.synthetic.main.fragment_gallery.view.*
 import kotlinx.coroutines.*
-import kotlinx.coroutines.Dispatchers.Default
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
 import kotlin.system.measureTimeMillis

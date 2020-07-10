@@ -7,6 +7,7 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.one4ll.xplayer.adapter.VideoRecylerViewAdapter
 import com.one4ll.xplayer.database.MediaDatabase
 import com.one4ll.xplayer.helpers.*
 import com.one4ll.xplayer.models.Video
