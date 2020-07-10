@@ -31,6 +31,8 @@ class ImageRecylerViewAdapter(var list: List<Media>) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        // TODO: 10/07/20 fix when go to down to up
+        holder.imageView.setImageBitmap(null)
         holder.title.text= list[position].name
         holder.duration.text = list[position].duration
         val path = list[position].path
@@ -43,7 +45,7 @@ class ImageRecylerViewAdapter(var list: List<Media>) :
     }
 
     class ViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
-        val imageView = itemView.findViewById<ImageView>(R.id.imageView)
+        var imageView = itemView.findViewById<ImageView>(R.id.imageView)
         val title = itemView.findViewById<TextView>(R.id.name)
         val duration = itemView.findViewById<TextView>(R.id.duration)
 
