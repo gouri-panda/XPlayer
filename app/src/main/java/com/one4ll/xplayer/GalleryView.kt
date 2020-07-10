@@ -22,6 +22,12 @@ import androidx.navigation.NavController
 import androidx.navigation.NavOptions
 import com.one4ll.xplayer.helpers.IS_GRID_LAYOUT
 import com.one4ll.xplayer.helpers.SHARED_PREF_SETTINGS
+import io.reactivex.Observable
+import io.reactivex.Scheduler
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.Disposable
+import io.reactivex.schedulers.Schedulers
+import kotlin.math.log
 import kotlin.properties.Delegates
 
 private val TAG = "galleryview"

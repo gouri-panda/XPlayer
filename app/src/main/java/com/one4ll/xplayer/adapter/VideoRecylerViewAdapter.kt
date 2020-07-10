@@ -15,6 +15,7 @@ import com.one4ll.xplayer.helpers.IS_GRID_LAYOUT
 import com.one4ll.xplayer.helpers.SHARED_PREF_SETTINGS
 import com.one4ll.xplayer.helpers.VIDEO_PATH
 import com.one4ll.xplayer.helpers.setVideoThumbNail
+import io.reactivex.Observable
 
 class VideoRecylerViewAdapter(var list: List<Media>) :
         RecyclerView.Adapter<VideoRecylerViewAdapter.ViewHolder>() {
@@ -61,4 +62,6 @@ class VideoRecylerViewAdapter(var list: List<Media>) :
         val title = itemView.findViewById<TextView>(R.id.name)
         val duration = itemView.findViewById<TextView>(R.id.duration)
     }
+
+
 }
