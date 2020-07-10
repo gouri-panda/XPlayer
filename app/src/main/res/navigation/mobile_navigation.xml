@@ -22,4 +22,9 @@
         android:name="com.one4ll.xplayer.ui.image.GalleryFragment"
         android:label="@string/Image"
         tools:layout="@layout/fragment_slideshow" />
+    <fragment
+        android:id="@+id/nav_stream"
+        android:name="com.one4ll.xplayer.ui.stream.StreamFragment"
+        android:label="fragment_stream"
+        tools:layout="@layout/fragment_stream" />
 </navigation>

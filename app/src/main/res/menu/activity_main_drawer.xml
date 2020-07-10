@@ -7,14 +7,22 @@
         <item
             android:id="@+id/nav_home"
             android:icon="@drawable/ic_menu_slideshow"
+            android:iconTint="@color/yellow"
             android:title="@string/Video" />
         <item
             android:id="@+id/nav_gallery"
             android:icon="@drawable/ic_baseline_audiotrack_24"
+            android:iconTint="@color/yellow"
             android:title="@string/Audio" />
         <item
             android:id="@+id/nav_slideshow"
             android:icon="@drawable/ic_menu_gallery"
+            android:iconTint="@color/yellow"
             android:title="@string/Image" />
+        <item
+            android:id="@+id/nav_stream"
+            android:icon="@drawable/ic_baseline_audiotrack_24"
+            android:iconTint="@color/yellow"
+            android:title="@string/Stream" />
     </group>
 </menu>
