@@ -27,12 +27,10 @@ import com.google.android.exoplayer2.ui.PlayerView
 import com.google.android.exoplayer2.upstream.DataSource
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory
 import com.google.android.exoplayer2.util.Util
-import com.one4ll.xplayer.MainActivity
 import com.one4ll.xplayer.helpers.VIDEO_PATH
 import java.io.File
-import kotlin.time.milliseconds
 
-class MainActivity : AppCompatActivity() , View.OnTouchListener, GestureDetector.OnDoubleTapListener ,GestureDetector.OnGestureListener {
+class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.OnDoubleTapListener, GestureDetector.OnGestureListener {
     @BindView(R.id.main_activity_constraint_layout)
     var constraintLayout: ConstraintLayout? = null
     private lateinit var gestureDetector: GestureDetector
@@ -46,7 +44,7 @@ class MainActivity : AppCompatActivity() , View.OnTouchListener, GestureDetector
         ButterKnife.bind(this)
         playerView = findViewById(R.id.player_view)
         simpleExoPlayer = SimpleExoPlayer.Builder(this).build()
-        gestureDetector = GestureDetector(this,this)
+        gestureDetector = GestureDetector(this, this)
         playerView?.setPlayer(simpleExoPlayer)
         val intent = intent
         val videoUriPath = intent.getStringExtra(VIDEO_PATH)
@@ -58,6 +56,7 @@ class MainActivity : AppCompatActivity() , View.OnTouchListener, GestureDetector
         simpleExoPlayer!!.playWhenReady = true
         simpleExoPlayer!!.addListener(eventListener)
         playerView?.setOnTouchListener(this)
+
         LocalBroadcastManager.getInstance(this).registerReceiver(broadcastReceiver, IntentFilter("customIntent"))
     }
 
@@ -203,13 +202,30 @@ class MainActivity : AppCompatActivity() , View.OnTouchListener, GestureDetector
         return true
     }
 
-    override fun onDoubleTap(e: MotionEvent?): Boolean {
-        Log.d(TAG, "onDoubleTap: clicked")
-        val currentTime = simpleExoPlayer?.contentPosition
-        if (currentTime != null){
-            simpleExoPlayer?.seekTo(currentTime +5000)
-        }
+    override fun onDoubleTap(event: MotionEvent?): Boolean {
+        forwardAndBackWardVideoOnDoubleClick(event)
         return true
+    }
+
+     fun forwardAndBackWardVideoOnDoubleClick(event: MotionEvent?) {
+        Log.d(TAG, "onDoubleTap: clicked")
+        var firstX = event?.getX(0)
+        var lastX = event?.getX(1)
+        if (firstX != null && lastX != null && event?.x != null){
+            val middle = firstX + lastX
+            if (event.x < middle){
+                val currentPosition = simpleExoPlayer?.currentPosition
+                if (currentPosition != null) {
+                    simpleExoPlayer?.seekTo(currentPosition - 5000)
+                }
+            }else{
+                val currentPosition = simpleExoPlayer?.currentPosition
+                if (currentPosition != null){
+                    simpleExoPlayer?.seekTo(currentPosition + 5000)
+                }
+
+            }
+        }
     }
 
     override fun onDoubleTapEvent(e: MotionEvent?): Boolean {
@@ -219,18 +235,22 @@ class MainActivity : AppCompatActivity() , View.OnTouchListener, GestureDetector
 
     override fun onSingleTapConfirmed(e: MotionEvent?): Boolean {
         return true
-       
+
     }
 
     override fun onShowPress(e: MotionEvent?) {
     }
 
     override fun onSingleTapUp(e: MotionEvent?): Boolean {
+        if (playerView?.controllerAutoShow  != null){
+        playerView?.controllerAutoShow = !playerView!!.controllerAutoShow
+
+        }
         return true
     }
 
     override fun onDown(e: MotionEvent?): Boolean {
-       return true
+        return true
     }
 
     override fun onFling(e1: MotionEvent?, e2: MotionEvent?, velocityX: Float, velocityY: Float): Boolean {
