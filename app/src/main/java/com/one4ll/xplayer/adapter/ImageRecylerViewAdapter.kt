@@ -38,7 +38,6 @@ class ImageRecylerViewAdapter(var list: List<Media>) :
         // TODO: 10/07/20 fix when go to down to up
         holder.imageView.setImageBitmap(null)
         holder.title.text = list[position].name
-        holder.duration.text = list[position].duration
         val path = list[position].path
         CoroutineScope(Default).launch {
             setImageThumbNail(path, holder.imageView)
