@@ -30,6 +30,7 @@ private val TAG = "homefragment"
 class VideoFragment : Fragment() {
     private lateinit var videoViewModel: VideoViewModel
     private lateinit var root: View
+    private lateinit var job: Job
 
 
     override fun onCreateView(
@@ -40,17 +41,12 @@ class VideoFragment : Fragment() {
         videoViewModel =
                 ViewModelProviders.of(this).get(VideoViewModel::class.java)
         root = inflater.inflate(R.layout.fragment_home, container, false)
-        val job = CoroutineScope(IO).launch {
+         job = CoroutineScope(IO).launch {
             getVideoList()
         }
 
 
         return root
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
     }
 
     private suspend fun getVideoList()  {
@@ -88,5 +84,12 @@ class VideoFragment : Fragment() {
 
 
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        d(TAG, "onDestroy: job is cancel ${job.isCancelled}")
+        d(TAG, "onDestroy: job is active ${job.isActive}")
+        d(TAG, "onDestroy: job is completed ${job.isCompleted}")
     }
 }

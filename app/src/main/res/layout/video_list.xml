@@ -11,9 +11,10 @@
         android:id="@+id/imageView"
         android:layout_width="140dp"
         android:layout_height="100dp"
-        android:scaleType="centerCrop"
+        android:scaleType="fitCenter"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
     <ProgressBar
         android:id="@+id/progressBar2"
