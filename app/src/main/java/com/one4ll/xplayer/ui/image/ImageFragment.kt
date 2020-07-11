@@ -37,23 +37,32 @@ class GalleryFragment : Fragment() {
                 ViewModelProviders.of(this).get(ImageViewModel::class.java)
         root = inflater.inflate(R.layout.fragment_gallery, container, false)
         val time = measureTimeMillis {
-            getImageUri()
+            CoroutineScope(IO).launch {
+                getImageUri()
+            }
         }
         Log.d(TAG, "onCreateView: time takes $time")
         return root
     }
 
-    private  fun getImageUri() = CoroutineScope(IO).launch {
+    private suspend fun getImageUri() {
+        withContext(IO) {
             exImageUri = getExternalContentImageUri(root.context)
             inImageUri = getInternalContentImageUri(root.context)
             exImageUri.addAll(inImageUri)
             setAdapterToUi()
+        }
     }
-    private fun setAdapterToUi() = CoroutineScope(Main).launch {
+
+    private suspend fun setAdapterToUi() {
+        withContext(Main) {
             val adapter = ImageRecylerViewAdapter(exImageUri)
-            val linearLayoutManager = LinearLayoutManager(root.context, LinearLayoutManager.VERTICAL, false)
-            root.image_list_recycler_view.layoutManager = linearLayoutManager
-            root.image_list_recycler_view.adapter = adapter
+            root.image_list_recycler_view.apply {
+                this.adapter = adapter
+                layoutManager = LinearLayoutManager(root.context,LinearLayoutManager.VERTICAL,false)
+            }
+
+        }
     }
 
 }

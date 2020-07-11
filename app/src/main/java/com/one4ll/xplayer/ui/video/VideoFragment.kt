@@ -3,6 +3,8 @@ package com.one4ll.xplayer.ui.video
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
+import android.util.Log.d
+import android.util.Log.e
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,6 +23,7 @@ import kotlinx.android.synthetic.main.fragment_home.view.*
 import kotlinx.coroutines.*
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
+import kotlin.math.log
 
 private val TAG = "homefragment"
 
@@ -37,8 +40,9 @@ class VideoFragment : Fragment() {
         videoViewModel =
                 ViewModelProviders.of(this).get(VideoViewModel::class.java)
         root = inflater.inflate(R.layout.fragment_home, container, false)
-        getVideoList()
-
+        val job = CoroutineScope(IO).launch {
+            getVideoList()
+        }
 
 
         return root
@@ -49,33 +53,40 @@ class VideoFragment : Fragment() {
 
     }
 
-    private fun getVideoList() = CoroutineScope(IO).launch {
-        Log.d(TAG, "getVideoList: video list 1 thread ${Thread.currentThread().name}")
-        var exUri = ArrayList<Media>()
-        var inUri = ArrayList<Media>()
-        val job = async() {
-            Log.d(TAG, "getVideoList: video list 2 thread ${Thread.currentThread().name}")
-            exUri = getExternalContentVideoUri(root.context)
-            inUri = getInternalContentVideoUri(root.context)
-            exUri.addAll(inUri)
+    private suspend fun getVideoList()  {
+        withContext(IO) {
+            d(TAG, "getVideoList: video list 1 thread ${Thread.currentThread().name}")
+            var exUri = ArrayList<Media>()
+            var inUri = ArrayList<Media>()
+            val job = async() {
+               d(TAG, "getVideoList: video list 2 thread ${Thread.currentThread().name}")
+                exUri = getExternalContentVideoUri(root.context)
+                inUri = getInternalContentVideoUri(root.context)
+                exUri.addAll(inUri)
+            }
+            job.await()
+            setAdapter(exUri)
         }
-        job.await()
-        setAdapter(exUri)
     }
 
-    private fun setAdapter(videoList: ArrayList<Media>) = CoroutineScope(Main).launch {
-        val sharedPreferences = root.context.getSharedPreferences(SHARED_PREF_SETTINGS, Context.MODE_PRIVATE)
-        if (sharedPreferences.getBoolean(IS_GRID_LAYOUT,false)){
-            val adapter = VideoRecylerViewAdapter(videoList)
-            root.video_list_recycler_view.adapter = adapter
-            val gridLayoutManager = GridLayoutManager(root.context,2)
-            root.video_list_recycler_view.layoutManager = gridLayoutManager
-        }else{
-            val adapter = VideoRecylerViewAdapter(videoList)
-            root.video_list_recycler_view.adapter = adapter
-            val lineaLayoutManager = LinearLayoutManager(root.context, LinearLayoutManager.VERTICAL, false)
-            root.video_list_recycler_view.layoutManager = lineaLayoutManager
-        }
+    private suspend fun setAdapter(videoList: ArrayList<Media>) {
+        withContext(Main){
+            d(TAG, "setAdapter: thread ${Thread.currentThread().name}")
+            val sharedPreferences = root.context.getSharedPreferences(SHARED_PREF_SETTINGS, Context.MODE_PRIVATE)
+            if (sharedPreferences.getBoolean(IS_GRID_LAYOUT, false)) {
+                val adapter = VideoRecylerViewAdapter(videoList)
+                root.video_list_recycler_view.adapter = adapter
+                val gridLayoutManager = GridLayoutManager(root.context, 2)
+                root.video_list_recycler_view.layoutManager = gridLayoutManager
+            } else {
+                val adapter = VideoRecylerViewAdapter(videoList)
+                root.video_list_recycler_view.apply {
+                    this.adapter = adapter
+                    layoutManager = LinearLayoutManager(root.context,LinearLayoutManager.VERTICAL,false)
+                }
+            }
 
+
+        }
     }
 }

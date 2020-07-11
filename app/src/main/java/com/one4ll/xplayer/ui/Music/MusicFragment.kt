@@ -7,10 +7,16 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.one4ll.xplayer.Media
 import com.one4ll.xplayer.R
 import com.one4ll.xplayer.adapter.MusicRecylerViewAdapter
 import kotlinx.android.synthetic.main.fragment_slideshow.view.*
 import kotlinx.android.synthetic.main.fragment_slideshow.view.button
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.Dispatchers.Main
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 private val TAG = "audiofragment"
 
@@ -29,18 +35,30 @@ class SlideshowFragment : Fragment() {
         val root = inflater.inflate(R.layout.fragment_slideshow, container, false)
         adapter = MusicRecylerViewAdapter(listOf())
         root.button.setOnClickListener {
-        musicViewModel.getMusicList()
+            CoroutineScope(IO).launch {
+                musicViewModel.getMusicList()
+            }
+
         }
         musicViewModel.musicList.observe(viewLifecycleOwner, Observer { mediaList ->
             if (mediaList != null) {
                 Log.d(TAG, "onCreateView: exsize ${mediaList.size}")
-                adapter.loadVideo(mediaList)
-                root.music_list_recycler_view.adapter = adapter
-                val lineaLayoutManager = LinearLayoutManager(root.context, LinearLayoutManager.VERTICAL, false)
-                root.music_list_recycler_view.layoutManager = lineaLayoutManager
+                CoroutineScope(Main).launch {
+                    setAdapter(mediaList, root)
+                }
             }
         })
 
         return root
+    }
+
+    private suspend fun setAdapter(mediaList: List<Media>, root: View) {
+        withContext(Main) {
+            adapter.loadVideo(mediaList)
+            root.music_list_recycler_view.apply {
+                this.adapter = adapter
+                layoutManager = LinearLayoutManager(root.context,LinearLayoutManager.VERTICAL,false)
+            }
+        }
     }
 }

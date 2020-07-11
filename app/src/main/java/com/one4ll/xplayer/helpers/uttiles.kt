@@ -2,6 +2,7 @@ package com.one4ll.xplayer.helpers
 
 import android.content.Context
 import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.media.ThumbnailUtils
 import android.net.Uri
 import android.provider.MediaStore
@@ -9,6 +10,8 @@ import android.util.Size
 import android.widget.ImageView
 import com.one4ll.xplayer.Media
 import kotlinx.coroutines.*
+import kotlinx.coroutines.Dispatchers.Default
+import kotlinx.coroutines.Dispatchers.Main
 import java.io.File
 
 fun convertDuration(duration: Long): String {
@@ -276,26 +279,31 @@ fun getExternalContentMusicUri(context: Context): ArrayList<Media> {
     return videoList
 }
 
-fun setVideoThumbNail(fiePath: String, imageView: ImageView) = CoroutineScope(Dispatchers.Default).launch {
-    var bitMap: Bitmap? = null
-    async {
-        bitMap = ThumbnailUtils.createVideoThumbnail(fiePath,MediaStore.Video.Thumbnails.MINI_KIND)
-    }.await()
-    withContext(Dispatchers.Main) {
-        imageView.setImageBitmap(bitMap)
+suspend fun setVideoThumbNail(fiePath: String, imageView: ImageView) {
+    withContext(Default) {
+        var bitMap: Bitmap? = null
+        async {
+            bitMap = ThumbnailUtils.createVideoThumbnail(fiePath, MediaStore.Video.Thumbnails.MINI_KIND)
+        }.await()
+        launch(Main) {
+            imageView.setImageBitmap(bitMap)
+        }
     }
 }
 
-fun setImageThumbNail(fiePath: String, imageView: ImageView) = CoroutineScope(Dispatchers.Default).launch {
-    var bitMap: Bitmap? = null
-    async {
-        bitMap = ThumbnailUtils.createImageThumbnail(fiePath, MediaStore.Images.Thumbnails.MINI_KIND)
-    }.await()
-    withContext(Dispatchers.Main) {
-        imageView.setImageBitmap(bitMap)
+suspend fun setImageThumbNail(fiePath: String, imageView: ImageView)  {
+    withContext(Default){
+        var bitMap: Bitmap? = null
+        async {
+            bitMap = ThumbnailUtils.createImageThumbnail(fiePath, MediaStore.Images.Thumbnails.MINI_KIND)
+        }.await()
+        withContext(Dispatchers.Main) {
+            imageView.setImageBitmap(bitMap)
+        }
     }
 }
-fun setMusicThumbNail(context: Context,fiePath: String, imageView: ImageView) = CoroutineScope(Dispatchers.Default).launch {
+//todo remove coroutine scope and add suspend
+fun setMusicThumbNail(context: Context, fiePath: String, imageView: ImageView) = CoroutineScope(Dispatchers.Default).launch {
     try {
         var bitMap: Bitmap? = null
         async {
@@ -305,12 +313,12 @@ fun setMusicThumbNail(context: Context,fiePath: String, imageView: ImageView) = 
                 ThumbnailUtils.createAudioThumbnail(File(fiePath).absolutePath, MediaStore.Images.Thumbnails.MINI_KIND)
             }
         }.await()
-        withContext(Dispatchers.Main) {
+        withContext(Main) {
             imageView.setImageBitmap(bitMap)
         }
-    }catch (e : java.lang.Exception){
+    } catch (e: java.lang.Exception) {
         e.printStackTrace()
-        context.contentResolver.loadThumbnail(Uri.parse(fiePath),Size(100,100),null)
+        context.contentResolver.loadThumbnail(Uri.parse(fiePath), Size(100, 100), null)
 
     }
 

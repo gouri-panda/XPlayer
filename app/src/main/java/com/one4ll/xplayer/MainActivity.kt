@@ -6,6 +6,7 @@ import android.content.Intent
 import android.content.IntentFilter
 import android.net.Uri
 import android.os.Bundle
+import android.os.Vibrator
 import android.util.Log
 import android.view.GestureDetector
 import android.view.MotionEvent
@@ -15,7 +16,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import butterknife.BindView
-import butterknife.ButterKnife
 import com.google.android.exoplayer2.*
 import com.google.android.exoplayer2.audio.AudioAttributes
 import com.google.android.exoplayer2.audio.AudioListener
@@ -28,7 +28,7 @@ import com.google.android.exoplayer2.upstream.DataSource
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory
 import com.google.android.exoplayer2.util.Util
 import com.one4ll.xplayer.helpers.VIDEO_PATH
-import java.io.File
+
 
 class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.OnDoubleTapListener, GestureDetector.OnGestureListener {
     @BindView(R.id.main_activity_constraint_layout)
@@ -41,16 +41,15 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        ButterKnife.bind(this)
         playerView = findViewById(R.id.player_view)
         simpleExoPlayer = SimpleExoPlayer.Builder(this).build()
         gestureDetector = GestureDetector(this, this)
         playerView?.setPlayer(simpleExoPlayer)
         val intent = intent
         val videoUriPath = intent.getStringExtra(VIDEO_PATH)
-        Log.d(TAG, "onCreate: app name " + getString(R.string.app_name))
         val dataSourceFactory: DataSource.Factory = DefaultDataSourceFactory(this, Util.getUserAgent(this@MainActivity, getString(R.string.app_name)))
-        val mediaSource: MediaSource = ProgressiveMediaSource.Factory(dataSourceFactory).createMediaSource(Uri.fromFile(File(videoUriPath)))
+        Log.d(TAG, "onCreate: video path $videoUriPath")
+        val mediaSource: MediaSource = ProgressiveMediaSource.Factory(dataSourceFactory).createMediaSource(Uri.parse(videoUriPath))
         simpleExoPlayer!!.prepare(mediaSource)
         simpleExoPlayer!!.addAudioListener(audioListener)
         simpleExoPlayer!!.playWhenReady = true
@@ -211,14 +210,18 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
         Log.d(TAG, "onDoubleTap: clicked")
         var firstX = event?.getX(0)
         var lastX = event?.getX(1)
+         Log.d(TAG, "forwardAndBackWardVideoOnDoubleClick: firsrx $firstX")
+         Log.d(TAG, "forwardAndBackWardVideoOnDoubleClick: lastX $lastX")
         if (firstX != null && lastX != null && event?.x != null){
             val middle = firstX + lastX
             if (event.x < middle){
+                Log.d(TAG, "forwardAndBackWardVideoOnDoubleClick: left side")
                 val currentPosition = simpleExoPlayer?.currentPosition
                 if (currentPosition != null) {
                     simpleExoPlayer?.seekTo(currentPosition - 5000)
                 }
             }else{
+                Log.d(TAG, "forwardAndBackWardVideoOnDoubleClick: right side")
                 val currentPosition = simpleExoPlayer?.currentPosition
                 if (currentPosition != null){
                     simpleExoPlayer?.seekTo(currentPosition + 5000)

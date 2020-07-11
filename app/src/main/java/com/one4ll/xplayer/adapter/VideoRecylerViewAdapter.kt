@@ -16,6 +16,10 @@ import com.one4ll.xplayer.helpers.SHARED_PREF_SETTINGS
 import com.one4ll.xplayer.helpers.VIDEO_PATH
 import com.one4ll.xplayer.helpers.setVideoThumbNail
 import io.reactivex.Observable
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers.Default
+import kotlinx.coroutines.Dispatchers.Main
+import kotlinx.coroutines.launch
 
 class VideoRecylerViewAdapter(var list: List<Media>) :
         RecyclerView.Adapter<VideoRecylerViewAdapter.ViewHolder>() {
@@ -48,7 +52,9 @@ class VideoRecylerViewAdapter(var list: List<Media>) :
         holder.title.text = list[position].name
         holder.duration.text = list[position].duration
         val path = list[position].path
-        setVideoThumbNail(path, holder.imageView)
+        CoroutineScope(Default).launch {
+            setVideoThumbNail(path, holder.imageView)
+        }
         holder.itemView.setOnClickListener {
             val intent = Intent(holder.itemView.context, MainActivity::class.java)
             intent.putExtra(VIDEO_PATH, path)

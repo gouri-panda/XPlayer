@@ -12,12 +12,15 @@ import com.one4ll.xplayer.Media
 import com.one4ll.xplayer.R
 import com.one4ll.xplayer.helpers.IMAGE_PATH
 import com.one4ll.xplayer.helpers.setImageThumbNail
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers.Default
+import kotlinx.coroutines.launch
 
 class ImageRecylerViewAdapter(var list: List<Media>) :
-    RecyclerView.Adapter<ImageRecylerViewAdapter.ViewHolder>() {
+        RecyclerView.Adapter<ImageRecylerViewAdapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
-        val view = layoutInflater.inflate(R.layout.video_list,parent,false)
+        val view = layoutInflater.inflate(R.layout.video_list, parent, false)
         return ViewHolder(view)
 
     }
@@ -25,7 +28,8 @@ class ImageRecylerViewAdapter(var list: List<Media>) :
     override fun getItemCount(): Int {
         return list.size
     }
-    fun loadVideo(list: ArrayList<Media>){
+
+    fun loadVideo(list: ArrayList<Media>) {
         this.list = list
         notifyDataSetChanged()
     }
@@ -33,21 +37,23 @@ class ImageRecylerViewAdapter(var list: List<Media>) :
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         // TODO: 10/07/20 fix when go to down to up
         holder.imageView.setImageBitmap(null)
-        holder.title.text= list[position].name
+        holder.title.text = list[position].name
         holder.duration.text = list[position].duration
         val path = list[position].path
-        setImageThumbNail(path,holder.imageView)
+        CoroutineScope(Default).launch {
+            setImageThumbNail(path, holder.imageView)
+        }
         holder.itemView.setOnClickListener {
             val intent = Intent(holder.itemView.context, FullImageActivity::class.java)
-            intent.putExtra(IMAGE_PATH,path)
+            intent.putExtra(IMAGE_PATH, path)
             holder.itemView.context.startActivity(intent)
         }
     }
 
-    class ViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
+    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var imageView = itemView.findViewById<ImageView>(R.id.imageView)
         val title = itemView.findViewById<TextView>(R.id.name)
         val duration = itemView.findViewById<TextView>(R.id.duration)
 
- }
+    }
 }
