@@ -8,6 +8,7 @@ import android.net.Uri
 import android.provider.MediaStore
 import android.util.Size
 import android.widget.ImageView
+import com.bumptech.glide.Glide
 import com.one4ll.xplayer.Media
 import kotlinx.coroutines.*
 import kotlinx.coroutines.Dispatchers.Default
@@ -287,6 +288,7 @@ suspend fun setVideoThumbNail(fiePath: String, imageView: ImageView) {
         }.await()
         launch(Main) {
             imageView.setImageBitmap(bitMap)
+            Glide.with(imageView.context).load(bitMap).into(imageView)
         }
     }
 }
@@ -298,7 +300,7 @@ suspend fun setImageThumbNail(fiePath: String, imageView: ImageView)  {
             bitMap = ThumbnailUtils.createImageThumbnail(fiePath, MediaStore.Images.Thumbnails.MINI_KIND)
         }.await()
         withContext(Dispatchers.Main) {
-            imageView.setImageBitmap(bitMap)
+            Glide.with(imageView.context).load(bitMap).into(imageView)
         }
     }
 }

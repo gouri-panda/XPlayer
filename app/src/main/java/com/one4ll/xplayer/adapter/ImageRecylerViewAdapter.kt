@@ -52,7 +52,7 @@ class ImageRecylerViewAdapter(var list: List<Media>) :
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var imageView = itemView.findViewById<ImageView>(R.id.imageView)
         val title = itemView.findViewById<TextView>(R.id.name)
-        val duration = itemView.findViewById<TextView>(R.id.duration)
+        val duration = itemView.findViewById<TextView>(R.id.duration).apply { visibility = View.GONE }
 
     }
 }

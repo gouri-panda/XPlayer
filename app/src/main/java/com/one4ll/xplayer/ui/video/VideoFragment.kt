@@ -44,6 +44,9 @@ class VideoFragment : Fragment() {
          job = CoroutineScope(IO).launch {
             getVideoList()
         }
+        CoroutineScope(Main).launch {
+            foo()
+        }
 
 
         return root
@@ -91,5 +94,24 @@ class VideoFragment : Fragment() {
         d(TAG, "onDestroy: job is cancel ${job.isCancelled}")
         d(TAG, "onDestroy: job is active ${job.isActive}")
         d(TAG, "onDestroy: job is completed ${job.isCompleted}")
+    }
+    private suspend fun foo(){
+        withContext(IO){
+             val job1 = async {
+                 for (i in 1..10){
+                     delay(1000)
+                d(TAG, "foo: asyn 1 ${Thread.currentThread().name} ")
+                 }
+                 "name"
+            }
+            val job2 = async {
+                for (i in 1..10){
+                    delay(1000)
+                    d(TAG, "foo: async 1 returns 1 ${job1.await()}")
+                d(TAG, "foo: asyn 2 ${Thread.currentThread().name} ")
+
+                }
+            }
+        }
     }
 }

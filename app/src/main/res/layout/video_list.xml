@@ -11,16 +11,17 @@
         android:id="@+id/imageView"
         android:layout_width="140dp"
         android:layout_height="100dp"
-        android:scaleType="fitCenter"
+        android:scaleType="centerCrop"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/progressBar2"
         tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
     <ProgressBar
         android:id="@+id/progressBar2"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="140dp"
-        android:layout_height="wrap_content"
+        android:layout_height="6dp"
         android:focusable="false"
         android:max="100"
         android:paddingBottom="0dp"
