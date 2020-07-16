@@ -28,4 +28,14 @@
         app:layout_constraintBottom_toBottomOf="@+id/editTextUrl"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/editTextUrl" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/streams_recycler_view"
+        android:layout_width="409dp"
+        android:layout_height="643dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextUrl"
+        tools:listitem="@layout/video_list" />
 </androidx.constraintlayout.widget.ConstraintLayout>

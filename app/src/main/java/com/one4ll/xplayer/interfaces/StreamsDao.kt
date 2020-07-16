@@ -1,5 +1,6 @@
 package com.one4ll.xplayer.interfaces
 
+import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.one4ll.xplayer.models.Streams
 
@@ -10,11 +11,13 @@ interface StreamsDao {
     @Update(onConflict = OnConflictStrategy.REPLACE)
     fun update(stream: Streams)
     @Query("SELECT * FROM streams ORDER BY time DESC")
-    fun getAllByTime() : List<Streams>
+    fun getAllByTime() : LiveData<List<Streams>>
     @Query("DELETE  FROM streams")
     fun removeAll()
+    @Query("DELETE  FROM streams WHERE id = :id")
+    fun removeById(id: Long)
     @Query("SELECT * FROM streams WHERE time = :time")
-    fun getValueBYId(time : Long) : List<Streams>
+    fun getValueBYId(time : Long) : LiveData<List<Streams>>
     @Query("UPDATE streams SET time = :time WHERE id = :id")
     fun updateTime(id : Long,time: Long)
 }

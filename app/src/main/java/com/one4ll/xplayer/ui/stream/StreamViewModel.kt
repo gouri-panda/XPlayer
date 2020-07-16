@@ -1,6 +1,17 @@
 package com.one4ll.xplayer.ui.stream
 
-import androidx.lifecycle.ViewModel
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
+import com.one4ll.xplayer.database.MediaDatabase
+import com.one4ll.xplayer.models.Streams
 
-class StreamViewModel : ViewModel() {
+class StreamViewModel(application: Application) : AndroidViewModel(application) {
+    var streamsList: LiveData<List<Streams>>
+    var db: MediaDatabase
+
+    init {
+        db = MediaDatabase.getInstance(application)
+        streamsList = db.streamsDao().getAllByTime()
+    }
 }
