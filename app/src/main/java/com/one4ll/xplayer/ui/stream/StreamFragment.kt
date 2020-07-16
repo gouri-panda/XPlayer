@@ -9,8 +9,16 @@ import android.view.View
 import android.view.ViewGroup
 import com.one4ll.xplayer.MainActivity
 import com.one4ll.xplayer.R
+import com.one4ll.xplayer.database.MediaDatabase
 import com.one4ll.xplayer.helpers.VIDEO_PATH
+import com.one4ll.xplayer.models.Streams
 import kotlinx.android.synthetic.main.fragment_stream.view.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import java.util.*
+import kotlin.math.log
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -28,6 +36,7 @@ class StreamFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
     private lateinit var rootView: View
+    private val db  by lazy { MediaDatabase.getInstance(rootView.context) }
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -39,11 +48,32 @@ class StreamFragment : Fragment() {
             if (url != null) {
                 val intent = Intent(rootView.context, MainActivity::class.java)
                 intent.putExtra(VIDEO_PATH, url.toString())
+                CoroutineScope(IO).launch {
+                    insertStreamsIntoDatabase(db, Streams(url.toString(),System.currentTimeMillis()))
+
+                    getStreamsFromDatabase(db)
+                }
                 Log.d(TAG, "onCreateView: stream url path $url")
                 rootView.context.startActivity(intent)
 
             }
         }
         return rootView
+    }
+}
+private suspend fun insertStreamsIntoDatabase(database: MediaDatabase,stream : Streams){
+    withContext(IO){
+        database.streamsDao().insert(stream)
+    }
+}
+private suspend fun getStreamsFromDatabase(database: MediaDatabase){
+    withContext(IO){
+        var streamsList = database.streamsDao().getAllByTime()
+        streamsList.forEach {
+            Log.d(TAG, "getStreamsFromDatabase: id = ${it.id}")
+            Log.d(TAG, "getStreamsFromDatabase: path = ${it.path}")
+            Log.d(TAG, "getStreamsFromDatabase: time = ${it.time}")
+        }
+
     }
 }

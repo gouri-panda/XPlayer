@@ -27,6 +27,7 @@ import androidx.navigation.NavController
 import androidx.navigation.NavOptions
 import com.one4ll.xplayer.helpers.IS_GRID_LAYOUT
 import com.one4ll.xplayer.helpers.SHARED_PREF_SETTINGS
+import com.squareup.leakcanary.LeakCanary
 import io.reactivex.Observable
 import io.reactivex.Scheduler
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -45,6 +46,9 @@ class GalleryView : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        if(!LeakCanary.isInAnalyzerProcess(this)){
+            LeakCanary.install(application)
+        }
         setContentView(R.layout.activity_gallery_view)
 
         val toolbar: Toolbar = findViewById(R.id.toolbar)
