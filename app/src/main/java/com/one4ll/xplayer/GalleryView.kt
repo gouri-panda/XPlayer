@@ -46,10 +46,9 @@ class GalleryView : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        if(!LeakCanary.isInAnalyzerProcess(this)){
-            LeakCanary.install(application)
-        }
+
         setContentView(R.layout.activity_gallery_view)
+
 
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)

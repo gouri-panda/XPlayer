@@ -8,6 +8,7 @@ import android.net.Uri
 import android.provider.MediaStore
 import android.util.Size
 import android.widget.ImageView
+import androidx.lifecycle.LiveData
 import com.bumptech.glide.Glide
 import com.one4ll.xplayer.Media
 import kotlinx.coroutines.*

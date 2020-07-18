@@ -8,10 +8,9 @@ import com.one4ll.xplayer.models.Streams
 
 class StreamViewModel(application: Application) : AndroidViewModel(application) {
     var streamsList: LiveData<List<Streams>>
-    var db: MediaDatabase
+    var db: MediaDatabase = MediaDatabase.getInstance(application)
 
     init {
-        db = MediaDatabase.getInstance(application)
         streamsList = db.streamsDao().getAllByTime()
     }
 }

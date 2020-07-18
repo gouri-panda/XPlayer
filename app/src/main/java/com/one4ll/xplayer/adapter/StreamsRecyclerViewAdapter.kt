@@ -1,16 +1,11 @@
 package com.one4ll.xplayer.adapter
 
 import android.content.Intent
-import android.media.ThumbnailUtils
-import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
-import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.one4ll.xplayer.MainActivity
 import com.one4ll.xplayer.R
 import com.one4ll.xplayer.helpers.VIDEO_PATH
@@ -19,7 +14,7 @@ import java.util.*
 
 
 class StreamsRecyclerViewAdapter() : RecyclerView.Adapter<StreamsRecyclerViewAdapter.ViewHolder>() {
-     var streamList: List<Streams> = listOf()
+     private var streamList: List<Streams> = listOf()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.streams_list, parent, false)
         return ViewHolder(view)
@@ -28,6 +23,7 @@ class StreamsRecyclerViewAdapter() : RecyclerView.Adapter<StreamsRecyclerViewAda
     override fun getItemCount(): Int {
         return streamList.size
     }
+
     fun setNotes(listStreams: List<Streams>){
         this.streamList = listStreams
         notifyDataSetChanged()
@@ -44,11 +40,10 @@ class StreamsRecyclerViewAdapter() : RecyclerView.Adapter<StreamsRecyclerViewAda
         }
 
     }
+
     fun getStreamAtPosition( position: Int) : Streams?{
-        return streamList.get(position)
+        return streamList[position]
     }
-
-
 
     class ViewHolder(itemview: View) : RecyclerView.ViewHolder(itemview) {
         var name: TextView = itemview.findViewById(R.id.stream_name)

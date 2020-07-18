@@ -15,4 +15,5 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="Stream">Stream</string>
     <string name="display_in_grid">Display in grid</string>
+    <string name="transition_photo">transition_photo</string>
 </resources>

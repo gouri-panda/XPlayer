@@ -44,9 +44,6 @@ private const val ARG_PARAM2 = "param2"
 private val TAG = "streamFragment"
 
 class StreamFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
     private lateinit var rootView: View
     private val db by lazy { MediaDatabase.getInstance(rootView.context) }
     private lateinit var adapter: StreamsRecyclerViewAdapter
@@ -58,9 +55,9 @@ class StreamFragment : Fragment() {
         // Inflate the layout for this fragment
         rootView = inflater.inflate(R.layout.fragment_stream, container, false)
         viewModel = ViewModelProviders.of(this).get(StreamViewModel::class.java)
-        viewModel.streamsList.observe(viewLifecycleOwner, Observer { t ->
-            if (t != null){
-                adapter.setNotes(t)
+        viewModel.streamsList.observe(viewLifecycleOwner, Observer {
+            if (it != null){
+                adapter.setNotes(it)
             }
         })
         CoroutineScope(IO).launch {
@@ -73,7 +70,6 @@ class StreamFragment : Fragment() {
                 intent.putExtra(VIDEO_PATH, url.toString())
                 CoroutineScope(IO).launch {
                     insertStreamsIntoDatabase(db, Streams(url.toString(), System.currentTimeMillis()))
-                    getStreamsFromDatabase(db)
                 }
                 Log.d(TAG, "onCreateView: stream url path $url")
                 rootView.context.startActivity(intent)
@@ -125,14 +121,3 @@ private suspend fun insertStreamsIntoDatabase(database: MediaDatabase, stream: S
     }
 }
 
-private suspend fun getStreamsFromDatabase(database: MediaDatabase) {
-    withContext(IO) {
-        var streamsList = database.streamsDao().getAllByTime()
-        streamsList.value?.forEach {
-            Log.d(TAG, "getStreamsFromDatabase: id = ${it.id}")
-            Log.d(TAG, "getStreamsFromDatabase: path = ${it.path}")
-            Log.d(TAG, "getStreamsFromDatabase: time = ${it.time}")
-        }
-
-    }
-}

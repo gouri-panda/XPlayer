@@ -1,5 +1,7 @@
 package com.one4ll.xplayer.adapter
 
+import android.app.Activity
+import android.app.ActivityOptions
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
@@ -16,7 +18,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.Default
 import kotlinx.coroutines.launch
 
-class ImageRecylerViewAdapter(var list: List<Media>) :
+class ImageRecylerViewAdapter(var list: List<Media>,var activity: Activity) :
         RecyclerView.Adapter<ImageRecylerViewAdapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -29,7 +31,7 @@ class ImageRecylerViewAdapter(var list: List<Media>) :
         return list.size
     }
 
-    fun loadVideo(list: ArrayList<Media>) {
+    fun setVideoList(list: ArrayList<Media>) {
         this.list = list
         notifyDataSetChanged()
     }
@@ -44,8 +46,9 @@ class ImageRecylerViewAdapter(var list: List<Media>) :
         }
         holder.itemView.setOnClickListener {
             val intent = Intent(holder.itemView.context, FullImageActivity::class.java)
+            val bundle = ActivityOptions.makeSceneTransitionAnimation(activity,holder.imageView,holder.imageView.transitionName).toBundle()
             intent.putExtra(IMAGE_PATH, path)
-            holder.itemView.context.startActivity(intent)
+            holder.itemView.context.startActivity(intent,bundle)
         }
     }
 
