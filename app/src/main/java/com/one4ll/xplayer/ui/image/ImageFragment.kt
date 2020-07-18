@@ -56,7 +56,7 @@ class GalleryFragment : Fragment() {
 
     private suspend fun setAdapterToUi() {
         withContext(Main) {
-            val adapter = ImageRecylerViewAdapter(exImageUri)
+            val adapter = activity?.let { ImageRecylerViewAdapter(exImageUri,activity = it) }
             root.image_list_recycler_view.apply {
                 this.adapter = adapter
                 layoutManager = LinearLayoutManager(root.context,LinearLayoutManager.VERTICAL,false)
