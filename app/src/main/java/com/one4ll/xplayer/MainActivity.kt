@@ -214,7 +214,7 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
 
     override fun onTouch(v: View?, event: MotionEvent?): Boolean {
         gestureDetector.onTouchEvent(event)
-        playerView?.showController()
+            playerView?.showController()
         return true
     }
 
@@ -360,14 +360,21 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
         simpleExoPlayer?.playWhenReady = false
     }
     fun foo(){
-        val mediaMetadataRetriever = MediaMetadataRetriever()
-        mediaMetadataRetriever.setDataSource(videoUriPath)
-        val width = mediaMetadataRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_VIDEO_WIDTH)
-        val height = mediaMetadataRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_VIDEO_HEIGHT)
-        Log.d(TAG, "foo: title ${mediaMetadataRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_TITLE)}")
-        Log.d(TAG, "foo: ${mediaMetadataRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ARTIST)}")
-        Log.d(TAG, "foo: width $width")
-        Log.d(TAG, "foo: height $height")
+        if(!videoUriPath.contains("http")|| !videoUriPath.contains("https")){
+            val mediaMetadataRetriever = MediaMetadataRetriever()
+            mediaMetadataRetriever.setDataSource(videoUriPath)
+            val width = mediaMetadataRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_VIDEO_WIDTH)
+            val height = mediaMetadataRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_VIDEO_HEIGHT)
+            Log.d(TAG, "foo: title ${mediaMetadataRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_TITLE)}")
+            Log.d(TAG, "foo: ${mediaMetadataRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ARTIST)}")
+            Log.d(TAG, "foo: width $width")
+            Log.d(TAG, "foo: height $height")
+        }
+
+        val track = simpleExoPlayer?.currentTrackGroups
+        for (i in 0 until track?.length!!){
+            Log.d(TAG, "foo: track ${track.get(i)}")
+        }
     }
 
 //    override fun onResume() {
