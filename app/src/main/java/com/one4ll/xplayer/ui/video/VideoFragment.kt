@@ -1,7 +1,10 @@
 package com.one4ll.xplayer.ui.video
 
+import android.Manifest
 import android.content.Context
 import android.os.Bundle
+import android.provider.Settings
+import android.util.Log
 import android.util.Log.d
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +13,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.one4ll.xplayer.MainActivity
 import com.one4ll.xplayer.Media
 import com.one4ll.xplayer.R
 import com.one4ll.xplayer.adapter.VideoRecylerViewAdapter
@@ -38,6 +42,8 @@ class VideoFragment : Fragment() {
          job = CoroutineScope(IO).launch {
             askPermissionForVideoList()
         }
+        val brightNess = Settings.System.getInt(root.context.contentResolver, Settings.System.SCREEN_BRIGHTNESS)
+        Log.d(TAG, "onScroll: brightNess $brightNess")
         CoroutineScope(Main).launch {
             foo()
         }
@@ -52,7 +58,7 @@ class VideoFragment : Fragment() {
                 getVideoList()
             }else{
                 //ask permission
-            activity?.let { askPermission(it, permissions = *arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE),permissionId = 2) }
+            activity?.let { askPermission(it, permissions = *arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE,Manifest.permission.WRITE_SETTINGS),permissionId = 2) }
             }
         }else{
             getVideoList()
