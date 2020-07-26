@@ -14,6 +14,9 @@
         android:layout_height="match_parent"
         android:keepScreenOn="true"
         android:orientation="vertical"
+        android:focusableInTouchMode="true"
+        android:focusedByDefault="true"
+        android:focusable="true"
         app:resize_mode="fill">
         <!--        app:controller_layout_id="@layout/custom_controller"-->
 

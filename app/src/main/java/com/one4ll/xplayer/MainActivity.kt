@@ -214,6 +214,7 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
 
     override fun onTouch(v: View?, event: MotionEvent?): Boolean {
         gestureDetector.onTouchEvent(event)
+        playerView?.showController()
         return true
     }
 
