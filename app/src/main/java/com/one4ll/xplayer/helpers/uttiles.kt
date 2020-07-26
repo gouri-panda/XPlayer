@@ -7,7 +7,9 @@ import android.media.ThumbnailUtils
 import android.net.Uri
 import android.provider.MediaStore
 import android.util.Size
+import android.view.View
 import android.widget.ImageView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.LiveData
 import com.bumptech.glide.Glide
 import com.one4ll.xplayer.Media
@@ -325,5 +327,25 @@ fun setMusicThumbNail(context: Context, fiePath: String, imageView: ImageView) =
 
     }
 
+}
+fun AppCompatActivity.hideSystemUI(toggleActionVisibility : Boolean){
+    if(toggleActionVisibility){
+        supportActionBar?.hide()
+    }
+    window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_STABLE or
+            View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION or
+            View.SYSTEM_UI_FLAG_LOW_PROFILE or
+            View.SYSTEM_UI_FLAG_FULLSCREEN or
+            View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or
+            View.SYSTEM_UI_FLAG_HIDE_NAVIGATION or
+            View.SYSTEM_UI_FLAG_IMMERSIVE
+}
+fun AppCompatActivity.showSystemUi(toggleActionVisibility: Boolean){
+    if (toggleActionVisibility){
+        supportActionBar?.show()
+    }
+    window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_STABLE or
+            View.SYSTEM_UI_FLAG_HIDE_NAVIGATION or
+            View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
 }
 

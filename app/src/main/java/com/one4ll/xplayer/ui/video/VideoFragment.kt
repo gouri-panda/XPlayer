@@ -2,9 +2,7 @@ package com.one4ll.xplayer.ui.video
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.util.Log.d
-import android.util.Log.e
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,15 +13,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.one4ll.xplayer.Media
 import com.one4ll.xplayer.R
 import com.one4ll.xplayer.adapter.VideoRecylerViewAdapter
-import com.one4ll.xplayer.helpers.IS_GRID_LAYOUT
-import com.one4ll.xplayer.helpers.SHARED_PREF_SETTINGS
-import com.one4ll.xplayer.helpers.getExternalContentVideoUri
-import com.one4ll.xplayer.helpers.getInternalContentVideoUri
+import com.one4ll.xplayer.helpers.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
 import kotlinx.coroutines.*
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
-import kotlin.math.log
 
 private val TAG = "homefragment"
 
@@ -42,7 +36,7 @@ class VideoFragment : Fragment() {
                 ViewModelProviders.of(this).get(VideoViewModel::class.java)
         root = inflater.inflate(R.layout.fragment_home, container, false)
          job = CoroutineScope(IO).launch {
-            getVideoList()
+            askPermissionForVideoList()
         }
         CoroutineScope(Main).launch {
             foo()
@@ -51,14 +45,28 @@ class VideoFragment : Fragment() {
 
         return root
     }
+    //we will ask  once for videos ,images and audios
+    private suspend fun askPermissionForVideoList()  {
+        if (IS_MARSHMALLOW_OR_LETTER()){
+            if ( havePermission(requireContext(),android.Manifest.permission.READ_EXTERNAL_STORAGE)){
+                getVideoList()
+            }else{
+                //ask permission
+            activity?.let { askPermission(it, permissions = *arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE),permissionId = 2) }
+            }
+        }else{
+            getVideoList()
+        }
 
-    private suspend fun getVideoList()  {
+    }
+
+    private suspend fun getVideoList() {
         withContext(IO) {
             d(TAG, "getVideoList: video list 1 thread ${Thread.currentThread().name}")
             var exUri = ArrayList<Media>()
             var inUri = ArrayList<Media>()
             val job = async() {
-               d(TAG, "getVideoList: video list 2 thread ${Thread.currentThread().name}")
+                d(TAG, "getVideoList: video list 2 thread ${Thread.currentThread().name}")
                 exUri = getExternalContentVideoUri(root.context)
                 inUri = getInternalContentVideoUri(root.context)
                 exUri.addAll(inUri)

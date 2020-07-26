@@ -6,7 +6,6 @@ import android.content.Intent
 import android.content.IntentFilter
 import android.net.Uri
 import android.os.Bundle
-import android.os.Vibrator
 import android.util.DisplayMetrics
 import android.util.Log
 import android.view.GestureDetector
@@ -30,6 +29,9 @@ import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory
 import com.google.android.exoplayer2.util.Util
 import com.one4ll.xplayer.helpers.SKIP_DURATION
 import com.one4ll.xplayer.helpers.VIDEO_PATH
+import com.one4ll.xplayer.helpers.convertDuration
+import com.one4ll.xplayer.helpers.hideSystemUI
+import kotlinx.android.synthetic.main.activity_main.*
 import java.io.File
 import kotlin.math.log
 
@@ -48,6 +50,7 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        hideSystemUI(true)
         val displayMetrics = DisplayMetrics()
         windowManager.defaultDisplay.getMetrics(displayMetrics)
         screenWidth = displayMetrics.widthPixels
@@ -78,20 +81,13 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
         }
         simpleExoPlayer!!.prepare(mediaSource)
 
-
-        simpleExoPlayer!!.addAudioListener(audioListener)
         simpleExoPlayer!!.playWhenReady = true
         simpleExoPlayer!!.addListener(eventListener)
         playerView?.setOnTouchListener(this)
 
-        LocalBroadcastManager.getInstance(this).registerReceiver(broadcastReceiver, IntentFilter("customIntent"))
     }
 
-    private val broadcastReceiver: BroadcastReceiver = object : BroadcastReceiver() {
-        override fun onReceive(context: Context, intent: Intent) {
-            Log.d(TAG, "onReceive: " + intent.getStringExtra("message"))
-        }
-    }
+
 
     //    @OnClick(R.id.image_button_play)
     //    public void play() {
@@ -161,6 +157,8 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
         override fun onPlayerStateChanged(playWhenReady: Boolean, playbackState: Int) {
             when (playbackState) {
                 Player.STATE_READY -> {
+                    goto_duration.visibility = View.INVISIBLE
+
                     Log.d(TAG, "onPlayerStateChanged: state ready")
                 }
                 Player.STATE_BUFFERING -> {
@@ -177,7 +175,7 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
         override fun onPlaybackSuppressionReasonChanged(playbackSuppressionReason: Int) {}
         override fun onIsPlayingChanged(isPlaying: Boolean) {
             Log.d(TAG, "onIsPlayingChanged: isPlaying$isPlaying")
-            if (isPlaying) {
+            if (!isPlaying) {
                 playerView?.keepScreenOn = false;
             }
         }
@@ -194,27 +192,11 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
         override fun onPlaybackParametersChanged(playbackParameters: PlaybackParameters) {}
         override fun onSeekProcessed() {}
     }
-    private val audioListener: AudioListener = object : AudioListener {
-        override fun onAudioSessionId(audioSessionId: Int) {
-            Log.d(TAG, "onAudioSessionId: $audioSessionId")
-        }
 
-        override fun onAudioAttributesChanged(audioAttributes: AudioAttributes) {
-            Log.d(TAG, "onAudioAttributesChanged: audioAttributes content type" + audioAttributes.contentType)
-            Log.d(TAG, "onAudioAttributesChanged: audioAttributes flags" + audioAttributes.flags)
-            Log.d(TAG, "onAudioAttributesChanged: audioAttributes usage" + audioAttributes.usage)
-            Log.d(TAG, "onAudioAttributesChanged: audioAttributes allowed capture policy" + audioAttributes.allowedCapturePolicy)
-        }
-
-        override fun onVolumeChanged(volume: Float) {
-            Log.d(TAG, "onVolumeChanged: $volume")
-        }
-    }
 
     override fun onDestroy() {
         simpleExoPlayer!!.release()
         super.onDestroy()
-        LocalBroadcastManager.getInstance(this).unregisterReceiver(broadcastReceiver)
     }
 
     companion object {
@@ -222,7 +204,6 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
     }
 
     override fun onTouch(v: View?, event: MotionEvent?): Boolean {
-        Log.d(TAG, "onTouch: ")
         gestureDetector.onTouchEvent(event)
         return true
     }
@@ -232,7 +213,7 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
         return true
     }
 
-    fun forwardAndBackWardVideoOnDoubleClick(event: MotionEvent?) {
+    private fun forwardAndBackWardVideoOnDoubleClick(event: MotionEvent?) {
 
         Log.d(TAG, "onDoubleTap: clicked")
         var rawX = event?.rawX
@@ -282,11 +263,29 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
     }
 
     override fun onFling(e1: MotionEvent?, e2: MotionEvent?, velocityX: Float, velocityY: Float): Boolean {
+        Log.d(TAG, "onFling: velocity x $velocityX")
+        Log.d(TAG, "onFling: velocity y $velocityY")
         return true
     }
 
     override fun onScroll(e1: MotionEvent?, e2: MotionEvent?, distanceX: Float, distanceY: Float): Boolean {
-        return true
+        Log.d(TAG, "onScroll: motion event 1$e1")
+        Log.d(TAG, "onScroll: motion event 2 $e2")
+
+            goto_duration.visibility = View.VISIBLE
+            var currentPosition = simpleExoPlayer?.currentPosition ?: 0
+            if (e2?.x!! - e1?.x!! >= 100) {
+                //forward
+                goto_duration.text = "Forward  +20.00s\n\t${convertDuration(currentPosition)}s"
+                simpleExoPlayer?.seekTo(currentPosition + 20000)
+
+            } else if (e1.x - e2.x >= 100) {
+                goto_duration.text = "BackWard -20.00s\n\t ${convertDuration(currentPosition)}"
+                simpleExoPlayer?.seekTo(currentPosition - 20000)
+            }
+            Log.d(TAG, "onScroll: distance x $distanceX")
+            Log.d(TAG, "onScroll: distance y $distanceY")
+            return true
     }
 
     override fun onLongPress(e: MotionEvent?) {
@@ -298,8 +297,8 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
         simpleExoPlayer?.playWhenReady = false
     }
 
-    override fun onResume() {
-        super.onResume()
-        simpleExoPlayer?.playWhenReady = true
-    }
+//    override fun onResume() {
+//        super.onResume()
+//        simpleExoPlayer?.playWhenReady = false
+//    }
 }
