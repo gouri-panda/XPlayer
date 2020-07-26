@@ -7,6 +7,7 @@ import android.content.IntentFilter
 import android.net.Uri
 import android.os.Bundle
 import android.os.Vibrator
+import android.util.DisplayMetrics
 import android.util.Log
 import android.view.GestureDetector
 import android.view.MotionEvent
@@ -27,13 +28,19 @@ import com.google.android.exoplayer2.ui.PlayerView
 import com.google.android.exoplayer2.upstream.DataSource
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory
 import com.google.android.exoplayer2.util.Util
+import com.one4ll.xplayer.helpers.SKIP_DURATION
 import com.one4ll.xplayer.helpers.VIDEO_PATH
+import java.io.File
+import kotlin.math.log
 
 
 class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.OnDoubleTapListener, GestureDetector.OnGestureListener {
     @BindView(R.id.main_activity_constraint_layout)
     var constraintLayout: ConstraintLayout? = null
     private lateinit var gestureDetector: GestureDetector
+    private lateinit var videoUriPath: String
+    private var screenWidth: Int? = null
+    private var screenHeight: Int? = null
 
     @BindView(R.id.player_view)
     var playerView: PlayerView? = null
@@ -41,16 +48,37 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        val displayMetrics = DisplayMetrics()
+        windowManager.defaultDisplay.getMetrics(displayMetrics)
+        screenWidth = displayMetrics.widthPixels
+        screenHeight = displayMetrics.heightPixels
+        Log.d(TAG, "onCreate: width $screenWidth")
+        Log.d(TAG, "onCreate: height $screenHeight")
         playerView = findViewById(R.id.player_view)
         simpleExoPlayer = SimpleExoPlayer.Builder(this).build()
         gestureDetector = GestureDetector(this, this)
-        playerView?.setPlayer(simpleExoPlayer)
+        playerView?.player = simpleExoPlayer
         val intent = intent
-        val videoUriPath = intent.getStringExtra(VIDEO_PATH)
+        if (intent.action != null && intent.action == Intent.ACTION_VIEW) {
+
+            Log.d(TAG, "onCreate: action view intent called")
+            videoUriPath = intent.data.toString()
+            Log.d(TAG, "onCreate: action view intent called $videoUriPath")
+
+        } else {
+            videoUriPath = intent.getStringExtra(VIDEO_PATH)
+        }
         val dataSourceFactory: DataSource.Factory = DefaultDataSourceFactory(this, Util.getUserAgent(this@MainActivity, getString(R.string.app_name)))
         Log.d(TAG, "onCreate: video path $videoUriPath")
-        val mediaSource: MediaSource = ProgressiveMediaSource.Factory(dataSourceFactory).createMediaSource(Uri.parse(videoUriPath))
+        lateinit var mediaSource: MediaSource
+        mediaSource = if (videoUriPath.contains("file")) {
+            ProgressiveMediaSource.Factory(dataSourceFactory).createMediaSource(Uri.fromFile(File(videoUriPath)))
+        } else {
+            ProgressiveMediaSource.Factory(dataSourceFactory).createMediaSource(Uri.parse(videoUriPath));
+        }
         simpleExoPlayer!!.prepare(mediaSource)
+
+
         simpleExoPlayer!!.addAudioListener(audioListener)
         simpleExoPlayer!!.playWhenReady = true
         simpleExoPlayer!!.addListener(eventListener)
@@ -131,29 +159,27 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
         }
 
         override fun onPlayerStateChanged(playWhenReady: Boolean, playbackState: Int) {
-//            switch (playbackState) {
-//                case Player.STATE_READY:
-//                    Log.d(TAG, "onPlayerStateChanged: state ready");
-//                    progressBar.setVisibility(View.INVISIBLE);
-//                    break;
-//                case Player.STATE_BUFFERING:
-//                    progressBar.setVisibility(View.VISIBLE);
-//                    Log.d(TAG, "onPlayerStateChanged: state buffering");
-//                    break;
-//                case Player.STATE_ENDED:
-//                    Log.d(TAG, "onPlayerStateChanged: state Ended");
-//                    playButton.setVisibility(View.VISIBLE);
-//                    break;
-//
-//            }
+            when (playbackState) {
+                Player.STATE_READY -> {
+                    Log.d(TAG, "onPlayerStateChanged: state ready")
+                }
+                Player.STATE_BUFFERING -> {
+                    Log.d(TAG, "onPlayerStateChanged: buffering")
+                }
+                Player.STATE_ENDED -> {
+                    playerView?.keepScreenOn = false
+                    simpleExoPlayer?.playWhenReady = false
+                    Log.d(TAG, "onPlayerStateChanged: state ended")
+                }
+            }
         }
 
         override fun onPlaybackSuppressionReasonChanged(playbackSuppressionReason: Int) {}
         override fun onIsPlayingChanged(isPlaying: Boolean) {
             Log.d(TAG, "onIsPlayingChanged: isPlaying$isPlaying")
-            //            if (isPlaying) {
-//                progressBar.setVisibility(View.INVISIBLE);
-//            }
+            if (isPlaying) {
+                playerView?.keepScreenOn = false;
+            }
         }
 
         override fun onRepeatModeChanged(repeatMode: Int) {}
@@ -206,25 +232,24 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
         return true
     }
 
-     fun forwardAndBackWardVideoOnDoubleClick(event: MotionEvent?) {
+    fun forwardAndBackWardVideoOnDoubleClick(event: MotionEvent?) {
+
         Log.d(TAG, "onDoubleTap: clicked")
-        var firstX = event?.getX(0)
-        var lastX = event?.getX(1)
-         Log.d(TAG, "forwardAndBackWardVideoOnDoubleClick: firsrx $firstX")
-         Log.d(TAG, "forwardAndBackWardVideoOnDoubleClick: lastX $lastX")
-        if (firstX != null && lastX != null && event?.x != null){
-            val middle = firstX + lastX
-            if (event.x < middle){
+        var rawX = event?.rawX
+        Log.d(TAG, "forwardAndBackWardVideoOnDoubleClick: rawx $rawX")
+        if (rawX != null) {
+            val middle = screenWidth!! / 2
+            if (rawX < middle) {
                 Log.d(TAG, "forwardAndBackWardVideoOnDoubleClick: left side")
                 val currentPosition = simpleExoPlayer?.currentPosition
                 if (currentPosition != null) {
-                    simpleExoPlayer?.seekTo(currentPosition - 5000)
+                    simpleExoPlayer?.seekTo(currentPosition - SKIP_DURATION)
                 }
-            }else{
+            } else {
                 Log.d(TAG, "forwardAndBackWardVideoOnDoubleClick: right side")
                 val currentPosition = simpleExoPlayer?.currentPosition
-                if (currentPosition != null){
-                    simpleExoPlayer?.seekTo(currentPosition + 5000)
+                if (currentPosition != null) {
+                    simpleExoPlayer?.seekTo(currentPosition + SKIP_DURATION)
                 }
 
             }
@@ -245,8 +270,8 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
     }
 
     override fun onSingleTapUp(e: MotionEvent?): Boolean {
-        if (playerView?.controllerAutoShow  != null){
-        playerView?.controllerAutoShow = !playerView!!.controllerAutoShow
+        if (playerView?.controllerAutoShow != null) {
+            playerView?.controllerAutoShow = !playerView!!.controllerAutoShow
 
         }
         return true
@@ -266,5 +291,15 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
 
     override fun onLongPress(e: MotionEvent?) {
 
+    }
+
+    override fun onPause() {
+        super.onPause()
+        simpleExoPlayer?.playWhenReady = false
+    }
+
+    override fun onResume() {
+        super.onResume()
+        simpleExoPlayer?.playWhenReady = true
     }
 }

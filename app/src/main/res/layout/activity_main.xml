@@ -13,6 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+        android:keepScreenOn="true"
         app:resize_mode="fill">
         <!--        app:controller_layout_id="@layout/custom_controller"-->
 

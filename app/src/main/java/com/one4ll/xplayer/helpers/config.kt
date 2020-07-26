@@ -74,5 +74,6 @@ fun handlePermission(activity: Activity,permission: String,permissionId: Int) : 
 
 fun isExternalMounted() = Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())
 fun isExternalOnlyMounted() = Environment.MEDIA_MOUNTED_READ_ONLY.equals(Environment.getExternalStorageState())
+const val SKIP_DURATION = 5000
 
 
