@@ -87,12 +87,12 @@ class VideoFragment : Fragment() {
             d(TAG, "setAdapter: thread ${Thread.currentThread().name}")
             val sharedPreferences = root.context.getSharedPreferences(SHARED_PREF_SETTINGS, Context.MODE_PRIVATE)
             if (sharedPreferences.getBoolean(IS_GRID_LAYOUT, false)) {
-                val adapter = VideoRecylerViewAdapter(videoList)
+                val adapter = activity?.let { VideoRecylerViewAdapter(it,videoList) }
                 root.video_list_recycler_view.adapter = adapter
                 val gridLayoutManager = GridLayoutManager(root.context, 2)
                 root.video_list_recycler_view.layoutManager = gridLayoutManager
             } else {
-                val adapter = VideoRecylerViewAdapter(videoList)
+                val adapter = activity?.let { VideoRecylerViewAdapter(it,videoList) }
                 root.video_list_recycler_view.apply {
                     this.adapter = adapter
                     layoutManager = LinearLayoutManager(root.context,LinearLayoutManager.VERTICAL,false)

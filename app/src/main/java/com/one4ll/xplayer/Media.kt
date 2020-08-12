@@ -6,6 +6,7 @@ class Media(var name  : String, var duration : String, var size : String, var pa
     override fun toString(): String {
         return "name"
     }
+    var isSelectd = false
 
 
 }

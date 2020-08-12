@@ -31,7 +31,7 @@ class AllFilesList : AppCompatActivity() {
         thumbnail.delete()
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
         val videoList = ArrayList<com.one4ll.xplayer.Media>()
-         videoRecylerViewAdapter = VideoRecylerViewAdapter(videoList)
+         videoRecylerViewAdapter = VideoRecylerViewAdapter(this,videoList)
         video_list_recycler_view.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         video_list_recycler_view.adapter = videoRecylerViewAdapter
          mediaDatabase  = MediaDatabase.getInstance(this)

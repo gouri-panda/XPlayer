@@ -1,13 +1,16 @@
 package com.one4ll.xplayer.adapter
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.graphics.Color
+import android.util.Log.d
+import android.view.*
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.view.ActionMode
 import androidx.recyclerview.widget.RecyclerView
+import com.one4ll.xplayer.ActionModeCallback
 import com.one4ll.xplayer.MainActivity
 import com.one4ll.xplayer.Media
 import com.one4ll.xplayer.R
@@ -20,9 +23,15 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.Default
 import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.launch
+import kotlin.math.log
 
-class VideoRecylerViewAdapter(var list: List<Media>) :
+private const val TAG = "VideoRecylerViewAdapter"
+class VideoRecylerViewAdapter(val activity: Activity,var list: List<Media>) :
         RecyclerView.Adapter<VideoRecylerViewAdapter.ViewHolder>() {
+    init {
+
+    }
+    protected lateinit var actionModeCallback: ActionModeCallback
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view: View?
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -59,6 +68,37 @@ class VideoRecylerViewAdapter(var list: List<Media>) :
             val intent = Intent(holder.itemView.context, MainActivity::class.java)
             intent.putExtra(VIDEO_PATH, path)
             holder.itemView.context.startActivity(intent)
+        }
+        holder.itemView.setOnLongClickListener {
+            d(TAG, "onBindViewHolder: item clicked")
+            actionModeCallback = object : ActionModeCallback() {
+                override fun onActionItemClicked(mode: ActionMode?, item: MenuItem?): Boolean {
+                    d(TAG, "onActionItemClicked: ")
+                    list[position].isSelectd = !list[position].isSelectd
+                    val itemViewColor = if (list[position].isSelectd) Color.CYAN else Color.BLACK
+                    holder.itemView.setBackgroundColor(itemViewColor)
+                    return true
+                }
+
+                override fun onCreateActionMode(mode: ActionMode?, menu: Menu?): Boolean {
+                    d(TAG, "onCreateActionMode: ")
+
+                    activity.menuInflater.inflate(R.menu.test_item_select_listener, menu)
+                    return true
+                }
+
+                override fun onPrepareActionMode(mode: ActionMode?, menu: Menu?): Boolean {
+                    d(TAG, "onPrepareActionMode: ")
+                    return true
+                }
+
+                override fun onDestroyActionMode(mode: ActionMode?) {
+                    d(TAG, "onDestroyActionMode: ")
+                }
+
+            }
+
+            return@setOnLongClickListener true
         }
     }
 
