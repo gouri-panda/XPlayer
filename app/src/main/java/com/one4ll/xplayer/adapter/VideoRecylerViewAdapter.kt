@@ -68,6 +68,8 @@ class VideoRecylerViewAdapter(val activity: Activity,var list: List<Media>) :
             val intent = Intent(holder.itemView.context, MainActivity::class.java)
             intent.putExtra(VIDEO_PATH, path)
             holder.itemView.context.startActivity(intent)
+
+
         }
         holder.itemView.setOnLongClickListener {
             d(TAG, "onBindViewHolder: item clicked")
@@ -101,6 +103,9 @@ class VideoRecylerViewAdapter(val activity: Activity,var list: List<Media>) :
             return@setOnLongClickListener true
         }
     }
+    fun get(onclick: Onclick){
+        onclick.onClick("2")
+    }
 
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -110,4 +115,7 @@ class VideoRecylerViewAdapter(val activity: Activity,var list: List<Media>) :
     }
 
 
+}
+ interface Onclick{
+    fun onClick(time : String)
 }

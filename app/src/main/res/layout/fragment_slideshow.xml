@@ -16,9 +16,4 @@
         tools:listitem="@layout/video_list"
         android:scrollbars="vertical"
         app:layout_constraintTop_toTopOf="parent" />
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/button"
-        />
 </androidx.constraintlayout.widget.ConstraintLayout>
