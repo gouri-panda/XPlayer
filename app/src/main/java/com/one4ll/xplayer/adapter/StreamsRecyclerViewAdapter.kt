@@ -14,7 +14,7 @@ import java.util.*
 
 
 class StreamsRecyclerViewAdapter() : RecyclerView.Adapter<StreamsRecyclerViewAdapter.ViewHolder>() {
-     private var streamList: List<Streams> = listOf()
+    private var streamList: List<Streams> = listOf()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.streams_list, parent, false)
         return ViewHolder(view)
@@ -24,7 +24,7 @@ class StreamsRecyclerViewAdapter() : RecyclerView.Adapter<StreamsRecyclerViewAda
         return streamList.size
     }
 
-    fun setNotes(listStreams: List<Streams>){
+    fun setNotes(listStreams: List<Streams>) {
         this.streamList = listStreams
         notifyDataSetChanged()
     }
@@ -34,14 +34,13 @@ class StreamsRecyclerViewAdapter() : RecyclerView.Adapter<StreamsRecyclerViewAda
         val date = Date(streamList[position].time)
         holder.date.text = date.toString()
         holder.itemView.setOnClickListener {
-            val intent = Intent(it.context,MainActivity::class.java)
-            intent.putExtra(VIDEO_PATH,streamList[position].path)
+            val intent = Intent(it.context, MainActivity::class.java)
+            intent.putExtra(VIDEO_PATH, streamList[position].path)
             it.context.startActivity(intent)
         }
-
     }
 
-    fun getStreamAtPosition( position: Int) : Streams?{
+    fun getStreamAtPosition(position: Int): Streams? {
         return streamList[position]
     }
 

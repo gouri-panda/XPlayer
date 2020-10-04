@@ -18,19 +18,18 @@ import com.one4ll.xplayer.helpers.IS_GRID_LAYOUT
 import com.one4ll.xplayer.helpers.SHARED_PREF_SETTINGS
 import com.one4ll.xplayer.helpers.VIDEO_PATH
 import com.one4ll.xplayer.helpers.setVideoThumbNail
-import io.reactivex.Observable
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.Default
-import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.launch
-import kotlin.math.log
 
 private const val TAG = "VideoRecylerViewAdapter"
-class VideoRecylerViewAdapter(val activity: Activity,var list: List<Media>) :
+
+class VideoRecylerViewAdapter(val activity: Activity, var list: List<Media>) :
         RecyclerView.Adapter<VideoRecylerViewAdapter.ViewHolder>() {
     init {
 
     }
+
     protected lateinit var actionModeCallback: ActionModeCallback
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view: View?
@@ -68,8 +67,6 @@ class VideoRecylerViewAdapter(val activity: Activity,var list: List<Media>) :
             val intent = Intent(holder.itemView.context, MainActivity::class.java)
             intent.putExtra(VIDEO_PATH, path)
             holder.itemView.context.startActivity(intent)
-
-
         }
         holder.itemView.setOnLongClickListener {
             d(TAG, "onBindViewHolder: item clicked")
@@ -103,7 +100,8 @@ class VideoRecylerViewAdapter(val activity: Activity,var list: List<Media>) :
             return@setOnLongClickListener true
         }
     }
-    fun get(onclick: Onclick){
+
+    fun get(onclick: Onclick) {
         onclick.onClick("2")
     }
 
@@ -116,6 +114,7 @@ class VideoRecylerViewAdapter(val activity: Activity,var list: List<Media>) :
 
 
 }
- interface Onclick{
-    fun onClick(time : String)
+
+interface Onclick {
+    fun onClick(time: String)
 }

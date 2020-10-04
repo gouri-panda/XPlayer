@@ -49,7 +49,7 @@ const val IS_GRID_LAYOUT = "is_grid_layout"
 
 
 
-
+//For checking os version
 fun IS_MARSHMALLOW_OR_LETTER() =  Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
 fun IS_NOUGHOT_OR_LETTER() = Build.VERSION.SDK_INT >= Build.VERSION_CODES.N
 fun IS_NOUGHOT_MR1_OR_LETTER() = Build.VERSION.SDK_INT >= Build.VERSION_CODES.N_MR1
@@ -60,7 +60,7 @@ fun IS_Q_OR_LETTER() = Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q
 
 
 
-
+//For asking permission
 fun havePermission(context: Context, permission: String) : Boolean =
     ContextCompat.checkSelfPermission(context,permission) == PackageManager.PERMISSION_GRANTED
 fun askPermission(activity: Activity,vararg permissions : String,permissionId : Int){
