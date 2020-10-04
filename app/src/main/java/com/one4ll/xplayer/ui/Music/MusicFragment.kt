@@ -22,15 +22,20 @@ class SlideshowFragment : Fragment() {
 
     private lateinit var musicViewModel: MusicViewModel
     private lateinit var adapter: MusicRecylerViewAdapter
+    private lateinit var root: View
 
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
+        root = inflater.inflate(R.layout.fragment_slideshow, container, false)
+        return root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         musicViewModel =
                 ViewModelProviders.of(this).get(MusicViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_slideshow, container, false)
         adapter = MusicRecylerViewAdapter(listOf())
         musicViewModel.musicList.observe(viewLifecycleOwner, Observer { mediaList ->
             if (mediaList != null) {
@@ -40,8 +45,6 @@ class SlideshowFragment : Fragment() {
                 }
             }
         })
-
-        return root
     }
 
     private suspend fun setAdapter(mediaList: List<Media>, root: View) {
@@ -49,7 +52,7 @@ class SlideshowFragment : Fragment() {
             adapter.loadVideo(mediaList)
             root.music_list_recycler_view.apply {
                 this.adapter = adapter
-                layoutManager = LinearLayoutManager(root.context,LinearLayoutManager.VERTICAL,false)
+                layoutManager = LinearLayoutManager(root.context, LinearLayoutManager.VERTICAL, false)
             }
         }
     }

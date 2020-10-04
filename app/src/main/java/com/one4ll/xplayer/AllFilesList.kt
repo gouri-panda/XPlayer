@@ -40,8 +40,6 @@ class AllFilesList : AppCompatActivity() {
         if (readAndWriteExternalStoragePermission()){
             getVideoList()
         }
-
-
     }
 
     private  fun getVideoList() {
@@ -66,8 +64,6 @@ class AllFilesList : AppCompatActivity() {
             }
 
         }
-
-
     }
 
 

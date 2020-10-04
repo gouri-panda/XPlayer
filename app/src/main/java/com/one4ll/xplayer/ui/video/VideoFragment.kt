@@ -36,10 +36,14 @@ class VideoFragment : Fragment() {
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
+        root = inflater.inflate(R.layout.fragment_home, container, false)
+        return root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         videoViewModel =
                 ViewModelProviders.of(this).get(VideoViewModel::class.java)
-        root = inflater.inflate(R.layout.fragment_home, container, false)
-         job = CoroutineScope(IO).launch {
+        job = CoroutineScope(IO).launch {
             askPermissionForVideoList()
         }
         val brightNess = Settings.System.getInt(root.context.contentResolver, Settings.System.SCREEN_BRIGHTNESS)
@@ -47,20 +51,18 @@ class VideoFragment : Fragment() {
         CoroutineScope(Main).launch {
             foo()
         }
-
-
-        return root
     }
+
     //we will ask  once for videos ,images and audios
-    private suspend fun askPermissionForVideoList()  {
-        if (IS_MARSHMALLOW_OR_LETTER()){
-            if ( havePermission(requireContext(),android.Manifest.permission.READ_EXTERNAL_STORAGE)){
+    private suspend fun askPermissionForVideoList() {
+        if (IS_MARSHMALLOW_OR_LETTER()) {
+            if (havePermission(requireContext(), android.Manifest.permission.READ_EXTERNAL_STORAGE)) {
                 getVideoList()
-            }else{
+            } else {
                 //ask permission
-            activity?.let { askPermission(it, permissions = *arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE,Manifest.permission.WRITE_SETTINGS),permissionId = 2) }
+                activity?.let { askPermission(it, permissions = *arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_SETTINGS), permissionId = 2) }
             }
-        }else{
+        } else {
             getVideoList()
         }
 
@@ -83,19 +85,19 @@ class VideoFragment : Fragment() {
     }
 
     private suspend fun setAdapter(videoList: ArrayList<Media>) {
-        withContext(Main){
+        withContext(Main) {
             d(TAG, "setAdapter: thread ${Thread.currentThread().name}")
             val sharedPreferences = root.context.getSharedPreferences(SHARED_PREF_SETTINGS, Context.MODE_PRIVATE)
             if (sharedPreferences.getBoolean(IS_GRID_LAYOUT, false)) {
-                val adapter = activity?.let { VideoRecylerViewAdapter(it,videoList) }
+                val adapter = activity?.let { VideoRecylerViewAdapter(it, videoList) }
                 root.video_list_recycler_view.adapter = adapter
                 val gridLayoutManager = GridLayoutManager(root.context, 2)
                 root.video_list_recycler_view.layoutManager = gridLayoutManager
             } else {
-                val adapter = activity?.let { VideoRecylerViewAdapter(it,videoList) }
+                val adapter = activity?.let { VideoRecylerViewAdapter(it, videoList) }
                 root.video_list_recycler_view.apply {
                     this.adapter = adapter
-                    layoutManager = LinearLayoutManager(root.context,LinearLayoutManager.VERTICAL,false)
+                    layoutManager = LinearLayoutManager(root.context, LinearLayoutManager.VERTICAL, false)
                 }
             }
 
@@ -109,20 +111,21 @@ class VideoFragment : Fragment() {
         d(TAG, "onDestroy: job is active ${job.isActive}")
         d(TAG, "onDestroy: job is completed ${job.isCompleted}")
     }
-    private suspend fun foo(){
-        withContext(IO){
-             val job1 = async {
-                 for (i in 1..10){
-                     delay(1000)
-                d(TAG, "foo: asyn 1 ${Thread.currentThread().name} ")
-                 }
-                 "name"
+
+    private suspend fun foo() {
+        withContext(IO) {
+            val job1 = async {
+                for (i in 1..10) {
+                    delay(1000)
+                    d(TAG, "foo: asyn 1 ${Thread.currentThread().name} ")
+                }
+                "name"
             }
             val job2 = async {
-                for (i in 1..10){
+                for (i in 1..10) {
                     delay(1000)
                     d(TAG, "foo: async 1 returns 1 ${job1.await()}")
-                d(TAG, "foo: asyn 2 ${Thread.currentThread().name} ")
+                    d(TAG, "foo: asyn 2 ${Thread.currentThread().name} ")
 
                 }
             }

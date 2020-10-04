@@ -54,9 +54,13 @@ class StreamFragment : Fragment() {
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         rootView = inflater.inflate(R.layout.fragment_stream, container, false)
+        return rootView
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         viewModel = ViewModelProviders.of(this).get(StreamViewModel::class.java)
         viewModel.streamsList.observe(viewLifecycleOwner, Observer {
-            if (it != null){
+            if (it != null) {
                 adapter.setNotes(it)
             }
         })
@@ -87,14 +91,13 @@ class StreamFragment : Fragment() {
                 Log.d(TAG, "onSwiped: direction $direction")
                 CoroutineScope(IO).launch {
                     db.streamsDao().removeById(adapter.getStreamAtPosition(viewHolder.adapterPosition)?.id!!)
-                    withContext(Main){
+                    withContext(Main) {
                         adapter.notifyDataSetChanged()
                     }
 
                 }
             }
         }).attachToRecyclerView(rootView.streams_recycler_view)
-        return rootView
     }
 
     private suspend fun setRecycleView() {
@@ -104,7 +107,7 @@ class StreamFragment : Fragment() {
             }.await()
             async(Main) {
                 rootView.streams_recycler_view.apply {
-                    val animation = AnimationUtils.loadAnimation(rootView.context,R.anim.recycler_view_from_bottom_to_top)
+                    val animation = AnimationUtils.loadAnimation(rootView.context, R.anim.recycler_view_from_bottom_to_top)
                     this.animation = animation
                     layoutManager = LinearLayoutManager(rootView.context, LinearLayoutManager.VERTICAL, false)
                     adapter = this@StreamFragment.adapter

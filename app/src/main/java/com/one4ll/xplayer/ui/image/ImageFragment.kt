@@ -36,13 +36,13 @@ class GalleryFragment : Fragment() {
         imageViewModel =
                 ViewModelProviders.of(this).get(ImageViewModel::class.java)
         root = inflater.inflate(R.layout.fragment_gallery, container, false)
-        val time = measureTimeMillis {
-            CoroutineScope(IO).launch {
-                getImageUri()
-            }
-        }
-        Log.d(TAG, "onCreateView: time takes $time")
         return root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        CoroutineScope(IO).launch {
+            getImageUri()
+        }
     }
 
     private suspend fun getImageUri() {
