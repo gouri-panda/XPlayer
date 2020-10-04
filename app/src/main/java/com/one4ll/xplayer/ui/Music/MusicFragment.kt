@@ -11,9 +11,7 @@ import com.one4ll.xplayer.Media
 import com.one4ll.xplayer.R
 import com.one4ll.xplayer.adapter.MusicRecylerViewAdapter
 import kotlinx.android.synthetic.main.fragment_slideshow.view.*
-import kotlinx.android.synthetic.main.fragment_slideshow.view.button
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -34,12 +32,6 @@ class SlideshowFragment : Fragment() {
                 ViewModelProviders.of(this).get(MusicViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_slideshow, container, false)
         adapter = MusicRecylerViewAdapter(listOf())
-        root.button.setOnClickListener {
-            CoroutineScope(IO).launch {
-                musicViewModel.getMusicList()
-            }
-
-        }
         musicViewModel.musicList.observe(viewLifecycleOwner, Observer { mediaList ->
             if (mediaList != null) {
                 Log.d(TAG, "onCreateView: exsize ${mediaList.size}")
