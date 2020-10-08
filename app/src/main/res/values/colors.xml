@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#000</color><!--121212-->
+    <color name="white">#fff</color><!--121212-->
     <color name="semiTransparent">#1C1C1E</color><!--272727-->
     <color name="bottomNavigationColor">#1D1D1D</color>
     <color name="blue">#183EEF</color>
