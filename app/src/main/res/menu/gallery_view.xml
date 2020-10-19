@@ -12,5 +12,3 @@
         android:title="@string/display_in_grid"
         app:showAsAction="never" />
 </menu>
-
-<!-- all done -->
