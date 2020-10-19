@@ -9,7 +9,7 @@ import androidx.annotation.Nullable;
 public class TaskDbHelper extends SQLiteOpenHelper {
     public static final String DATABASE_NAME ="movies.db";
     public static final int DATABASE_VERSION =1;
-    final String SQL_CREATE_TABLE ="CREATE A TABLE "+
+    final String SQL_CREATE_TABLE ="CREATE TABLE "+
             TaskContract.TaskEntry.TABLE_NAME+" ("+
             TaskContract.TaskEntry._ID +"INTEGER PRIMARY KEY AUTOINCREMENT,"+
             TaskContract.TaskEntry.COLUMN_ID + "TEXT NOT NULL,"+
