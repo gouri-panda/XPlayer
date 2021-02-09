@@ -16,10 +16,11 @@ import com.one4ll.xplayer.helpers.IMAGE_PATH
 import com.one4ll.xplayer.helpers.setImageThumbNail
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.Default
+import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
 
-class ImageRecylerViewAdapter(var list: List<Media>, var activity: Activity) :
-        RecyclerView.Adapter<ImageRecylerViewAdapter.ViewHolder>() {
+class ImageRecyclerViewAdapter(var list: List<Media>, var activity: Activity) :
+        RecyclerView.Adapter<ImageRecyclerViewAdapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         val view = layoutInflater.inflate(R.layout.video_list, parent, false)
@@ -31,17 +32,13 @@ class ImageRecylerViewAdapter(var list: List<Media>, var activity: Activity) :
         return list.size
     }
 
-    fun setVideoList(list: ArrayList<Media>) {
-        this.list = list
-        notifyDataSetChanged()
-    }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         // TODO: 10/07/20 fix when go to down to up
         holder.imageView.setImageBitmap(null)
         holder.title.text = list[position].name
         val path = list[position].path
-        CoroutineScope(Default).launch {
+        CoroutineScope(IO).launch {
             setImageThumbNail(path, holder.imageView)
         }
         holder.itemView.setOnClickListener {
@@ -53,9 +50,9 @@ class ImageRecylerViewAdapter(var list: List<Media>, var activity: Activity) :
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var imageView = itemView.findViewById<ImageView>(R.id.imageView)
-        val title = itemView.findViewById<TextView>(R.id.name)
-        val duration = itemView.findViewById<TextView>(R.id.duration).apply { visibility = View.GONE }
+        var imageView: ImageView = itemView.findViewById(R.id.imageView)
+        val title: TextView = itemView.findViewById(R.id.name)
+        val duration: TextView = itemView.findViewById<TextView>(R.id.duration).apply { visibility = View.GONE }
 
     }
 }

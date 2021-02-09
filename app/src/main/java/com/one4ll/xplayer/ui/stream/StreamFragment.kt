@@ -74,7 +74,7 @@ class StreamFragment : Fragment() {
         ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(ItemTouchHelper.ANIMATION_TYPE_DRAG, ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT) {
             override fun onMove(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder, target: RecyclerView.ViewHolder): Boolean {
                 Log.d(TAG, "onMove: moved ")
-                Log.d(TAG, "onMove: layout positon ${viewHolder.layoutPosition}")
+                Log.d(TAG, "onMove: layout position ${viewHolder.layoutPosition}")
                 return true
             }
 
@@ -82,7 +82,7 @@ class StreamFragment : Fragment() {
                 Log.d(TAG, "onSwiped: direction $direction")
                 lifecycleScope.launch {
                     withContext(IO) {
-                        db.streamsDao().removeById(adapter.getStreamAtPosition(viewHolder.adapterPosition)?.id!!)
+                        db.streamsDao().removeById(adapter.getStreamAtPosition(viewHolder.adapterPosition).id!!)
                         withContext(Main) {
                             adapter.notifyDataSetChanged()
                         }

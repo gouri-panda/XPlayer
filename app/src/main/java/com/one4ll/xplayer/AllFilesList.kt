@@ -6,23 +6,24 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.one4ll.xplayer.adapter.VideoRecylerViewAdapter
+import com.one4ll.xplayer.adapter.VideoRecyclerViewAdapter
 import com.one4ll.xplayer.database.MediaDatabase
 import com.one4ll.xplayer.helpers.*
 import com.one4ll.xplayer.models.Video
 import kotlinx.android.synthetic.main.activity_all_files_list.*
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.IO
-import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.io.File
 
 private const val READ_AND_WRITE_STORAGE_PERMISSION = 3
+private const val TAG = "MainActivity"
 
 class AllFilesList : AppCompatActivity() {
-    private val TAG: String = "MainActivity"
     private var thumbnail = File("")
-    private lateinit var videoRecylerViewAdapter: VideoRecylerViewAdapter
+    private lateinit var videoRecyclerViewAdapter: VideoRecyclerViewAdapter
     private lateinit var mediaDatabase: MediaDatabase
 
 
@@ -31,11 +32,11 @@ class AllFilesList : AppCompatActivity() {
         setContentView(R.layout.activity_all_files_list)
         thumbnail.delete()
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-        val videoList = ArrayList<com.one4ll.xplayer.Media>()
-        videoRecylerViewAdapter = VideoRecylerViewAdapter(this, videoList)
+        val videoList = ArrayList<Media>()
+        videoRecyclerViewAdapter = VideoRecyclerViewAdapter(this, videoList)
 
         video_list_recycler_view.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        video_list_recycler_view.adapter = videoRecylerViewAdapter
+        video_list_recycler_view.adapter = videoRecyclerViewAdapter
         mediaDatabase = MediaDatabase.getInstance(this)
         if (readAndWriteExternalStoragePermission()) {
             getVideoList()
@@ -46,9 +47,9 @@ class AllFilesList : AppCompatActivity() {
         val externalVideoList = getExternalContentVideoUri(this)
         val internalVideoList = getInternalContentVideoUri(this)
         externalVideoList.addAll(internalVideoList)
-        videoRecylerViewAdapter.loadVideo(externalVideoList)
-        CoroutineScope(IO).async {
-            async {
+        videoRecyclerViewAdapter.loadVideo(externalVideoList)
+        lifecycleScope.launch {
+            withContext(IO) {
                 var count = 0
                 //todo fix  - remove delete all and fix auto increment id
                 mediaDatabase.videoDao().deleteAll()
@@ -56,14 +57,12 @@ class AllFilesList : AppCompatActivity() {
                     val medium = Video(count++, it.name, it.path, it.duration)
                     mediaDatabase.videoDao().insert(medium)
                 }
-            }.await().run {
                 Log.d(TAG, "after update data base")
                 mediaDatabase.videoDao().getAll().forEach {
-                    Log.d(TAG, "form media data base ${it.toString()}")
+                    Log.d(TAG, "form media data base $it")
 
                 }
             }
-
         }
     }
 
@@ -98,10 +97,7 @@ class AllFilesList : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         mediaDatabase.close()
+        MediaDatabase.destroyInstance()
     }
 
-}
-
-interface OnSaveDataInDataBase {
-    fun onDatabased()
 }
