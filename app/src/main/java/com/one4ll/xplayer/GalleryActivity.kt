@@ -20,7 +20,6 @@ import com.one4ll.xplayer.helpers.IS_GRID_LAYOUT
 import com.one4ll.xplayer.helpers.SHARED_PREF_SETTINGS
 import kotlin.properties.Delegates
 
-private val TAG = "galleryActivity"
 
 class GalleryActivity : AppCompatActivity() {
 
