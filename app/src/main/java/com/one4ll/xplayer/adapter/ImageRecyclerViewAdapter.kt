@@ -15,7 +15,6 @@ import com.one4ll.xplayer.R
 import com.one4ll.xplayer.helpers.IMAGE_PATH
 import com.one4ll.xplayer.helpers.setImageThumbNail
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers.Default
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
 
