@@ -9,6 +9,4 @@ data class Video(
         var title: String,
         var path: String,
         var duration: String
-) {
-
-}
+)
