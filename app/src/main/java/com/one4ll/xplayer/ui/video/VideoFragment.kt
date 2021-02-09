@@ -94,9 +94,6 @@ class VideoFragment : Fragment() {
 
     override fun onDestroy() {
         super.onDestroy()
-        d(TAG, "onDestroy: job is cancel ${job.isCancelled}")
-        d(TAG, "onDestroy: job is active ${job.isActive}")
-        d(TAG, "onDestroy: job is completed ${job.isCompleted}")
     }
 
 }
