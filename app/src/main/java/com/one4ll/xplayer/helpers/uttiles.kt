@@ -281,7 +281,7 @@ fun getExternalContentMusicUri(context: Context): ArrayList<Media> {
     return videoList
 }
 
-suspend fun setVideoThumbNail(fiePath: String, imageView: ImageView) {
+suspend fun Context.setVideoThumbNail(fiePath: String, imageView: ImageView) {
     withContext(Default) {
         var bitMap: Bitmap? = null
         async {
@@ -289,7 +289,7 @@ suspend fun setVideoThumbNail(fiePath: String, imageView: ImageView) {
         }.await()
         launch(Main) {
             imageView.setImageBitmap(bitMap)
-            Glide.with(imageView.context).load(bitMap).into(imageView)
+            Glide.with(this@setVideoThumbNail).load(bitMap).into(imageView)
         }
     }
 }

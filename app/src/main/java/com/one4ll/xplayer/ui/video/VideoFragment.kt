@@ -24,6 +24,7 @@ import kotlinx.coroutines.Dispatchers.Main
 
 private const val TAG = "homefragment"
 
+// TODO how to set permission with Android view model
 class VideoFragment : Fragment() {
     private val videoViewModel: VideoViewModel by viewModels()
     private lateinit var root: View
@@ -90,13 +91,6 @@ class VideoFragment : Fragment() {
 
 
         }
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        d(TAG, "onDestroy: job is cancel ${job.isCancelled}")
-        d(TAG, "onDestroy: job is active ${job.isActive}")
-        d(TAG, "onDestroy: job is completed ${job.isCompleted}")
     }
 
 }

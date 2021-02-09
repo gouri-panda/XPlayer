@@ -20,9 +20,8 @@ import com.one4ll.xplayer.helpers.IS_GRID_LAYOUT
 import com.one4ll.xplayer.helpers.SHARED_PREF_SETTINGS
 import kotlin.properties.Delegates
 
-private val TAG = "galleryview"
 
-class GalleryView : AppCompatActivity() {
+class GalleryActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var sharedPreferences: SharedPreferences
