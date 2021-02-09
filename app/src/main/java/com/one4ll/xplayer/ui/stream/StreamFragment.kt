@@ -22,7 +22,6 @@ import com.one4ll.xplayer.helpers.VIDEO_PATH
 import com.one4ll.xplayer.models.Streams
 import kotlinx.android.synthetic.main.fragment_stream.*
 import kotlinx.android.synthetic.main.fragment_stream.view.*
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.launch
@@ -81,12 +80,13 @@ class StreamFragment : Fragment() {
 
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 Log.d(TAG, "onSwiped: direction $direction")
-                CoroutineScope(IO).launch {
-                    db.streamsDao().removeById(adapter.getStreamAtPosition(viewHolder.adapterPosition)?.id!!)
-                    withContext(Main) {
-                        adapter.notifyDataSetChanged()
+                lifecycleScope.launch {
+                    withContext(IO) {
+                        db.streamsDao().removeById(adapter.getStreamAtPosition(viewHolder.adapterPosition)?.id!!)
+                        withContext(Main) {
+                            adapter.notifyDataSetChanged()
+                        }
                     }
-
                 }
             }
         }).attachToRecyclerView(rootView.streams_recycler_view)
@@ -108,9 +108,7 @@ class StreamFragment : Fragment() {
     }
 }
 
-private suspend fun insertStreamsIntoDatabase(database: MediaDatabase, stream: Streams) {
-    withContext(IO) {
-        database.streamsDao().insert(stream)
-    }
+private suspend fun insertStreamsIntoDatabase(database: MediaDatabase, stream: Streams) = withContext(IO) {
+    database.streamsDao().insert(stream)
 }
 
