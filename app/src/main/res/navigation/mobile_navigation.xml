@@ -13,7 +13,7 @@
 
     <fragment
         android:id="@+id/nav_gallery"
-        android:name="com.one4ll.xplayer.ui.Music.SlideshowFragment"
+        android:name="com.one4ll.xplayer.ui.music.SlideshowFragment"
         android:label="@string/Audio"
         tools:layout="@layout/fragment_gallery" />
 

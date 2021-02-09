@@ -1,4 +1,4 @@
-package com.one4ll.xplayer.ui.Music
+package com.one4ll.xplayer.ui.music
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel

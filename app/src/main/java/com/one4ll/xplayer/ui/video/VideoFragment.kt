@@ -4,16 +4,15 @@ import android.Manifest
 import android.content.Context
 import android.os.Bundle
 import android.provider.Settings
-import android.util.Log
 import android.util.Log.d
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProviders
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.one4ll.xplayer.MainActivity
 import com.one4ll.xplayer.Media
 import com.one4ll.xplayer.R
 import com.one4ll.xplayer.adapter.VideoRecylerViewAdapter
@@ -23,10 +22,10 @@ import kotlinx.coroutines.*
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
 
-private val TAG = "homefragment"
+private const val TAG = "homefragment"
 
 class VideoFragment : Fragment() {
-    private lateinit var videoViewModel: VideoViewModel
+    private val videoViewModel: VideoViewModel by viewModels()
     private lateinit var root: View
     private lateinit var job: Job
 
@@ -35,32 +34,27 @@ class VideoFragment : Fragment() {
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         root = inflater.inflate(R.layout.fragment_home, container, false)
         return root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        videoViewModel =
-                ViewModelProviders.of(this).get(VideoViewModel::class.java)
-        job = CoroutineScope(IO).launch {
+        job = lifecycleScope.launch {
             askPermissionForVideoList()
         }
         val brightNess = Settings.System.getInt(root.context.contentResolver, Settings.System.SCREEN_BRIGHTNESS)
-        Log.d(TAG, "onScroll: brightNess $brightNess")
-        CoroutineScope(Main).launch {
-            foo()
-        }
+        d(TAG, "onScroll: brightness $brightNess")
     }
 
     //we will ask  once for videos ,images and audios
     private suspend fun askPermissionForVideoList() {
         if (IS_MARSHMALLOW_OR_LETTER()) {
-            if (havePermission(requireContext(), android.Manifest.permission.READ_EXTERNAL_STORAGE)) {
+            if (havePermission(requireContext(), Manifest.permission.READ_EXTERNAL_STORAGE)) {
                 getVideoList()
             } else {
-                //ask permission
-                activity?.let { askPermission(it, permissions = *arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_SETTINGS), permissionId = 2) }
+                //ask permission nicely!!
+                activity?.let { askPermission(it, permissions = *arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_SETTINGS), permissionId = 2) }
             }
         } else {
             getVideoList()
@@ -70,21 +64,14 @@ class VideoFragment : Fragment() {
 
     private suspend fun getVideoList() {
         withContext(IO) {
-            d(TAG, "getVideoList: video list 1 thread ${Thread.currentThread().name}")
-            var exUri = ArrayList<Media>()
-            var inUri = ArrayList<Media>()
-            val job = async() {
-                d(TAG, "getVideoList: video list 2 thread ${Thread.currentThread().name}")
-                exUri = getExternalContentVideoUri(root.context)
-                inUri = getInternalContentVideoUri(root.context)
-                exUri.addAll(inUri)
-            }
-            job.await()
-            setAdapter(exUri)
+            val externalContentVideoJob: Deferred<ArrayList<Media>> = async { getExternalContentVideoUri(root.context) }
+            val internalContentVideoJob: Deferred<ArrayList<Media>> = async { getInternalContentVideoUri(root.context) }
+            val contentUri = externalContentVideoJob.await() + internalContentVideoJob.await()
+            setAdapter(contentUri)
         }
     }
 
-    private suspend fun setAdapter(videoList: ArrayList<Media>) {
+    private suspend fun setAdapter(videoList: List<Media>) {
         withContext(Main) {
             d(TAG, "setAdapter: thread ${Thread.currentThread().name}")
             val sharedPreferences = root.context.getSharedPreferences(SHARED_PREF_SETTINGS, Context.MODE_PRIVATE)
@@ -112,23 +99,4 @@ class VideoFragment : Fragment() {
         d(TAG, "onDestroy: job is completed ${job.isCompleted}")
     }
 
-    private suspend fun foo() {
-        withContext(IO) {
-            val job1 = async {
-                for (i in 1..10) {
-                    delay(1000)
-                    d(TAG, "foo: asyn 1 ${Thread.currentThread().name} ")
-                }
-                "name"
-            }
-            val job2 = async {
-                for (i in 1..10) {
-                    delay(1000)
-                    d(TAG, "foo: async 1 returns 1 ${job1.await()}")
-                    d(TAG, "foo: asyn 2 ${Thread.currentThread().name} ")
-
-                }
-            }
-        }
-    }
 }
