@@ -1,7 +1,6 @@
 package com.one4ll.xplayer.ui.image
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,10 +13,11 @@ import com.one4ll.xplayer.adapter.ImageRecylerViewAdapter
 import com.one4ll.xplayer.helpers.getExternalContentImageUri
 import com.one4ll.xplayer.helpers.getInternalContentImageUri
 import kotlinx.android.synthetic.main.fragment_gallery.view.*
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
-import kotlin.system.measureTimeMillis
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 private val TAG = "galleryfragment"
 
@@ -56,10 +56,10 @@ class GalleryFragment : Fragment() {
 
     private suspend fun setAdapterToUi() {
         withContext(Main) {
-            val adapter = activity?.let { ImageRecylerViewAdapter(exImageUri,activity = it) }
+            val adapter = activity?.let { ImageRecylerViewAdapter(exImageUri, activity = it) }
             root.image_list_recycler_view.apply {
                 this.adapter = adapter
-                layoutManager = LinearLayoutManager(root.context,LinearLayoutManager.VERTICAL,false)
+                layoutManager = LinearLayoutManager(root.context, LinearLayoutManager.VERTICAL, false)
             }
 
         }

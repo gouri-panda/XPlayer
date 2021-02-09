@@ -18,7 +18,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.Default
 import kotlinx.coroutines.launch
 
-class ImageRecylerViewAdapter(var list: List<Media>,var activity: Activity) :
+class ImageRecylerViewAdapter(var list: List<Media>, var activity: Activity) :
         RecyclerView.Adapter<ImageRecylerViewAdapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -46,9 +46,9 @@ class ImageRecylerViewAdapter(var list: List<Media>,var activity: Activity) :
         }
         holder.itemView.setOnClickListener {
             val intent = Intent(holder.itemView.context, FullImageActivity::class.java)
-            val bundle = ActivityOptions.makeSceneTransitionAnimation(activity,holder.imageView,holder.imageView.transitionName).toBundle()
+            val bundle = ActivityOptions.makeSceneTransitionAnimation(activity, holder.imageView, holder.imageView.transitionName).toBundle()
             intent.putExtra(IMAGE_PATH, path)
-            holder.itemView.context.startActivity(intent,bundle)
+            holder.itemView.context.startActivity(intent, bundle)
         }
     }
 
