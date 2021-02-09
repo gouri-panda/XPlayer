@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.Bitmap
 import android.media.ThumbnailUtils
 import android.net.Uri
+import android.os.CancellationSignal
 import android.provider.MediaStore
 import android.util.Size
 import android.view.View
@@ -282,9 +283,9 @@ fun getExternalContentMusicUri(context: Context): ArrayList<Media> {
     return videoList
 }
 
-suspend fun Context.setVideoThumbNail(fiePath: String, imageView: ImageView) {
-    withContext(Default) {
-        val bitMap: Bitmap? = ThumbnailUtils.createVideoThumbnail(fiePath, MediaStore.Video.Thumbnails.MINI_KIND)
+suspend fun Context.setVideoThumbNail(filePath: String, imageView: ImageView) {
+    withContext(IO) {
+        val bitMap: Bitmap = ThumbnailUtils.createVideoThumbnail(File(filePath), Size(200, 200), CancellationSignal())
         withContext(Main) {
             imageView.setImageBitmap(bitMap)
             Glide.with(this@setVideoThumbNail).load(bitMap).into(imageView)
@@ -292,9 +293,9 @@ suspend fun Context.setVideoThumbNail(fiePath: String, imageView: ImageView) {
     }
 }
 
-suspend fun setImageThumbNail(fiePath: String, imageView: ImageView) {
-    withContext(Default) {
-        val bitMap: Bitmap? = ThumbnailUtils.createImageThumbnail(fiePath, MediaStore.Images.Thumbnails.MINI_KIND)
+suspend fun setImageThumbNail(filePath: String, imageView: ImageView) {
+    withContext(IO) {
+        val bitMap: Bitmap = ThumbnailUtils.createImageThumbnail(File(filePath), Size(200, 200), CancellationSignal())
         withContext(Main) {
             Glide.with(imageView.context).load(bitMap).into(imageView)
         }

@@ -114,7 +114,7 @@ class FullImageActivity : AppCompatActivity(), View.OnTouchListener, GestureDete
                 Log.d(TAG, "onDrag: action drag location")
             }
             DragEvent.ACTION_DRAG_STARTED -> {
-                Log.d(TAG, "onDrag: action drage started")
+                Log.d(TAG, "onDrag: action drag started")
             }
             DragEvent.ACTION_DROP -> {
                 Log.d(TAG, "onDrag: action drop")

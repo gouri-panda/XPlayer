@@ -13,7 +13,6 @@ import com.one4ll.xplayer.R
 import com.one4ll.xplayer.adapter.ImageRecyclerViewAdapter
 import kotlinx.android.synthetic.main.fragment_gallery.view.*
 
-private const val TAG = "galleryfragment"
 
 class GalleryFragment : Fragment() {
 
