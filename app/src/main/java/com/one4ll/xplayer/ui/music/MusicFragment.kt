@@ -23,7 +23,7 @@ private const val TAG = "audiofragment"
 class SlideshowFragment : Fragment() {
 
     private  val musicViewModel: MusicViewModel by viewModels()
-    private lateinit var adapter: MusicRecylerViewAdapter
+    private lateinit var musicRecylerViewAdapter: MusicRecylerViewAdapter
     private lateinit var root: View
 
     override fun onCreateView(
@@ -36,7 +36,7 @@ class SlideshowFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        adapter = MusicRecylerViewAdapter(listOf())
+        musicRecylerViewAdapter = MusicRecylerViewAdapter(listOf())
         musicViewModel.musicList.observe(viewLifecycleOwner, Observer { mediaList ->
             if (mediaList != null) {
                 Log.d(TAG, "onCreateView: exsize ${mediaList.size}")
@@ -49,7 +49,7 @@ class SlideshowFragment : Fragment() {
 
     private suspend fun setAdapter(mediaList: List<Media>, root: View) {
         withContext(Main) {
-            adapter.loadVideo(mediaList)
+            musicRecylerViewAdapter.loadVideo(mediaList)
             root.music_list_recycler_view.apply {
                 this.adapter = adapter
                 layoutManager = LinearLayoutManager(root.context, LinearLayoutManager.VERTICAL, false)

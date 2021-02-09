@@ -64,7 +64,7 @@ class StreamFragment : Fragment() {
             if (url != null) {
                 val intent = Intent(rootView.context, MainActivity::class.java)
                 intent.putExtra(VIDEO_PATH, url.toString())
-                CoroutineScope(IO).launch {
+                lifecycleScope.launch {
                     insertStreamsIntoDatabase(db, Streams(url.toString(), System.currentTimeMillis()))
                 }
                 Log.d(TAG, "onCreateView: stream url path $url")

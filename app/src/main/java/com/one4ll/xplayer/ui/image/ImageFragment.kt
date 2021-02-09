@@ -14,8 +14,10 @@ import com.one4ll.xplayer.adapter.ImageRecylerViewAdapter
 import com.one4ll.xplayer.helpers.getExternalContentImageUri
 import com.one4ll.xplayer.helpers.getInternalContentImageUri
 import kotlinx.android.synthetic.main.fragment_gallery.view.*
+import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
+import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
@@ -25,7 +27,7 @@ class GalleryFragment : Fragment() {
 
     private val imageViewModel: ImageViewModel by viewModels()
     private lateinit var root: View
-    private lateinit var exImageUri: ArrayList<Media>
+    private lateinit var exImageUri: List<Media>
     private lateinit var inImageUri: List<Media>
 
     override fun onCreateView(
@@ -45,9 +47,9 @@ class GalleryFragment : Fragment() {
 
     private suspend fun getImageUri() {
         withContext(IO) {
-            exImageUri = getExternalContentImageUri(root.context)
-            inImageUri = getInternalContentImageUri(root.context)
-            exImageUri.addAll(inImageUri)
+            val externalContentImageUriJob = async { getExternalContentImageUri(root.context) }
+            val internalContentImageUriJob: Deferred<ArrayList<Media>> = async { getInternalContentImageUri(root.context) }
+            exImageUri = externalContentImageUriJob.await() + internalContentImageUriJob.await()
             setAdapterToUi()
         }
     }
