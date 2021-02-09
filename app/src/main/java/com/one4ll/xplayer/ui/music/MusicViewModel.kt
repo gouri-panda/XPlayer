@@ -10,18 +10,13 @@ import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.withContext
 
-class MusicViewModel(application: Application) : AndroidViewModel(application) {
-    var mapplication: Application
-
-    init {
-        this.mapplication = application
-    }
+class MusicViewModel(private val app: Application) : AndroidViewModel(app) {
 
     val musicList = MutableLiveData<List<Media>>()
     suspend fun getMusicList() {
         withContext(IO) {
-            val exUri = getExternalContentVideoUri(mapplication.applicationContext)
-            val inUri = getInternalContentVideoUri(mapplication.applicationContext)
+            val exUri = getExternalContentVideoUri(app.applicationContext)
+            val inUri = getInternalContentVideoUri(app.applicationContext)
             exUri.addAll(inUri)
             exUri.forEach { println(it.name) }
             withContext(Main) {

@@ -26,6 +26,8 @@
         android:id="@+id/duration"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/black_more_transparent"
         android:paddingStart="4dp"
         android:paddingTop="2dp"
@@ -34,7 +36,9 @@
         android:textColor="@color/cardview_light_background"
         android:textSize="10sp"
         android:visibility="gone"
-        tools:layout_editor_absoluteX="331dp"
+        app:layout_constraintBottom_toTopOf="@id/progressBar2"
+        app:layout_constraintEnd_toStartOf="@+id/file_list_in_grid_more"
+        app:layout_constraintRight_toLeftOf="@id/file_list_in_grid_more"
         tools:layout_editor_absoluteY="21dp" />
 
     <TextView
@@ -43,6 +47,8 @@
         android:layout_height="wrap_content"
         android:text="HD"
         android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/file_list_in_grid_more"
+        app:layout_constraintRight_toRightOf="parent"
         tools:layout_editor_absoluteX="379dp"
         tools:layout_editor_absoluteY="-3dp" />
 
@@ -72,10 +78,10 @@
         android:layout_marginEnd="4dp"
         android:text="date"
         android:textAlignment="textEnd"
-        app:layout_constraintTop_toBottomOf="@id/stream_name"
         app:layout_constraintBottom_toTopOf="@+id/progressBar2"
         app:layout_constraintEnd_toStartOf="@+id/file_list_in_grid_more"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/stream_name" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
