@@ -30,6 +30,7 @@ class FullImageActivity : AppCompatActivity(), View.OnTouchListener, GestureDete
     //On touch listener
 
     override fun onTouch(v: View?, event: MotionEvent?): Boolean {
+        v?.performClick()
         gestureDetector.onTouchEvent(event)
         when (event?.action) {
             MotionEvent.ACTION_DOWN -> {
@@ -83,10 +84,15 @@ class FullImageActivity : AppCompatActivity(), View.OnTouchListener, GestureDete
         return true
     }
 
+    @Suppress("DEPRECATION")
     override fun onLongPress(e: MotionEvent?) {
         Log.d(TAG, "onLongPress: ")
         val builder = View.DragShadowBuilder(full_image_view)
-        full_image_view.startDrag(null, builder, null, 0)
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+            full_image_view.startDragAndDrop(null, builder, null, 0)
+        } else {
+            full_image_view.startDrag(null, builder, null, 0)
+        }
         builder.view.setOnDragListener(this)
     }
 

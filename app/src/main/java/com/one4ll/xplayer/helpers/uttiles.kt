@@ -13,6 +13,7 @@ import com.bumptech.glide.Glide
 import com.one4ll.xplayer.Media
 import kotlinx.coroutines.*
 import kotlinx.coroutines.Dispatchers.Default
+import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
 import java.io.File
 
@@ -283,11 +284,8 @@ fun getExternalContentMusicUri(context: Context): ArrayList<Media> {
 
 suspend fun Context.setVideoThumbNail(fiePath: String, imageView: ImageView) {
     withContext(Default) {
-        var bitMap: Bitmap? = null
-        async {
-            bitMap = ThumbnailUtils.createVideoThumbnail(fiePath, MediaStore.Video.Thumbnails.MINI_KIND)
-        }.await()
-        launch(Main) {
+        val bitMap: Bitmap? = ThumbnailUtils.createVideoThumbnail(fiePath, MediaStore.Video.Thumbnails.MINI_KIND)
+        withContext(Main) {
             imageView.setImageBitmap(bitMap)
             Glide.with(this@setVideoThumbNail).load(bitMap).into(imageView)
         }
@@ -296,27 +294,21 @@ suspend fun Context.setVideoThumbNail(fiePath: String, imageView: ImageView) {
 
 suspend fun setImageThumbNail(fiePath: String, imageView: ImageView) {
     withContext(Default) {
-        var bitMap: Bitmap? = null
-        async {
-            bitMap = ThumbnailUtils.createImageThumbnail(fiePath, MediaStore.Images.Thumbnails.MINI_KIND)
-        }.await()
-        withContext(Dispatchers.Main) {
+        val bitMap: Bitmap? = ThumbnailUtils.createImageThumbnail(fiePath, MediaStore.Images.Thumbnails.MINI_KIND)
+        withContext(Main) {
             Glide.with(imageView.context).load(bitMap).into(imageView)
         }
     }
 }
 
 //todo remove coroutine scope and add suspend
-fun setMusicThumbNail(context: Context, fiePath: String, imageView: ImageView) = CoroutineScope(Dispatchers.Default).launch {
+suspend fun setMusicThumbNail(context: Context, fiePath: String, imageView: ImageView) = withContext(IO) {
     try {
-        var bitMap: Bitmap? = null
-        async {
-            bitMap = if (IS_Q_OR_LETTER()) {
-                ThumbnailUtils.createAudioThumbnail(File(fiePath), Size(100, 100), null)
-            } else {
-                ThumbnailUtils.createAudioThumbnail(File(fiePath).absolutePath, MediaStore.Images.Thumbnails.MINI_KIND)
-            }
-        }.await()
+        val bitMap: Bitmap? = if (IS_Q_OR_LETTER()) {
+            ThumbnailUtils.createAudioThumbnail(File(fiePath), Size(100, 100), null)
+        } else {
+            ThumbnailUtils.createAudioThumbnail(File(fiePath).absolutePath, MediaStore.Images.Thumbnails.MINI_KIND)
+        }
         withContext(Main) {
             imageView.setImageBitmap(bitMap)
         }

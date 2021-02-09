@@ -13,7 +13,7 @@ import com.one4ll.xplayer.models.Streams
 import java.util.*
 
 
-class StreamsRecyclerViewAdapter() : RecyclerView.Adapter<StreamsRecyclerViewAdapter.ViewHolder>() {
+class StreamsRecyclerViewAdapter : RecyclerView.Adapter<StreamsRecyclerViewAdapter.ViewHolder>() {
     private var streamList: List<Streams> = listOf()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.streams_list, parent, false)
@@ -30,7 +30,7 @@ class StreamsRecyclerViewAdapter() : RecyclerView.Adapter<StreamsRecyclerViewAda
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.name.text = streamList.get(position).path
+        holder.name.text = streamList[position].path
         val date = Date(streamList[position].time)
         holder.date.text = date.toString()
         holder.itemView.setOnClickListener {
@@ -40,13 +40,13 @@ class StreamsRecyclerViewAdapter() : RecyclerView.Adapter<StreamsRecyclerViewAda
         }
     }
 
-    fun getStreamAtPosition(position: Int): Streams? {
+    fun getStreamAtPosition(position: Int): Streams {
         return streamList[position]
     }
 
-    class ViewHolder(itemview: View) : RecyclerView.ViewHolder(itemview) {
-        var name: TextView = itemview.findViewById(R.id.stream_name)
-        var date: TextView = itemview.findViewById(R.id.stream_date)
+    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        var name: TextView = itemView.findViewById(R.id.stream_name)
+        var date: TextView = itemView.findViewById(R.id.stream_date)
 
     }
 }

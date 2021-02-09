@@ -10,7 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.one4ll.xplayer.Media
 import com.one4ll.xplayer.R
-import com.one4ll.xplayer.adapter.ImageRecylerViewAdapter
+import com.one4ll.xplayer.adapter.ImageRecyclerViewAdapter
 import kotlinx.android.synthetic.main.fragment_gallery.view.*
 
 private const val TAG = "galleryfragment"
@@ -39,7 +39,7 @@ class GalleryFragment : Fragment() {
 
 
     private fun setAdapterToUi(imageList: List<Media>) {
-        val adapter = activity?.let { ImageRecylerViewAdapter(imageList, activity = it) }
+        val adapter = activity?.let { ImageRecyclerViewAdapter(imageList, activity = it) }
         root.image_list_recycler_view.apply {
             this.adapter = adapter
             layoutManager = LinearLayoutManager(root.context, LinearLayoutManager.VERTICAL, false)

@@ -16,34 +16,26 @@ import android.view.MotionEvent
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.constraintlayout.widget.ConstraintLayout
-import butterknife.BindView
 import com.google.android.exoplayer2.*
 import com.google.android.exoplayer2.source.MediaSource
 import com.google.android.exoplayer2.source.ProgressiveMediaSource
 import com.google.android.exoplayer2.source.TrackGroupArray
 import com.google.android.exoplayer2.trackselection.TrackSelectionArray
-import com.google.android.exoplayer2.ui.PlayerView
 import com.google.android.exoplayer2.upstream.DataSource
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory
 import com.google.android.exoplayer2.util.Util
 import com.one4ll.xplayer.helpers.*
 import kotlinx.android.synthetic.main.activity_main.*
-import java.io.File
 
 
 class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.OnDoubleTapListener, GestureDetector.OnGestureListener {
-    @BindView(R.id.main_activity_constraint_layout)
-    var constraintLayout: ConstraintLayout? = null
     private lateinit var gestureDetector: GestureDetector
     private lateinit var videoUriPath: String
     private var screenWidth: Int? = null
     private var screenHeight: Int? = null
     private val audioManager by lazy { getSystemService(Context.AUDIO_SERVICE) as AudioManager }
-    private val brightNess by lazy { Settings.System.getInt(contentResolver, Settings.System.SCREEN_BRIGHTNESS) }
+    private val brightness by lazy { Settings.System.getInt(contentResolver, Settings.System.SCREEN_BRIGHTNESS) }
 
-    @BindView(R.id.player_view)
-    var playerView: PlayerView? = null
     private var simpleExoPlayer: SimpleExoPlayer? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,10 +47,9 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
         screenHeight = displayMetrics.heightPixels
         Log.d(TAG, "onCreate: width $screenWidth")
         Log.d(TAG, "onCreate: height $screenHeight")
-        playerView = findViewById(R.id.player_view)
         simpleExoPlayer = SimpleExoPlayer.Builder(this).build()
         gestureDetector = GestureDetector(this, this)
-        playerView?.player = simpleExoPlayer
+        player_view?.player = simpleExoPlayer
         val intent = intent
         if (intent.action != null && intent.action == Intent.ACTION_VIEW) {
 
@@ -68,14 +59,14 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
 
         } else {
             videoUriPath = intent.getStringExtra(VIDEO_PATH)
+                    ?: throw IllegalArgumentException(getString(R.string.videoPathShouldnotNull))
+
         }
         val dataSourceFactory: DataSource.Factory = DefaultDataSourceFactory(this, Util.getUserAgent(this@MainActivity, getString(R.string.app_name)))
         Log.d(TAG, "onCreate: video path $videoUriPath")
         lateinit var mediaSource: MediaSource
-        val file = File(videoUriPath)
         val options = BitmapFactory.Options()
         options.inJustDecodeBounds = true
-        val uri = Uri.parse(videoUriPath)
         val decode = BitmapFactory.decodeFile(videoUriPath,
                 options)
         val width = decode?.width
@@ -87,13 +78,13 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
 //        mediaSource =
 //            ProgressiveMediaSource.Factory(dataSourceFactory).createMediaSource(Uri.fromFile(File(videoUriPath)))
         mediaSource =
-                ProgressiveMediaSource.Factory(dataSourceFactory).createMediaSource(Uri.parse(videoUriPath));
+                ProgressiveMediaSource.Factory(dataSourceFactory).createMediaSource(Uri.parse(videoUriPath))
 //        }
         simpleExoPlayer!!.prepare(mediaSource)
 
         simpleExoPlayer!!.playWhenReady = true
         simpleExoPlayer!!.addListener(eventListener)
-        playerView?.setOnTouchListener(this)
+        player_view?.setOnTouchListener(this)
 
     }
 
@@ -174,9 +165,12 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
                     Log.d(TAG, "onPlayerStateChanged: buffering")
                 }
                 Player.STATE_ENDED -> {
-                    playerView?.keepScreenOn = false
+                    player_view?.keepScreenOn = false
                     simpleExoPlayer?.playWhenReady = false
                     Log.d(TAG, "onPlayerStateChanged: state ended")
+                }
+                Player.STATE_IDLE -> {
+                    //todo
                 }
             }
         }
@@ -185,7 +179,7 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
         override fun onIsPlayingChanged(isPlaying: Boolean) {
             Log.d(TAG, "onIsPlayingChanged: isPlaying$isPlaying")
             if (!isPlaying) {
-                playerView?.keepScreenOn = false;
+                player_view?.keepScreenOn = false
             }
         }
 
@@ -214,7 +208,7 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
 
     override fun onTouch(v: View?, event: MotionEvent?): Boolean {
         gestureDetector.onTouchEvent(event)
-        playerView?.showController()
+        player_view?.showController()
         return true
     }
 
@@ -226,7 +220,7 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
     private fun forwardAndBackWardVideoOnDoubleClick(event: MotionEvent?) {
 
         Log.d(TAG, "onDoubleTap: clicked")
-        var rawX = event?.rawX
+        val rawX = event?.rawX
         Log.d(TAG, "forwardAndBackWardVideoOnDoubleClick: rawx $rawX")
         if (rawX != null) {
             val middle = screenWidth!! / 2
@@ -261,8 +255,8 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
     }
 
     override fun onSingleTapUp(e: MotionEvent?): Boolean {
-        if (playerView?.controllerAutoShow != null) {
-            playerView?.controllerAutoShow = !playerView!!.controllerAutoShow
+        if (player_view?.controllerAutoShow != null) {
+            player_view?.controllerAutoShow = !player_view!!.controllerAutoShow
 
         }
         return true
@@ -283,7 +277,7 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
         Log.d(TAG, "onScroll: motion event 2 $e2")
 
         goto_duration.visibility = View.VISIBLE
-        var currentPosition = simpleExoPlayer?.currentPosition ?: 0
+        val currentPosition = simpleExoPlayer?.currentPosition ?: 0
         if (e2?.x!! - e1?.x!! >= 100) {
             //forward
             goto_duration.text = "Forward  +20.00s\n\t\t ${convertDuration(currentPosition)}s"
@@ -301,7 +295,7 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
                 if (e1.y - e2.y >= 100) {
                     //increase brightness
 
-                    increaseBrightNess()
+                    increaseBrightness()
 
                 } else if (e2.y - e1.y >= 100) {
                     // decrease brightness
@@ -337,18 +331,19 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
         Log.d(TAG, "decreaseBrightNess: iiii")
     }
 
-    private fun increaseBrightNess() {
-        Log.d(TAG, "increaseBrightNess: iiii")
-        Log.d(TAG, "increaseBrightNess: iiii brightness $brightNess")
+    private fun increaseBrightness() {
+        Log.d(TAG, "increaseBrightness: iiii")
+        Log.d(TAG, "increaseBrightness: iiii brightness $brightness")
         if (havePermission(this, Manifest.permission.WRITE_SETTINGS)) {
 
             Settings.System.putInt(contentResolver, Settings.System.SCREEN_BRIGHTNESS, 23)
             val attributes = window.attributes
             attributes.screenBrightness = (23 / 255).toFloat()
             window.attributes = attributes
-        } else {
-//            askPermission(activity = this, permissions = *arrayOf(Manifest.permission.WRITE_SETTINGS),permissionId = 5)
         }
+//        else {
+//            askPermission(activity = this, permissions = *arrayOf(Manifest.permission.WRITE_SETTINGS),permissionId = 5)
+//        }
     }
 
     override fun onLongPress(e: MotionEvent?) {
@@ -360,7 +355,7 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
         simpleExoPlayer?.playWhenReady = false
     }
 
-    fun foo() {
+    private fun foo() {
         if (!videoUriPath.contains("http") || !videoUriPath.contains("https")) {
             val mediaMetadataRetriever = MediaMetadataRetriever()
             mediaMetadataRetriever.setDataSource(videoUriPath)
