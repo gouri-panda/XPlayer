@@ -61,7 +61,7 @@ class VideoRecylerViewAdapter(val activity: Activity, var list: List<Media>) :
         holder.duration.text = list[position].duration
         val path = list[position].path
         CoroutineScope(Default).launch {
-            setVideoThumbNail(path, holder.imageView)
+            activity.applicationContext.setVideoThumbNail(path, holder.imageView)
         }
         holder.itemView.setOnClickListener {
             val intent = Intent(holder.itemView.context, MainActivity::class.java)
