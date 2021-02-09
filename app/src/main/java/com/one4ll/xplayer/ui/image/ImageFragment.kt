@@ -19,8 +19,6 @@ class GalleryFragment : Fragment() {
 
     private val imageViewModel: ImageViewModel by viewModels()
     private lateinit var root: View
-    private lateinit var exImageUri: List<Media>
-    private lateinit var inImageUri: List<Media>
 
     override fun onCreateView(
             inflater: LayoutInflater,
