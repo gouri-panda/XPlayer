@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.one4ll.xplayer.Media
 import com.one4ll.xplayer.R
-import com.one4ll.xplayer.adapter.VideoRecylerViewAdapter
+import com.one4ll.xplayer.adapter.VideoRecyclerViewAdapter
 import com.one4ll.xplayer.helpers.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
 import kotlinx.coroutines.*
@@ -77,12 +77,12 @@ class VideoFragment : Fragment() {
             d(TAG, "setAdapter: thread ${Thread.currentThread().name}")
             val sharedPreferences = root.context.getSharedPreferences(SHARED_PREF_SETTINGS, Context.MODE_PRIVATE)
             if (sharedPreferences.getBoolean(IS_GRID_LAYOUT, false)) {
-                val adapter = activity?.let { VideoRecylerViewAdapter(it, videoList) }
+                val adapter = activity?.let { VideoRecyclerViewAdapter(it, videoList) }
                 root.video_list_recycler_view.adapter = adapter
                 val gridLayoutManager = GridLayoutManager(root.context, 2)
                 root.video_list_recycler_view.layoutManager = gridLayoutManager
             } else {
-                val adapter = activity?.let { VideoRecylerViewAdapter(it, videoList) }
+                val adapter = activity?.let { VideoRecyclerViewAdapter(it, videoList) }
                 root.video_list_recycler_view.apply {
                     this.adapter = adapter
                     layoutManager = LinearLayoutManager(root.context, LinearLayoutManager.VERTICAL, false)

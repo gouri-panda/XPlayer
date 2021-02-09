@@ -7,7 +7,7 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.one4ll.xplayer.adapter.VideoRecylerViewAdapter
+import com.one4ll.xplayer.adapter.VideoRecyclerViewAdapter
 import com.one4ll.xplayer.database.MediaDatabase
 import com.one4ll.xplayer.helpers.*
 import com.one4ll.xplayer.models.Video
@@ -22,7 +22,7 @@ private const val READ_AND_WRITE_STORAGE_PERMISSION = 3
 class AllFilesList : AppCompatActivity() {
     private val TAG: String = "MainActivity"
     private var thumbnail = File("")
-    private lateinit var videoRecylerViewAdapter: VideoRecylerViewAdapter
+    private lateinit var videoRecylerViewAdapter: VideoRecyclerViewAdapter
     private lateinit var mediaDatabase: MediaDatabase
 
 
@@ -32,7 +32,7 @@ class AllFilesList : AppCompatActivity() {
         thumbnail.delete()
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
         val videoList = ArrayList<com.one4ll.xplayer.Media>()
-        videoRecylerViewAdapter = VideoRecylerViewAdapter(this, videoList)
+        videoRecylerViewAdapter = VideoRecyclerViewAdapter(this, videoList)
 
         video_list_recycler_view.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         video_list_recycler_view.adapter = videoRecylerViewAdapter

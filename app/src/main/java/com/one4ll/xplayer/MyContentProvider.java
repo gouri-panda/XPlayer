@@ -21,9 +21,6 @@ public class MyContentProvider extends ContentProvider {
     public final int TASKS = 100;
     public final int TASKS_MID = 101;
 
-    static {
-    }
-
     @Override
     public boolean onCreate() {
         uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
@@ -57,6 +54,7 @@ public class MyContentProvider extends ContentProvider {
                         null,
                         null,
                         sortOrder);
+                break;
             default:
                 throw new UnsupportedOperationException("Unknown uri " + uri);
 
@@ -76,17 +74,15 @@ public class MyContentProvider extends ContentProvider {
         SQLiteDatabase db = taskDbHelper.getWritableDatabase();
         int match = uriMatcher.match(uri);
         Uri returnUri;
-        switch (match) {
-            case TASKS:
-                long id = db.insert(TaskContract.TaskEntry.TABLE_NAME, null, values);
-                if (id > 0) {
-                    returnUri = ContentUris.withAppendedId(TaskContract.TaskEntry.CONTENT_URI, id);
-                } else {
-                    throw new SQLiteException("Failed " + uri);
-                }
-                break;
-            default:
-                throw new UnsupportedOperationException("Unknown " + uri);
+        if (match == TASKS) {
+            long id = db.insert(TaskContract.TaskEntry.TABLE_NAME, null, values);
+            if (id > 0) {
+                returnUri = ContentUris.withAppendedId(TaskContract.TaskEntry.CONTENT_URI, id);
+            } else {
+                throw new SQLiteException("Failed " + uri);
+            }
+        } else {
+            throw new UnsupportedOperationException("Unknown " + uri);
         }
 
         getContext().getContentResolver().notifyChange(uri, null);
@@ -98,15 +94,13 @@ public class MyContentProvider extends ContentProvider {
         SQLiteDatabase db = taskDbHelper.getWritableDatabase();
         int match = uriMatcher.match(uri);
         int taskDeleted;
-        switch (match) {
-            case TASKS:
-                String id = uri.getPathSegments().get(1);
-                taskDeleted = db.delete(TaskContract.TaskEntry.TABLE_NAME,
-                        TaskContract.TaskEntry.COLUMN_ID + " = ?",
-                        new String[]{id});
-                break;
-            default:
-                throw new UnsupportedOperationException("Unknown " + uri);
+        if (match == TASKS) {
+            String id = uri.getPathSegments().get(1);
+            taskDeleted = db.delete(TaskContract.TaskEntry.TABLE_NAME,
+                    TaskContract.TaskEntry.COLUMN_ID + " = ?",
+                    new String[]{id});
+        } else {
+            throw new UnsupportedOperationException("Unknown " + uri);
         }
         if (taskDeleted != 0) {
             getContext().getContentResolver().notifyChange(uri, null);
