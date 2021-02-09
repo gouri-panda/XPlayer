@@ -39,8 +39,8 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
     private lateinit var videoUriPath: String
     private var screenWidth: Int? = null
     private var screenHeight: Int? = null
-    private val audioManager by lazy {  getSystemService(Context.AUDIO_SERVICE)  as AudioManager}
-    private val brightNess by lazy {Settings.System.getInt(contentResolver,Settings.System.SCREEN_BRIGHTNESS)}
+    private val audioManager by lazy { getSystemService(Context.AUDIO_SERVICE) as AudioManager }
+    private val brightNess by lazy { Settings.System.getInt(contentResolver, Settings.System.SCREEN_BRIGHTNESS) }
 
     @BindView(R.id.player_view)
     var playerView: PlayerView? = null
@@ -79,7 +79,7 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
         val decode = BitmapFactory.decodeFile(videoUriPath,
                 options)
         val width = decode?.width
-        val height  = decode?.height
+        val height = decode?.height
         options.inJustDecodeBounds = false
         Log.d(TAG, "onCreate: width $width")
         Log.d(TAG, "onCreate: height $height")
@@ -87,7 +87,7 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
 //        mediaSource =
 //            ProgressiveMediaSource.Factory(dataSourceFactory).createMediaSource(Uri.fromFile(File(videoUriPath)))
         mediaSource =
-            ProgressiveMediaSource.Factory(dataSourceFactory).createMediaSource(Uri.parse(videoUriPath));
+                ProgressiveMediaSource.Factory(dataSourceFactory).createMediaSource(Uri.parse(videoUriPath));
 //        }
         simpleExoPlayer!!.prepare(mediaSource)
 
@@ -214,7 +214,7 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
 
     override fun onTouch(v: View?, event: MotionEvent?): Boolean {
         gestureDetector.onTouchEvent(event)
-            playerView?.showController()
+        playerView?.showController()
         return true
     }
 
@@ -325,12 +325,12 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
     }
 
     private fun decreaseSound() {
-        audioManager.adjustVolume(AudioManager.ADJUST_LOWER,AudioManager.FLAG_PLAY_SOUND)
+        audioManager.adjustVolume(AudioManager.ADJUST_LOWER, AudioManager.FLAG_PLAY_SOUND)
     }
 
     private fun increaseSound() {
         Log.d(TAG, "increaseSound: iiii")
-        audioManager.adjustVolume(AudioManager.ADJUST_RAISE,AudioManager.FLAG_PLAY_SOUND)
+        audioManager.adjustVolume(AudioManager.ADJUST_RAISE, AudioManager.FLAG_PLAY_SOUND)
     }
 
     private fun decreaseBrightNess() {
@@ -340,13 +340,13 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
     private fun increaseBrightNess() {
         Log.d(TAG, "increaseBrightNess: iiii")
         Log.d(TAG, "increaseBrightNess: iiii brightness $brightNess")
-        if (havePermission(this,Manifest.permission.WRITE_SETTINGS)){
+        if (havePermission(this, Manifest.permission.WRITE_SETTINGS)) {
 
-        Settings.System.putInt(contentResolver,Settings.System.SCREEN_BRIGHTNESS,23)
+            Settings.System.putInt(contentResolver, Settings.System.SCREEN_BRIGHTNESS, 23)
             val attributes = window.attributes
             attributes.screenBrightness = (23 / 255).toFloat()
             window.attributes = attributes
-        }else{
+        } else {
 //            askPermission(activity = this, permissions = *arrayOf(Manifest.permission.WRITE_SETTINGS),permissionId = 5)
         }
     }
@@ -359,8 +359,9 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
         super.onPause()
         simpleExoPlayer?.playWhenReady = false
     }
-    fun foo(){
-        if(!videoUriPath.contains("http")|| !videoUriPath.contains("https")){
+
+    fun foo() {
+        if (!videoUriPath.contains("http") || !videoUriPath.contains("https")) {
             val mediaMetadataRetriever = MediaMetadataRetriever()
             mediaMetadataRetriever.setDataSource(videoUriPath)
             val width = mediaMetadataRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_VIDEO_WIDTH)
@@ -372,7 +373,7 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
         }
 
         val track = simpleExoPlayer?.currentTrackGroups
-        for (i in 0 until track?.length!!){
+        for (i in 0 until track?.length!!) {
             Log.d(TAG, "foo: track ${track.get(i)}")
         }
     }

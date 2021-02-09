@@ -1,7 +1,9 @@
 package com.one4ll.xplayer.database
 
 import android.content.Context
-import androidx.room.*
+import androidx.room.Database
+import androidx.room.Room
+import androidx.room.RoomDatabase
 import com.one4ll.xplayer.interfaces.*
 import com.one4ll.xplayer.models.*
 
@@ -17,7 +19,8 @@ abstract class MediaDatabase : RoomDatabase() {
         private var db: MediaDatabase? = null
         fun getInstance(context: Context): MediaDatabase {
             return db ?: synchronized(MediaDatabase::class) {
-                return db ?: Room.databaseBuilder(context, MediaDatabase::class.java, "mediaDatabase.db")
+                return db
+                        ?: Room.databaseBuilder(context, MediaDatabase::class.java, "mediaDatabase.db")
                                 .fallbackToDestructiveMigration()
                                 .build()
             }

@@ -18,8 +18,9 @@ public class MyContentProvider extends ContentProvider {
     public static UriMatcher uriMatcher;
     private TaskDbHelper taskDbHelper;
     public Context context;
-    public final int TASKS  =100;
+    public final int TASKS = 100;
     public final int TASKS_MID = 101;
+
     static {
     }
 
@@ -27,7 +28,7 @@ public class MyContentProvider extends ContentProvider {
     public boolean onCreate() {
         uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
         uriMatcher.addURI(TaskContract.authority, TaskContract.PATH_FAVOURITES, TASKS);
-        uriMatcher.addURI(TaskContract.authority,TaskContract.PATH_FAVOURITES+"/#",TASKS_MID);
+        uriMatcher.addURI(TaskContract.authority, TaskContract.PATH_FAVOURITES + "/#", TASKS_MID);
         taskDbHelper = new TaskDbHelper(context);
         return true;
     }
@@ -37,8 +38,8 @@ public class MyContentProvider extends ContentProvider {
     public Cursor query(@NonNull Uri uri, @Nullable String[] projection, @Nullable String selection, @Nullable String[] selectionArgs, @Nullable String sortOrder) {
         int match = uriMatcher.match(uri);
         SQLiteDatabase db = taskDbHelper.getReadableDatabase();
-        Cursor returnCursor ;
-        switch (match){
+        Cursor returnCursor;
+        switch (match) {
             case TASKS:
                 returnCursor = db.query(TaskContract.TaskEntry.TABLE_NAME,
                         projection,
@@ -51,7 +52,7 @@ public class MyContentProvider extends ContentProvider {
                 String[] selectionArguments = new String[]{normalizedString};
                 returnCursor = db.query(TaskContract.TaskEntry.TABLE_NAME,
                         projection,
-                        TaskContract.TaskEntry.COLUMN_ID +" = ? ",
+                        TaskContract.TaskEntry.COLUMN_ID + " = ? ",
                         selectionArguments,
                         null,
                         null,
@@ -75,13 +76,13 @@ public class MyContentProvider extends ContentProvider {
         SQLiteDatabase db = taskDbHelper.getWritableDatabase();
         int match = uriMatcher.match(uri);
         Uri returnUri;
-        switch (match){
+        switch (match) {
             case TASKS:
                 long id = db.insert(TaskContract.TaskEntry.TABLE_NAME, null, values);
-                if (id > 0){
-                    returnUri = ContentUris.withAppendedId(TaskContract.TaskEntry.CONTENT_URI,id );
-                }else{
-                    throw new SQLiteException("Failed "+ uri);
+                if (id > 0) {
+                    returnUri = ContentUris.withAppendedId(TaskContract.TaskEntry.CONTENT_URI, id);
+                } else {
+                    throw new SQLiteException("Failed " + uri);
                 }
                 break;
             default:
@@ -97,17 +98,17 @@ public class MyContentProvider extends ContentProvider {
         SQLiteDatabase db = taskDbHelper.getWritableDatabase();
         int match = uriMatcher.match(uri);
         int taskDeleted;
-        switch(match){
+        switch (match) {
             case TASKS:
                 String id = uri.getPathSegments().get(1);
                 taskDeleted = db.delete(TaskContract.TaskEntry.TABLE_NAME,
-                        TaskContract.TaskEntry.COLUMN_ID+" = ?",
+                        TaskContract.TaskEntry.COLUMN_ID + " = ?",
                         new String[]{id});
                 break;
             default:
-                throw new UnsupportedOperationException("Unknown "+ uri);
+                throw new UnsupportedOperationException("Unknown " + uri);
         }
-        if (taskDeleted != 0){
+        if (taskDeleted != 0) {
             getContext().getContentResolver().notifyChange(uri, null);
         }
         return taskDeleted;
