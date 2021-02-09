@@ -8,16 +8,22 @@ import com.one4ll.xplayer.models.Favorite
 interface FavoritesDao {
     @Update(onConflict = OnConflictStrategy.REPLACE)
     fun updateFavorites(favorite: Favorite)
+
     @Insert
     fun insertFavorite(favorite: Favorite)
+
     @Query("DELETE FROM favorite")
     fun removeAll()
+
     @Query("SELECT * FROM favorite")
-    fun selectAll() : LiveData<List<Favorite>>
+    fun selectAll(): LiveData<List<Favorite>>
+
     @Query("SELECT * FROM favorite ORDER BY time DESC")
-    fun selectAllByTimeInDesc() : LiveData<List<Favorite>>
+    fun selectAllByTimeInDesc(): LiveData<List<Favorite>>
+
     @Query("DELETE FROM favorite WHERE id = :id")
     fun removeById(id: Long)
+
     @Query("SELECT * FROM favorite WHERE id = :id")
-    fun getAllById(id: Long) :LiveData<Favorite>
+    fun getAllById(id: Long): LiveData<Favorite>
 }

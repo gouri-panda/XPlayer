@@ -2,7 +2,6 @@ package com.one4ll.xplayer.helpers
 
 import android.content.Context
 import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.media.ThumbnailUtils
 import android.net.Uri
 import android.provider.MediaStore
@@ -10,7 +9,6 @@ import android.util.Size
 import android.view.View
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.LiveData
 import com.bumptech.glide.Glide
 import com.one4ll.xplayer.Media
 import kotlinx.coroutines.*
@@ -296,8 +294,8 @@ suspend fun setVideoThumbNail(fiePath: String, imageView: ImageView) {
     }
 }
 
-suspend fun setImageThumbNail(fiePath: String, imageView: ImageView)  {
-    withContext(Default){
+suspend fun setImageThumbNail(fiePath: String, imageView: ImageView) {
+    withContext(Default) {
         var bitMap: Bitmap? = null
         async {
             bitMap = ThumbnailUtils.createImageThumbnail(fiePath, MediaStore.Images.Thumbnails.MINI_KIND)
@@ -307,6 +305,7 @@ suspend fun setImageThumbNail(fiePath: String, imageView: ImageView)  {
         }
     }
 }
+
 //todo remove coroutine scope and add suspend
 fun setMusicThumbNail(context: Context, fiePath: String, imageView: ImageView) = CoroutineScope(Dispatchers.Default).launch {
     try {
@@ -328,8 +327,9 @@ fun setMusicThumbNail(context: Context, fiePath: String, imageView: ImageView) =
     }
 
 }
-fun AppCompatActivity.hideSystemUI(toggleActionVisibility : Boolean){
-    if(toggleActionVisibility){
+
+fun AppCompatActivity.hideSystemUI(toggleActionVisibility: Boolean) {
+    if (toggleActionVisibility) {
         supportActionBar?.hide()
     }
     window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_STABLE or
@@ -340,8 +340,9 @@ fun AppCompatActivity.hideSystemUI(toggleActionVisibility : Boolean){
             View.SYSTEM_UI_FLAG_HIDE_NAVIGATION or
             View.SYSTEM_UI_FLAG_IMMERSIVE
 }
-fun AppCompatActivity.showSystemUi(toggleActionVisibility: Boolean){
-    if (toggleActionVisibility){
+
+fun AppCompatActivity.showSystemUi(toggleActionVisibility: Boolean) {
+    if (toggleActionVisibility) {
         supportActionBar?.show()
     }
     window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_STABLE or

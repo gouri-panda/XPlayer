@@ -9,10 +9,13 @@ import com.one4ll.xplayer.models.Video
 interface VideoDao {
     @Insert
     fun insert(video: Video)
+
     @Insert
-    fun insertAll(video : List<Video>)
+    fun insertAll(video: List<Video>)
+
     @Query("SELECT * FROM video")
-    fun getAll() : List<Video>
+    fun getAll(): List<Video>
+
     @Query("DELETE  FROM video")
     fun deleteAll()
 }
