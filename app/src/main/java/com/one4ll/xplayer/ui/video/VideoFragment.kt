@@ -44,9 +44,8 @@ class VideoFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        lifecycleScope.launch {
-            askPermissionForVideoList()
-        }
+        askPermissionForVideoList()
+
         val brightness = Settings.System.getInt(root.context.contentResolver, Settings.System.SCREEN_BRIGHTNESS)
         d(TAG, "onScroll: brightness $brightness")
     }
@@ -56,24 +55,29 @@ class VideoFragment : Fragment() {
      * Asks permission about read and write  if The device is below marshmallow then  no need to ask
      * we already have permission
      */
-    private suspend fun askPermissionForVideoList() {
+    private fun askPermissionForVideoList() {
         if (IS_MARSHMALLOW_OR_LETTER()) {
             if (havePermission(requireContext(), Manifest.permission.READ_EXTERNAL_STORAGE)) {
-                getVideoList()
+                lifecycleScope.launch { getVideoList() }
             } else {
-                //ask permission nicely!!
-                activity?.let { askPermission(it, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_SETTINGS, permissionId = STORAGE_PERMISSION) }
+//                ask permission nicely!!
+                activity?.let { activity ->
+                    askPermission(activity,
+                            Manifest.permission.READ_EXTERNAL_STORAGE,
+                            Manifest.permission.WRITE_SETTINGS,
+                            permissionId = STORAGE_PERMISSION)
+                }
             }
         } else {
-            getVideoList()
+            lifecycleScope.launch { getVideoList() }
         }
 
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-            if (requestCode == STORAGE_PERMISSION) {
+        d(TAG, "onRequestPermissionsResult: ")
+        if (requestCode == STORAGE_PERMISSION) {
+            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 lifecycleScope.launch { getVideoList() }
             }
         }
