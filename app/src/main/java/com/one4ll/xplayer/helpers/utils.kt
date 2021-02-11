@@ -23,7 +23,6 @@ import java.io.File
  * @return returns string of time
  */
 fun convertDuration(duration: Long): String {
-    var out: String? = null
     var hours: Long = 0
     try {
         hours = duration / 3600000
@@ -42,12 +41,11 @@ fun convertDuration(duration: Long): String {
     } else {
         seconds.substring(0, 2)
     }
-    out = if (hours > 0) {
+    return if (hours > 0) {
         "$hours:$minutes:$seconds"
     } else {
         "$minutes:$seconds"
     }
-    return out
 }
 
 /**
@@ -87,7 +85,7 @@ fun getInternalContentVideoUri(context: Context,
                     it.getString(videoInternalCursor.getColumnIndex(MediaStore.Video.VideoColumns.DURATION))
             val size =
                     it.getString(videoInternalCursor.getColumnIndex(MediaStore.Video.VideoColumns.SIZE))
-            val path =
+            @Suppress("DEPRECATION") val path =
                     it.getString(videoInternalCursor.getColumnIndex(MediaStore.Video.VideoColumns.DATA))
             try {
 //                    val bitmap = ThumbnailUtils.createVideoThumbnail(
@@ -144,7 +142,7 @@ fun getExternalContentVideoUri(context: Context, projection: Array<out String?>?
                     it.getString(videoExternalCursor.getColumnIndex(MediaStore.Video.VideoColumns.DURATION))
             val size =
                     it.getString(videoExternalCursor.getColumnIndex(MediaStore.Video.VideoColumns.SIZE))
-            val path =
+            @Suppress("DEPRECATION") val path =
                     it.getString(videoExternalCursor.getColumnIndex(MediaStore.Video.Media.DATA))
             try {
                 val n = convertDuration(duration.toLong())
@@ -199,7 +197,7 @@ fun getExternalContentImageUri(context: Context, projection: Array<out String?>?
                     it.getString(imageExternalCursor.getColumnIndex(MediaStore.Images.ImageColumns.DATE_TAKEN))
             val size =
                     it.getString(imageExternalCursor.getColumnIndex(MediaStore.Images.ImageColumns.SIZE))
-            val path =
+            @Suppress("DEPRECATION") val path =
                     it.getString(imageExternalCursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA))
             try {
                 val n = convertDuration(duration.toLong())
@@ -255,7 +253,7 @@ fun getInternalContentImageUri(context: Context,
                     it.getString(imageExternalCursor.getColumnIndex(MediaStore.Images.ImageColumns.DATE_TAKEN))
             val size =
                     it.getString(imageExternalCursor.getColumnIndex(MediaStore.Images.ImageColumns.SIZE))
-            val path =
+            @Suppress("DEPRECATION") val path =
                     it.getString(imageExternalCursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA))
             try {
                 val n = convertDuration(duration.toLong())
@@ -287,6 +285,7 @@ fun getInternalContentImageUri(context: Context,
  * @param context of the the application
  * @return the arrayList of [Media]
  */
+@Suppress("unused")
 fun getInternalContentMusicUri(context: Context, projection: Array<out String?>? = null,
                                selection: String?, selectionArgs: Array<out String?>? = null,
                                sortOrder: String? = null): ArrayList<Media> {
@@ -310,7 +309,7 @@ fun getInternalContentMusicUri(context: Context, projection: Array<out String?>?
                     it.getString(musicExternalCursor.getColumnIndex(MediaStore.Audio.AudioColumns.DURATION))
             val size =
                     it.getString(musicExternalCursor.getColumnIndex(MediaStore.Audio.AudioColumns.SIZE))
-            val path =
+            @Suppress("DEPRECATION") val path =
                     it.getString(musicExternalCursor.getColumnIndex(MediaStore.Audio.AudioColumns.DATA))
             try {
                 val n = convertDuration(duration.toLong())
@@ -342,6 +341,7 @@ fun getInternalContentMusicUri(context: Context, projection: Array<out String?>?
  *         default sort order, which may be unordered.
  * @return the arrayList of [Media]
  */
+@Suppress("unused")
 fun getExternalContentMusicUri(context: Context,
                                projection: Array<out String?>? = null,
                                selection: String?,
@@ -367,7 +367,7 @@ fun getExternalContentMusicUri(context: Context,
                     it.getString(musicExternalCursor.getColumnIndex(MediaStore.Audio.AudioColumns.DURATION))
             val size =
                     it.getString(musicExternalCursor.getColumnIndex(MediaStore.Audio.AudioColumns.SIZE))
-            val path =
+            @Suppress("DEPRECATION") val path =
                     it.getString(musicExternalCursor.getColumnIndex(MediaStore.Audio.AudioColumns.DATA))
             try {
                 val n = convertDuration(duration.toLong())
@@ -388,6 +388,7 @@ fun getExternalContentMusicUri(context: Context,
  * @param file the video file
  * @param imageView where we wanna set the Thumbnail
  */
+@Suppress("unused")
 suspend fun Context.setVideoThumbNail(file: File, imageView: ImageView) {
     setVideoThumbNail(file.canonicalPath, imageView)
 }
@@ -412,6 +413,7 @@ suspend fun Context.setVideoThumbNail(filePath: String, imageView: ImageView) {
  * @param file The image file
  * @param imageView where we wanna set the Thumbnail
  */
+@Suppress("unused")
 suspend fun setImageThumbNail(file: File, imageView: ImageView) {
     setImageThumbNail(file.canonicalPath, imageView)
 }
@@ -435,6 +437,7 @@ suspend fun setImageThumbNail(filePath: String, imageView: ImageView) {
  * @param file the music file
  * @param imageView where we wanna set the Thumbnail
  */
+@Suppress("unused")
 suspend fun setMusicThumbNail(context: Context, file: File, imageView: ImageView) {
     setMusicThumbNail(context, file.canonicalPath, imageView)
 }
@@ -445,6 +448,7 @@ suspend fun setMusicThumbNail(context: Context, file: File, imageView: ImageView
  * @param fiePath The image filePath we wanna convert into ThumbNail
  * @param imageView where we wanna set the Thumbnail
  */
+@Suppress("DEPRECATION")
 suspend fun setMusicThumbNail(context: Context, fiePath: String, imageView: ImageView) = withContext(IO) {
     try {
         val bitMap: Bitmap? = if (IS_Q_OR_LETTER()) {
@@ -484,6 +488,7 @@ fun AppCompatActivity.hideSystemUI(toggleActionVisibility: Boolean) {
  * Shows the system UI
  * @param toggleActionVisibility false if we wanna hide true if showUi
  */
+@Suppress("unused")
 fun AppCompatActivity.showSystemUi(toggleActionVisibility: Boolean) {
     if (toggleActionVisibility) {
         supportActionBar?.show()
