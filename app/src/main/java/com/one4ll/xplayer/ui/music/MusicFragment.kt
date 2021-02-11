@@ -49,7 +49,6 @@ class SlideshowFragment : Fragment() {
 
 
     private suspend fun setAdapter(musicUriList: List<Media>, root: View) {
-        musicRecyclerViewAdapter = MusicRecyclerViewAdapter(musicUriList, lifecycleScope)
         withContext(Main) {
             musicRecyclerViewAdapter.loadVideo(musicUriList)
             root.music_list_recycler_view.apply {
