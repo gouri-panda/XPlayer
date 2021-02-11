@@ -22,15 +22,12 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.Default
 import kotlinx.coroutines.launch
 
-private const val TAG = "VideoRecylerViewAdapter"
+private const val TAG = "VidRecyclerViewAdapter"
 
-class VideoRecylerViewAdapter(val activity: Activity, var list: List<Media>) :
-        RecyclerView.Adapter<VideoRecylerViewAdapter.ViewHolder>() {
-    init {
+class VideoRecyclerViewAdapter(val activity: Activity, var list: List<Media>) :
+        RecyclerView.Adapter<VideoRecyclerViewAdapter.ViewHolder>() {
 
-    }
-
-    protected lateinit var actionModeCallback: ActionModeCallback
+    private lateinit var actionModeCallback: ActionModeCallback
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view: View?
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -107,9 +104,9 @@ class VideoRecylerViewAdapter(val activity: Activity, var list: List<Media>) :
 
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val imageView = itemView.findViewById<ImageView>(R.id.imageView)
-        val title = itemView.findViewById<TextView>(R.id.name)
-        val duration = itemView.findViewById<TextView>(R.id.duration)
+        val imageView: ImageView = itemView.findViewById(R.id.imageView)
+        val title: TextView = itemView.findViewById(R.id.name)
+        val duration: TextView = itemView.findViewById(R.id.duration)
     }
 
 

@@ -15,20 +15,19 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.one4ll.xplayer.Media
 import com.one4ll.xplayer.R
-import com.one4ll.xplayer.adapter.VideoRecylerViewAdapter
+import com.one4ll.xplayer.adapter.VideoRecyclerViewAdapter
 import com.one4ll.xplayer.helpers.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
 import kotlinx.coroutines.*
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
 
-private const val TAG = "homefragment"
+private const val TAG = "homeFragment"
 
 // TODO how to set permission with Android view model
 class VideoFragment : Fragment() {
-    private val videoViewModel: VideoViewModel by viewModels()
+    private val   videoViewModel: VideoViewModel by viewModels()
     private lateinit var root: View
-    private lateinit var job: Job
 
 
     override fun onCreateView(
@@ -41,7 +40,7 @@ class VideoFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        job = lifecycleScope.launch {
+        lifecycleScope.launch {
             askPermissionForVideoList()
         }
         val brightNess = Settings.System.getInt(root.context.contentResolver, Settings.System.SCREEN_BRIGHTNESS)
@@ -55,7 +54,11 @@ class VideoFragment : Fragment() {
                 getVideoList()
             } else {
                 //ask permission nicely!!
-                activity?.let { askPermission(it, permissions = *arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_SETTINGS), permissionId = 2) }
+                activity?.let {
+                    askPermission(activity = it,
+                            permissions = *arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
+                            permissionId = 2)
+                }
             }
         } else {
             getVideoList()
@@ -77,12 +80,12 @@ class VideoFragment : Fragment() {
             d(TAG, "setAdapter: thread ${Thread.currentThread().name}")
             val sharedPreferences = root.context.getSharedPreferences(SHARED_PREF_SETTINGS, Context.MODE_PRIVATE)
             if (sharedPreferences.getBoolean(IS_GRID_LAYOUT, false)) {
-                val adapter = activity?.let { VideoRecylerViewAdapter(it, videoList) }
+                val adapter = activity?.let { VideoRecyclerViewAdapter(it, videoList) }
                 root.video_list_recycler_view.adapter = adapter
                 val gridLayoutManager = GridLayoutManager(root.context, 2)
                 root.video_list_recycler_view.layoutManager = gridLayoutManager
             } else {
-                val adapter = activity?.let { VideoRecylerViewAdapter(it, videoList) }
+                val adapter = activity?.let { VideoRecyclerViewAdapter(it, videoList) }
                 root.video_list_recycler_view.apply {
                     this.adapter = adapter
                     layoutManager = LinearLayoutManager(root.context, LinearLayoutManager.VERTICAL, false)
