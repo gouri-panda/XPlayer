@@ -9,7 +9,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -18,17 +17,19 @@ import com.one4ll.xplayer.R
 import com.one4ll.xplayer.adapter.VideoRecyclerViewAdapter
 import com.one4ll.xplayer.helpers.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
-import kotlinx.coroutines.*
+import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
+import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
-private const val TAG = "homefragment"
+private const val TAG = "homeFragment"
 
 // TODO how to set permission with Android view model
 class VideoFragment : Fragment() {
-    private val videoViewModel: VideoViewModel by viewModels()
+//    private val videoViewModel: VideoViewModel by viewModels()
     private lateinit var root: View
-    private lateinit var job: Job
 
 
     override fun onCreateView(
@@ -41,11 +42,11 @@ class VideoFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        job = lifecycleScope.launch {
+        lifecycleScope.launch {
             askPermissionForVideoList()
         }
-        val brightNess = Settings.System.getInt(root.context.contentResolver, Settings.System.SCREEN_BRIGHTNESS)
-        d(TAG, "onScroll: brightness $brightNess")
+        val brightness = Settings.System.getInt(root.context.contentResolver, Settings.System.SCREEN_BRIGHTNESS)
+        d(TAG, "onScroll: brightness $brightness")
     }
 
     //we will ask  once for videos ,images and audios
@@ -55,7 +56,7 @@ class VideoFragment : Fragment() {
                 getVideoList()
             } else {
                 //ask permission nicely!!
-                activity?.let { askPermission(it, permissions = *arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_SETTINGS), permissionId = 2) }
+                activity?.let { askPermission(it, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_SETTINGS, permissionId = 2) }
             }
         } else {
             getVideoList()
@@ -88,9 +89,6 @@ class VideoFragment : Fragment() {
                     layoutManager = LinearLayoutManager(root.context, LinearLayoutManager.VERTICAL, false)
                 }
             }
-
-
         }
     }
-
 }
