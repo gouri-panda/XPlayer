@@ -37,21 +37,23 @@ class SlideshowFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         musicRecyclerViewAdapter = MusicRecyclerViewAdapter(listOf(), lifecycleScope)
-        musicViewModel.musicList.observe(viewLifecycleOwner, Observer { mediaList ->
-            if (mediaList != null) {
-                Log.d(TAG, "onCreateView: ex size ${mediaList.size}")
+        musicViewModel.musicUriList.observe(viewLifecycleOwner, Observer { musicUriList ->
+            if (musicUriList != null) {
+                Log.d(TAG, "onCreateView: ex size ${musicUriList.size}")
                 lifecycleScope.launch {
-                    setAdapter(mediaList, root)
+                    setAdapter(musicUriList, root)
                 }
             }
         })
     }
 
-    private suspend fun setAdapter(mediaList: List<Media>, root: View) {
+
+    private suspend fun setAdapter(musicUriList: List<Media>, root: View) {
+        musicRecyclerViewAdapter = MusicRecyclerViewAdapter(musicUriList, lifecycleScope)
         withContext(Main) {
-            musicRecyclerViewAdapter.loadVideo(mediaList)
+            musicRecyclerViewAdapter.loadVideo(musicUriList)
             root.music_list_recycler_view.apply {
-                this.adapter = adapter
+                this.adapter = musicRecyclerViewAdapter
                 layoutManager = LinearLayoutManager(root.context, LinearLayoutManager.VERTICAL, false)
             }
         }

@@ -467,7 +467,7 @@ suspend fun setMusicThumbNail(context: Context, fiePath: String, imageView: Imag
         }
     } catch (e: java.lang.Exception) {
         e.printStackTrace()
-        context.contentResolver.loadThumbnail(Uri.parse(fiePath), Size(100, 100), null)
+//        context.contentResolver.loadThumbnail(Uri.parse(fiePath), Size(100, 100), null)
 
     }
 
