@@ -1,8 +1,8 @@
 ![basic_logo](https://user-images.githubusercontent.com/43576162/107629010-7ab50300-6c87-11eb-814f-c2aa4d421fb4.png)
-# XPlayer 
+# XPlayer (work-in-progress ⛏⛏⛏)
 
-This is a simple Media player application where the user sees his/her videos, images and audio.
-
+XPlayre is a **work-in-progress** This is a simple Media player application where the user sees his/her videos, images and audio.
+It is still in its early stages of development It is under heavy development.
 
 # Setting up the project
 Step 1 : Fork, Clone and Remote </br>
