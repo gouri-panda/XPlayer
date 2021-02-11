@@ -17,6 +17,11 @@ import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
 import java.io.File
 
+/**
+ * Converts long(i.e in milli seconds to string)
+ * @param duration the time in milli second
+ * @return returns string of time
+ */
 fun convertDuration(duration: Long): String {
     var out: String? = null
     var hours: Long = 0
@@ -45,22 +50,34 @@ fun convertDuration(duration: Long): String {
     return out
 }
 
-fun getInternalContentVideoUri(context: Context): ArrayList<Media> {
+/**
+ * Gets the all video uri of internal storage
+ * @param context of the the application
+ * @param projection A list of which columns to return. Passing null will
+ *         return all columns, which is inefficient.
+ * @param selection A filter declaring which rows to return, formatted as an
+ *         SQL WHERE clause (excluding the WHERE itself). Passing null will
+ *         return all rows for the given URI.
+ * @param selectionArgs You may include ?s in selection, which will be
+ *         replaced by the values from selectionArgs, in the order that they
+ *         appear in the selection. The values will be bound as Strings.
+ * @param sortOrder How to order the rows, formatted as an SQL ORDER BY
+ *         clause (excluding the ORDER BY itself). Passing null will use the
+ *         default sort order, which may be unordered.
+ * @return the arrayList of [Media]
+ */
+fun getInternalContentVideoUri(context: Context,
+                               projection: Array<out String?>? = null,
+                               selection: String?, selectionArgs: Array<out String?>? = null,
+                               sortOrder: String? = null)
+        : ArrayList<Media> {
     val videoList = ArrayList<Media>()
-    val videoProjection = arrayOf(
-            MediaStore.Video.VideoColumns.ALBUM,
-            MediaStore.Video.VideoColumns.DATE_ADDED,
-            MediaStore.Video.VideoColumns.DISPLAY_NAME,
-            MediaStore.Video.VideoColumns.DURATION,
-            MediaStore.Video.VideoColumns.SIZE,
-            MediaStore.Video.VideoColumns.DATA
-    )
     val videoInternalCursor = context.contentResolver.query(
             MediaStore.Video.Media.INTERNAL_CONTENT_URI,
-            videoProjection,
-            null,
-            null,
-            null
+            projection,
+            selection,
+            selectionArgs,
+            sortOrder
     )
     videoInternalCursor?.let {
         while (it.moveToNext()) {
@@ -89,24 +106,33 @@ fun getInternalContentVideoUri(context: Context): ArrayList<Media> {
     return videoList
 }
 
-fun getExternalContentVideoUri(context: Context): ArrayList<Media> {
+/**
+ * Gets the all video uri of primary external storage
+ * @param context of the the application
+ * @param projection A list of which columns to return. Passing null will
+ *         return all columns, which is inefficient.
+ * @param selection A filter declaring which rows to return, formatted as an
+ *         SQL WHERE clause (excluding the WHERE itself). Passing null will
+ *         return all rows for the given URI.
+ * @param selectionArgs You may include ?s in selection, which will be
+ *         replaced by the values from selectionArgs, in the order that they
+ *         appear in the selection. The values will be bound as Strings.
+ * @param sortOrder How to order the rows, formatted as an SQL ORDER BY
+ *         clause (excluding the ORDER BY itself). Passing null will use the
+ *         default sort order, which may be unordered.
+ * @return the arrayList of [Media]
+ */
+fun getExternalContentVideoUri(context: Context, projection: Array<out String?>? = null,
+                               selection: String?, selectionArgs: Array<out String?>? = null,
+                               sortOrder: String? = null): ArrayList<Media> {
     val videoList = ArrayList<Media>()
-    //video projection
-    val videoProjection = arrayOf(
-            MediaStore.Video.VideoColumns.ALBUM,
-            MediaStore.Video.VideoColumns.DATE_ADDED,
-            MediaStore.Video.VideoColumns.DISPLAY_NAME,
-            MediaStore.Video.VideoColumns.DURATION,
-            MediaStore.Video.VideoColumns.SIZE,
-            MediaStore.Video.VideoColumns.DATA
-    )
     //query from content resolver
     val videoExternalCursor = context.contentResolver.query(
             MediaStore.Video.Media.EXTERNAL_CONTENT_URI,
-            videoProjection,
-            null,
-            null,
-            null
+            projection,
+            selection,
+            selectionArgs,
+            sortOrder
     )
 
     //iterating cursor to get Video list
@@ -134,16 +160,34 @@ fun getExternalContentVideoUri(context: Context): ArrayList<Media> {
     return videoList
 }
 
-fun getExternalContentImageUri(context: Context): ArrayList<Media> {
+/**
+ * Gets the all imageUri uri of primary external storage
+ * @param context of the the application
+ * @param projection A list of which columns to return. Passing null will
+ *         return all columns, which is inefficient.
+ * @param selection A filter declaring which rows to return, formatted as an
+ *         SQL WHERE clause (excluding the WHERE itself). Passing null will
+ *         return all rows for the given URI.
+ * @param selectionArgs You may include ?s in selection, which will be
+ *         replaced by the values from selectionArgs, in the order that they
+ *         appear in the selection. The values will be bound as Strings.
+ * @param sortOrder How to order the rows, formatted as an SQL ORDER BY
+ *         clause (excluding the ORDER BY itself). Passing null will use the
+ *         default sort order, which may be unordered.
+ * @return the arrayList of [Media]
+ */
+fun getExternalContentImageUri(context: Context, projection: Array<out String?>? = null,
+                               selection: String?, selectionArgs: Array<out String?>? = null,
+                               sortOrder: String? = null): ArrayList<Media> {
     val videoList = ArrayList<Media>()
     //video projection
     //query from content resolver
     val imageExternalCursor = context.contentResolver.query(
             MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
-            null,
-            null,
-            null,
-            null
+            projection,
+            selection,
+            selectionArgs,
+            sortOrder
     )
 
     //iterating cursor to get Video list
@@ -171,16 +215,35 @@ fun getExternalContentImageUri(context: Context): ArrayList<Media> {
     return videoList
 }
 
-fun getInternalContentImageUri(context: Context): ArrayList<Media> {
+/**
+ * Gets the all image uri of internal storage
+ * @param projection A list of which columns to return. Passing null will
+ *         return all columns, which is inefficient.
+ * @param selection A filter declaring which rows to return, formatted as an
+ *         SQL WHERE clause (excluding the WHERE itself). Passing null will
+ *         return all rows for the given URI.
+ * @param selectionArgs You may include ?s in selection, which will be
+ *         replaced by the values from selectionArgs, in the order that they
+ *         appear in the selection. The values will be bound as Strings.
+ * @param sortOrder How to order the rows, formatted as an SQL ORDER BY
+ *         clause (excluding the ORDER BY itself). Passing null will use the
+ *         default sort order, which may be unordered.
+ * @param context of the the application
+ * @return the arrayList of [Media]
+ */
+fun getInternalContentImageUri(context: Context,
+                               projection: Array<out String?>? = null,
+                               selection: String?, selectionArgs: Array<out String?>? = null,
+                               sortOrder: String? = null): ArrayList<Media> {
     val videoList = ArrayList<Media>()
     //video projection
     //query from content resolver
     val imageExternalCursor = context.contentResolver.query(
             MediaStore.Images.Media.INTERNAL_CONTENT_URI,
-            null,
-            null,
-            null,
-            null
+            projection,
+            selection,
+            selectionArgs,
+            sortOrder
     )
 
     //iterating cursor to get Video list
@@ -208,16 +271,34 @@ fun getInternalContentImageUri(context: Context): ArrayList<Media> {
     return videoList
 }
 
-fun getInternalContentMusicUri(context: Context): ArrayList<Media> {
+/**
+ * Gets the all music uri of internal storage
+ * @param projection A list of which columns to return. Passing null will
+ *         return all columns, which is inefficient.
+ * @param selection A filter declaring which rows to return, formatted as an
+ *         SQL WHERE clause (excluding the WHERE itself). Passing null will
+ *         return all rows for the given URI.
+ * @param selectionArgs You may include ?s in selection, which will be
+ *         replaced by the values from selectionArgs, in the order that they
+ *         appear in the selection. The values will be bound as Strings.
+ * @param sortOrder How to order the rows, formatted as an SQL ORDER BY
+ *         clause (excluding the ORDER BY itself). Passing null will use the
+ *         default sort order, which may be unordered.
+ * @param context of the the application
+ * @return the arrayList of [Media]
+ */
+fun getInternalContentMusicUri(context: Context, projection: Array<out String?>? = null,
+                               selection: String?, selectionArgs: Array<out String?>? = null,
+                               sortOrder: String? = null): ArrayList<Media> {
     val videoList = ArrayList<Media>()
     //video projection
     //query from content resolver
     val musicExternalCursor = context.contentResolver.query(
             MediaStore.Audio.Media.INTERNAL_CONTENT_URI,
-            null,
-            null,
-            null,
-            null
+            projection,
+            selection,
+            selectionArgs,
+            sortOrder
     )
 
     //iterating cursor to get Video list
@@ -245,16 +326,36 @@ fun getInternalContentMusicUri(context: Context): ArrayList<Media> {
     return videoList
 }
 
-fun getExternalContentMusicUri(context: Context): ArrayList<Media> {
+/**
+ * Gets the all musicUri uri of primary external storage
+ * @param context of the the application
+ * @param projection A list of which columns to return. Passing null will
+ *         return all columns, which is inefficient.
+ * @param selection A filter declaring which rows to return, formatted as an
+ *         SQL WHERE clause (excluding the WHERE itself). Passing null will
+ *         return all rows for the given URI.
+ * @param selectionArgs You may include ?s in selection, which will be
+ *         replaced by the values from selectionArgs, in the order that they
+ *         appear in the selection. The values will be bound as Strings.
+ * @param sortOrder How to order the rows, formatted as an SQL ORDER BY
+ *         clause (excluding the ORDER BY itself). Passing null will use the
+ *         default sort order, which may be unordered.
+ * @return the arrayList of [Media]
+ */
+fun getExternalContentMusicUri(context: Context,
+                               projection: Array<out String?>? = null,
+                               selection: String?,
+                               selectionArgs: Array<out String?>? = null,
+                               sortOrder: String? = null): ArrayList<Media> {
     val videoList = ArrayList<Media>()
     //video projection
     //query from content resolver
     val musicExternalCursor = context.contentResolver.query(
             MediaStore.Audio.Media.EXTERNAL_CONTENT_URI,
-            null,
-            null,
-            null,
-            null
+            projection,
+            selection,
+            selectionArgs,
+            sortOrder
     )
 
     //iterating cursor to get Video list
@@ -282,6 +383,20 @@ fun getExternalContentMusicUri(context: Context): ArrayList<Media> {
     return videoList
 }
 
+/**
+ * Creates a thumbNail for the given video file
+ * @param file the video file
+ * @param imageView where we wanna set the Thumbnail
+ */
+suspend fun Context.setVideoThumbNail(file: File, imageView: ImageView) {
+    setVideoThumbNail(file.canonicalPath, imageView)
+}
+
+/**
+ * Creates a thumbNail for the given video file
+ * @param filePath The  video filePath we wanna convert into ThumbNail
+ * @param imageView where we wanna set the Thumbnail
+ */
 suspend fun Context.setVideoThumbNail(filePath: String, imageView: ImageView) {
     withContext(IO) {
         val bitMap: Bitmap = ThumbnailUtils.createVideoThumbnail(File(filePath), Size(200, 200), CancellationSignal())
@@ -292,6 +407,20 @@ suspend fun Context.setVideoThumbNail(filePath: String, imageView: ImageView) {
     }
 }
 
+/**
+ * Creates a thumbNail for the given image file
+ * @param file The image file
+ * @param imageView where we wanna set the Thumbnail
+ */
+suspend fun setImageThumbNail(file: File, imageView: ImageView) {
+    setImageThumbNail(file.canonicalPath, imageView)
+}
+
+/**
+ * Creates a thumbNail for the given image file
+ * @param filePath The image filePath we wanna convert into ThumbNail
+ * @param imageView where we wanna set the Thumbnail
+ */
 suspend fun setImageThumbNail(filePath: String, imageView: ImageView) {
     withContext(IO) {
         val bitMap: Bitmap = ThumbnailUtils.createImageThumbnail(File(filePath), Size(200, 200), CancellationSignal())
@@ -301,7 +430,21 @@ suspend fun setImageThumbNail(filePath: String, imageView: ImageView) {
     }
 }
 
-//todo remove coroutine scope and add suspend
+/**
+ * Creates a thumbNail for the given music file
+ * @param file the music file
+ * @param imageView where we wanna set the Thumbnail
+ */
+suspend fun setMusicThumbNail(context: Context, file: File, imageView: ImageView) {
+    setMusicThumbNail(context, file.canonicalPath, imageView)
+}
+
+/**
+ * Creates a thumbNail for the given image file
+ * @param context of the application
+ * @param fiePath The image filePath we wanna convert into ThumbNail
+ * @param imageView where we wanna set the Thumbnail
+ */
 suspend fun setMusicThumbNail(context: Context, fiePath: String, imageView: ImageView) = withContext(IO) {
     try {
         val bitMap: Bitmap? = if (IS_Q_OR_LETTER()) {
@@ -320,6 +463,10 @@ suspend fun setMusicThumbNail(context: Context, fiePath: String, imageView: Imag
 
 }
 
+/**
+ * Hides the system UI
+ * @param toggleActionVisibility true if we wanna hide false if showUi
+ */
 fun AppCompatActivity.hideSystemUI(toggleActionVisibility: Boolean) {
     if (toggleActionVisibility) {
         supportActionBar?.hide()
@@ -333,6 +480,10 @@ fun AppCompatActivity.hideSystemUI(toggleActionVisibility: Boolean) {
             View.SYSTEM_UI_FLAG_IMMERSIVE
 }
 
+/**
+ * Shows the system UI
+ * @param toggleActionVisibility false if we wanna hide true if showUi
+ */
 fun AppCompatActivity.showSystemUi(toggleActionVisibility: Boolean) {
     if (toggleActionVisibility) {
         supportActionBar?.show()

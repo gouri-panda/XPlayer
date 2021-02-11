@@ -32,7 +32,7 @@ class AllFilesList : AppCompatActivity() {
         setContentView(R.layout.activity_all_files_list)
         thumbnail.delete()
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-        val videoList = ArrayList<Media>()
+        val videoList: ArrayList<Media> = ArrayList()
         videoRecyclerViewAdapter = VideoRecyclerViewAdapter(this, videoList)
 
         video_list_recycler_view.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
@@ -44,8 +44,8 @@ class AllFilesList : AppCompatActivity() {
     }
 
     private fun getVideoList() {
-        val externalVideoList = getExternalContentVideoUri(this)
-        val internalVideoList = getInternalContentVideoUri(this)
+        val externalVideoList: ArrayList<Media> = getExternalContentVideoUri(this)
+        val internalVideoList: ArrayList<Media> = getInternalContentVideoUri(this)
         externalVideoList.addAll(internalVideoList)
         videoRecyclerViewAdapter.loadVideo(externalVideoList)
         lifecycleScope.launch {
@@ -90,7 +90,6 @@ class AllFilesList : AppCompatActivity() {
                 }
             }
         }
-
     }
 
 
