@@ -1,4 +1,6 @@
-# XPlayer
+![basic_logo](https://user-images.githubusercontent.com/43576162/107629010-7ab50300-6c87-11eb-814f-c2aa4d421fb4.png)
+# XPlayer 
+
 This is a simple Media player application where the user sees his/her videos, images and audio.
 
 
@@ -34,4 +36,4 @@ now you are ready to get started 🎉
 # Contributing
 Get started with this simple and easy to follow project , it doesn't matter whether you are a beginner or a pro in android-development and open source !
 We are always here to help you out and get started . </br>
-Find a issue and then solve  the isssue and make a pull request to the repo. If you didn't find any helpful issue for you then raise a issue and start solving the issue.
+Find a issue and then solve  the isssue and make a pull request to the repo. If you didn't find any helpful issue for you then raise a issue and start solving the issue. Also if you like this project please give a star to motivate us!
