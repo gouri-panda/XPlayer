@@ -3,6 +3,7 @@ package com.one4ll.xplayer
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.view.Gravity
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
@@ -27,6 +28,7 @@ class GalleryActivity : AppCompatActivity() {
     private lateinit var sharedPreferences: SharedPreferences
     private lateinit var navController: NavController
     private var isGrid by Delegates.notNull<Boolean>()
+    private lateinit var drawerLayout: DrawerLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,12 +37,13 @@ class GalleryActivity : AppCompatActivity() {
 
 
         val toolbar: Toolbar = findViewById(R.id.toolbar)
+        drawerLayout = findViewById(R.id.drawer_layout)
         setSupportActionBar(toolbar)
 
 
         sharedPreferences = getSharedPreferences(SHARED_PREF_SETTINGS, Context.MODE_PRIVATE)
         isGrid = sharedPreferences.getBoolean(IS_GRID_LAYOUT, false)
-        val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
+        var drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
 
         val navView: NavigationView = findViewById(R.id.nav_view)
@@ -77,6 +80,10 @@ class GalleryActivity : AppCompatActivity() {
                 }
                 return true
             }
+            android.R.id.home -> {
+                drawerLayout.openDrawer(Gravity.LEFT);
+
+            }
         }
         return true
     }
@@ -84,6 +91,14 @@ class GalleryActivity : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
+    }
+
+    override fun onBackPressed() {
+        if (drawerLayout.isDrawerOpen(Gravity.LEFT)) {
+            drawerLayout.close()
+        } else {
+            super.onBackPressed()
+        }
     }
 
 
