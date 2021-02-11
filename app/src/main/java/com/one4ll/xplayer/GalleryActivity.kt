@@ -43,7 +43,6 @@ class GalleryActivity : AppCompatActivity() {
 
         sharedPreferences = getSharedPreferences(SHARED_PREF_SETTINGS, Context.MODE_PRIVATE)
         isGrid = sharedPreferences.getBoolean(IS_GRID_LAYOUT, false)
-        var drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
 
         val navView: NavigationView = findViewById(R.id.nav_view)
