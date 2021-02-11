@@ -2,6 +2,7 @@ package com.one4ll.xplayer.ui.video
 
 import android.Manifest
 import android.content.Context
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.provider.Settings
 import android.util.Log.d
@@ -25,10 +26,11 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 private const val TAG = "homeFragment"
+private const val STORAGE_PERMISSION = 2
 
-// TODO how to set permission with Android view model
+// TODO how to set permission with Android view model??
 class VideoFragment : Fragment() {
-//    private val videoViewModel: VideoViewModel by viewModels()
+    //    private val videoViewModel: VideoViewModel by viewModels()
     private lateinit var root: View
 
 
@@ -50,13 +52,17 @@ class VideoFragment : Fragment() {
     }
 
     //we will ask  once for videos ,images and audios
+    /**
+     * Asks permission about read and write  if The device is below marshmallow then  no need to ask
+     * we already have permission
+     */
     private suspend fun askPermissionForVideoList() {
         if (IS_MARSHMALLOW_OR_LETTER()) {
             if (havePermission(requireContext(), Manifest.permission.READ_EXTERNAL_STORAGE)) {
                 getVideoList()
             } else {
                 //ask permission nicely!!
-                activity?.let { askPermission(it, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_SETTINGS, permissionId = 2) }
+                activity?.let { askPermission(it, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_SETTINGS, permissionId = STORAGE_PERMISSION) }
             }
         } else {
             getVideoList()
@@ -64,6 +70,19 @@ class VideoFragment : Fragment() {
 
     }
 
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            if (requestCode == STORAGE_PERMISSION) {
+                lifecycleScope.launch { getVideoList() }
+            }
+        }
+    }
+
+    /**
+     * Gets the all video list from internal storage and external storage
+     * then it stores in the database
+     */
     private suspend fun getVideoList() {
         withContext(IO) {
             val externalContentVideoJob: Deferred<ArrayList<Media>> = async { getExternalContentVideoUri(root.context) }
@@ -73,6 +92,9 @@ class VideoFragment : Fragment() {
         }
     }
 
+    /**
+     * Sets the adapter
+     */
     private suspend fun setAdapter(videoList: List<Media>) {
         withContext(Main) {
             d(TAG, "setAdapter: thread ${Thread.currentThread().name}")

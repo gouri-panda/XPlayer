@@ -42,6 +42,9 @@ class VideoRecyclerViewAdapter(private val activity: Activity, var list: List<Me
         return list.size
     }
 
+    /**
+     * Updates the list and notify the changes
+     */
     fun loadVideo(list: ArrayList<Media>) {
         this.list = list
         notifyDataSetChanged()

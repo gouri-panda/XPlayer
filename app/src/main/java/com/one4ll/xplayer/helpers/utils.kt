@@ -66,7 +66,8 @@ fun convertDuration(duration: Long): String {
  */
 fun getInternalContentVideoUri(context: Context,
                                projection: Array<out String?>? = null,
-                               selection: String?, selectionArgs: Array<out String?>? = null,
+                               selection: String? = null,
+                               selectionArgs: Array<out String?>? = null,
                                sortOrder: String? = null)
         : ArrayList<Media> {
     val videoList = ArrayList<Media>()
@@ -120,8 +121,10 @@ fun getInternalContentVideoUri(context: Context,
  *         default sort order, which may be unordered.
  * @return the arrayList of [Media]
  */
-fun getExternalContentVideoUri(context: Context, projection: Array<out String?>? = null,
-                               selection: String?, selectionArgs: Array<out String?>? = null,
+fun getExternalContentVideoUri(context: Context,
+                               projection: Array<out String?>? = null,
+                               selection: String? = null,
+                               selectionArgs: Array<out String?>? = null,
                                sortOrder: String? = null): ArrayList<Media> {
     val videoList = ArrayList<Media>()
     //query from content resolver
@@ -174,8 +177,10 @@ fun getExternalContentVideoUri(context: Context, projection: Array<out String?>?
  *         default sort order, which may be unordered.
  * @return the arrayList of [Media]
  */
-fun getExternalContentImageUri(context: Context, projection: Array<out String?>? = null,
-                               selection: String?, selectionArgs: Array<out String?>? = null,
+fun getExternalContentImageUri(context: Context,
+                               projection: Array<out String?>? = null,
+                               selection: String? = null,
+                               selectionArgs: Array<out String?>? = null,
                                sortOrder: String? = null): ArrayList<Media> {
     val videoList = ArrayList<Media>()
     //video projection
@@ -231,7 +236,8 @@ fun getExternalContentImageUri(context: Context, projection: Array<out String?>?
  */
 fun getInternalContentImageUri(context: Context,
                                projection: Array<out String?>? = null,
-                               selection: String?, selectionArgs: Array<out String?>? = null,
+                               selection: String? = null,
+                               selectionArgs: Array<out String?>? = null,
                                sortOrder: String? = null): ArrayList<Media> {
     val videoList = ArrayList<Media>()
     //video projection
@@ -287,7 +293,7 @@ fun getInternalContentImageUri(context: Context,
  */
 @Suppress("unused")
 fun getInternalContentMusicUri(context: Context, projection: Array<out String?>? = null,
-                               selection: String?, selectionArgs: Array<out String?>? = null,
+                               selection: String? = null, selectionArgs: Array<out String?>? = null,
                                sortOrder: String? = null): ArrayList<Media> {
     val videoList = ArrayList<Media>()
     //video projection
@@ -344,7 +350,7 @@ fun getInternalContentMusicUri(context: Context, projection: Array<out String?>?
 @Suppress("unused")
 fun getExternalContentMusicUri(context: Context,
                                projection: Array<out String?>? = null,
-                               selection: String?,
+                               selection: String? = null,
                                selectionArgs: Array<out String?>? = null,
                                sortOrder: String? = null): ArrayList<Media> {
     val videoList = ArrayList<Media>()

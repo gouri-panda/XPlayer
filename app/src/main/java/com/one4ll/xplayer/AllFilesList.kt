@@ -43,6 +43,10 @@ class AllFilesList : AppCompatActivity() {
         }
     }
 
+    /**
+     * Gets the all video list from internal storage and external storage
+     * then it stores in the database
+     */
     private fun getVideoList() {
         val externalVideoList: ArrayList<Media> = getExternalContentVideoUri(this)
         val internalVideoList: ArrayList<Media> = getInternalContentVideoUri(this)
@@ -66,7 +70,11 @@ class AllFilesList : AppCompatActivity() {
         }
     }
 
-
+    /**
+     * Asks permission about read and write  if The device is below marshmallow then  no need to ask
+     * we already have permission
+     * @return true if we already have permission otherwise it returns false
+     */
     private fun readAndWriteExternalStoragePermission(): Boolean {
         if (IS_MARSHMALLOW_OR_LETTER()) {
             if (!havePermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
@@ -77,6 +85,9 @@ class AllFilesList : AppCompatActivity() {
         return true
     }
 
+    /**
+     * After receiving permissions checks it checks  if the permission is granted or not, if we have permission then it gets video list
+     */
     override fun onRequestPermissionsResult(
             requestCode: Int,
             permissions: Array<out String>,
@@ -92,7 +103,9 @@ class AllFilesList : AppCompatActivity() {
         }
     }
 
-
+    /**
+     * closes the database after this activity destroys
+     */
     override fun onDestroy() {
         super.onDestroy()
         mediaDatabase.close()
