@@ -21,7 +21,6 @@ now you are ready to get started 🎉
 * [Material](https://material.io/develop/android/docs/getting-started)
 
 * [Exoplayer](https://github.com/google/ExoPlayer)
-* [ButterKnife](https://github.com/JakeWharton/butterknife)
 * [RxJava](https://github.com/ReactiveX/RxJava)
 * [Kotlin](https://kotlinlang.org/docs/reference/using-gradle.html)
 * [Kotlin Coroutines](https://github.com/Kotlin/kotlinx.coroutines)
