@@ -21,8 +21,10 @@ import kotlinx.coroutines.launch
 
 private const val TAG = "videoRecyclerviewAdapt"
 
-class VideoRecyclerViewAdapter(private val activity: Activity, var list: List<Media>) :
-        RecyclerView.Adapter<VideoRecyclerViewAdapter.ViewHolder>() {
+class VideoRecyclerViewAdapter(private val activity: Activity,
+                               var list: List<Media>,
+                               val lifecycleScope: CoroutineScope)
+    : RecyclerView.Adapter<VideoRecyclerViewAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view: View?
@@ -56,8 +58,8 @@ class VideoRecyclerViewAdapter(private val activity: Activity, var list: List<Me
         holder.title.text = list[position].name
         holder.duration.text = list[position].duration
         val path = list[position].path
-        CoroutineScope(Default).launch {
-            activity.applicationContext.setVideoThumbNail(path, holder.imageView)
+        lifecycleScope.launch {
+            holder.imageView.context.setVideoThumbNail(path, holder.imageView)
         }
         holder.itemView.setOnClickListener {
             val intent = Intent(holder.itemView.context, MainActivity::class.java)

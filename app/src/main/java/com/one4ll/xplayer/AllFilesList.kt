@@ -33,7 +33,7 @@ class AllFilesList : AppCompatActivity() {
         thumbnail.delete()
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
         val videoList: ArrayList<Media> = ArrayList()
-        videoRecyclerViewAdapter = VideoRecyclerViewAdapter(this, videoList)
+        videoRecyclerViewAdapter = VideoRecyclerViewAdapter(this, videoList, lifecycleScope)
 
         video_list_recycler_view.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         video_list_recycler_view.adapter = videoRecyclerViewAdapter

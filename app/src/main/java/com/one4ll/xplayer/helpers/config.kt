@@ -33,7 +33,7 @@ fun askPermission(activity: Activity, vararg permissions: String, permissionId: 
 }
 
 fun handlePermission(activity: Activity, permission: String, permissionId: Int): Boolean {
-    if (havePermission(activity.applicationContext, permission)) return true
+    if (havePermission(activity.baseContext, permission)) return true
     else askPermission(activity, permission, permissionId = permissionId)
     return false
 }
