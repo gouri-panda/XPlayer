@@ -1,13 +1,31 @@
-![basic_logo](https://user-images.githubusercontent.com/43576162/107629010-7ab50300-6c87-11eb-814f-c2aa4d421fb4.png)
-# XPlayer 
-
-This is a simple Media player application where the user sees his/her videos, images and audio.
+﻿![basic_logo](https://user-images.githubusercontent.com/43576162/107629010-7ab50300-6c87-11eb-814f-c2aa4d421fb4.png)
+# XPlayer (work-in-progress :pick: :pick: :pick:)
 
 
-# Setting up the project
-Step 1 : Fork, Clone and Remote </br>
-Step 2 : Open project in Android Studio
-now you are ready to get started 🎉 
+**XPlayer** is a simple Media Player application where the user can see his/her videos, images and audio. XPlayer is still in its early stage of development. **Many contributors** are working on XPlayer to make it the best media player around. 
+
+
+## Getting started to contribute
+-Fork the project repository
+-Clone your fork, by running git commands
+```
+git clone URL_OF_FORK
+e.g.
+git clone https://github.com/gouri-panda/XPlayer.git
+```
+-Open the project in **Android Studio**
+-You are now ready to get started
+-When you have completed making changes, Commit your changes
+```
+git add -A
+got commit -m "DESCRIPTION OF CHANGES"
+```
+-Push your changes to your fork
+```
+git push origin BRANCH_NAME
+```
+-Now, Create the PR (pull request)
+-We will review your changes and then we will merge your PR 
 
 
 # Libraries used
@@ -33,7 +51,8 @@ now you are ready to get started 🎉
 * [Espresso](https://developer.android.com/training/testing/espresso/setup)
 
 
-# Contributing
-Get started with this simple and easy to follow project , it doesn't matter whether you are a beginner or a pro in android-development and open source !
-We are always here to help you out and get started . </br>
-Find a issue and then solve  the isssue and make a pull request to the repo. If you didn't find any helpful issue for you then raise a issue and start solving the issue. Also if you like this project please give a star to motivate us!
+## Contribution
+This project is simple and easy to follow. Just follow the steps under **Getting started to contribute** section and you can contribute to the project and make **XPlayer** the best available Media Player. </br>
+Don't worry if you are a beginner in **Android Development** or in **Open Source,** we are always here to help you out in getting started. </br>
+Check out the **Issues** tab to find the issue you can help with. Or, you can raise a issue and start working on it. </br>
+If you like this project, give a star to motivate us.
