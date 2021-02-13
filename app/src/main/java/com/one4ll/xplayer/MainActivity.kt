@@ -74,7 +74,7 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
         options.inJustDecodeBounds = false
         Log.d(TAG, "onCreate: width $width")
         Log.d(TAG, "onCreate: height $height")
-        foo()
+//        foo()
 //        mediaSource =
 //            ProgressiveMediaSource.Factory(dataSourceFactory).createMediaSource(Uri.fromFile(File(videoUriPath)))
         mediaSource =
@@ -355,23 +355,23 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
         simpleExoPlayer?.playWhenReady = false
     }
 
-    private fun foo() {
-        if (!videoUriPath.contains("http") || !videoUriPath.contains("https")) {
-            val mediaMetadataRetriever = MediaMetadataRetriever()
-            mediaMetadataRetriever.setDataSource(videoUriPath)
-            val width = mediaMetadataRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_VIDEO_WIDTH)
-            val height = mediaMetadataRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_VIDEO_HEIGHT)
-            Log.d(TAG, "foo: title ${mediaMetadataRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_TITLE)}")
-            Log.d(TAG, "foo: ${mediaMetadataRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ARTIST)}")
-            Log.d(TAG, "foo: width $width")
-            Log.d(TAG, "foo: height $height")
-        }
-
-        val track = simpleExoPlayer?.currentTrackGroups
-        for (i in 0 until track?.length!!) {
-            Log.d(TAG, "foo: track ${track.get(i)}")
-        }
-    }
+//    private fun foo() {
+//        if (!videoUriPath.contains("http") || !videoUriPath.contains("https")) {
+//            val mediaMetadataRetriever = MediaMetadataRetriever()
+//            mediaMetadataRetriever.setDataSource(videoUriPath)
+//            val width = mediaMetadataRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_VIDEO_WIDTH)
+//            val height = mediaMetadataRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_VIDEO_HEIGHT)
+//            Log.d(TAG, "foo: title ${mediaMetadataRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_TITLE)}")
+//            Log.d(TAG, "foo: ${mediaMetadataRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ARTIST)}")
+//            Log.d(TAG, "foo: width $width")
+//            Log.d(TAG, "foo: height $height")
+//        }
+//
+//        val track = simpleExoPlayer?.currentTrackGroups
+//        for (i in 0 until track?.length!!) {
+//            Log.d(TAG, "foo: track ${track.get(i)}")
+//        }
+//    }
 
 //    override fun onResume() {
 //        super.onResume()

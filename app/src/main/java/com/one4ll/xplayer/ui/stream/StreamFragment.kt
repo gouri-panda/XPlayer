@@ -37,7 +37,6 @@ private const val TAG = "streamFragment"
 
 class StreamFragment : Fragment() {
     private lateinit var rootView: View
-    private val db by lazy { MediaDatabase.getInstance(rootView.context) }
     private lateinit var adapter: StreamsRecyclerViewAdapter
     private val viewModel: StreamViewModel by viewModels()
 
@@ -55,16 +54,15 @@ class StreamFragment : Fragment() {
                 adapter.setNotes(it)
             }
         })
-        lifecycleScope.launch {
-            setRecycleView()
-        }
+
+        setRecycleView()
         rootView.url_send.setOnClickListener {
             val url = rootView.editTextUrl?.text
             if (url != null) {
                 val intent = Intent(rootView.context, MainActivity::class.java)
                 intent.putExtra(VIDEO_PATH, url.toString())
                 lifecycleScope.launch {
-                    insertStreamsIntoDatabase(db, Streams(url.toString(), System.currentTimeMillis()))
+                    insertStreamsIntoDatabase(viewModel.db, Streams(url.toString(), System.currentTimeMillis()))
                 }
                 Log.d(TAG, "onCreateView: stream url path $url")
                 rootView.context.startActivity(intent)
@@ -82,7 +80,7 @@ class StreamFragment : Fragment() {
                 Log.d(TAG, "onSwiped: direction $direction")
                 lifecycleScope.launch {
                     withContext(IO) {
-                        db.streamsDao().removeById(adapter.getStreamAtPosition(viewHolder.adapterPosition).id!!)
+                        viewModel.db.streamsDao().removeById(adapter.getStreamAtPosition(viewHolder.adapterPosition).id!!)
                         withContext(Main) {
                             adapter.notifyDataSetChanged()
                         }
@@ -92,19 +90,15 @@ class StreamFragment : Fragment() {
         }).attachToRecyclerView(rootView.streams_recycler_view)
     }
 
-    private suspend fun setRecycleView() {
-        withContext(IO) {
-            adapter = StreamsRecyclerViewAdapter()
-            withContext(Main) {
-                rootView.streams_recycler_view.apply {
-                    val animation = AnimationUtils.loadAnimation(rootView.context, R.anim.recycler_view_from_bottom_to_top)
-                    this.animation = animation
-                    layoutManager = LinearLayoutManager(rootView.context, LinearLayoutManager.VERTICAL, false)
-                    adapter = this@StreamFragment.adapter
-                }
-
-            }
+    private fun setRecycleView() {
+        adapter = StreamsRecyclerViewAdapter()
+        rootView.streams_recycler_view.apply {
+            val animation = AnimationUtils.loadAnimation(rootView.context, R.anim.recycler_view_from_bottom_to_top)
+            this.animation = animation
+            layoutManager = LinearLayoutManager(rootView.context, LinearLayoutManager.VERTICAL, false)
+            adapter = this@StreamFragment.adapter
         }
+
     }
 }
 
