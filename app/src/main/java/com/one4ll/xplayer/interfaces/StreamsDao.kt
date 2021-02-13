@@ -3,6 +3,7 @@ package com.one4ll.xplayer.interfaces
 import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.one4ll.xplayer.models.Streams
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface StreamsDao {
@@ -13,7 +14,7 @@ interface StreamsDao {
     fun update(stream: Streams)
 
     @Query("SELECT * FROM streams ORDER BY time DESC")
-    fun getAllByTime(): LiveData<List<Streams>>
+    fun getAllByTime(): Flow<List<Streams>>
 
     @Query("DELETE  FROM streams")
     fun removeAll()
@@ -22,7 +23,7 @@ interface StreamsDao {
     fun removeById(id: Long)
 
     @Query("SELECT * FROM streams WHERE time = :time")
-    fun getValueBYId(time: Long): LiveData<List<Streams>>
+    fun getValueBYId(time: Long): Flow<List<Streams>>
 
     @Query("UPDATE streams SET time = :time WHERE id = :id")
     fun updateTime(id: Long, time: Long)
