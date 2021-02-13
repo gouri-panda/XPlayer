@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -24,6 +23,8 @@ import kotlinx.android.synthetic.main.fragment_stream.*
 import kotlinx.android.synthetic.main.fragment_stream.view.*
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.util.*
@@ -35,10 +36,10 @@ import java.util.*
  */
 private const val TAG = "streamFragment"
 
+@ExperimentalCoroutinesApi
 class StreamFragment : Fragment() {
     private lateinit var rootView: View
-    private val db by lazy { MediaDatabase.getInstance(rootView.context) }
-    private lateinit var adapter: StreamsRecyclerViewAdapter
+    private val adapter: StreamsRecyclerViewAdapter by lazy { StreamsRecyclerViewAdapter() }
     private val viewModel: StreamViewModel by viewModels()
 
 
@@ -49,14 +50,13 @@ class StreamFragment : Fragment() {
         return rootView
     }
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        viewModel.streamsList.observe(viewLifecycleOwner, Observer {
-            if (it != null) {
+        setRecycleView()
+        lifecycleScope.launch {
+            viewModel.streamsList.collect {
                 adapter.setNotes(it)
             }
-        })
-        lifecycleScope.launch {
-            setRecycleView()
         }
         rootView.url_send.setOnClickListener {
             val url = rootView.editTextUrl?.text
@@ -64,7 +64,7 @@ class StreamFragment : Fragment() {
                 val intent = Intent(rootView.context, MainActivity::class.java)
                 intent.putExtra(VIDEO_PATH, url.toString())
                 lifecycleScope.launch {
-                    insertStreamsIntoDatabase(db, Streams(url.toString(), System.currentTimeMillis()))
+                    insertStreamsIntoDatabase(viewModel.db, Streams(url.toString(), System.currentTimeMillis()))
                 }
                 Log.d(TAG, "onCreateView: stream url path $url")
                 rootView.context.startActivity(intent)
@@ -82,7 +82,7 @@ class StreamFragment : Fragment() {
                 Log.d(TAG, "onSwiped: direction $direction")
                 lifecycleScope.launch {
                     withContext(IO) {
-                        db.streamsDao().removeById(adapter.getStreamAtPosition(viewHolder.adapterPosition).id!!)
+                        viewModel.db.streamsDao().removeById(adapter.getStreamAtPosition(viewHolder.adapterPosition).id!!)
                         withContext(Main) {
                             adapter.notifyDataSetChanged()
                         }
@@ -92,23 +92,20 @@ class StreamFragment : Fragment() {
         }).attachToRecyclerView(rootView.streams_recycler_view)
     }
 
-    private suspend fun setRecycleView() {
-        withContext(IO) {
-            adapter = StreamsRecyclerViewAdapter()
-            withContext(Main) {
-                rootView.streams_recycler_view.apply {
-                    val animation = AnimationUtils.loadAnimation(rootView.context, R.anim.recycler_view_from_bottom_to_top)
-                    this.animation = animation
-                    layoutManager = LinearLayoutManager(rootView.context, LinearLayoutManager.VERTICAL, false)
-                    adapter = this@StreamFragment.adapter
-                }
-
-            }
+    private fun setRecycleView() {
+        rootView.streams_recycler_view.apply {
+            val animation = AnimationUtils.loadAnimation(rootView.context, R.anim.recycler_view_from_bottom_to_top)
+            this.animation = animation
+            layoutManager = LinearLayoutManager(rootView.context, LinearLayoutManager.VERTICAL, false)
+            adapter = this@StreamFragment.adapter
         }
+
+    }
+
+    private suspend fun insertStreamsIntoDatabase(database: MediaDatabase, stream: Streams) = withContext(IO) {
+        database.streamsDao().insert(stream)
     }
 }
 
-private suspend fun insertStreamsIntoDatabase(database: MediaDatabase, stream: Streams) = withContext(IO) {
-    database.streamsDao().insert(stream)
-}
+
 
