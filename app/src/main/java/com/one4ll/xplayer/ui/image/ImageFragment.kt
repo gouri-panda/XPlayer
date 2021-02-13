@@ -7,16 +7,19 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.one4ll.xplayer.Media
 import com.one4ll.xplayer.R
 import com.one4ll.xplayer.adapter.ImageRecyclerViewAdapter
 import kotlinx.android.synthetic.main.fragment_gallery.view.*
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 
 private const val TAG = "imageFragment"
 
+@ExperimentalCoroutinesApi
 class GalleryFragment : Fragment() {
 
     private val imageViewModel: ImageViewModel by viewModels()
@@ -35,11 +38,11 @@ class GalleryFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        imageViewModel.imageUri.observe(viewLifecycleOwner, Observer {
-            if (it != null) {
+        lifecycleScope.launch {
+            imageViewModel.imageUri.collect {
                 setAdapterToUi(it)
             }
-        })
+        }
     }
 
 

@@ -23,7 +23,7 @@ class StreamViewModel(application: Application) : AndroidViewModel(application) 
                 _streamList.value = it
             }
 
-        }
 
+        }
     }
 }

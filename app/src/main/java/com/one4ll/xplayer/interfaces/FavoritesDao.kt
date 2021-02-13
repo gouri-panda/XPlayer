@@ -4,6 +4,7 @@ import androidx.room.*
 import com.one4ll.xplayer.models.Favorite
 import kotlinx.coroutines.flow.Flow
 
+
 @Dao
 interface FavoritesDao {
     @Update(onConflict = OnConflictStrategy.REPLACE)

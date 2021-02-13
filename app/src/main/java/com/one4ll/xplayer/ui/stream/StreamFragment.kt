@@ -24,7 +24,9 @@ import kotlinx.android.synthetic.main.fragment_stream.view.*
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+
 import kotlinx.coroutines.flow.collect
+
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.util.*
@@ -55,7 +57,6 @@ class StreamFragment : Fragment() {
         setRecycleView()
         lifecycleScope.launch {
             viewModel.streamsList.collect {
-                adapter.setNotes(it)
             }
         }
         rootView.url_send.setOnClickListener {
