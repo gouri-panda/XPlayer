@@ -18,17 +18,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity
-            android:name=".adapter.TestingBaseActivity"
-            android:label="@string/title_activity_testing_base"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity android:name=".FullImageActivity" />
         <activity
             android:name=".GalleryActivity"
-            android:label="@string/title_activity_gallery_view"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
