@@ -1,8 +1,8 @@
-![basic_logo](https://user-images.githubusercontent.com/43576162/107629010-7ab50300-6c87-11eb-814f-c2aa4d421fb4.png)
-# XPlayer 
+﻿![basic_logo](https://user-images.githubusercontent.com/43576162/107629010-7ab50300-6c87-11eb-814f-c2aa4d421fb4.png)
+# XPlayer (work-in-progress ⛏⛏⛏)
 
-This is a simple Media player application where the user sees his/her videos, images and audio.
-
+XPlayre is a **work-in-progress** This is a simple Media player application where the user sees his/her videos, images and audio.
+It is still in its early stages of development It is under heavy development.
 
 # Setting up the project
 Step 1 : Fork, Clone and Remote </br>
@@ -34,6 +34,7 @@ now you are ready to get started 🎉
 
 
 # Contributing
-Get started with this simple and easy to follow project , it doesn't matter whether you are a beginner or a pro in android-development and open source !
-We are always here to help you out and get started . </br>
-Find a issue and then solve  the isssue and make a pull request to the repo. If you didn't find any helpful issue for you then raise a issue and start solving the issue. Also if you like this project please give a star to motivate us!
+This project is simple and easy to follow. Just setup the project on your device and you can contribute to the project and make **XPlayer** the best available Media Player. </br>
+Don't worry if you are a beginner in **Android Development** or in **Open Source,** we are always here to help you out in getting started. </br>
+Check out the **Issues** tab to find the issue you can help with. Or, you can raise a issue and start working on it. </br>
+If you like this project, give a star to motivate us.
