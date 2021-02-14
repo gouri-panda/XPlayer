@@ -31,8 +31,6 @@ private const val STORAGE_PERMISSION = 2
 class VideoFragment : Fragment() {
     //    private val videoViewModel: VideoViewModel by viewModels()
     private lateinit var root: View
-
-
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
