@@ -9,7 +9,7 @@
         android:id="@+id/nav_home"
         android:name="com.one4ll.xplayer.ui.video.VideoFragment"
         android:label="@string/Video"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_video" />
 
     <fragment
         android:id="@+id/nav_gallery"

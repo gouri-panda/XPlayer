@@ -13,10 +13,10 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.one4ll.xplayer.Media
-import com.one4ll.xplayer.R
 import com.one4ll.xplayer.adapter.VideoRecyclerViewAdapter
+import com.one4ll.xplayer.databinding.FragmentVideoBinding
 import com.one4ll.xplayer.helpers.*
-import kotlinx.android.synthetic.main.fragment_home.view.*
+import kotlinx.android.synthetic.main.fragment_video.view.*
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
@@ -30,14 +30,14 @@ private const val STORAGE_PERMISSION = 2
 // TODO how to set permission with Android view model??
 class VideoFragment : Fragment() {
     //    private val videoViewModel: VideoViewModel by viewModels()
-    private lateinit var root: View
+    private lateinit var binding: FragmentVideoBinding
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View {
-        root = inflater.inflate(R.layout.fragment_home, container, false)
-        return root
+        binding = FragmentVideoBinding.inflate(layoutInflater)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -86,8 +86,8 @@ class VideoFragment : Fragment() {
      */
     private suspend fun getVideoList() {
         withContext(IO) {
-            val externalContentVideoJob: Deferred<ArrayList<Media>> = async { getExternalContentVideoUri(root.context) }
-            val internalContentVideoJob: Deferred<ArrayList<Media>> = async { getInternalContentVideoUri(root.context) }
+            val externalContentVideoJob: Deferred<ArrayList<Media>> = async { getExternalContentVideoUri(binding.root.context) }
+            val internalContentVideoJob: Deferred<ArrayList<Media>> = async { getInternalContentVideoUri(binding.root.context) }
             val contentUri = externalContentVideoJob.await() + internalContentVideoJob.await()
             setAdapter(contentUri)
         }
@@ -99,17 +99,17 @@ class VideoFragment : Fragment() {
     private suspend fun setAdapter(videoList: List<Media>) {
         withContext(Main) {
             d(TAG, "setAdapter: thread ${Thread.currentThread().name}")
-            val sharedPreferences = root.context.getSharedPreferences(SHARED_PREF_SETTINGS, Context.MODE_PRIVATE)
+            val sharedPreferences = binding.root.context.getSharedPreferences(SHARED_PREF_SETTINGS, Context.MODE_PRIVATE)
             if (sharedPreferences.getBoolean(IS_GRID_LAYOUT, false)) {
                 val adapter = activity?.let { VideoRecyclerViewAdapter(it, videoList, lifecycleScope) }
-                root.video_list_recycler_view.adapter = adapter
-                val gridLayoutManager = GridLayoutManager(root.context, 2)
-                root.video_list_recycler_view.layoutManager = gridLayoutManager
+                binding.root.video_list_recycler_view.adapter = adapter
+                val gridLayoutManager = GridLayoutManager(binding.root.context, 2)
+                binding.root.video_list_recycler_view.layoutManager = gridLayoutManager
             } else {
                 val adapter = activity?.let { VideoRecyclerViewAdapter(it, videoList, lifecycleScope) }
-                root.video_list_recycler_view.apply {
+                binding.root.video_list_recycler_view.apply {
                     this.adapter = adapter
-                    layoutManager = LinearLayoutManager(root.context, LinearLayoutManager.VERTICAL, false)
+                    layoutManager = LinearLayoutManager(binding.root.context, LinearLayoutManager.VERTICAL, false)
                 }
             }
         }
