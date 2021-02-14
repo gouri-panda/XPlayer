@@ -39,7 +39,7 @@ class MusicRecyclerViewAdapter(var list: List<Media>, private val lifecycleCorou
         holder.duration.text = list[position].duration
         val path = list[position].path
         lifecycleCoroutineScope.launch {
-            setMusicThumbNail(holder.itemView.context, path, holder.imageView)
+            setMusicThumbNail(path, holder.imageView)
         }
         holder.itemView.setOnClickListener {
             val intent = Intent(holder.itemView.context, MainActivity::class.java)
