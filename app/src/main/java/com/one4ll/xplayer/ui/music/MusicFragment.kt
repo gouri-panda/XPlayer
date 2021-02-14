@@ -12,8 +12,8 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.one4ll.xplayer.Media
 import com.one4ll.xplayer.adapter.MusicRecyclerViewAdapter
-import com.one4ll.xplayer.databinding.FragmentSlideshowBinding
-import kotlinx.android.synthetic.main.fragment_slideshow.view.*
+import com.one4ll.xplayer.databinding.FragmentMusicBinding
+import kotlinx.android.synthetic.main.fragment_music.view.*
 import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -24,14 +24,14 @@ class SlideshowFragment : Fragment() {
 
     private val musicViewModel: MusicViewModel by viewModels()
     private lateinit var musicRecyclerViewAdapter: MusicRecyclerViewAdapter
-    private lateinit var binding: FragmentSlideshowBinding
+    private lateinit var binding: FragmentMusicBinding
 
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View {
-        binding = FragmentSlideshowBinding.inflate(layoutInflater)
+        binding = FragmentMusicBinding.inflate(layoutInflater)
         return binding.root
     }
 
