@@ -1,5 +1,6 @@
 package com.one4ll.xplayer.helpers
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Bitmap
 import android.media.ThumbnailUtils
@@ -403,6 +404,8 @@ suspend fun Context.setVideoThumbNail(file: File, imageView: ImageView) {
  * @param filePath The  video filePath we wanna convert into ThumbNail
  * @param imageView where we wanna set the Thumbnail
  */
+@Suppress("DEPRECATION")
+@SuppressLint("NewApi")
 suspend fun Context.setVideoThumbNail(filePath: String, imageView: ImageView) {
     withContext(IO) {
         val bitmap = if (IS_Q_OR_LETTER()) {
@@ -434,6 +437,8 @@ suspend fun setImageThumbNail(file: File, imageView: ImageView) {
  * @param filePath The image filePath we wanna convert into ThumbNail
  * @param imageView where we wanna set the Thumbnail
  */
+@Suppress("DEPRECATION")
+@SuppressLint("NewApi")
 suspend fun setImageThumbNail(filePath: String, imageView: ImageView) {
     withContext(IO) {
         val bitmap = if (IS_Q_OR_LETTER()) {
@@ -467,6 +472,7 @@ suspend fun setMusicThumbNail(file: File, imageView: ImageView) {
  * @param imageView where we wanna set the Thumbnail
  */
 @Suppress("DEPRECATION")
+@SuppressLint("NewApi")
 suspend fun setMusicThumbNail(fiePath: String, imageView: ImageView) = withContext(IO) {
     try {
         val bitMap: Bitmap? = if (IS_Q_OR_LETTER()) {
