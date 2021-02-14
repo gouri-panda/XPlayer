@@ -10,8 +10,8 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.one4ll.xplayer.Media
-import com.one4ll.xplayer.R
 import com.one4ll.xplayer.adapter.ImageRecyclerViewAdapter
+import com.one4ll.xplayer.databinding.FragmentGalleryBinding
 import kotlinx.android.synthetic.main.fragment_gallery.view.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.collect
@@ -23,7 +23,7 @@ private const val TAG = "imageFragment"
 class GalleryFragment : Fragment() {
 
     private val imageViewModel: ImageViewModel by viewModels()
-    private lateinit var root: View
+    private lateinit var binding: FragmentGalleryBinding
 
     private var imageRecyclerViewAdapter: ImageRecyclerViewAdapter? = null
 
@@ -32,9 +32,9 @@ class GalleryFragment : Fragment() {
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View {
-        root = inflater.inflate(R.layout.fragment_gallery, container, false)
+        binding = FragmentGalleryBinding.inflate(layoutInflater)
         Log.d(TAG, "onCreateView: imageFragment view created")
-        return root
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -48,9 +48,9 @@ class GalleryFragment : Fragment() {
 
     private fun setAdapterToUi(imageList: List<Media>) {
         imageRecyclerViewAdapter = activity?.let { ImageRecyclerViewAdapter(imageList, activity = it, lifeCycleScope = lifecycleScope) }
-        root.image_list_recycler_view.apply {
+        binding.root.image_list_recycler_view.apply {
             this.adapter = imageRecyclerViewAdapter
-            layoutManager = LinearLayoutManager(root.context, LinearLayoutManager.VERTICAL, false)
+            layoutManager = LinearLayoutManager(binding.root.context, LinearLayoutManager.VERTICAL, false)
         }
 
     }
