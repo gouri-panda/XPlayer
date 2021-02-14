@@ -57,6 +57,7 @@ class StreamFragment : Fragment() {
         setRecycleView()
         lifecycleScope.launch {
             viewModel.streamsList.collect {
+                adapter.setNotes(it)
             }
         }
         rootView.url_send.setOnClickListener {
