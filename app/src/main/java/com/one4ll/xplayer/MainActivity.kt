@@ -9,6 +9,7 @@ import android.media.MediaMetadataRetriever
 import android.net.Uri
 import android.os.Bundle
 import android.provider.Settings
+import android.util.AttributeSet
 import android.util.DisplayMetrics
 import android.util.Log
 import android.view.GestureDetector
@@ -24,8 +25,9 @@ import com.google.android.exoplayer2.trackselection.TrackSelectionArray
 import com.google.android.exoplayer2.upstream.DataSource
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory
 import com.google.android.exoplayer2.util.Util
+import com.one4ll.xplayer.databinding.ActivityMainBinding
 import com.one4ll.xplayer.helpers.*
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_main.view.*
 
 
 class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.OnDoubleTapListener, GestureDetector.OnGestureListener {
@@ -35,11 +37,13 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
     private var screenHeight: Int? = null
     private val audioManager by lazy { getSystemService(Context.AUDIO_SERVICE) as AudioManager }
     private val brightness by lazy { Settings.System.getInt(contentResolver, Settings.System.SCREEN_BRIGHTNESS) }
+    private lateinit var binding: ActivityMainBinding
 
     private var simpleExoPlayer: SimpleExoPlayer? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         hideSystemUI(true)
         val displayMetrics = DisplayMetrics()
         windowManager.defaultDisplay.getMetrics(displayMetrics)
@@ -49,7 +53,7 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
         Log.d(TAG, "onCreate: height $screenHeight")
         simpleExoPlayer = SimpleExoPlayer.Builder(this).build()
         gestureDetector = GestureDetector(this, this)
-        player_view?.player = simpleExoPlayer
+        binding.root.player_view.player = simpleExoPlayer
         val intent = intent
         if (intent.action != null && intent.action == Intent.ACTION_VIEW) {
 
@@ -83,7 +87,7 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
 
         simpleExoPlayer!!.playWhenReady = true
         simpleExoPlayer!!.addListener(eventListener)
-        player_view?.setOnTouchListener(this)
+        binding.root.player_view?.setOnTouchListener(this)
 
     }
 
@@ -156,7 +160,7 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
         override fun onPlayerStateChanged(playWhenReady: Boolean, playbackState: Int) {
             when (playbackState) {
                 Player.STATE_READY -> {
-                    goto_duration.visibility = View.INVISIBLE
+                    binding.root.goto_duration.visibility = View.INVISIBLE
 
                     Log.d(TAG, "onPlayerStateChanged: state ready")
                 }
@@ -164,7 +168,7 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
                     Log.d(TAG, "onPlayerStateChanged: buffering")
                 }
                 Player.STATE_ENDED -> {
-                    player_view?.keepScreenOn = false
+                    binding.root.player_view?.keepScreenOn = false
                     simpleExoPlayer?.playWhenReady = false
                     Log.d(TAG, "onPlayerStateChanged: state ended")
                 }
@@ -178,7 +182,7 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
         override fun onIsPlayingChanged(isPlaying: Boolean) {
             Log.d(TAG, "onIsPlayingChanged: isPlaying$isPlaying")
             if (!isPlaying) {
-                player_view?.keepScreenOn = false
+                binding.root.player_view?.keepScreenOn = false
             }
         }
 
@@ -207,7 +211,7 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
 
     override fun onTouch(v: View?, event: MotionEvent?): Boolean {
         gestureDetector.onTouchEvent(event)
-        player_view?.showController()
+        binding.root.player_view?.showController()
         return true
     }
 
@@ -254,9 +258,8 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
     }
 
     override fun onSingleTapUp(e: MotionEvent?): Boolean {
-        if (player_view?.controllerAutoShow != null) {
-            player_view?.controllerAutoShow = !player_view!!.controllerAutoShow
-
+        if (binding.root.player_view?.controllerAutoShow != null) {
+            binding.root.player_view?.controllerAutoShow = !binding.root.player_view!!.controllerAutoShow
         }
         return true
     }
@@ -275,16 +278,16 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
         Log.d(TAG, "onScroll: motion event 1$e1")
         Log.d(TAG, "onScroll: motion event 2 $e2")
 
-        goto_duration.visibility = View.VISIBLE
+        binding.root.goto_duration.visibility = View.VISIBLE
         val currentPosition = simpleExoPlayer?.currentPosition ?: 0
         if (e2?.x!! - e1?.x!! >= 100) {
             //forward
-            goto_duration.text = "Forward  +20.00s\n\t\t ${convertDuration(currentPosition)}s"
+            binding.root.goto_duration.text = "Forward  +20.00s\n\t\t ${convertDuration(currentPosition)}s"
             simpleExoPlayer?.seekTo(currentPosition + 20000)
 
         } else if (e1.x - e2.x >= 100) {
             //backward
-            goto_duration.text = "BackWard -20.00s\n\t\t ${convertDuration(currentPosition)}"
+            binding.root.goto_duration.text = "BackWard -20.00s\n\t\t ${convertDuration(currentPosition)}"
             simpleExoPlayer?.seekTo(currentPosition - 20000)
         } else {
             val rawX = e1.rawX
