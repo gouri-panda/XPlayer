@@ -405,10 +405,13 @@ suspend fun Context.setVideoThumbNail(file: File, imageView: ImageView) {
  */
 suspend fun Context.setVideoThumbNail(filePath: String, imageView: ImageView) {
     withContext(IO) {
-        val bitMap: Bitmap = getBitmapThumbnailFromVideoFile(filePath)
+        val bitmap = if (IS_Q_OR_LETTER()) {
+            getBitmapThumbnailFromVideoFile(filePath)
+        } else {
+            ThumbnailUtils.createAudioThumbnail(filePath, MediaStore.Images.Thumbnails.MINI_KIND)
+        }
         withContext(Main) {
-            imageView.setImageBitmap(bitMap)
-            Glide.with(this@setVideoThumbNail).load(bitMap).into(imageView)
+            Glide.with(this@setVideoThumbNail).load(bitmap).into(imageView)
         }
     }
 }
@@ -433,9 +436,13 @@ suspend fun setImageThumbNail(file: File, imageView: ImageView) {
  */
 suspend fun setImageThumbNail(filePath: String, imageView: ImageView) {
     withContext(IO) {
-        val bitMap: Bitmap = getBitmapThumbNailFromImageFile(filePath)
+        val bitmap = if (IS_Q_OR_LETTER()) {
+            getBitmapThumbNailFromImageFile(filePath)
+        } else {
+            ThumbnailUtils.createAudioThumbnail(filePath, MediaStore.Images.Thumbnails.MINI_KIND)
+        }
         withContext(Main) {
-            Glide.with(imageView.context).load(bitMap).into(imageView)
+            Glide.with(imageView.context).load(bitmap).into(imageView)
         }
     }
 }
