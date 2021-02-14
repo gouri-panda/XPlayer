@@ -18,12 +18,12 @@ import com.one4ll.xplayer.R
 import com.one4ll.xplayer.adapter.VideoRecyclerViewAdapter
 import com.one4ll.xplayer.helpers.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
-import kotlinx.coroutines.Deferred
+import kotlinx.coroutines.*
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
-import kotlinx.coroutines.async
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.channels.awaitClose
+import kotlinx.coroutines.flow.callbackFlow
+import kotlinx.coroutines.flow.collect
 
 private const val TAG = "homeFragment"
 private const val STORAGE_PERMISSION = 2
