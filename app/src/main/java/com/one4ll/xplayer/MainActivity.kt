@@ -5,9 +5,12 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.graphics.BitmapFactory
+import android.media.AudioAttributes
+import android.media.AudioFocusRequest
 import android.media.AudioManager
 import android.net.Uri
 import android.os.Bundle
+import android.provider.MediaStore
 import android.provider.Settings
 import android.util.DisplayMetrics
 import android.util.Log
@@ -31,7 +34,7 @@ import kotlinx.android.synthetic.main.layout_exoplayer_control_views.view.*
 
 private const val TAG = "MainActivity"
 
-class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.OnDoubleTapListener, GestureDetector.OnGestureListener {
+class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.OnDoubleTapListener, GestureDetector.OnGestureListener, AudioManager.OnAudioFocusChangeListener {
     private lateinit var gestureDetector: GestureDetector
     private lateinit var videoUriPath: String
     private var screenWidth: Int? = null
@@ -70,8 +73,7 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
         lateinit var mediaSource: MediaSource
         val options = BitmapFactory.Options()
         options.inJustDecodeBounds = true
-        val decode = BitmapFactory.decodeFile(videoUriPath,
-                options)
+        val decode = BitmapFactory.decodeFile(videoUriPath, options)
         val width = decode?.width
         val height = decode?.height
         options.inJustDecodeBounds = false
@@ -112,7 +114,7 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
             when (playbackState) {
                 Player.STATE_READY -> {
                     binding.root.goto_duration.visibility = View.INVISIBLE
-
+                    audioManager.requestAudioFocus(this@MainActivity, AudioManager.STREAM_MUSIC, AudioManager.AUDIOFOCUS_GAIN)
                     Log.d(TAG, "onPlayerStateChanged: state ready")
                 }
                 Player.STATE_BUFFERING -> {
@@ -149,6 +151,20 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
         override fun onSeekProcessed() {}
     }
 
+    override fun onAudioFocusChange(focusChange: Int) {
+        when (focusChange) {
+            AudioManager.AUDIOFOCUS_GAIN_TRANSIENT_MAY_DUCK -> {
+                simpleExoPlayer?.playWhenReady = true
+            }
+            AudioManager.AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK -> {
+                simpleExoPlayer?.playWhenReady = false
+            }
+            AudioManager.AUDIOFOCUS_LOSS -> {
+                simpleExoPlayer?.playWhenReady = false
+            }
+        }
+    }
+
 
     override fun onDestroy() {
         simpleExoPlayer!!.release()
@@ -169,7 +185,6 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
     }
 
     private fun forwardAndBackWardVideoOnDoubleClick(event: MotionEvent?) {
-
         Log.d(TAG, "onDoubleTap: clicked")
         val rawX = event?.rawX
         Log.d(TAG, "forwardAndBackWardVideoOnDoubleClick: raw x $rawX")
@@ -217,8 +232,7 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
     }
 
     override fun onFling(e1: MotionEvent?, e2: MotionEvent?, velocityX: Float, velocityY: Float): Boolean {
-        Log.d(TAG, "onFling: velocity x $velocityX")
-        Log.d(TAG, "onFling: velocity y $velocityY")
+        Log.d(TAG, "onFling: velocity x $velocityX velocity y $velocityY")
         return true
     }
 
