@@ -13,4 +13,9 @@
     <color name="icons">#FFF</color>
     <color name="divider">#BDBDBD</color>
     <color name="yellow">#FFA000</color>
+    <color name="white">#FFFF</color>
+    <color name="white_50">#80FFFFFF</color>
+    <color name="white_20">#33FFFFFF</color>
+    <color name="transparent">#00000000</color>
+    <color name="live_red">#FF3144</color>
 </resources>
