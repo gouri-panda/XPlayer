@@ -9,7 +9,6 @@ import android.media.MediaMetadataRetriever
 import android.net.Uri
 import android.os.Bundle
 import android.provider.Settings
-import android.util.AttributeSet
 import android.util.DisplayMetrics
 import android.util.Log
 import android.view.GestureDetector
@@ -65,10 +64,8 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
         } else {
             videoUriPath = intent.getStringExtra(VIDEO_PATH)
                     ?: throw IllegalArgumentException(getString(R.string.videoPathShouldnotNull))
-
         }
-        val title = videoUriPath.substringAfterLast("/").substringBefore(".", "")
-        binding.playerView.video_title.text = title
+        setVideoTitle()
 
         val dataSourceFactory: DataSource.Factory = DefaultDataSourceFactory(this, Util.getUserAgent(this@MainActivity, getString(R.string.app_name)))
         Log.d(TAG, "onCreate: video path $videoUriPath")
@@ -95,52 +92,11 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
 
     }
 
+    private fun setVideoTitle() {
+        val title = videoUriPath.substringAfterLast("/").substringBefore(".", "")
+        binding.playerView.video_title.text = title
+    }
 
-    //    @OnClick(R.id.image_button_play)
-    //    public void play() {
-    //        playVideo();
-    //    }
-    //    @OnClick(R.id.image_button_play_2)
-    //    public void play2() {
-    //        playVideo();
-    //    }
-    //    private void playVideo() {
-    //        Log.d(TAG, "play: clicked");
-    //        if (simpleExoPlayer.getPlaybackState() == Player.STATE_ENDED) {
-    //            simpleExoPlayer.seekTo(0);
-    //        }
-    //        simpleExoPlayer.setPlayWhenReady(true);
-    //        playButton.setVisibility(View.INVISIBLE);
-    //        playButton2.setVisibility(View.INVISIBLE);
-    //        pauseButton2.setVisibility(View.VISIBLE);
-    //
-    //    }
-    //    @OnClick(R.id.player_view)
-    //    public void onPlayViewClicked() {
-    //        pauseButton.setVisibility(View.VISIBLE);
-    //        pauseButton2.setVisibility(View.VISIBLE);
-    //    }
-    //    @OnClick(R.id.image_button_pause)
-    //    public void pause() {
-    //        pauseVideo();
-    //    }
-    //    @OnClick(R.id.image_button_pause_2)
-    //    public void pause2() {
-    //        pauseVideo();
-    //    }
-    //    @OnClick(R.id.imageButtonPrevious)
-    //    public void goToPrevious() {
-    //        int state = simpleExoPlayer.getPlaybackState();
-    //    }
-    //    private void pauseVideo() {
-    //        progressBar.setVisibility(View.GONE);
-    //        simpleExoPlayer.setPlayWhenReady(false);
-    //        pauseButton.setVisibility(View.INVISIBLE);
-    //        pauseButton2.setVisibility(View.INVISIBLE);
-    //        playButton.setVisibility(View.VISIBLE);
-    //        playButton2.setVisibility(View.VISIBLE);
-    //
-    //    }
     private val eventListener: Player.EventListener = object : Player.EventListener {
         override fun onTimelineChanged(timeline: Timeline, reason: Int) {
             Log.d(TAG, "onTimelineChanged: timeline $timeline")
@@ -154,11 +110,6 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
 
         override fun onTracksChanged(trackGroups: TrackGroupArray, trackSelections: TrackSelectionArray) {}
         override fun onLoadingChanged(isLoading: Boolean) {
-//            if (isLoading) {
-//                progressBar.setVisibility(View.VISIBLE);
-//            } else {
-//                progressBar.setVisibility(View.GONE);
-//            }
         }
 
         override fun onPlayerStateChanged(playWhenReady: Boolean, playbackState: Int) {
@@ -305,7 +256,7 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
 
                 } else if (e2.y - e1.y >= 100) {
                     // decrease brightness
-                    decreaseBrightNess()
+                    decreaseBrightness()
                 }
             } else {
                 //right sound
@@ -329,17 +280,17 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
     }
 
     private fun increaseSound() {
-        Log.d(TAG, "increaseSound: iiii")
+        Log.d(TAG, "increaseSound:")
         audioManager.adjustVolume(AudioManager.ADJUST_RAISE, AudioManager.FLAG_PLAY_SOUND)
     }
 
-    private fun decreaseBrightNess() {
-        Log.d(TAG, "decreaseBrightNess: iiii")
+    private fun decreaseBrightness() {
+        Log.d(TAG, "decreaseBrightness:")
     }
 
     private fun increaseBrightness() {
-        Log.d(TAG, "increaseBrightness: iiii")
-        Log.d(TAG, "increaseBrightness: iiii brightness $brightness")
+        Log.d(TAG, "increaseBrightness: ")
+        Log.d(TAG, "increaseBrightness: brightness $brightness")
         if (havePermission(this, Manifest.permission.WRITE_SETTINGS)) {
 
             Settings.System.putInt(contentResolver, Settings.System.SCREEN_BRIGHTNESS, 23)
@@ -347,9 +298,6 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
             attributes.screenBrightness = (23 / 255).toFloat()
             window.attributes = attributes
         }
-//        else {
-//            askPermission(activity = this, permissions = *arrayOf(Manifest.permission.WRITE_SETTINGS),permissionId = 5)
-//        }
     }
 
     override fun onLongPress(e: MotionEvent?) {
@@ -378,9 +326,4 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
             Log.d(TAG, "foo: track ${track.get(i)}")
         }
     }
-
-//    override fun onResume() {
-//        super.onResume()
-//        simpleExoPlayer?.playWhenReady = false
-//    }
 }
