@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.one4ll.xplayer.MainActivity
 import com.one4ll.xplayer.Media
 import com.one4ll.xplayer.R
+import com.one4ll.xplayer.helpers.VIDEO_PATH
 import com.one4ll.xplayer.helpers.setMusicThumbNail
 import kotlinx.coroutines.launch
 
@@ -20,7 +21,6 @@ class MusicRecyclerViewAdapter(var list: List<Media>, private val lifecycleCorou
         val layoutInflater = LayoutInflater.from(parent.context)
         val view = layoutInflater.inflate(R.layout.video_list, parent, false)
         return ViewHolder(view)
-
     }
 
     override fun getItemCount(): Int {
@@ -43,7 +43,7 @@ class MusicRecyclerViewAdapter(var list: List<Media>, private val lifecycleCorou
         }
         holder.itemView.setOnClickListener {
             val intent = Intent(holder.itemView.context, MainActivity::class.java)
-            intent.putExtra("video", path)
+            intent.putExtra(VIDEO_PATH, path)
             holder.itemView.context.startActivity(intent)
         }
     }

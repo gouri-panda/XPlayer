@@ -50,12 +50,10 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
         windowManager.defaultDisplay.getMetrics(displayMetrics)
         screenWidth = displayMetrics.widthPixels
         screenHeight = displayMetrics.heightPixels
-        Log.d(TAG, "onCreate: width $screenWidth")
-        Log.d(TAG, "onCreate: height $screenHeight")
+        Log.d(TAG, "onCreate: screen width $screenWidth ,screen  height $screenHeight")
         simpleExoPlayer = SimpleExoPlayer.Builder(this).build()
         gestureDetector = GestureDetector(this, this)
         binding.root.player_view.player = simpleExoPlayer
-        val intent = intent
         if (intent.action != null && intent.action == Intent.ACTION_VIEW) {
             Log.d(TAG, "onCreate: action view intent called")
             videoUriPath = intent.data.toString()
@@ -65,6 +63,7 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
                     ?: throw IllegalArgumentException(getString(R.string.videoPathShouldnotNull))
         }
         setVideoTitle()
+        setViews()
 
         val dataSourceFactory: DataSource.Factory = DefaultDataSourceFactory(this, Util.getUserAgent(this@MainActivity, getString(R.string.app_name)))
         Log.d(TAG, "onCreate: video path $videoUriPath")
@@ -76,17 +75,19 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
         val width = decode?.width
         val height = decode?.height
         options.inJustDecodeBounds = false
-        Log.d(TAG, "onCreate: width $width")
-        Log.d(TAG, "onCreate: height $height")
+        Log.d(TAG, "onCreate: video uri decode file width $width video uri decode file height $height")
         mediaSource =
                 ProgressiveMediaSource.Factory(dataSourceFactory).createMediaSource(Uri.parse(videoUriPath))
-//        }
         simpleExoPlayer!!.prepare(mediaSource)
 
         simpleExoPlayer!!.playWhenReady = true
         simpleExoPlayer!!.addListener(eventListener)
-        binding.root.player_view?.setOnTouchListener(this)
 
+    }
+
+    private fun setViews() {
+        binding.root.player_view?.setOnTouchListener(this)
+        binding.root.player_view.cross_image.setOnClickListener { finish() }
     }
 
     private fun setVideoTitle() {
@@ -96,13 +97,11 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
 
     private val eventListener: Player.EventListener = object : Player.EventListener {
         override fun onTimelineChanged(timeline: Timeline, reason: Int) {
-            Log.d(TAG, "onTimelineChanged: timeline $timeline")
-            Log.d(TAG, "onTimelineChanged: reason $reason")
+            Log.d(TAG, "onTimelineChanged: timeline $timeline reason $reason")
         }
 
         override fun onTimelineChanged(timeline: Timeline, manifest: Any?, reason: Int) {
-            Log.d(TAG, "onTimelineChanged: timeline $timeline")
-            Log.d(TAG, "onTimelineChanged: reason $reason")
+            Log.d(TAG, "onTimelineChanged: timeline $timeline , manifest $manifest, reason $reason")
         }
 
         override fun onTracksChanged(trackGroups: TrackGroupArray, trackSelections: TrackSelectionArray) {}
@@ -141,8 +140,7 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
         override fun onRepeatModeChanged(repeatMode: Int) {}
         override fun onShuffleModeEnabledChanged(shuffleModeEnabled: Boolean) {}
         override fun onPlayerError(error: ExoPlaybackException) {
-            error.printStackTrace()
-            Log.d(TAG, "onPlayerError:" + error.message)
+            Log.d(TAG, "onPlayerError:" + error.message).also { error.printStackTrace() }
             Toast.makeText(this@MainActivity, error.message, Toast.LENGTH_LONG).show()
         }
 

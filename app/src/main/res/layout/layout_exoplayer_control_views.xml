@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:layout_marginRight="5dp"
         android:paddingTop="30dp"
-        app:layout_constraintEnd_toStartOf="@+id/cross_im"
+        app:layout_constraintEnd_toStartOf="@+id/cross_image"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -57,7 +57,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/cross_im"
+        android:id="@+id/cross_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
