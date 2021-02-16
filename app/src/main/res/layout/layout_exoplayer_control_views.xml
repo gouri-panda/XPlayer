@@ -23,22 +23,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/header_tv"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:ellipsize="end"
-            android:maxLines="2"
-            android:paddingLeft="20dp"
-            android:text="Funny Anim Videos"
-            android:textColor="@color/white"
-            android:textSize="14sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintWidth_max="wrap"
-            app:layout_constraintWidth_percent="0.9" />
-
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/toggleInfo_im"
             android:layout_width="wrap_content"
@@ -50,9 +34,25 @@
             android:paddingBottom="10dp"
             android:src="@drawable/ic_icon_down_arrow"
             android:visibility="visible"
-            app:layout_constraintBottom_toBottomOf="@+id/header_tv"
-            app:layout_constraintStart_toEndOf="@+id/header_tv"
-            app:layout_constraintTop_toTopOf="@+id/header_tv" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_max="wrap"
+            app:layout_constraintWidth_percent="0.9" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/video_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:paddingLeft="20dp"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/toggleInfo_im"
+            app:layout_constraintStart_toEndOf="@+id/toggleInfo_im"
+            app:layout_constraintTop_toTopOf="@+id/toggleInfo_im"
+            tool:text="Title will show here " />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -81,7 +81,7 @@
     <ImageButton
         android:id="@+id/exo_rew"
         style="@style/ExoMediaButton.Rewind"
-        android:layout_marginRight="40dp"
+        android:layout_marginRight="70dp"
         android:src="@drawable/ic_icon_rewind"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="@id/exo_play"
@@ -91,7 +91,7 @@
     <ImageButton
         android:id="@+id/exo_ffwd"
         style="@style/ExoMediaButton.FastForward"
-        android:layout_marginLeft="40dp"
+        android:layout_marginLeft="70dp"
         android:src="@drawable/ic_icon_fastforward"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="@id/exo_play"
