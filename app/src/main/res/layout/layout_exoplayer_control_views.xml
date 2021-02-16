@@ -48,7 +48,7 @@
             android:maxLines="2"
             android:paddingLeft="20dp"
             android:textColor="@color/white"
-            android:textSize="14sp"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="@+id/toggleInfo_im"
             app:layout_constraintStart_toEndOf="@+id/toggleInfo_im"
             app:layout_constraintTop_toTopOf="@+id/toggleInfo_im"
@@ -81,9 +81,11 @@
     <ImageButton
         android:id="@+id/exo_rew"
         style="@style/ExoMediaButton.Rewind"
-        android:layout_marginRight="70dp"
+        android:layout_marginRight="90dp"
         android:src="@drawable/ic_icon_rewind"
         android:visibility="visible"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         app:layout_constraintBottom_toBottomOf="@id/exo_play"
         app:layout_constraintRight_toLeftOf="@+id/barrier_left"
         app:layout_constraintTop_toTopOf="@id/exo_play" />
@@ -91,7 +93,7 @@
     <ImageButton
         android:id="@+id/exo_ffwd"
         style="@style/ExoMediaButton.FastForward"
-        android:layout_marginLeft="70dp"
+        android:layout_marginLeft="90dp"
         android:src="@drawable/ic_icon_fastforward"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="@id/exo_play"
