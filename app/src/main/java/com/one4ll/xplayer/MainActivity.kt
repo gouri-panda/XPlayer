@@ -28,6 +28,7 @@ import com.google.android.exoplayer2.util.Util
 import com.one4ll.xplayer.databinding.ActivityMainBinding
 import com.one4ll.xplayer.helpers.*
 import kotlinx.android.synthetic.main.activity_main.view.*
+import kotlinx.android.synthetic.main.layout_exoplayer_control_views.view.*
 
 
 class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.OnDoubleTapListener, GestureDetector.OnGestureListener {
@@ -66,6 +67,9 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
                     ?: throw IllegalArgumentException(getString(R.string.videoPathShouldnotNull))
 
         }
+        val title = videoUriPath.substringAfterLast("/").substringBefore(".", "")
+        binding.playerView.video_title.text = title
+
         val dataSourceFactory: DataSource.Factory = DefaultDataSourceFactory(this, Util.getUserAgent(this@MainActivity, getString(R.string.app_name)))
         Log.d(TAG, "onCreate: video path $videoUriPath")
         lateinit var mediaSource: MediaSource
