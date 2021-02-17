@@ -3,50 +3,43 @@ package com.one4ll.xplayer
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
-import android.view.DragEvent
 import android.view.GestureDetector
 import android.view.MotionEvent
+import android.view.ScaleGestureDetector
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import com.one4ll.xplayer.databinding.ActivityFullImageBinding
 import com.one4ll.xplayer.helpers.IMAGE_PATH
-import kotlinx.android.synthetic.main.activity_full_image.*
+import kotlinx.android.synthetic.main.activity_full_image.view.*
+import kotlin.math.max
+import kotlin.math.min
 
 private const val TAG = "FullImageActivity"
 
-class FullImageActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.OnGestureListener, View.OnDragListener, GestureDetector.OnDoubleTapListener {
+class FullImageActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.OnGestureListener, GestureDetector.OnDoubleTapListener {
+    private lateinit var binding: ActivityFullImageBinding
     private lateinit var gestureDetector: GestureDetector
+    private lateinit var scaleGestureDetector: ScaleGestureDetector
+    private var scaleEffect: Float = 1.0f
+    private var isDoubleTaped = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_full_image)
+        binding = ActivityFullImageBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         val path = intent.getStringExtra(IMAGE_PATH)
         Log.d(TAG, "onCreate: image path $path")
-        full_image_view.setImageURI(Uri.parse(path))
+        binding.root.full_image_view.setImageURI(Uri.parse(path))
+        scaleGestureDetector = ScaleGestureDetector(this, ScaleGestureListener(scaleEffect, binding.root.full_image_view))
         gestureDetector = GestureDetector(this, this)
-        full_image_view.setOnDragListener(this)
-        full_image_view.setOnTouchListener(this)
+        binding.root.full_image_view.setOnTouchListener(this)
     }
 
-
-    //On touch listener
 
     override fun onTouch(v: View?, event: MotionEvent?): Boolean {
         v?.performClick()
         gestureDetector.onTouchEvent(event)
-        when (event?.action) {
-            MotionEvent.ACTION_DOWN -> {
-                Log.d(TAG, "onTouch: action down")
-            }
-            MotionEvent.ACTION_UP -> {
-                Log.d(TAG, "onTouch: action up")
-            }
-            MotionEvent.ACTION_OUTSIDE -> {
-                Log.d(TAG, "onTouch: action outside")
-            }
-            MotionEvent.ACTION_MOVE -> {
-                Log.d(TAG, "onTouch: x ${event.x} Y is ${event.y}")
-            }
-
-        }
+        scaleGestureDetector.onTouchEvent(event)
         return true
     }
 
@@ -84,47 +77,18 @@ class FullImageActivity : AppCompatActivity(), View.OnTouchListener, GestureDete
         return true
     }
 
-    @Suppress("DEPRECATION")
     override fun onLongPress(e: MotionEvent?) {
         Log.d(TAG, "onLongPress: ")
-        val builder = View.DragShadowBuilder(full_image_view)
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
-            full_image_view.startDragAndDrop(null, builder, null, 0)
-        } else {
-            full_image_view.startDrag(null, builder, null, 0)
-        }
-        builder.view.setOnDragListener(this)
-    }
-
-
-    //This is from View.OnDragListener
-    override fun onDrag(v: View?, event: DragEvent?): Boolean {
-        Log.d(TAG, "onDrag: ")
-        when (event?.action) {
-            DragEvent.ACTION_DRAG_ENDED -> {
-                Log.d(TAG, "onDrag: action drag ended")
-            }
-            DragEvent.ACTION_DRAG_ENTERED -> {
-                Log.d(TAG, "onDrag: action drag entered")
-            }
-            DragEvent.ACTION_DRAG_EXITED -> {
-                Log.d(TAG, "onDrag: action drag exited")
-            }
-            DragEvent.ACTION_DRAG_LOCATION -> {
-                Log.d(TAG, "onDrag: action drag location")
-            }
-            DragEvent.ACTION_DRAG_STARTED -> {
-                Log.d(TAG, "onDrag: action drag started")
-            }
-            DragEvent.ACTION_DROP -> {
-                Log.d(TAG, "onDrag: action drop")
-            }
-        }
-        return true
     }
 
     override fun onDoubleTap(e: MotionEvent?): Boolean {
         Log.d(TAG, "onDoubleTap: ")
+        isDoubleTaped = !isDoubleTaped
+        if (!isDoubleTaped) {
+            scalesView(binding.root.full_image_view, 4 * scaleEffect)
+        } else {
+            scalesView(binding.root.full_image_view, 1.0f)
+        }
         return true
     }
 
@@ -138,4 +102,21 @@ class FullImageActivity : AppCompatActivity(), View.OnTouchListener, GestureDete
         return true
     }
 
+}
+
+private fun scalesView(imageView: View, scaleFactor: Float) {
+    //Make sure if we don't scale too small or too large
+    val mScaleFactor = max(0.1f, min(scaleFactor, 10.00f))
+    imageView.animate().scaleX(mScaleFactor).scaleY(mScaleFactor).setDuration(300).start()
+}
+
+class ScaleGestureListener(private var scaleFactor: Float, var view: View) : ScaleGestureDetector.SimpleOnScaleGestureListener() {
+    override fun onScale(detector: ScaleGestureDetector?): Boolean {
+        Log.d(TAG, "onScale: called")
+        detector?.let {
+            scaleFactor *= 2 * detector.scaleFactor
+            scalesView(view, scaleFactor)
+        }
+        return true
+    }
 }

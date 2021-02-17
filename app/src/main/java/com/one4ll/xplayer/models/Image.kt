@@ -15,6 +15,4 @@ class Image(
 ) {
     @Ignore
     constructor(title: String, path: String, duration: String) : this(null, title, path, duration)
-
-
 }

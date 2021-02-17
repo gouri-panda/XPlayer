@@ -1,9 +1,9 @@
 package com.one4ll.xplayer.helpers
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Bitmap
 import android.media.ThumbnailUtils
-import android.net.Uri
 import android.os.CancellationSignal
 import android.provider.MediaStore
 import android.util.Size
@@ -404,15 +404,23 @@ suspend fun Context.setVideoThumbNail(file: File, imageView: ImageView) {
  * @param filePath The  video filePath we wanna convert into ThumbNail
  * @param imageView where we wanna set the Thumbnail
  */
+@Suppress("DEPRECATION")
+@SuppressLint("NewApi")
 suspend fun Context.setVideoThumbNail(filePath: String, imageView: ImageView) {
     withContext(IO) {
-        val bitMap: Bitmap = ThumbnailUtils.createVideoThumbnail(File(filePath), Size(200, 200), CancellationSignal())
+        val bitmap = if (IS_Q_OR_LETTER()) {
+            getBitmapThumbnailFromVideoFile(filePath)
+        } else {
+            ThumbnailUtils.createAudioThumbnail(filePath, MediaStore.Images.Thumbnails.MINI_KIND)
+        }
         withContext(Main) {
-            imageView.setImageBitmap(bitMap)
-            Glide.with(this@setVideoThumbNail).load(bitMap).into(imageView)
+            Glide.with(this@setVideoThumbNail).load(bitmap).into(imageView)
         }
     }
 }
+
+private fun getBitmapThumbnailFromVideoFile(filePath: String) =
+        ThumbnailUtils.createVideoThumbnail(File(filePath), Size(200, 200), CancellationSignal())
 
 /**
  * Creates a thumbNail for the given image file
@@ -429,13 +437,23 @@ suspend fun setImageThumbNail(file: File, imageView: ImageView) {
  * @param filePath The image filePath we wanna convert into ThumbNail
  * @param imageView where we wanna set the Thumbnail
  */
+@Suppress("DEPRECATION")
+@SuppressLint("NewApi")
 suspend fun setImageThumbNail(filePath: String, imageView: ImageView) {
     withContext(IO) {
-        val bitMap: Bitmap = ThumbnailUtils.createImageThumbnail(File(filePath), Size(200, 200), CancellationSignal())
+        val bitmap = if (IS_Q_OR_LETTER()) {
+            getBitmapThumbNailFromImageFile(filePath)
+        } else {
+            ThumbnailUtils.createAudioThumbnail(filePath, MediaStore.Images.Thumbnails.MINI_KIND)
+        }
         withContext(Main) {
-            Glide.with(imageView.context).load(bitMap).into(imageView)
+            Glide.with(imageView.context).load(bitmap).into(imageView)
         }
     }
+}
+
+private fun getBitmapThumbNailFromImageFile(filePath: String): Bitmap {
+    return ThumbnailUtils.createImageThumbnail(File(filePath), Size(200, 200), CancellationSignal())
 }
 
 /**
@@ -444,26 +462,26 @@ suspend fun setImageThumbNail(filePath: String, imageView: ImageView) {
  * @param imageView where we wanna set the Thumbnail
  */
 @Suppress("unused")
-suspend fun setMusicThumbNail(context: Context, file: File, imageView: ImageView) {
-    setMusicThumbNail(context, file.canonicalPath, imageView)
+suspend fun setMusicThumbNail(file: File, imageView: ImageView) {
+    setMusicThumbNail(file.canonicalPath, imageView)
 }
 
 /**
  * Creates a thumbNail for the given image file
- * @param context of the application
  * @param fiePath The image filePath we wanna convert into ThumbNail
  * @param imageView where we wanna set the Thumbnail
  */
 @Suppress("DEPRECATION")
-suspend fun setMusicThumbNail(context: Context, fiePath: String, imageView: ImageView) = withContext(IO) {
+@SuppressLint("NewApi")
+suspend fun setMusicThumbNail(fiePath: String, imageView: ImageView) = withContext(IO) {
     try {
         val bitMap: Bitmap? = if (IS_Q_OR_LETTER()) {
-            ThumbnailUtils.createAudioThumbnail(File(fiePath), Size(100, 100), null)
+            getBitmapThumbNailFromAudioFile(fiePath)
         } else {
             ThumbnailUtils.createAudioThumbnail(File(fiePath).absolutePath, MediaStore.Images.Thumbnails.MINI_KIND)
         }
         withContext(Main) {
-            imageView.setImageBitmap(bitMap)
+            Glide.with(imageView.context).load(bitMap).into(imageView)
         }
     } catch (e: java.lang.Exception) {
         e.printStackTrace()
@@ -472,6 +490,10 @@ suspend fun setMusicThumbNail(context: Context, fiePath: String, imageView: Imag
     }
 
 }
+
+private fun getBitmapThumbNailFromAudioFile(fiePath: String) =
+        ThumbnailUtils.createAudioThumbnail(File(fiePath), Size(100, 100), null)
+
 
 /**
  * Hides the system UI

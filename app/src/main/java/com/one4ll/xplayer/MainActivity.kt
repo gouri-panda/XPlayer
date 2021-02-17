@@ -1,13 +1,16 @@
 package com.one4ll.xplayer
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.graphics.BitmapFactory
+import android.media.AudioAttributes
+import android.media.AudioFocusRequest
 import android.media.AudioManager
-import android.media.MediaMetadataRetriever
 import android.net.Uri
 import android.os.Bundle
+import android.provider.MediaStore
 import android.provider.Settings
 import android.util.DisplayMetrics
 import android.util.Log
@@ -24,148 +27,101 @@ import com.google.android.exoplayer2.trackselection.TrackSelectionArray
 import com.google.android.exoplayer2.upstream.DataSource
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory
 import com.google.android.exoplayer2.util.Util
+import com.one4ll.xplayer.databinding.ActivityMainBinding
 import com.one4ll.xplayer.helpers.*
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_main.view.*
+import kotlinx.android.synthetic.main.layout_exoplayer_control_views.view.*
 
+private const val TAG = "MainActivity"
 
-class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.OnDoubleTapListener, GestureDetector.OnGestureListener {
+class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.OnDoubleTapListener, GestureDetector.OnGestureListener, AudioManager.OnAudioFocusChangeListener {
     private lateinit var gestureDetector: GestureDetector
     private lateinit var videoUriPath: String
     private var screenWidth: Int? = null
     private var screenHeight: Int? = null
     private val audioManager by lazy { getSystemService(Context.AUDIO_SERVICE) as AudioManager }
     private val brightness by lazy { Settings.System.getInt(contentResolver, Settings.System.SCREEN_BRIGHTNESS) }
+    private lateinit var binding: ActivityMainBinding
 
     private var simpleExoPlayer: SimpleExoPlayer? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         hideSystemUI(true)
         val displayMetrics = DisplayMetrics()
         windowManager.defaultDisplay.getMetrics(displayMetrics)
         screenWidth = displayMetrics.widthPixels
         screenHeight = displayMetrics.heightPixels
-        Log.d(TAG, "onCreate: width $screenWidth")
-        Log.d(TAG, "onCreate: height $screenHeight")
+        Log.d(TAG, "onCreate: screen width $screenWidth ,screen  height $screenHeight")
         simpleExoPlayer = SimpleExoPlayer.Builder(this).build()
         gestureDetector = GestureDetector(this, this)
-        player_view?.player = simpleExoPlayer
-        val intent = intent
+        binding.root.player_view.player = simpleExoPlayer
         if (intent.action != null && intent.action == Intent.ACTION_VIEW) {
-
             Log.d(TAG, "onCreate: action view intent called")
             videoUriPath = intent.data.toString()
             Log.d(TAG, "onCreate: action view intent called $videoUriPath")
-
         } else {
             videoUriPath = intent.getStringExtra(VIDEO_PATH)
                     ?: throw IllegalArgumentException(getString(R.string.videoPathShouldnotNull))
-
         }
+        setVideoTitle()
+        setViews()
+
         val dataSourceFactory: DataSource.Factory = DefaultDataSourceFactory(this, Util.getUserAgent(this@MainActivity, getString(R.string.app_name)))
         Log.d(TAG, "onCreate: video path $videoUriPath")
         lateinit var mediaSource: MediaSource
         val options = BitmapFactory.Options()
         options.inJustDecodeBounds = true
-        val decode = BitmapFactory.decodeFile(videoUriPath,
-                options)
+        val decode = BitmapFactory.decodeFile(videoUriPath, options)
         val width = decode?.width
         val height = decode?.height
         options.inJustDecodeBounds = false
-        Log.d(TAG, "onCreate: width $width")
-        Log.d(TAG, "onCreate: height $height")
-//        foo()
-//        mediaSource =
-//            ProgressiveMediaSource.Factory(dataSourceFactory).createMediaSource(Uri.fromFile(File(videoUriPath)))
+        Log.d(TAG, "onCreate: video uri decode file width $width video uri decode file height $height")
         mediaSource =
                 ProgressiveMediaSource.Factory(dataSourceFactory).createMediaSource(Uri.parse(videoUriPath))
-//        }
         simpleExoPlayer!!.prepare(mediaSource)
 
         simpleExoPlayer!!.playWhenReady = true
         simpleExoPlayer!!.addListener(eventListener)
-        player_view?.setOnTouchListener(this)
 
     }
 
+    private fun setViews() {
+        binding.root.player_view?.setOnTouchListener(this)
+        binding.root.player_view.cross_image.setOnClickListener { finish() }
+    }
 
-    //    @OnClick(R.id.image_button_play)
-    //    public void play() {
-    //        playVideo();
-    //    }
-    //    @OnClick(R.id.image_button_play_2)
-    //    public void play2() {
-    //        playVideo();
-    //    }
-    //    private void playVideo() {
-    //        Log.d(TAG, "play: clicked");
-    //        if (simpleExoPlayer.getPlaybackState() == Player.STATE_ENDED) {
-    //            simpleExoPlayer.seekTo(0);
-    //        }
-    //        simpleExoPlayer.setPlayWhenReady(true);
-    //        playButton.setVisibility(View.INVISIBLE);
-    //        playButton2.setVisibility(View.INVISIBLE);
-    //        pauseButton2.setVisibility(View.VISIBLE);
-    //
-    //    }
-    //    @OnClick(R.id.player_view)
-    //    public void onPlayViewClicked() {
-    //        pauseButton.setVisibility(View.VISIBLE);
-    //        pauseButton2.setVisibility(View.VISIBLE);
-    //    }
-    //    @OnClick(R.id.image_button_pause)
-    //    public void pause() {
-    //        pauseVideo();
-    //    }
-    //    @OnClick(R.id.image_button_pause_2)
-    //    public void pause2() {
-    //        pauseVideo();
-    //    }
-    //    @OnClick(R.id.imageButtonPrevious)
-    //    public void goToPrevious() {
-    //        int state = simpleExoPlayer.getPlaybackState();
-    //    }
-    //    private void pauseVideo() {
-    //        progressBar.setVisibility(View.GONE);
-    //        simpleExoPlayer.setPlayWhenReady(false);
-    //        pauseButton.setVisibility(View.INVISIBLE);
-    //        pauseButton2.setVisibility(View.INVISIBLE);
-    //        playButton.setVisibility(View.VISIBLE);
-    //        playButton2.setVisibility(View.VISIBLE);
-    //
-    //    }
+    private fun setVideoTitle() {
+        val title = videoUriPath.substringAfterLast("/").substringBefore(".", "")
+        binding.playerView.video_title.text = title
+    }
+
     private val eventListener: Player.EventListener = object : Player.EventListener {
         override fun onTimelineChanged(timeline: Timeline, reason: Int) {
-            Log.d(TAG, "onTimelineChanged: timeline $timeline")
-            Log.d(TAG, "onTimelineChanged: reason $reason")
+            Log.d(TAG, "onTimelineChanged: timeline $timeline reason $reason")
         }
 
         override fun onTimelineChanged(timeline: Timeline, manifest: Any?, reason: Int) {
-            Log.d(TAG, "onTimelineChanged: timeline $timeline")
-            Log.d(TAG, "onTimelineChanged: reason $reason")
+            Log.d(TAG, "onTimelineChanged: timeline $timeline , manifest $manifest, reason $reason")
         }
 
         override fun onTracksChanged(trackGroups: TrackGroupArray, trackSelections: TrackSelectionArray) {}
         override fun onLoadingChanged(isLoading: Boolean) {
-//            if (isLoading) {
-//                progressBar.setVisibility(View.VISIBLE);
-//            } else {
-//                progressBar.setVisibility(View.GONE);
-//            }
         }
 
         override fun onPlayerStateChanged(playWhenReady: Boolean, playbackState: Int) {
             when (playbackState) {
                 Player.STATE_READY -> {
-                    goto_duration.visibility = View.INVISIBLE
-
+                    binding.root.goto_duration.visibility = View.INVISIBLE
+                    audioManager.requestAudioFocus(this@MainActivity, AudioManager.STREAM_MUSIC, AudioManager.AUDIOFOCUS_GAIN)
                     Log.d(TAG, "onPlayerStateChanged: state ready")
                 }
                 Player.STATE_BUFFERING -> {
                     Log.d(TAG, "onPlayerStateChanged: buffering")
                 }
                 Player.STATE_ENDED -> {
-                    player_view?.keepScreenOn = false
+                    binding.root.player_view?.keepScreenOn = false
                     simpleExoPlayer?.playWhenReady = false
                     Log.d(TAG, "onPlayerStateChanged: state ended")
                 }
@@ -179,15 +135,14 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
         override fun onIsPlayingChanged(isPlaying: Boolean) {
             Log.d(TAG, "onIsPlayingChanged: isPlaying$isPlaying")
             if (!isPlaying) {
-                player_view?.keepScreenOn = false
+                binding.root.player_view?.keepScreenOn = false
             }
         }
 
         override fun onRepeatModeChanged(repeatMode: Int) {}
         override fun onShuffleModeEnabledChanged(shuffleModeEnabled: Boolean) {}
         override fun onPlayerError(error: ExoPlaybackException) {
-            error.printStackTrace()
-            Log.d(TAG, "onPlayerError:" + error.message)
+            Log.d(TAG, "onPlayerError:" + error.message).also { error.printStackTrace() }
             Toast.makeText(this@MainActivity, error.message, Toast.LENGTH_LONG).show()
         }
 
@@ -196,19 +151,31 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
         override fun onSeekProcessed() {}
     }
 
+    override fun onAudioFocusChange(focusChange: Int) {
+        when (focusChange) {
+            AudioManager.AUDIOFOCUS_GAIN_TRANSIENT_MAY_DUCK -> {
+                simpleExoPlayer?.playWhenReady = true
+            }
+            AudioManager.AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK -> {
+                simpleExoPlayer?.playWhenReady = false
+            }
+            AudioManager.AUDIOFOCUS_LOSS -> {
+                simpleExoPlayer?.playWhenReady = false
+            }
+        }
+    }
+
 
     override fun onDestroy() {
         simpleExoPlayer!!.release()
         super.onDestroy()
     }
 
-    companion object {
-        private const val TAG = "MainActivity"
-    }
 
-    override fun onTouch(v: View?, event: MotionEvent?): Boolean {
+    override fun onTouch(view: View?, event: MotionEvent?): Boolean {
+        view?.performClick()
         gestureDetector.onTouchEvent(event)
-        player_view?.showController()
+        binding.root.player_view?.showController()
         return true
     }
 
@@ -218,10 +185,9 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
     }
 
     private fun forwardAndBackWardVideoOnDoubleClick(event: MotionEvent?) {
-
         Log.d(TAG, "onDoubleTap: clicked")
         val rawX = event?.rawX
-        Log.d(TAG, "forwardAndBackWardVideoOnDoubleClick: rawx $rawX")
+        Log.d(TAG, "forwardAndBackWardVideoOnDoubleClick: raw x $rawX")
         if (rawX != null) {
             val middle = screenWidth!! / 2
             if (rawX < middle) {
@@ -255,9 +221,8 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
     }
 
     override fun onSingleTapUp(e: MotionEvent?): Boolean {
-        if (player_view?.controllerAutoShow != null) {
-            player_view?.controllerAutoShow = !player_view!!.controllerAutoShow
-
+        if (binding.root.player_view?.controllerAutoShow != null) {
+            binding.root.player_view?.controllerAutoShow = !binding.root.player_view!!.controllerAutoShow
         }
         return true
     }
@@ -267,54 +232,52 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
     }
 
     override fun onFling(e1: MotionEvent?, e2: MotionEvent?, velocityX: Float, velocityY: Float): Boolean {
-        Log.d(TAG, "onFling: velocity x $velocityX")
-        Log.d(TAG, "onFling: velocity y $velocityY")
+        Log.d(TAG, "onFling: velocity x $velocityX velocity y $velocityY")
         return true
     }
 
-    override fun onScroll(e1: MotionEvent?, e2: MotionEvent?, distanceX: Float, distanceY: Float): Boolean {
-        Log.d(TAG, "onScroll: motion event 1$e1")
-        Log.d(TAG, "onScroll: motion event 2 $e2")
-
-        goto_duration.visibility = View.VISIBLE
+    @SuppressLint("SetTextI18n")
+    override fun onScroll(motionEvent1: MotionEvent?, motionEvent2: MotionEvent?, distanceX: Float, distanceY: Float): Boolean {
+        Log.d(TAG, "onScroll: motion event 1$motionEvent1")
+        Log.d(TAG, "onScroll: motion event 2 $motionEvent2")
+        binding.root.goto_duration.visibility = View.VISIBLE
         val currentPosition = simpleExoPlayer?.currentPosition ?: 0
-        if (e2?.x!! - e1?.x!! >= 100) {
+        if (motionEvent2?.x!! - motionEvent1?.x!! >= 100) {
             //forward
-            goto_duration.text = "Forward  +20.00s\n\t\t ${convertDuration(currentPosition)}s"
+            binding.root.goto_duration.text = "Forward  +20.00s\n\t\t ${convertDuration(currentPosition)}s"
             simpleExoPlayer?.seekTo(currentPosition + 20000)
 
-        } else if (e1.x - e2.x >= 100) {
+        } else if (motionEvent1.x - motionEvent2.x >= 100) {
             //backward
-            goto_duration.text = "BackWard -20.00s\n\t\t ${convertDuration(currentPosition)}"
+            binding.root.goto_duration.text = "BackWard -20.00s\n\t\t ${convertDuration(currentPosition)}"
             simpleExoPlayer?.seekTo(currentPosition - 20000)
         } else {
-            val rawX = e1.rawX
+            val rawX = motionEvent1.rawX
             val middle = screenWidth!! / 2
             if (rawX < middle) {
                 //left brightness
-                if (e1.y - e2.y >= 100) {
+                if (motionEvent1.y - motionEvent2.y >= 100) {
                     //increase brightness
 
                     increaseBrightness()
 
-                } else if (e2.y - e1.y >= 100) {
+                } else if (motionEvent2.y - motionEvent1.y >= 100) {
                     // decrease brightness
-                    decreaseBrightNess()
+                    decreaseBrightness()
                 }
             } else {
                 //right sound
-                if (e1.y - e2.y > 100) {
+                if (motionEvent1.y - motionEvent2.y > 100) {
                     //increase sound
                     increaseSound()
-                } else if (e2.y - e1.y >= 100) {
+                } else if (motionEvent2.y - motionEvent1.y >= 100) {
                     //decrease sound
                     decreaseSound()
                 }
                 //change sound
             }
         }
-        Log.d(TAG, "onScroll: distance x $distanceX")
-        Log.d(TAG, "onScroll: distance y $distanceY")
+        Log.d(TAG, "onScroll: distance x $distanceX and distant y $distanceY")
         return true
     }
 
@@ -323,17 +286,16 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
     }
 
     private fun increaseSound() {
-        Log.d(TAG, "increaseSound: iiii")
+        Log.d(TAG, "increaseSound:")
         audioManager.adjustVolume(AudioManager.ADJUST_RAISE, AudioManager.FLAG_PLAY_SOUND)
     }
 
-    private fun decreaseBrightNess() {
-        Log.d(TAG, "decreaseBrightNess: iiii")
+    private fun decreaseBrightness() {
+        Log.d(TAG, "decreaseBrightness:")
     }
 
     private fun increaseBrightness() {
-        Log.d(TAG, "increaseBrightness: iiii")
-        Log.d(TAG, "increaseBrightness: iiii brightness $brightness")
+        Log.d(TAG, "increaseBrightness: brightness $brightness")
         if (havePermission(this, Manifest.permission.WRITE_SETTINGS)) {
 
             Settings.System.putInt(contentResolver, Settings.System.SCREEN_BRIGHTNESS, 23)
@@ -341,9 +303,6 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
             attributes.screenBrightness = (23 / 255).toFloat()
             window.attributes = attributes
         }
-//        else {
-//            askPermission(activity = this, permissions = *arrayOf(Manifest.permission.WRITE_SETTINGS),permissionId = 5)
-//        }
     }
 
     override fun onLongPress(e: MotionEvent?) {
@@ -354,27 +313,4 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
         super.onPause()
         simpleExoPlayer?.playWhenReady = false
     }
-
-//    private fun foo() {
-//        if (!videoUriPath.contains("http") || !videoUriPath.contains("https")) {
-//            val mediaMetadataRetriever = MediaMetadataRetriever()
-//            mediaMetadataRetriever.setDataSource(videoUriPath)
-//            val width = mediaMetadataRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_VIDEO_WIDTH)
-//            val height = mediaMetadataRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_VIDEO_HEIGHT)
-//            Log.d(TAG, "foo: title ${mediaMetadataRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_TITLE)}")
-//            Log.d(TAG, "foo: ${mediaMetadataRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ARTIST)}")
-//            Log.d(TAG, "foo: width $width")
-//            Log.d(TAG, "foo: height $height")
-//        }
-//
-//        val track = simpleExoPlayer?.currentTrackGroups
-//        for (i in 0 until track?.length!!) {
-//            Log.d(TAG, "foo: track ${track.get(i)}")
-//        }
-//    }
-
-//    override fun onResume() {
-//        super.onResume()
-//        simpleExoPlayer?.playWhenReady = false
-//    }
 }

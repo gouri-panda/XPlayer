@@ -11,9 +11,9 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.one4ll.xplayer.Media
-import com.one4ll.xplayer.R
 import com.one4ll.xplayer.adapter.MusicRecyclerViewAdapter
-import kotlinx.android.synthetic.main.fragment_slideshow.view.*
+import com.one4ll.xplayer.databinding.FragmentMusicBinding
+import kotlinx.android.synthetic.main.fragment_music.view.*
 import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -24,15 +24,15 @@ class SlideshowFragment : Fragment() {
 
     private val musicViewModel: MusicViewModel by viewModels()
     private lateinit var musicRecyclerViewAdapter: MusicRecyclerViewAdapter
-    private lateinit var root: View
+    private lateinit var binding: FragmentMusicBinding
 
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View {
-        root = inflater.inflate(R.layout.fragment_slideshow, container, false)
-        return root
+        binding = FragmentMusicBinding.inflate(layoutInflater)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -41,7 +41,7 @@ class SlideshowFragment : Fragment() {
             if (musicUriList != null) {
                 Log.d(TAG, "onCreateView: ex size ${musicUriList.size}")
                 lifecycleScope.launch {
-                    setAdapter(musicUriList, root)
+                    setAdapter(musicUriList, binding.root)
                 }
             }
         })

@@ -17,16 +17,14 @@ import com.one4ll.xplayer.MainActivity
 import com.one4ll.xplayer.R
 import com.one4ll.xplayer.adapter.StreamsRecyclerViewAdapter
 import com.one4ll.xplayer.database.MediaDatabase
+import com.one4ll.xplayer.databinding.FragmentStreamBinding
 import com.one4ll.xplayer.helpers.VIDEO_PATH
 import com.one4ll.xplayer.models.Streams
 import kotlinx.android.synthetic.main.fragment_stream.*
 import kotlinx.android.synthetic.main.fragment_stream.view.*
-import kotlinx.coroutines.Dispatchers.IO
-import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import java.util.*
 
 
@@ -38,16 +36,15 @@ private const val TAG = "streamFragment"
 
 @ExperimentalCoroutinesApi
 class StreamFragment : Fragment() {
-    private lateinit var rootView: View
     private val adapter: StreamsRecyclerViewAdapter by lazy { StreamsRecyclerViewAdapter() }
     private val viewModel: StreamViewModel by viewModels()
-
+    private lateinit var binding: FragmentStreamBinding
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
         // Inflate the layout for this fragment
-        rootView = inflater.inflate(R.layout.fragment_stream, container, false)
-        return rootView
+        binding = FragmentStreamBinding.inflate(layoutInflater)
+        return binding.root
     }
 
 
@@ -58,16 +55,16 @@ class StreamFragment : Fragment() {
                 adapter.setNotes(it)
             }
         }
-        rootView.url_send.setOnClickListener {
-            val url = rootView.editTextUrl?.text
+        binding.root.url_send.setOnClickListener {
+            val url = binding.root.editTextUrl?.text
             if (url != null) {
-                val intent = Intent(rootView.context, MainActivity::class.java)
+                val intent = Intent(binding.root.context, MainActivity::class.java)
                 intent.putExtra(VIDEO_PATH, url.toString())
                 lifecycleScope.launch {
                     insertStreamsIntoDatabase(viewModel.db, Streams(url.toString(), System.currentTimeMillis()))
                 }
                 Log.d(TAG, "onCreateView: stream url path $url")
-                rootView.context.startActivity(intent)
+                binding.root.context.startActivity(intent)
 
             }
         }
@@ -81,19 +78,15 @@ class StreamFragment : Fragment() {
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 Log.d(TAG, "onSwiped: direction $direction")
                 lifecycleScope.launch {
-                    withContext(IO) {
-                        viewModel.db.streamsDao().removeById(adapter.getStreamAtPosition(viewHolder.adapterPosition).id!!)
-                        withContext(Main) {
-                            adapter.notifyDataSetChanged()
-                        }
-                    }
+                    viewModel.db.streamsDao().removeById(adapter.getStreamAtPosition(viewHolder.adapterPosition).id!!)
+                    adapter.notifyDataSetChanged()
                 }
             }
-        }).attachToRecyclerView(rootView.streams_recycler_view)
+        }).attachToRecyclerView(binding.root.streams_recycler_view)
     }
 
     private fun setRecycleView() {
-        rootView.streams_recycler_view.apply {
+        binding.root.streams_recycler_view.apply {
             val animation = AnimationUtils.loadAnimation(rootView.context, R.anim.recycler_view_from_bottom_to_top)
             this.animation = animation
             layoutManager = LinearLayoutManager(rootView.context, LinearLayoutManager.VERTICAL, false)
@@ -102,7 +95,7 @@ class StreamFragment : Fragment() {
 
     }
 
-    private suspend fun insertStreamsIntoDatabase(database: MediaDatabase, stream: Streams) = withContext(IO) {
+    private suspend fun insertStreamsIntoDatabase(database: MediaDatabase, stream: Streams) {
         database.streamsDao().insert(stream)
     }
 }

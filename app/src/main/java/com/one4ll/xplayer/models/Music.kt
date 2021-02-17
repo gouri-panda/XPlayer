@@ -11,6 +11,4 @@ class Music(
         var path: String,
         var duration: String
 
-) {
-
-}
+)

@@ -1,8 +1,9 @@
 package com.one4ll.xplayer.interfaces
 
-import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.one4ll.xplayer.models.Favorite
+import kotlinx.coroutines.flow.Flow
+
 
 @Dao
 interface FavoritesDao {
@@ -16,14 +17,14 @@ interface FavoritesDao {
     fun removeAll()
 
     @Query("SELECT * FROM favorite")
-    fun selectAll(): LiveData<List<Favorite>>
+    fun selectAll(): Flow<List<Favorite>>
 
     @Query("SELECT * FROM favorite ORDER BY time DESC")
-    fun selectAllByTimeInDesc(): LiveData<List<Favorite>>
+    fun selectAllByTimeInDesc(): Flow<List<Favorite>>
 
     @Query("DELETE FROM favorite WHERE id = :id")
     fun removeById(id: Long)
 
     @Query("SELECT * FROM favorite WHERE id = :id")
-    fun getAllById(id: Long): LiveData<Favorite>
+    fun getAllById(id: Long): Flow<Favorite>
 }

@@ -15,10 +15,9 @@ import com.one4ll.xplayer.R
 import com.one4ll.xplayer.helpers.IMAGE_PATH
 import com.one4ll.xplayer.helpers.setImageThumbNail
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
 
-class ImageRecyclerViewAdapter(var list: List<Media>, var activity: Activity) :
+class ImageRecyclerViewAdapter(var list: List<Media>, var activity: Activity, val lifeCycleScope: CoroutineScope) :
         RecyclerView.Adapter<ImageRecyclerViewAdapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -37,7 +36,7 @@ class ImageRecyclerViewAdapter(var list: List<Media>, var activity: Activity) :
         holder.imageView.setImageBitmap(null)
         holder.title.text = list[position].name
         val path = list[position].path
-        CoroutineScope(IO).launch {
+        lifeCycleScope.launch {
             setImageThumbNail(path, holder.imageView)
         }
         holder.itemView.setOnClickListener {
