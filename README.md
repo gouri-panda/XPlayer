@@ -1,13 +1,13 @@
 <h1 align="center">
   <br>
-  <a href="http://www.amitmerchant.com/electron-markdownify"><img src="https://user-images.githubusercontent.com/43576162/107629010-7ab50300-6c87-11eb-814f-c2aa4d421fb4.png" alt="Markdownify" width="200"></a>
+    <img src="https://user-images.githubusercontent.com/43576162/107629010-7ab50300-6c87-11eb-814f-c2aa4d421fb4.png" alt="XPlayer" width="200">
   <br>
-  XPlayer
+    XPlayer (work-in-progress ⛏⛏⛏)
   <br>
 </h1>
 <h4 align="center">A Multimedia application where the user can run Videos, Images & Audio</h4>
 
-XPlayer is Multiedia application where the user can see his/her videos, images and audio.
+XPlayer is a **work-in-progress**. This is a simple Media player application where the user sees his/her videos, images and audio.
 It is still in its early stages of development; It is under heavy development.
 
 # Setting up the project
