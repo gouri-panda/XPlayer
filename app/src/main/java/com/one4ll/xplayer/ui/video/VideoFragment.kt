@@ -86,8 +86,10 @@ class VideoFragment : Fragment() {
      */
     private suspend fun getVideoList() {
         withContext(IO) {
-            val externalContentVideoJob: Deferred<ArrayList<Media>> = async { getExternalContentVideoUri(binding.root.context) }
-            val internalContentVideoJob: Deferred<ArrayList<Media>> = async { getInternalContentVideoUri(binding.root.context) }
+            val externalContentVideoJob: Deferred<ArrayList<Media>> =
+                    async { getExternalContentVideoUri(binding.root.context) }
+            val internalContentVideoJob: Deferred<ArrayList<Media>> =
+                    async { getInternalContentVideoUri(binding.root.context) }
             val contentUri = externalContentVideoJob.await() + internalContentVideoJob.await()
             setAdapter(contentUri)
         }

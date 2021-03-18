@@ -1,0 +1,74 @@
+<?xml version="1.0" ?>
+<SmellBaseline>
+  <Blacklist></Blacklist>
+  <Whitelist>
+    <ID>CommentSpacing:</ID>
+    <ID>ComplexMethod:MainActivity.kt$MainActivity$@SuppressLint("SetTextI18n") override fun onScroll(motionEvent1: MotionEvent?, motionEvent2: MotionEvent?, distanceX: Float, distanceY: Float): Boolean</ID>
+    <ID>ConstructorParameterNaming:Music.kt$Music$@PrimaryKey(autoGenerate = true) var _id: Int</ID>
+    <ID>EmptyCatchBlock:utils.kt${ }</ID>
+    <ID>EmptyFunctionBlock:MainActivity.kt$MainActivity${ }</ID>
+    <ID>EmptyFunctionBlock:MainActivity.kt$MainActivity.&lt;no name provided&gt;${}</ID>
+    <ID>FinalNewline:</ID>
+    <ID>ForbiddenComment:ImageRecyclerViewAdapter.kt$ImageRecyclerViewAdapter$// TODO: 10/07/20 fix when go to down to up</ID>
+    <ID>ForbiddenComment:MusicRecyclerViewAdapter.kt$MusicRecyclerViewAdapter$// TODO: 10/07/20 fix when go to down to up</ID>
+    <ID>ForbiddenComment:VideoRecyclerViewAdapter.kt$VideoRecyclerViewAdapter$// TODO: 10/07/20 fix when go to down to up</ID>
+    <ID>FunctionNaming:config.kt$// For checking os version fun IS_MARSHMALLOW_OR_LETTER()</ID>
+    <ID>FunctionNaming:config.kt$fun IS_NOUGHOT_MR1_OR_LETTER()</ID>
+    <ID>FunctionNaming:config.kt$fun IS_NOUGHOT_OR_LETTER()</ID>
+    <ID>FunctionNaming:config.kt$fun IS_OREO_OR_LETTER()</ID>
+    <ID>FunctionNaming:config.kt$fun IS_PIE_OR_LETTER()</ID>
+    <ID>FunctionNaming:config.kt$fun IS_Q_OR_LETTER()</ID>
+    <ID>MagicNumber:FullImageActivity.kt$0.1f</ID>
+    <ID>MagicNumber:FullImageActivity.kt$10.00f</ID>
+    <ID>MagicNumber:FullImageActivity.kt$300</ID>
+    <ID>MagicNumber:FullImageActivity.kt$FullImageActivity$4</ID>
+    <ID>MagicNumber:MainActivity.kt$MainActivity$100</ID>
+    <ID>MagicNumber:MainActivity.kt$MainActivity$20000</ID>
+    <ID>MagicNumber:MainActivity.kt$MainActivity$23</ID>
+    <ID>MagicNumber:MainActivity.kt$MainActivity$255</ID>
+    <ID>MagicNumber:utils.kt$100</ID>
+    <ID>MagicNumber:utils.kt$200</ID>
+    <ID>MagicNumber:utils.kt$3600000</ID>
+    <ID>MagicNumber:utils.kt$60000</ID>
+    <ID>MatchingDeclarationName:ImageFragment.kt$com.one4ll.xplayer.ui.image.ImageFragment.kt</ID>
+    <ID>MatchingDeclarationName:MusicFragment.kt$com.one4ll.xplayer.ui.music.MusicFragment.kt</ID>
+    <ID>MaxLineLength:AllFilesList.kt$AllFilesList$ override fun onRequestPermissionsResult( requestCode: Int, permissions: Array&lt;out String&gt;, grantResults: IntArray )</ID>
+    <ID>MaxLineLength:AllFilesList.kt$AllFilesList$askPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE, permissionId = READ_AND_WRITE_STORAGE_PERMISSION)</ID>
+    <ID>MaxLineLength:DownloadActivity.kt$DownloadActivity$"https://images.unsplash.com/photo-1586291555476-33e6a30cd7ab?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=976&amp;q=80"</ID>
+    <ID>MaxLineLength:FullImageActivity.kt$FullImageActivity : AppCompatActivityOnTouchListenerOnGestureListenerOnDoubleTapListener</ID>
+    <ID>MaxLineLength:FullImageActivity.kt$ScaleGestureListener : SimpleOnScaleGestureListener</ID>
+    <ID>MaxLineLength:ImageFragment.kt$GalleryFragment$imageRecyclerViewAdapter = activity?.let { ImageRecyclerViewAdapter(imageList, activity = it, lifeCycleScope = lifecycleScope) }</ID>
+    <ID>MaxLineLength:ImageRecyclerViewAdapter.kt$ImageRecyclerViewAdapter$val bundle = ActivityOptions.makeSceneTransitionAnimation(activity, holder.imageView, holder.imageView.transitionName).toBundle()</ID>
+    <ID>MaxLineLength:ImageViewModel.kt$ImageViewModel$val internalContentImageUriJob: Deferred&lt;ArrayList&lt;Media&gt;&gt; = async { getInternalContentImageUri(app.applicationContext) }</ID>
+    <ID>MaxLineLength:MainActivity.kt$MainActivity : AppCompatActivityOnTouchListenerOnDoubleTapListenerOnGestureListenerOnAudioFocusChangeListener</ID>
+    <ID>MaxLineLength:MainActivity.kt$MainActivity$@SuppressLint("SetTextI18n") override</ID>
+    <ID>MaxLineLength:MainActivity.kt$MainActivity$val dataSourceFactory: DataSource.Factory = DefaultDataSourceFactory(this, Util.getUserAgent(this@MainActivity, getString(R.string.app_name)))</ID>
+    <ID>MaxLineLength:MainActivity.kt$MainActivity.&lt;no name provided&gt;$audioManager.requestAudioFocus(this@MainActivity, AudioManager.STREAM_MUSIC, AudioManager.AUDIOFOCUS_GAIN)</ID>
+    <ID>MaxLineLength:VideoFragment.kt$VideoFragment$val sharedPreferences = binding.root.context.getSharedPreferences(SHARED_PREF_SETTINGS, Context.MODE_PRIVATE)</ID>
+    <ID>MaximumLineLength:</ID>
+    <ID>NoBlankLineBeforeRbrace:</ID>
+    <ID>NoConsecutiveBlankLines:</ID>
+    <ID>NoTrailingSpaces:</ID>
+    <ID>NoUnusedImports:</ID>
+    <ID>NoWildcardImports:</ID>
+    <ID>ParameterListWrapping:</ID>
+    <ID>SpacingAroundColon:</ID>
+    <ID>TooGenericExceptionCaught:utils.kt$e: Exception</ID>
+    <ID>TooManyFunctions:FullImageActivity.kt$FullImageActivity : AppCompatActivityOnTouchListenerOnGestureListenerOnDoubleTapListener</ID>
+    <ID>TooManyFunctions:MainActivity.kt$MainActivity : AppCompatActivityOnTouchListenerOnDoubleTapListenerOnGestureListenerOnAudioFocusChangeListener</ID>
+    <ID>TooManyFunctions:config.kt$com.one4ll.xplayer.helpers.config.kt</ID>
+    <ID>TooManyFunctions:utils.kt$com.one4ll.xplayer.helpers.utils.kt</ID>
+    <ID>WildcardImport:AllFilesList.kt$import com.one4ll.xplayer.helpers.*</ID>
+    <ID>WildcardImport:FavoritesDao.kt$import androidx.room.*</ID>
+    <ID>WildcardImport:ImageViewModel.kt$import kotlinx.coroutines.*</ID>
+    <ID>WildcardImport:MainActivity.kt$import com.google.android.exoplayer2.*</ID>
+    <ID>WildcardImport:MainActivity.kt$import com.one4ll.xplayer.helpers.*</ID>
+    <ID>WildcardImport:MediaDatabase.kt$import com.one4ll.xplayer.interfaces.*</ID>
+    <ID>WildcardImport:MediaDatabase.kt$import com.one4ll.xplayer.models.*</ID>
+    <ID>WildcardImport:MusicViewModel.kt$import kotlinx.coroutines.*</ID>
+    <ID>WildcardImport:StreamsDao.kt$import androidx.room.*</ID>
+    <ID>WildcardImport:VideoFragment.kt$import com.one4ll.xplayer.helpers.*</ID>
+    <ID>WildcardImport:VideoRecyclerViewAdapter.kt$import android.view.*</ID>
+    <ID>WildcardImport:utils.kt$import kotlinx.coroutines.*</ID>
+  </Whitelist>
+</SmellBaseline>

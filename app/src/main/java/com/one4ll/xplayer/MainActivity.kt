@@ -107,8 +107,7 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
         }
 
         override fun onTracksChanged(trackGroups: TrackGroupArray, trackSelections: TrackSelectionArray) {}
-        override fun onLoadingChanged(isLoading: Boolean) {
-        }
+
 
         override fun onPlayerStateChanged(playWhenReady: Boolean, playbackState: Int) {
             when (playbackState) {
@@ -140,7 +139,6 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
         }
 
         override fun onRepeatModeChanged(repeatMode: Int) {}
-        override fun onShuffleModeEnabledChanged(shuffleModeEnabled: Boolean) {}
         override fun onPlayerError(error: ExoPlaybackException) {
             Log.d(TAG, "onPlayerError:" + error.message).also { error.printStackTrace() }
             Toast.makeText(this@MainActivity, error.message, Toast.LENGTH_LONG).show()
@@ -148,7 +146,6 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
 
         override fun onPositionDiscontinuity(reason: Int) {}
         override fun onPlaybackParametersChanged(playbackParameters: PlaybackParameters) {}
-        override fun onSeekProcessed() {}
     }
 
     override fun onAudioFocusChange(focusChange: Int) {
