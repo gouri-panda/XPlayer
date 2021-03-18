@@ -3,6 +3,8 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-android'
 apply plugin: 'org.jetbrains.kotlin.android.extensions'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'io.gitlab.arturbosch.detekt'
+
 
 android {
     compileSdkVersion 29
@@ -42,7 +44,9 @@ android {
     }
 
 }
-
+detekt {
+    baseline = project.file("detekt_baseline.xml")
+}
 dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.navigation:navigation-fragment:2.3.0'
@@ -90,6 +94,8 @@ dependencies {
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9'
 
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.2.0"
+    detekt("io.gitlab.arturbosch.detekt:detekt-formatting:1.1.1")
+    detekt("io.gitlab.arturbosch.detekt:detekt-cli:1.1.1")
 }
 
 repositories {
