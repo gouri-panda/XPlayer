@@ -5,4 +5,3 @@ data class Media(var name: String, var duration: String, var size: String, var p
         return "name = $name, duration = $duration, size = $size, path = $path"
     }
 }
-g
