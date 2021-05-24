@@ -1,0 +1,105 @@
+com/one4ll/xplayer/databinding/FragmentGalleryBinding.java
+ com.one4ll.xplayer.databinding.FragmentGalleryBinding
+com/one4ll/xplayer/TaskDbHelper.java
+ com.one4ll.xplayer.TaskDbHelper
+com/one4ll/xplayer/databinding/ActivityAllFilesListBinding.java
+ com.one4ll.xplayer.databinding.ActivityAllFilesListBinding
+com/one4ll/xplayer/database/MediaDatabase_Impl.java
+ com.one4ll.xplayer.database.MediaDatabase_Impl
+ com.one4ll.xplayer.database.MediaDatabase_Impl$1
+androidx/databinding/DataBinderMapperImpl.java
+ androidx.databinding.DataBinderMapperImpl
+com/one4ll/xplayer/DataBinderMapperImpl.java
+ com.one4ll.xplayer.DataBinderMapperImpl
+ com.one4ll.xplayer.DataBinderMapperImpl$InnerBrLookup
+ com.one4ll.xplayer.DataBinderMapperImpl$InnerLayoutIdLookup
+com/one4ll/xplayer/databinding/FragmentGalleryBindingImpl.java
+ com.one4ll.xplayer.databinding.FragmentGalleryBindingImpl
+com/one4ll/xplayer/interfaces/FavoritesDao_Impl.java
+ com.one4ll.xplayer.interfaces.FavoritesDao_Impl
+ com.one4ll.xplayer.interfaces.FavoritesDao_Impl$1
+ com.one4ll.xplayer.interfaces.FavoritesDao_Impl$2
+ com.one4ll.xplayer.interfaces.FavoritesDao_Impl$3
+ com.one4ll.xplayer.interfaces.FavoritesDao_Impl$4
+ com.one4ll.xplayer.interfaces.FavoritesDao_Impl$5
+ com.one4ll.xplayer.interfaces.FavoritesDao_Impl$6
+ com.one4ll.xplayer.interfaces.FavoritesDao_Impl$7
+com/one4ll/xplayer/DataBindingTriggerClass.java
+ com.one4ll.xplayer.DataBindingTriggerClass
+androidx/databinding/library/baseAdapters/BR.java
+ androidx.databinding.library.baseAdapters.BR
+com/one4ll/xplayer/databinding/FragmentCropImageBinding.java
+ com.one4ll.xplayer.databinding.FragmentCropImageBinding
+com/one4ll/xplayer/databinding/FragmentVideoBinding.java
+ com.one4ll.xplayer.databinding.FragmentVideoBinding
+com/one4ll/xplayer/BR.java
+ com.one4ll.xplayer.BR
+com/one4ll/xplayer/databinding/AppBarMainBinding.java
+ com.one4ll.xplayer.databinding.AppBarMainBinding
+com/one4ll/xplayer/databinding/ActivityMain2Binding.java
+ com.one4ll.xplayer.databinding.ActivityMain2Binding
+com/one4ll/xplayer/databinding/FragmentMusicBinding.java
+ com.one4ll.xplayer.databinding.FragmentMusicBinding
+com/one4ll/xplayer/databinding/ActivityMainBinding.java
+ com.one4ll.xplayer.databinding.ActivityMainBinding
+com/one4ll/xplayer/databinding/ActivityGalleryViewBinding.java
+ com.one4ll.xplayer.databinding.ActivityGalleryViewBinding
+com/one4ll/xplayer/databinding/FragmentFullImageBinding.java
+ com.one4ll.xplayer.databinding.FragmentFullImageBinding
+com/one4ll/xplayer/databinding/ContentMainBinding.java
+ com.one4ll.xplayer.databinding.ContentMainBinding
+com/one4ll/xplayer/databinding/VideoListBinding.java
+ com.one4ll.xplayer.databinding.VideoListBinding
+com/one4ll/xplayer/MyContentProvider.java
+ com.one4ll.xplayer.MyContentProvider
+com/one4ll/xplayer/TaskContract.java
+ com.one4ll.xplayer.TaskContract
+ com.one4ll.xplayer.TaskContract$TaskEntry
+com/one4ll/xplayer/BuildConfig.java
+ com.one4ll.xplayer.BuildConfig
+com/one4ll/xplayer/databinding/CustomControllerBinding.java
+ com.one4ll.xplayer.databinding.CustomControllerBinding
+com/one4ll/xplayer/databinding/StreamsListBinding.java
+ com.one4ll.xplayer.databinding.StreamsListBinding
+com/one4ll/xplayer/databinding/ActivityDownloadBinding.java
+ com.one4ll.xplayer.databinding.ActivityDownloadBinding
+com/one4ll/xplayer/databinding/FileListInGridBinding.java
+ com.one4ll.xplayer.databinding.FileListInGridBinding
+com/one4ll/xplayer/interfaces/ImageDao_Impl.java
+ com.one4ll.xplayer.interfaces.ImageDao_Impl
+ com.one4ll.xplayer.interfaces.ImageDao_Impl$1
+ com.one4ll.xplayer.interfaces.ImageDao_Impl$2
+ com.one4ll.xplayer.interfaces.ImageDao_Impl$3
+com/one4ll/xplayer/databinding/NavHeaderMainBinding.java
+ com.one4ll.xplayer.databinding.NavHeaderMainBinding
+com/one4ll/xplayer/interfaces/MusicDao_Impl.java
+ com.one4ll.xplayer.interfaces.MusicDao_Impl
+ com.one4ll.xplayer.interfaces.MusicDao_Impl$1
+ com.one4ll.xplayer.interfaces.MusicDao_Impl$2
+ com.one4ll.xplayer.interfaces.MusicDao_Impl$3
+com/one4ll/xplayer/databinding/LayoutExoplayerControlViewsBinding.java
+ com.one4ll.xplayer.databinding.LayoutExoplayerControlViewsBinding
+com/one4ll/xplayer/interfaces/StreamsDao_Impl.java
+ com.one4ll.xplayer.interfaces.StreamsDao_Impl
+ com.one4ll.xplayer.interfaces.StreamsDao_Impl$1
+ com.one4ll.xplayer.interfaces.StreamsDao_Impl$10
+ com.one4ll.xplayer.interfaces.StreamsDao_Impl$11
+ com.one4ll.xplayer.interfaces.StreamsDao_Impl$12
+ com.one4ll.xplayer.interfaces.StreamsDao_Impl$2
+ com.one4ll.xplayer.interfaces.StreamsDao_Impl$3
+ com.one4ll.xplayer.interfaces.StreamsDao_Impl$4
+ com.one4ll.xplayer.interfaces.StreamsDao_Impl$5
+ com.one4ll.xplayer.interfaces.StreamsDao_Impl$6
+ com.one4ll.xplayer.interfaces.StreamsDao_Impl$7
+ com.one4ll.xplayer.interfaces.StreamsDao_Impl$8
+ com.one4ll.xplayer.interfaces.StreamsDao_Impl$9
+com/one4ll/xplayer/databinding/FragmentStreamBinding.java
+ com.one4ll.xplayer.databinding.FragmentStreamBinding
+androidx/databinding/DataBindingComponent.java
+ androidx.databinding.DataBindingComponent
+com/one4ll/xplayer/databinding/ActivityMain2BindingImpl.java
+ com.one4ll.xplayer.databinding.ActivityMain2BindingImpl
+com/one4ll/xplayer/interfaces/VideoDao_Impl.java
+ com.one4ll.xplayer.interfaces.VideoDao_Impl
+ com.one4ll.xplayer.interfaces.VideoDao_Impl$1
+ com.one4ll.xplayer.interfaces.VideoDao_Impl$2

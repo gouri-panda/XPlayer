@@ -1,0 +1,526 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:2:1-53:12
+INJECTED from /Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:2:1-53:12
+INJECTED from /Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:2:1-53:12
+INJECTED from /Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:2:1-53:12
+MERGED from [androidx.databinding:databinding-adapters:4.1.1] /Users/gauri/.gradle/caches/transforms-2/files-2.1/d3af0c9e51b07695d25d915149e6f7a0/databinding-adapters-4.1.1/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.databinding:databinding-runtime:4.1.1] /Users/gauri/.gradle/caches/transforms-2/files-2.1/ee0a7b1c94e4a7fa80d1ccfdd2ddd1de/databinding-runtime-4.1.1/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.databinding:viewbinding:4.1.1] /Users/gauri/.gradle/caches/transforms-2/files-2.1/2284b886f95c22b63b60f181680d9cf0/jetified-viewbinding-4.1.1/AndroidManifest.xml:17:1-22:12
+MERGED from [com.squareup.leakcanary:leakcanary-android:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/c0c2c6565e68ab696483eb83b15d59b2/jetified-leakcanary-android-2.4/AndroidManifest.xml:17:1-28:12
+MERGED from [androidx.legacy:legacy-support-v4:1.0.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/a8acdc5db548f9043a254a739a18717c/legacy-support-v4-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.navigation:navigation-fragment-ktx:2.3.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/fa16e6d561a7c278769f3f78937e6769/navigation-fragment-ktx-2.3.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.navigation:navigation-fragment:2.3.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/0482ee65db838fc19d6dd8d14890d4e6/navigation-fragment-2.3.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.navigation:navigation-ui-ktx:2.3.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/d6e7c551776df719c45e54c5b1117e67/navigation-ui-ktx-2.3.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.navigation:navigation-ui:2.3.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/6e2adc89a72f00b682cc5cabe3938536/navigation-ui-2.3.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.lifecycle:lifecycle-extensions:2.2.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/0ac7efb1b79bac32f648b7af4f2d7b38/lifecycle-extensions-2.2.0/AndroidManifest.xml:17:1-27:12
+MERGED from [androidx.fragment:fragment-ktx:1.2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/9c961e86f309b199aa2ef216abe99583/jetified-fragment-ktx-1.2.4/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.navigation:navigation-runtime-ktx:2.3.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/4ae4fb532d64793fffd2cf4930f45164/navigation-runtime-ktx-2.3.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.navigation:navigation-common-ktx:2.3.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/bcec528c31b9db8a8b730a0313a920af/navigation-common-ktx-2.3.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.activity:activity-ktx:1.1.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/f741ac3dbebca998f681c1441255c198/jetified-activity-ktx-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.core:core-ktx:1.5.0-beta02] /Users/gauri/.gradle/caches/transforms-2/files-2.1/86720722951282407ffe4d6469509435/jetified-core-ktx-1.5.0-beta02/AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.android.material:material:1.1.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/45649c2f16bee944daae044a45332e0b/material-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.appcompat:appcompat:1.1.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/48f2240119b11f16e77505b0fa7fdaf7/appcompat-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.constraintlayout:constraintlayout:1.1.3] /Users/gauri/.gradle/caches/transforms-2/files-2.1/634950aaf244ea6a1ca56bc43f247fe0/constraintlayout-1.1.3/AndroidManifest.xml:2:1-11:12
+MERGED from [com.google.android.exoplayer:exoplayer:2.11.3] /Users/gauri/.gradle/caches/transforms-2/files-2.1/c717d5015d6e4ba752788d21fe6a66ab/jetified-exoplayer-2.11.3/AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.android.exoplayer:exoplayer-dash:2.11.3] /Users/gauri/.gradle/caches/transforms-2/files-2.1/f169fe45942c3aa12800c17ecce313b8/jetified-exoplayer-dash-2.11.3/AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.android.exoplayer:exoplayer-ui:2.11.3] /Users/gauri/.gradle/caches/transforms-2/files-2.1/2b093e24ad914da8683ddfc3fa405120/jetified-exoplayer-ui-2.11.3/AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.android.exoplayer:exoplayer-hls:2.11.3] /Users/gauri/.gradle/caches/transforms-2/files-2.1/3c06ac8050b1d7176afab9da9f6ecfc2/jetified-exoplayer-hls-2.11.3/AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.android.exoplayer:exoplayer-smoothstreaming:2.11.3] /Users/gauri/.gradle/caches/transforms-2/files-2.1/dfb63db082a01ab1c86cd00f1e8012ed/jetified-exoplayer-smoothstreaming-2.11.3/AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.android.exoplayer:exoplayer-core:2.11.3] /Users/gauri/.gradle/caches/transforms-2/files-2.1/971be9c9f18061d2be84c73f6dd66b74/jetified-exoplayer-core-2.11.3/AndroidManifest.xml:17:1-26:12
+MERGED from [com.jakewharton:butterknife:10.2.1] /Users/gauri/.gradle/caches/transforms-2/files-2.1/481bc3f244d3292509b804b40fc23f3f/jetified-butterknife-10.2.1/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/df201146f4a04e028588425d6e1f2bab/legacy-support-core-ui-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/9fb39c55ad9be664075cb37ac0bb6564/legacy-support-core-utils-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/4f7dda6a1cdb80cd8dc72b1b65ba5ed0/localbroadcastmanager-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [io.reactivex.rxjava2:rxandroid:2.1.1] /Users/gauri/.gradle/caches/transforms-2/files-2.1/904442c36ab28b02233e58decfa8656c/jetified-rxandroid-2.1.1/AndroidManifest.xml:15:1-20:12
+MERGED from [androidx.viewpager2:viewpager2:1.0.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/4ee204a1a0d9751ce063df35271a51c3/jetified-viewpager2-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.recyclerview:recyclerview:1.1.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/5b9784af1ebd57645cfa243350268aae/recyclerview-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.room:room-ktx:2.2.5] /Users/gauri/.gradle/caches/transforms-2/files-2.1/1f57a6ec18c9840166c9072c922ecd20/jetified-room-ktx-2.2.5/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.room:room-runtime:2.2.5] /Users/gauri/.gradle/caches/transforms-2/files-2.1/992db3e2a15b3165aa9307f26e155cec/room-runtime-2.2.5/AndroidManifest.xml:17:1-31:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/a4043c2ef541ff5362522e71c43cb79c/jetified-lifecycle-viewmodel-ktx-2.2.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.lifecycle:lifecycle-runtime-ktx:2.2.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/0b469e9a3c6ec1e63a5b1ca95c4e8a34/jetified-lifecycle-runtime-ktx-2.2.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-ktx:2.2.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/ab27a870beba38a45fdc9dd3dd351691/jetified-lifecycle-livedata-ktx-2.2.0/AndroidManifest.xml:17:1-24:12
+MERGED from [com.github.bumptech.glide:glide:4.11.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/70aabf17fcef9951d9ba14acbcbfb20d/jetified-glide-4.11.0/AndroidManifest.xml:2:1-12:12
+MERGED from [androidx.fragment:fragment:1.2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/4a2f1d97eef3cbb80b9a05095576cd51/fragment-1.2.4/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.drawerlayout:drawerlayout:1.1.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/1766226af8d73bb43ca33d985d0321be/drawerlayout-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/028f2ab45bdba707e9617f58d0b0d56a/coordinatorlayout-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/bbe31031148801298fb4a2e115432d89/viewpager-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/50f509ea9c6cf1417799f6321d63ab55/slidingpanelayout-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.customview:customview:1.1.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/a3c2651a769db9b05c1960ef7118a82b/customview-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.transition:transition:1.3.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/9dafea13103fdcb3774d6ba60023ef0e/transition-1.3.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.lifecycle:lifecycle-process:2.2.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/69d9bf48442a34e6d14ac40e4ffd3218/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:17:1-32:12
+MERGED from [androidx.lifecycle:lifecycle-service:2.2.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/dca00f702d781e560f73162c14cab047/jetified-lifecycle-service-2.2.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.appcompat:appcompat-resources:1.1.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/2f766d9766eb0c632839ec426746520e/jetified-appcompat-resources-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/d5fb3e7fceff15b4f67a1624479dbd61/vectordrawable-animated-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/5d02e43e10dc7dd3665cd848a7f0a84c/vectordrawable-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.media:media:1.0.1] /Users/gauri/.gradle/caches/transforms-2/files-2.1/b6488df5ac797b6bae99c3a844c2552c/media-1.0.1/AndroidManifest.xml:17:1-22:12
+MERGED from [com.jakewharton:butterknife-runtime:10.2.1] /Users/gauri/.gradle/caches/transforms-2/files-2.1/5a92d6f43f19d2c1846e2fad5994283b/jetified-butterknife-runtime-10.2.1/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.loader:loader:1.0.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/9b89af1afcfd9c4df43b185daac414a9/loader-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/80191ab3002954f50bd135c0a15d5c27/swiperefreshlayout-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/b3f2ad4f6ba92aec81ae7bc9479946f0/asynclayoutinflater-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.navigation:navigation-runtime:2.3.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/6e46b7e8b220656ade9412476492d43c/navigation-runtime-2.3.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.activity:activity:1.1.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/ab854aaba3194809d15ee25e141f8b60/jetified-activity-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.navigation:navigation-common:2.3.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/40c7d0c0670a7dcde1b21a03ec6a350c/navigation-common-2.3.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.core:core:1.5.0-beta02] /Users/gauri/.gradle/caches/transforms-2/files-2.1/04686bfe0e7a68c449b97a4e16f8348e/core-1.5.0-beta02/AndroidManifest.xml:17:1-26:12
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.2.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/914a8a627179d8a65b49f8892974cffe/lifecycle-runtime-2.2.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.2.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/58ceb70d10b02865691d4b1a50dfa59a/lifecycle-livedata-2.2.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core-ktx:2.2.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/c60e5771eb33e375c4d4e0d0eb637953/jetified-lifecycle-livedata-core-ktx-2.2.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.2.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/5cf5f9adc9fc589dca2e8dafd3175208/jetified-lifecycle-viewmodel-savedstate-2.2.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.2.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/81566e59b9a1328a4074793687fde9e4/lifecycle-livedata-core-2.2.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.arch.core:core-runtime:2.1.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/e7b9939e9f288b6108820e9c260ed7bb/core-runtime-2.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.savedstate:savedstate:1.0.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/a309749916346444ecb5abcce925ab7f/jetified-savedstate-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.2.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/ea54b510bd3c3e90487a4927afa4d882/lifecycle-viewmodel-2.2.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/cc4a4ed4efb1aa92a4d8a75109c9e3b3/cursoradapter-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.cardview:cardview:1.0.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/f3d79ca7453bc9da1735a27805f6c090/cardview-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.sqlite:sqlite-framework:2.0.1] /Users/gauri/.gradle/caches/transforms-2/files-2.1/2650d9e79b51fb7bb4f71a9e840d7d07/sqlite-framework-2.0.1/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.sqlite:sqlite:2.0.1] /Users/gauri/.gradle/caches/transforms-2/files-2.1/a95b8316821f9c1ca4ca0e3110517532/sqlite-2.0.1/AndroidManifest.xml:17:1-22:12
+MERGED from [com.github.bumptech.glide:gifdecoder:4.11.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/aed4774a417aee113f58b2ab957f7764/jetified-gifdecoder-4.11.0/AndroidManifest.xml:2:1-11:12
+MERGED from [androidx.exifinterface:exifinterface:1.0.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/88c0bc89ead9557adf1112db6984dd20/exifinterface-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.documentfile:documentfile:1.0.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/be2d791a75671c3d134521865e173e7e/documentfile-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.print:print:1.0.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/dfdb6e42af4034f41409a9f1bc722ac4/print-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/49ba1c9dae9dd30eaea3f647971ea963/interpolator-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/gauri/.gradle/caches/transforms-2/files-2.1/75214c34ba20b40be388cb899c5a8d4d/versionedparcelable-1.1.1/AndroidManifest.xml:17:1-27:12
+MERGED from [com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/2f11145721b0e7c79316ab442aaae5da/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:17:1-75:12
+MERGED from [com.squareup.leakcanary:leakcanary-object-watcher-android-androidx:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/d5f176f3970d2a7b8e6fa94b508ce58d/jetified-leakcanary-object-watcher-android-androidx-2.4/AndroidManifest.xml:2:1-7:12
+MERGED from [com.squareup.leakcanary:leakcanary-object-watcher-android-support-fragments:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/c4175f06459142d292f4d49d60f7bc3e/jetified-leakcanary-object-watcher-android-support-fragments-2.4/AndroidManifest.xml:2:1-7:12
+MERGED from [com.squareup.leakcanary:leakcanary-object-watcher-android:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/234493d74cb64d6e43f50dbb0be9df0e/jetified-leakcanary-object-watcher-android-2.4/AndroidManifest.xml:2:1-15:12
+MERGED from [com.squareup.leakcanary:plumber-android:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/c73916ac188c97ce27bf48f5824f3e04/jetified-plumber-android-2.4/AndroidManifest.xml:2:1-15:12
+INJECTED from /Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:2:1-53:12
+INJECTED from /Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:2:1-53:12
+INJECTED from /Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:2:1-53:12
+	package
+		ADDED from /Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:3:5-33
+		INJECTED from /Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml
+		ADDED from /Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:2:1-53:12
+		INJECTED from /Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml
+	android:versionCode
+		INJECTED from /Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml
+		ADDED from /Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:2:1-53:12
+		INJECTED from /Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:2:11-69
+uses-permission#android.permission.INTERNET
+ADDED from /Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:5:5-67
+	android:name
+		ADDED from /Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:5:22-64
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
+ADDED from /Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:6:5-80
+MERGED from [com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/2f11145721b0e7c79316ab442aaae5da/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:23:5-80
+MERGED from [com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/2f11145721b0e7c79316ab442aaae5da/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:23:5-80
+	android:name
+		ADDED from /Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:6:22-77
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from /Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:7:5-81
+MERGED from [com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/2f11145721b0e7c79316ab442aaae5da/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:24:5-81
+MERGED from [com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/2f11145721b0e7c79316ab442aaae5da/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:24:5-81
+	android:name
+		ADDED from /Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:7:22-78
+uses-permission#android.permission.VIBRATE
+ADDED from /Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:8:5-66
+	android:name
+		ADDED from /Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:8:22-63
+uses-permission#android.permission.WRITE_SETTINGS
+ADDED from /Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:9:5-73
+	android:name
+		ADDED from /Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:9:22-70
+application
+ADDED from /Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:11:5-51:19
+MERGED from [com.squareup.leakcanary:leakcanary-android:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/c0c2c6565e68ab696483eb83b15d59b2/jetified-leakcanary-android-2.4/AndroidManifest.xml:22:5-26:19
+MERGED from [com.squareup.leakcanary:leakcanary-android:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/c0c2c6565e68ab696483eb83b15d59b2/jetified-leakcanary-android-2.4/AndroidManifest.xml:22:5-26:19
+MERGED from [androidx.lifecycle:lifecycle-extensions:2.2.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/0ac7efb1b79bac32f648b7af4f2d7b38/lifecycle-extensions-2.2.0/AndroidManifest.xml:24:5-25:19
+MERGED from [androidx.lifecycle:lifecycle-extensions:2.2.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/0ac7efb1b79bac32f648b7af4f2d7b38/lifecycle-extensions-2.2.0/AndroidManifest.xml:24:5-25:19
+MERGED from [com.google.android.material:material:1.1.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/45649c2f16bee944daae044a45332e0b/material-1.1.0/AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.material:material:1.1.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/45649c2f16bee944daae044a45332e0b/material-1.1.0/AndroidManifest.xml:22:5-20
+MERGED from [androidx.constraintlayout:constraintlayout:1.1.3] /Users/gauri/.gradle/caches/transforms-2/files-2.1/634950aaf244ea6a1ca56bc43f247fe0/constraintlayout-1.1.3/AndroidManifest.xml:9:5-20
+MERGED from [androidx.constraintlayout:constraintlayout:1.1.3] /Users/gauri/.gradle/caches/transforms-2/files-2.1/634950aaf244ea6a1ca56bc43f247fe0/constraintlayout-1.1.3/AndroidManifest.xml:9:5-20
+MERGED from [androidx.room:room-runtime:2.2.5] /Users/gauri/.gradle/caches/transforms-2/files-2.1/992db3e2a15b3165aa9307f26e155cec/room-runtime-2.2.5/AndroidManifest.xml:24:5-29:19
+MERGED from [androidx.room:room-runtime:2.2.5] /Users/gauri/.gradle/caches/transforms-2/files-2.1/992db3e2a15b3165aa9307f26e155cec/room-runtime-2.2.5/AndroidManifest.xml:24:5-29:19
+MERGED from [com.github.bumptech.glide:glide:4.11.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/70aabf17fcef9951d9ba14acbcbfb20d/jetified-glide-4.11.0/AndroidManifest.xml:10:5-20
+MERGED from [com.github.bumptech.glide:glide:4.11.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/70aabf17fcef9951d9ba14acbcbfb20d/jetified-glide-4.11.0/AndroidManifest.xml:10:5-20
+MERGED from [androidx.lifecycle:lifecycle-process:2.2.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/69d9bf48442a34e6d14ac40e4ffd3218/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:24:5-30:19
+MERGED from [androidx.lifecycle:lifecycle-process:2.2.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/69d9bf48442a34e6d14ac40e4ffd3218/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:24:5-30:19
+MERGED from [androidx.core:core:1.5.0-beta02] /Users/gauri/.gradle/caches/transforms-2/files-2.1/04686bfe0e7a68c449b97a4e16f8348e/core-1.5.0-beta02/AndroidManifest.xml:24:5-89
+MERGED from [androidx.core:core:1.5.0-beta02] /Users/gauri/.gradle/caches/transforms-2/files-2.1/04686bfe0e7a68c449b97a4e16f8348e/core-1.5.0-beta02/AndroidManifest.xml:24:5-89
+MERGED from [com.github.bumptech.glide:gifdecoder:4.11.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/aed4774a417aee113f58b2ab957f7764/jetified-gifdecoder-4.11.0/AndroidManifest.xml:9:5-20
+MERGED from [com.github.bumptech.glide:gifdecoder:4.11.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/aed4774a417aee113f58b2ab957f7764/jetified-gifdecoder-4.11.0/AndroidManifest.xml:9:5-20
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/gauri/.gradle/caches/transforms-2/files-2.1/75214c34ba20b40be388cb899c5a8d4d/versionedparcelable-1.1.1/AndroidManifest.xml:24:5-25:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/gauri/.gradle/caches/transforms-2/files-2.1/75214c34ba20b40be388cb899c5a8d4d/versionedparcelable-1.1.1/AndroidManifest.xml:24:5-25:19
+MERGED from [com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/2f11145721b0e7c79316ab442aaae5da/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:28:5-73:19
+MERGED from [com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/2f11145721b0e7c79316ab442aaae5da/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:28:5-73:19
+MERGED from [com.squareup.leakcanary:leakcanary-object-watcher-android:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/234493d74cb64d6e43f50dbb0be9df0e/jetified-leakcanary-object-watcher-android-2.4/AndroidManifest.xml:7:5-13:19
+MERGED from [com.squareup.leakcanary:leakcanary-object-watcher-android:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/234493d74cb64d6e43f50dbb0be9df0e/jetified-leakcanary-object-watcher-android-2.4/AndroidManifest.xml:7:5-13:19
+MERGED from [com.squareup.leakcanary:plumber-android:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/c73916ac188c97ce27bf48f5824f3e04/jetified-plumber-android-2.4/AndroidManifest.xml:7:5-13:19
+MERGED from [com.squareup.leakcanary:plumber-android:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/c73916ac188c97ce27bf48f5824f3e04/jetified-plumber-android-2.4/AndroidManifest.xml:7:5-13:19
+	android:requestLegacyExternalStorage
+		ADDED from /Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:16:9-52
+	android:appComponentFactory
+		ADDED from [androidx.core:core:1.5.0-beta02] /Users/gauri/.gradle/caches/transforms-2/files-2.1/04686bfe0e7a68c449b97a4e16f8348e/core-1.5.0-beta02/AndroidManifest.xml:24:18-86
+	android:supportsRtl
+		ADDED from /Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:18:9-35
+	android:label
+		ADDED from /Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:15:9-41
+	android:hardwareAccelerated
+		ADDED from /Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:13:9-43
+	android:roundIcon
+		ADDED from /Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:17:9-54
+	android:icon
+		ADDED from /Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:14:9-43
+	android:allowBackup
+		ADDED from /Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:12:9-35
+	android:theme
+		ADDED from /Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:19:9-40
+	android:usesCleartextTraffic
+		ADDED from /Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:20:9-44
+activity#com.one4ll.xplayer.MainActivity2
+ADDED from /Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:21:9-50
+	android:name
+		ADDED from /Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:21:19-48
+activity#com.one4ll.xplayer.GalleryActivity
+ADDED from /Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:22:9-31:20
+	android:theme
+		ADDED from /Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:24:13-56
+	android:name
+		ADDED from /Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:23:13-44
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.DEFAULT+category:name:android.intent.category.LAUNCHER
+ADDED from /Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:25:13-30:29
+action#android.intent.action.MAIN
+ADDED from /Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:26:17-69
+	android:name
+		ADDED from /Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:26:25-66
+category#android.intent.category.DEFAULT
+ADDED from /Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:27:17-76
+	android:name
+		ADDED from /Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:27:27-73
+category#android.intent.category.LAUNCHER
+ADDED from /Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:29:17-77
+	android:name
+		ADDED from /Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:29:27-74
+activity#com.one4ll.xplayer.AllFilesList
+ADDED from /Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:32:9-50
+	android:name
+		ADDED from /Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:32:19-47
+activity#com.one4ll.xplayer.DownloadActivity
+ADDED from /Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:33:9-54
+	android:name
+		ADDED from /Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:33:19-51
+activity#com.one4ll.xplayer.MainActivity
+ADDED from /Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:34:9-50:20
+	android:screenOrientation
+		ADDED from /Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:36:13-50
+	android:theme
+		ADDED from /Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:37:13-72
+	android:name
+		ADDED from /Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:35:13-41
+intent-filter#action:name:android.intent.action.VIEW+category:name:android.intent.category.DEFAULT+data:mimeType:video/*+data:scheme:asset+data:scheme:content+data:scheme:file+data:scheme:http+data:scheme:https
+ADDED from /Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:38:13-49:29
+action#android.intent.action.VIEW
+ADDED from /Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:39:17-69
+	android:name
+		ADDED from /Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:39:25-66
+data
+ADDED from /Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:43:17-47
+	android:scheme
+		ADDED from /Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:43:23-44
+	android:mimeType
+		ADDED from /Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:48:23-49
+uses-sdk
+INJECTED from /Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml
+INJECTED from /Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml
+MERGED from [androidx.databinding:databinding-adapters:4.1.1] /Users/gauri/.gradle/caches/transforms-2/files-2.1/d3af0c9e51b07695d25d915149e6f7a0/databinding-adapters-4.1.1/AndroidManifest.xml:22:5-44
+MERGED from [androidx.databinding:databinding-adapters:4.1.1] /Users/gauri/.gradle/caches/transforms-2/files-2.1/d3af0c9e51b07695d25d915149e6f7a0/databinding-adapters-4.1.1/AndroidManifest.xml:22:5-44
+MERGED from [androidx.databinding:databinding-runtime:4.1.1] /Users/gauri/.gradle/caches/transforms-2/files-2.1/ee0a7b1c94e4a7fa80d1ccfdd2ddd1de/databinding-runtime-4.1.1/AndroidManifest.xml:22:5-44
+MERGED from [androidx.databinding:databinding-runtime:4.1.1] /Users/gauri/.gradle/caches/transforms-2/files-2.1/ee0a7b1c94e4a7fa80d1ccfdd2ddd1de/databinding-runtime-4.1.1/AndroidManifest.xml:22:5-44
+MERGED from [androidx.databinding:viewbinding:4.1.1] /Users/gauri/.gradle/caches/transforms-2/files-2.1/2284b886f95c22b63b60f181680d9cf0/jetified-viewbinding-4.1.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.databinding:viewbinding:4.1.1] /Users/gauri/.gradle/caches/transforms-2/files-2.1/2284b886f95c22b63b60f181680d9cf0/jetified-viewbinding-4.1.1/AndroidManifest.xml:20:5-44
+MERGED from [com.squareup.leakcanary:leakcanary-android:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/c0c2c6565e68ab696483eb83b15d59b2/jetified-leakcanary-android-2.4/AndroidManifest.xml:20:5-44
+MERGED from [com.squareup.leakcanary:leakcanary-android:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/c0c2c6565e68ab696483eb83b15d59b2/jetified-leakcanary-android-2.4/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-v4:1.0.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/a8acdc5db548f9043a254a739a18717c/legacy-support-v4-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-v4:1.0.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/a8acdc5db548f9043a254a739a18717c/legacy-support-v4-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.navigation:navigation-fragment-ktx:2.3.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/fa16e6d561a7c278769f3f78937e6769/navigation-fragment-ktx-2.3.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.navigation:navigation-fragment-ktx:2.3.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/fa16e6d561a7c278769f3f78937e6769/navigation-fragment-ktx-2.3.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.navigation:navigation-fragment:2.3.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/0482ee65db838fc19d6dd8d14890d4e6/navigation-fragment-2.3.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.navigation:navigation-fragment:2.3.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/0482ee65db838fc19d6dd8d14890d4e6/navigation-fragment-2.3.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.navigation:navigation-ui-ktx:2.3.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/d6e7c551776df719c45e54c5b1117e67/navigation-ui-ktx-2.3.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.navigation:navigation-ui-ktx:2.3.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/d6e7c551776df719c45e54c5b1117e67/navigation-ui-ktx-2.3.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.navigation:navigation-ui:2.3.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/6e2adc89a72f00b682cc5cabe3938536/navigation-ui-2.3.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.navigation:navigation-ui:2.3.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/6e2adc89a72f00b682cc5cabe3938536/navigation-ui-2.3.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-extensions:2.2.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/0ac7efb1b79bac32f648b7af4f2d7b38/lifecycle-extensions-2.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-extensions:2.2.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/0ac7efb1b79bac32f648b7af4f2d7b38/lifecycle-extensions-2.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.fragment:fragment-ktx:1.2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/9c961e86f309b199aa2ef216abe99583/jetified-fragment-ktx-1.2.4/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.fragment:fragment-ktx:1.2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/9c961e86f309b199aa2ef216abe99583/jetified-fragment-ktx-1.2.4/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.navigation:navigation-runtime-ktx:2.3.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/4ae4fb532d64793fffd2cf4930f45164/navigation-runtime-ktx-2.3.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.navigation:navigation-runtime-ktx:2.3.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/4ae4fb532d64793fffd2cf4930f45164/navigation-runtime-ktx-2.3.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.navigation:navigation-common-ktx:2.3.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/bcec528c31b9db8a8b730a0313a920af/navigation-common-ktx-2.3.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.navigation:navigation-common-ktx:2.3.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/bcec528c31b9db8a8b730a0313a920af/navigation-common-ktx-2.3.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.activity:activity-ktx:1.1.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/f741ac3dbebca998f681c1441255c198/jetified-activity-ktx-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.activity:activity-ktx:1.1.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/f741ac3dbebca998f681c1441255c198/jetified-activity-ktx-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.core:core-ktx:1.5.0-beta02] /Users/gauri/.gradle/caches/transforms-2/files-2.1/86720722951282407ffe4d6469509435/jetified-core-ktx-1.5.0-beta02/AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.core:core-ktx:1.5.0-beta02] /Users/gauri/.gradle/caches/transforms-2/files-2.1/86720722951282407ffe4d6469509435/jetified-core-ktx-1.5.0-beta02/AndroidManifest.xml:5:5-7:41
+MERGED from [com.google.android.material:material:1.1.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/45649c2f16bee944daae044a45332e0b/material-1.1.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.material:material:1.1.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/45649c2f16bee944daae044a45332e0b/material-1.1.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.appcompat:appcompat:1.1.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/48f2240119b11f16e77505b0fa7fdaf7/appcompat-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.appcompat:appcompat:1.1.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/48f2240119b11f16e77505b0fa7fdaf7/appcompat-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.constraintlayout:constraintlayout:1.1.3] /Users/gauri/.gradle/caches/transforms-2/files-2.1/634950aaf244ea6a1ca56bc43f247fe0/constraintlayout-1.1.3/AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.constraintlayout:constraintlayout:1.1.3] /Users/gauri/.gradle/caches/transforms-2/files-2.1/634950aaf244ea6a1ca56bc43f247fe0/constraintlayout-1.1.3/AndroidManifest.xml:5:5-7:41
+MERGED from [com.google.android.exoplayer:exoplayer:2.11.3] /Users/gauri/.gradle/caches/transforms-2/files-2.1/c717d5015d6e4ba752788d21fe6a66ab/jetified-exoplayer-2.11.3/AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.exoplayer:exoplayer:2.11.3] /Users/gauri/.gradle/caches/transforms-2/files-2.1/c717d5015d6e4ba752788d21fe6a66ab/jetified-exoplayer-2.11.3/AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.exoplayer:exoplayer-dash:2.11.3] /Users/gauri/.gradle/caches/transforms-2/files-2.1/f169fe45942c3aa12800c17ecce313b8/jetified-exoplayer-dash-2.11.3/AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.exoplayer:exoplayer-dash:2.11.3] /Users/gauri/.gradle/caches/transforms-2/files-2.1/f169fe45942c3aa12800c17ecce313b8/jetified-exoplayer-dash-2.11.3/AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.exoplayer:exoplayer-ui:2.11.3] /Users/gauri/.gradle/caches/transforms-2/files-2.1/2b093e24ad914da8683ddfc3fa405120/jetified-exoplayer-ui-2.11.3/AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.exoplayer:exoplayer-ui:2.11.3] /Users/gauri/.gradle/caches/transforms-2/files-2.1/2b093e24ad914da8683ddfc3fa405120/jetified-exoplayer-ui-2.11.3/AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.exoplayer:exoplayer-hls:2.11.3] /Users/gauri/.gradle/caches/transforms-2/files-2.1/3c06ac8050b1d7176afab9da9f6ecfc2/jetified-exoplayer-hls-2.11.3/AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.exoplayer:exoplayer-hls:2.11.3] /Users/gauri/.gradle/caches/transforms-2/files-2.1/3c06ac8050b1d7176afab9da9f6ecfc2/jetified-exoplayer-hls-2.11.3/AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.exoplayer:exoplayer-smoothstreaming:2.11.3] /Users/gauri/.gradle/caches/transforms-2/files-2.1/dfb63db082a01ab1c86cd00f1e8012ed/jetified-exoplayer-smoothstreaming-2.11.3/AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.exoplayer:exoplayer-smoothstreaming:2.11.3] /Users/gauri/.gradle/caches/transforms-2/files-2.1/dfb63db082a01ab1c86cd00f1e8012ed/jetified-exoplayer-smoothstreaming-2.11.3/AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.exoplayer:exoplayer-core:2.11.3] /Users/gauri/.gradle/caches/transforms-2/files-2.1/971be9c9f18061d2be84c73f6dd66b74/jetified-exoplayer-core-2.11.3/AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.exoplayer:exoplayer-core:2.11.3] /Users/gauri/.gradle/caches/transforms-2/files-2.1/971be9c9f18061d2be84c73f6dd66b74/jetified-exoplayer-core-2.11.3/AndroidManifest.xml:20:5-22:41
+MERGED from [com.jakewharton:butterknife:10.2.1] /Users/gauri/.gradle/caches/transforms-2/files-2.1/481bc3f244d3292509b804b40fc23f3f/jetified-butterknife-10.2.1/AndroidManifest.xml:5:5-44
+MERGED from [com.jakewharton:butterknife:10.2.1] /Users/gauri/.gradle/caches/transforms-2/files-2.1/481bc3f244d3292509b804b40fc23f3f/jetified-butterknife-10.2.1/AndroidManifest.xml:5:5-44
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/df201146f4a04e028588425d6e1f2bab/legacy-support-core-ui-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/df201146f4a04e028588425d6e1f2bab/legacy-support-core-ui-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/9fb39c55ad9be664075cb37ac0bb6564/legacy-support-core-utils-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/9fb39c55ad9be664075cb37ac0bb6564/legacy-support-core-utils-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/4f7dda6a1cdb80cd8dc72b1b65ba5ed0/localbroadcastmanager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/4f7dda6a1cdb80cd8dc72b1b65ba5ed0/localbroadcastmanager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [io.reactivex.rxjava2:rxandroid:2.1.1] /Users/gauri/.gradle/caches/transforms-2/files-2.1/904442c36ab28b02233e58decfa8656c/jetified-rxandroid-2.1.1/AndroidManifest.xml:18:5-43
+MERGED from [io.reactivex.rxjava2:rxandroid:2.1.1] /Users/gauri/.gradle/caches/transforms-2/files-2.1/904442c36ab28b02233e58decfa8656c/jetified-rxandroid-2.1.1/AndroidManifest.xml:18:5-43
+MERGED from [androidx.viewpager2:viewpager2:1.0.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/4ee204a1a0d9751ce063df35271a51c3/jetified-viewpager2-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.viewpager2:viewpager2:1.0.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/4ee204a1a0d9751ce063df35271a51c3/jetified-viewpager2-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.recyclerview:recyclerview:1.1.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/5b9784af1ebd57645cfa243350268aae/recyclerview-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.recyclerview:recyclerview:1.1.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/5b9784af1ebd57645cfa243350268aae/recyclerview-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.room:room-ktx:2.2.5] /Users/gauri/.gradle/caches/transforms-2/files-2.1/1f57a6ec18c9840166c9072c922ecd20/jetified-room-ktx-2.2.5/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.room:room-ktx:2.2.5] /Users/gauri/.gradle/caches/transforms-2/files-2.1/1f57a6ec18c9840166c9072c922ecd20/jetified-room-ktx-2.2.5/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.room:room-runtime:2.2.5] /Users/gauri/.gradle/caches/transforms-2/files-2.1/992db3e2a15b3165aa9307f26e155cec/room-runtime-2.2.5/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.room:room-runtime:2.2.5] /Users/gauri/.gradle/caches/transforms-2/files-2.1/992db3e2a15b3165aa9307f26e155cec/room-runtime-2.2.5/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/a4043c2ef541ff5362522e71c43cb79c/jetified-lifecycle-viewmodel-ktx-2.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/a4043c2ef541ff5362522e71c43cb79c/jetified-lifecycle-viewmodel-ktx-2.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-runtime-ktx:2.2.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/0b469e9a3c6ec1e63a5b1ca95c4e8a34/jetified-lifecycle-runtime-ktx-2.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-runtime-ktx:2.2.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/0b469e9a3c6ec1e63a5b1ca95c4e8a34/jetified-lifecycle-runtime-ktx-2.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-livedata-ktx:2.2.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/ab27a870beba38a45fdc9dd3dd351691/jetified-lifecycle-livedata-ktx-2.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-livedata-ktx:2.2.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/ab27a870beba38a45fdc9dd3dd351691/jetified-lifecycle-livedata-ktx-2.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [com.github.bumptech.glide:glide:4.11.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/70aabf17fcef9951d9ba14acbcbfb20d/jetified-glide-4.11.0/AndroidManifest.xml:6:5-8:41
+MERGED from [com.github.bumptech.glide:glide:4.11.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/70aabf17fcef9951d9ba14acbcbfb20d/jetified-glide-4.11.0/AndroidManifest.xml:6:5-8:41
+MERGED from [androidx.fragment:fragment:1.2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/4a2f1d97eef3cbb80b9a05095576cd51/fragment-1.2.4/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.fragment:fragment:1.2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/4a2f1d97eef3cbb80b9a05095576cd51/fragment-1.2.4/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.drawerlayout:drawerlayout:1.1.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/1766226af8d73bb43ca33d985d0321be/drawerlayout-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.drawerlayout:drawerlayout:1.1.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/1766226af8d73bb43ca33d985d0321be/drawerlayout-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/028f2ab45bdba707e9617f58d0b0d56a/coordinatorlayout-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/028f2ab45bdba707e9617f58d0b0d56a/coordinatorlayout-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/bbe31031148801298fb4a2e115432d89/viewpager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/bbe31031148801298fb4a2e115432d89/viewpager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/50f509ea9c6cf1417799f6321d63ab55/slidingpanelayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/50f509ea9c6cf1417799f6321d63ab55/slidingpanelayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview:1.1.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/a3c2651a769db9b05c1960ef7118a82b/customview-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.customview:customview:1.1.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/a3c2651a769db9b05c1960ef7118a82b/customview-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.transition:transition:1.3.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/9dafea13103fdcb3774d6ba60023ef0e/transition-1.3.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.transition:transition:1.3.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/9dafea13103fdcb3774d6ba60023ef0e/transition-1.3.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-process:2.2.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/69d9bf48442a34e6d14ac40e4ffd3218/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-process:2.2.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/69d9bf48442a34e6d14ac40e4ffd3218/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-service:2.2.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/dca00f702d781e560f73162c14cab047/jetified-lifecycle-service-2.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-service:2.2.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/dca00f702d781e560f73162c14cab047/jetified-lifecycle-service-2.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.appcompat:appcompat-resources:1.1.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/2f766d9766eb0c632839ec426746520e/jetified-appcompat-resources-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.appcompat:appcompat-resources:1.1.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/2f766d9766eb0c632839ec426746520e/jetified-appcompat-resources-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/d5fb3e7fceff15b4f67a1624479dbd61/vectordrawable-animated-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/d5fb3e7fceff15b4f67a1624479dbd61/vectordrawable-animated-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/5d02e43e10dc7dd3665cd848a7f0a84c/vectordrawable-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/5d02e43e10dc7dd3665cd848a7f0a84c/vectordrawable-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.media:media:1.0.1] /Users/gauri/.gradle/caches/transforms-2/files-2.1/b6488df5ac797b6bae99c3a844c2552c/media-1.0.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.media:media:1.0.1] /Users/gauri/.gradle/caches/transforms-2/files-2.1/b6488df5ac797b6bae99c3a844c2552c/media-1.0.1/AndroidManifest.xml:20:5-44
+MERGED from [com.jakewharton:butterknife-runtime:10.2.1] /Users/gauri/.gradle/caches/transforms-2/files-2.1/5a92d6f43f19d2c1846e2fad5994283b/jetified-butterknife-runtime-10.2.1/AndroidManifest.xml:5:5-44
+MERGED from [com.jakewharton:butterknife-runtime:10.2.1] /Users/gauri/.gradle/caches/transforms-2/files-2.1/5a92d6f43f19d2c1846e2fad5994283b/jetified-butterknife-runtime-10.2.1/AndroidManifest.xml:5:5-44
+MERGED from [androidx.loader:loader:1.0.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/9b89af1afcfd9c4df43b185daac414a9/loader-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/9b89af1afcfd9c4df43b185daac414a9/loader-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/80191ab3002954f50bd135c0a15d5c27/swiperefreshlayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/80191ab3002954f50bd135c0a15d5c27/swiperefreshlayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/b3f2ad4f6ba92aec81ae7bc9479946f0/asynclayoutinflater-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/b3f2ad4f6ba92aec81ae7bc9479946f0/asynclayoutinflater-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.navigation:navigation-runtime:2.3.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/6e46b7e8b220656ade9412476492d43c/navigation-runtime-2.3.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.navigation:navigation-runtime:2.3.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/6e46b7e8b220656ade9412476492d43c/navigation-runtime-2.3.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.activity:activity:1.1.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/ab854aaba3194809d15ee25e141f8b60/jetified-activity-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.activity:activity:1.1.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/ab854aaba3194809d15ee25e141f8b60/jetified-activity-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.navigation:navigation-common:2.3.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/40c7d0c0670a7dcde1b21a03ec6a350c/navigation-common-2.3.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.navigation:navigation-common:2.3.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/40c7d0c0670a7dcde1b21a03ec6a350c/navigation-common-2.3.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.core:core:1.5.0-beta02] /Users/gauri/.gradle/caches/transforms-2/files-2.1/04686bfe0e7a68c449b97a4e16f8348e/core-1.5.0-beta02/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.core:core:1.5.0-beta02] /Users/gauri/.gradle/caches/transforms-2/files-2.1/04686bfe0e7a68c449b97a4e16f8348e/core-1.5.0-beta02/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.2.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/914a8a627179d8a65b49f8892974cffe/lifecycle-runtime-2.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.2.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/914a8a627179d8a65b49f8892974cffe/lifecycle-runtime-2.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.2.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/58ceb70d10b02865691d4b1a50dfa59a/lifecycle-livedata-2.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.2.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/58ceb70d10b02865691d4b1a50dfa59a/lifecycle-livedata-2.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-livedata-core-ktx:2.2.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/c60e5771eb33e375c4d4e0d0eb637953/jetified-lifecycle-livedata-core-ktx-2.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-livedata-core-ktx:2.2.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/c60e5771eb33e375c4d4e0d0eb637953/jetified-lifecycle-livedata-core-ktx-2.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.2.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/5cf5f9adc9fc589dca2e8dafd3175208/jetified-lifecycle-viewmodel-savedstate-2.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.2.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/5cf5f9adc9fc589dca2e8dafd3175208/jetified-lifecycle-viewmodel-savedstate-2.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.2.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/81566e59b9a1328a4074793687fde9e4/lifecycle-livedata-core-2.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.2.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/81566e59b9a1328a4074793687fde9e4/lifecycle-livedata-core-2.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.arch.core:core-runtime:2.1.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/e7b9939e9f288b6108820e9c260ed7bb/core-runtime-2.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.arch.core:core-runtime:2.1.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/e7b9939e9f288b6108820e9c260ed7bb/core-runtime-2.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.savedstate:savedstate:1.0.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/a309749916346444ecb5abcce925ab7f/jetified-savedstate-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.savedstate:savedstate:1.0.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/a309749916346444ecb5abcce925ab7f/jetified-savedstate-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.2.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/ea54b510bd3c3e90487a4927afa4d882/lifecycle-viewmodel-2.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.2.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/ea54b510bd3c3e90487a4927afa4d882/lifecycle-viewmodel-2.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/cc4a4ed4efb1aa92a4d8a75109c9e3b3/cursoradapter-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/cc4a4ed4efb1aa92a4d8a75109c9e3b3/cursoradapter-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cardview:cardview:1.0.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/f3d79ca7453bc9da1735a27805f6c090/cardview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cardview:cardview:1.0.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/f3d79ca7453bc9da1735a27805f6c090/cardview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.sqlite:sqlite-framework:2.0.1] /Users/gauri/.gradle/caches/transforms-2/files-2.1/2650d9e79b51fb7bb4f71a9e840d7d07/sqlite-framework-2.0.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.sqlite:sqlite-framework:2.0.1] /Users/gauri/.gradle/caches/transforms-2/files-2.1/2650d9e79b51fb7bb4f71a9e840d7d07/sqlite-framework-2.0.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.sqlite:sqlite:2.0.1] /Users/gauri/.gradle/caches/transforms-2/files-2.1/a95b8316821f9c1ca4ca0e3110517532/sqlite-2.0.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.sqlite:sqlite:2.0.1] /Users/gauri/.gradle/caches/transforms-2/files-2.1/a95b8316821f9c1ca4ca0e3110517532/sqlite-2.0.1/AndroidManifest.xml:20:5-44
+MERGED from [com.github.bumptech.glide:gifdecoder:4.11.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/aed4774a417aee113f58b2ab957f7764/jetified-gifdecoder-4.11.0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.github.bumptech.glide:gifdecoder:4.11.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/aed4774a417aee113f58b2ab957f7764/jetified-gifdecoder-4.11.0/AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.exifinterface:exifinterface:1.0.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/88c0bc89ead9557adf1112db6984dd20/exifinterface-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.exifinterface:exifinterface:1.0.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/88c0bc89ead9557adf1112db6984dd20/exifinterface-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.documentfile:documentfile:1.0.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/be2d791a75671c3d134521865e173e7e/documentfile-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.documentfile:documentfile:1.0.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/be2d791a75671c3d134521865e173e7e/documentfile-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.print:print:1.0.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/dfdb6e42af4034f41409a9f1bc722ac4/print-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.print:print:1.0.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/dfdb6e42af4034f41409a9f1bc722ac4/print-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/49ba1c9dae9dd30eaea3f647971ea963/interpolator-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/49ba1c9dae9dd30eaea3f647971ea963/interpolator-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/gauri/.gradle/caches/transforms-2/files-2.1/75214c34ba20b40be388cb899c5a8d4d/versionedparcelable-1.1.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/gauri/.gradle/caches/transforms-2/files-2.1/75214c34ba20b40be388cb899c5a8d4d/versionedparcelable-1.1.1/AndroidManifest.xml:20:5-22:41
+MERGED from [com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/2f11145721b0e7c79316ab442aaae5da/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:20:5-44
+MERGED from [com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/2f11145721b0e7c79316ab442aaae5da/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:20:5-44
+MERGED from [com.squareup.leakcanary:leakcanary-object-watcher-android-androidx:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/d5f176f3970d2a7b8e6fa94b508ce58d/jetified-leakcanary-object-watcher-android-androidx-2.4/AndroidManifest.xml:5:5-44
+MERGED from [com.squareup.leakcanary:leakcanary-object-watcher-android-androidx:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/d5f176f3970d2a7b8e6fa94b508ce58d/jetified-leakcanary-object-watcher-android-androidx-2.4/AndroidManifest.xml:5:5-44
+MERGED from [com.squareup.leakcanary:leakcanary-object-watcher-android-support-fragments:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/c4175f06459142d292f4d49d60f7bc3e/jetified-leakcanary-object-watcher-android-support-fragments-2.4/AndroidManifest.xml:5:5-44
+MERGED from [com.squareup.leakcanary:leakcanary-object-watcher-android-support-fragments:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/c4175f06459142d292f4d49d60f7bc3e/jetified-leakcanary-object-watcher-android-support-fragments-2.4/AndroidManifest.xml:5:5-44
+MERGED from [com.squareup.leakcanary:leakcanary-object-watcher-android:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/234493d74cb64d6e43f50dbb0be9df0e/jetified-leakcanary-object-watcher-android-2.4/AndroidManifest.xml:5:5-44
+MERGED from [com.squareup.leakcanary:leakcanary-object-watcher-android:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/234493d74cb64d6e43f50dbb0be9df0e/jetified-leakcanary-object-watcher-android-2.4/AndroidManifest.xml:5:5-44
+MERGED from [com.squareup.leakcanary:plumber-android:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/c73916ac188c97ce27bf48f5824f3e04/jetified-plumber-android-2.4/AndroidManifest.xml:5:5-44
+MERGED from [com.squareup.leakcanary:plumber-android:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/c73916ac188c97ce27bf48f5824f3e04/jetified-plumber-android-2.4/AndroidManifest.xml:5:5-44
+INJECTED from /Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml
+INJECTED from /Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from /Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml
+		ADDED from /Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml
+		ADDED from /Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml
+service#leakcanary.internal.HeapAnalyzerService
+ADDED from [com.squareup.leakcanary:leakcanary-android:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/c0c2c6565e68ab696483eb83b15d59b2/jetified-leakcanary-android-2.4/AndroidManifest.xml:23:9-25:40
+	android:exported
+		ADDED from [com.squareup.leakcanary:leakcanary-android:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/c0c2c6565e68ab696483eb83b15d59b2/jetified-leakcanary-android-2.4/AndroidManifest.xml:25:13-37
+	android:name
+		ADDED from [com.squareup.leakcanary:leakcanary-android:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/c0c2c6565e68ab696483eb83b15d59b2/jetified-leakcanary-android-2.4/AndroidManifest.xml:24:13-67
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from [com.google.android.exoplayer:exoplayer-core:2.11.3] /Users/gauri/.gradle/caches/transforms-2/files-2.1/971be9c9f18061d2be84c73f6dd66b74/jetified-exoplayer-core-2.11.3/AndroidManifest.xml:24:5-79
+	android:name
+		ADDED from [com.google.android.exoplayer:exoplayer-core:2.11.3] /Users/gauri/.gradle/caches/transforms-2/files-2.1/971be9c9f18061d2be84c73f6dd66b74/jetified-exoplayer-core-2.11.3/AndroidManifest.xml:24:22-76
+service#androidx.room.MultiInstanceInvalidationService
+ADDED from [androidx.room:room-runtime:2.2.5] /Users/gauri/.gradle/caches/transforms-2/files-2.1/992db3e2a15b3165aa9307f26e155cec/room-runtime-2.2.5/AndroidManifest.xml:25:9-28:40
+	android:exported
+		ADDED from [androidx.room:room-runtime:2.2.5] /Users/gauri/.gradle/caches/transforms-2/files-2.1/992db3e2a15b3165aa9307f26e155cec/room-runtime-2.2.5/AndroidManifest.xml:28:13-37
+	android:directBootAware
+		ADDED from [androidx.room:room-runtime:2.2.5] /Users/gauri/.gradle/caches/transforms-2/files-2.1/992db3e2a15b3165aa9307f26e155cec/room-runtime-2.2.5/AndroidManifest.xml:27:13-43
+	android:name
+		ADDED from [androidx.room:room-runtime:2.2.5] /Users/gauri/.gradle/caches/transforms-2/files-2.1/992db3e2a15b3165aa9307f26e155cec/room-runtime-2.2.5/AndroidManifest.xml:26:13-74
+provider#androidx.lifecycle.ProcessLifecycleOwnerInitializer
+ADDED from [androidx.lifecycle:lifecycle-process:2.2.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/69d9bf48442a34e6d14ac40e4ffd3218/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:25:9-29:43
+	android:authorities
+		ADDED from [androidx.lifecycle:lifecycle-process:2.2.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/69d9bf48442a34e6d14ac40e4ffd3218/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:27:13-69
+	android:multiprocess
+		ADDED from [androidx.lifecycle:lifecycle-process:2.2.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/69d9bf48442a34e6d14ac40e4ffd3218/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:29:13-40
+	android:exported
+		ADDED from [androidx.lifecycle:lifecycle-process:2.2.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/69d9bf48442a34e6d14ac40e4ffd3218/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:28:13-37
+	android:name
+		ADDED from [androidx.lifecycle:lifecycle-process:2.2.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/69d9bf48442a34e6d14ac40e4ffd3218/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:26:13-79
+uses-permission#android.permission.FOREGROUND_SERVICE
+ADDED from [com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/2f11145721b0e7c79316ab442aaae5da/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:26:5-77
+	android:name
+		ADDED from [com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/2f11145721b0e7c79316ab442aaae5da/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:26:22-74
+provider#leakcanary.internal.LeakCanaryFileProvider
+ADDED from [com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/2f11145721b0e7c79316ab442aaae5da/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:29:9-37:20
+	android:grantUriPermissions
+		ADDED from [com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/2f11145721b0e7c79316ab442aaae5da/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:33:13-47
+	android:authorities
+		ADDED from [com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/2f11145721b0e7c79316ab442aaae5da/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:31:13-88
+	android:exported
+		ADDED from [com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/2f11145721b0e7c79316ab442aaae5da/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:32:13-37
+	android:name
+		ADDED from [com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/2f11145721b0e7c79316ab442aaae5da/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:30:13-70
+meta-data#android.support.FILE_PROVIDER_PATHS
+ADDED from [com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/2f11145721b0e7c79316ab442aaae5da/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:34:13-36:66
+	android:resource
+		ADDED from [com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/2f11145721b0e7c79316ab442aaae5da/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:36:17-63
+	android:name
+		ADDED from [com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/2f11145721b0e7c79316ab442aaae5da/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:35:17-67
+activity#leakcanary.internal.activity.LeakActivity
+ADDED from [com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/2f11145721b0e7c79316ab442aaae5da/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:39:9-44:66
+	android:label
+		ADDED from [com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/2f11145721b0e7c79316ab442aaae5da/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:42:13-71
+	android:icon
+		ADDED from [com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/2f11145721b0e7c79316ab442aaae5da/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:41:13-52
+	android:theme
+		ADDED from [com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/2f11145721b0e7c79316ab442aaae5da/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:44:13-63
+	android:taskAffinity
+		ADDED from [com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/2f11145721b0e7c79316ab442aaae5da/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:43:13-76
+	android:name
+		ADDED from [com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/2f11145721b0e7c79316ab442aaae5da/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:40:13-69
+activity-alias#leakcanary.internal.activity.LeakLauncherActivity
+ADDED from [com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/2f11145721b0e7c79316ab442aaae5da/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:46:9-62:26
+	android:enabled
+		ADDED from [com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/2f11145721b0e7c79316ab442aaae5da/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:49:13-66
+	android:label
+		ADDED from [com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/2f11145721b0e7c79316ab442aaae5da/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:51:13-71
+	android:targetActivity
+		ADDED from [com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/2f11145721b0e7c79316ab442aaae5da/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:52:13-79
+	android:icon
+		ADDED from [com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/2f11145721b0e7c79316ab442aaae5da/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:50:13-52
+	android:banner
+		ADDED from [com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/2f11145721b0e7c79316ab442aaae5da/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:48:13-59
+	android:theme
+		ADDED from [com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/2f11145721b0e7c79316ab442aaae5da/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:54:13-63
+	android:taskAffinity
+		ADDED from [com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/2f11145721b0e7c79316ab442aaae5da/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:53:13-76
+	android:name
+		ADDED from [com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/2f11145721b0e7c79316ab442aaae5da/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:47:13-77
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER+category:name:android.intent.category.LEANBACK_LAUNCHER
+ADDED from [com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/2f11145721b0e7c79316ab442aaae5da/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:55:13-61:29
+category#android.intent.category.LEANBACK_LAUNCHER
+ADDED from [com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/2f11145721b0e7c79316ab442aaae5da/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:60:17-86
+	android:name
+		ADDED from [com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/2f11145721b0e7c79316ab442aaae5da/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:60:27-83
+activity#leakcanary.internal.RequestStoragePermissionActivity
+ADDED from [com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/2f11145721b0e7c79316ab442aaae5da/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:64:9-70:68
+	android:label
+		ADDED from [com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/2f11145721b0e7c79316ab442aaae5da/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:68:13-82
+	android:excludeFromRecents
+		ADDED from [com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/2f11145721b0e7c79316ab442aaae5da/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:66:13-46
+	android:icon
+		ADDED from [com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/2f11145721b0e7c79316ab442aaae5da/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:67:13-52
+	android:theme
+		ADDED from [com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/2f11145721b0e7c79316ab442aaae5da/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:70:13-65
+	android:taskAffinity
+		ADDED from [com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/2f11145721b0e7c79316ab442aaae5da/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:69:13-76
+	android:name
+		ADDED from [com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/2f11145721b0e7c79316ab442aaae5da/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:65:13-80
+receiver#leakcanary.internal.NotificationReceiver
+ADDED from [com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/2f11145721b0e7c79316ab442aaae5da/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:72:9-77
+	android:name
+		ADDED from [com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/2f11145721b0e7c79316ab442aaae5da/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:72:19-74
+provider#leakcanary.internal.AppWatcherInstaller$MainProcess
+ADDED from [com.squareup.leakcanary:leakcanary-object-watcher-android:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/234493d74cb64d6e43f50dbb0be9df0e/jetified-leakcanary-object-watcher-android-2.4/AndroidManifest.xml:8:9-12:40
+	android:enabled
+		ADDED from [com.squareup.leakcanary:leakcanary-object-watcher-android:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/234493d74cb64d6e43f50dbb0be9df0e/jetified-leakcanary-object-watcher-android-2.4/AndroidManifest.xml:11:13-69
+	android:authorities
+		ADDED from [com.squareup.leakcanary:leakcanary-object-watcher-android:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/234493d74cb64d6e43f50dbb0be9df0e/jetified-leakcanary-object-watcher-android-2.4/AndroidManifest.xml:10:13-72
+	android:exported
+		ADDED from [com.squareup.leakcanary:leakcanary-object-watcher-android:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/234493d74cb64d6e43f50dbb0be9df0e/jetified-leakcanary-object-watcher-android-2.4/AndroidManifest.xml:12:13-37
+	android:name
+		ADDED from [com.squareup.leakcanary:leakcanary-object-watcher-android:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/234493d74cb64d6e43f50dbb0be9df0e/jetified-leakcanary-object-watcher-android-2.4/AndroidManifest.xml:9:13-79
+provider#leakcanary.internal.PlumberInstaller
+ADDED from [com.squareup.leakcanary:plumber-android:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/c73916ac188c97ce27bf48f5824f3e04/jetified-plumber-android-2.4/AndroidManifest.xml:8:9-12:40
+	android:enabled
+		ADDED from [com.squareup.leakcanary:plumber-android:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/c73916ac188c97ce27bf48f5824f3e04/jetified-plumber-android-2.4/AndroidManifest.xml:11:13-69
+	android:authorities
+		ADDED from [com.squareup.leakcanary:plumber-android:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/c73916ac188c97ce27bf48f5824f3e04/jetified-plumber-android-2.4/AndroidManifest.xml:10:13-69
+	android:exported
+		ADDED from [com.squareup.leakcanary:plumber-android:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/c73916ac188c97ce27bf48f5824f3e04/jetified-plumber-android-2.4/AndroidManifest.xml:12:13-37
+	android:name
+		ADDED from [com.squareup.leakcanary:plumber-android:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/c73916ac188c97ce27bf48f5824f3e04/jetified-plumber-android-2.4/AndroidManifest.xml:9:13-64
