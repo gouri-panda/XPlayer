@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.one4ll.xplayer.Media
 import com.one4ll.xplayer.adapter.ImageRecyclerViewAdapter
 import com.one4ll.xplayer.databinding.FragmentGalleryBinding
+import com.one4ll.xplayer.helpers.baseViewModel
 import kotlinx.android.synthetic.main.fragment_gallery.view.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.collect
@@ -22,7 +23,6 @@ private const val TAG = "imageFragment"
 @ExperimentalCoroutinesApi
 class GalleryFragment : Fragment() {
 
-    private val imageViewModel: ImageViewModel by viewModels()
     private lateinit var binding: FragmentGalleryBinding
 
     private var imageRecyclerViewAdapter: ImageRecyclerViewAdapter? = null
@@ -39,7 +39,7 @@ class GalleryFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         lifecycleScope.launch {
-            imageViewModel.imageUri.collect {
+            baseViewModel.imageUri.collect {
                 setAdapterToUi(it)
             }
         }
