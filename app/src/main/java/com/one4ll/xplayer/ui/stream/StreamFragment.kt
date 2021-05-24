@@ -36,7 +36,6 @@ private const val TAG = "streamFragment"
 @ExperimentalCoroutinesApi
 class StreamFragment : Fragment() {
     private val adapter: StreamsRecyclerViewAdapter by lazy { StreamsRecyclerViewAdapter() }
-    private val viewModel: StreamViewModel by viewModels()
     private lateinit var binding: FragmentStreamBinding
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,

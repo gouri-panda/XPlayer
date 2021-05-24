@@ -20,10 +20,8 @@ import kotlinx.coroutines.launch
 
 private const val TAG = "imageFragment"
 
-@ExperimentalCoroutinesApi
 class GalleryFragment : Fragment() {
 
-    private val imageViewModel: ImageViewModel by viewModels()
     private lateinit var binding: FragmentGalleryBinding
 
     private var imageRecyclerViewAdapter: ImageRecyclerViewAdapter? = null
@@ -38,6 +36,7 @@ class GalleryFragment : Fragment() {
         return binding.root
     }
 
+    @ExperimentalCoroutinesApi
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         lifecycleScope.launch {
             baseViewModel.imageUri.collect {

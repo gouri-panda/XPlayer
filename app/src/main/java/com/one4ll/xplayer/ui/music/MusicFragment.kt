@@ -16,6 +16,7 @@ import com.one4ll.xplayer.databinding.FragmentMusicBinding
 import com.one4ll.xplayer.helpers.baseViewModel
 import kotlinx.android.synthetic.main.fragment_music.view.*
 import kotlinx.coroutines.Dispatchers.Main
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
@@ -23,7 +24,6 @@ private const val TAG = "audioFragment"
 
 class SlideshowFragment : Fragment() {
 
-    private val musicViewModel: MusicViewModel by viewModels()
     private lateinit var musicRecyclerViewAdapter: MusicRecyclerViewAdapter
     private lateinit var binding: FragmentMusicBinding
 
@@ -36,6 +36,7 @@ class SlideshowFragment : Fragment() {
         return binding.root
     }
 
+    @ExperimentalCoroutinesApi
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         musicRecyclerViewAdapter = MusicRecyclerViewAdapter(listOf(), lifecycleScope)
         baseViewModel.musicUriList.observe(viewLifecycleOwner, Observer { musicUriList ->
