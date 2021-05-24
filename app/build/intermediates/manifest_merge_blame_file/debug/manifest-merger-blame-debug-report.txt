@@ -6,253 +6,253 @@
 6
 7    <uses-sdk
 8        android:minSdkVersion="22"
-8-->/Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml
+8-->/Users/gouri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml
 9        android:targetSdkVersion="29" />
-9-->/Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml
+9-->/Users/gouri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml
 10
 11    <uses-permission android:name="android.permission.INTERNET" />
-11-->/Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:5:5-67
-11-->/Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:5:22-64
+11-->/Users/gouri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:5:5-67
+11-->/Users/gouri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:5:22-64
 12    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-12-->/Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:6:5-80
-12-->/Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:6:22-77
+12-->/Users/gouri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:6:5-80
+12-->/Users/gouri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:6:22-77
 13    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-13-->/Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:7:5-81
-13-->/Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:7:22-78
+13-->/Users/gouri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:7:5-81
+13-->/Users/gouri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:7:22-78
 14    <uses-permission android:name="android.permission.VIBRATE" />
-14-->/Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:8:5-66
-14-->/Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:8:22-63
+14-->/Users/gouri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:8:5-66
+14-->/Users/gouri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:8:22-63
 15    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
-15-->/Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:9:5-73
-15-->/Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:9:22-70
+15-->/Users/gouri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:9:5-73
+15-->/Users/gouri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:9:22-70
 16    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- To allow starting foreground services on Android P+ - https://developer.android.com/preview/behavior-changes#fg-svc -->
-16-->[com.google.android.exoplayer:exoplayer-core:2.11.3] /Users/gauri/.gradle/caches/transforms-2/files-2.1/971be9c9f18061d2be84c73f6dd66b74/jetified-exoplayer-core-2.11.3/AndroidManifest.xml:24:5-79
-16-->[com.google.android.exoplayer:exoplayer-core:2.11.3] /Users/gauri/.gradle/caches/transforms-2/files-2.1/971be9c9f18061d2be84c73f6dd66b74/jetified-exoplayer-core-2.11.3/AndroidManifest.xml:24:22-76
+16-->[com.google.android.exoplayer:exoplayer-core:2.11.3] /Users/gouri/.gradle/caches/transforms-2/files-2.1/11e9b7a3ba95a712a74a03031311fe17/jetified-exoplayer-core-2.11.3/AndroidManifest.xml:24:5-79
+16-->[com.google.android.exoplayer:exoplayer-core:2.11.3] /Users/gouri/.gradle/caches/transforms-2/files-2.1/11e9b7a3ba95a712a74a03031311fe17/jetified-exoplayer-core-2.11.3/AndroidManifest.xml:24:22-76
 17    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
-17-->[com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/2f11145721b0e7c79316ab442aaae5da/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:26:5-77
-17-->[com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/2f11145721b0e7c79316ab442aaae5da/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:26:22-74
+17-->[com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gouri/.gradle/caches/transforms-2/files-2.1/dbad5aad522d8a151b45130fba0deb19/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:26:5-77
+17-->[com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gouri/.gradle/caches/transforms-2/files-2.1/dbad5aad522d8a151b45130fba0deb19/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:26:22-74
 18
 19    <application
-19-->/Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:11:5-51:19
+19-->/Users/gouri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:11:5-51:19
 20        android:allowBackup="true"
-20-->/Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:12:9-35
+20-->/Users/gouri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:12:9-35
 21        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-21-->[androidx.core:core:1.5.0-beta02] /Users/gauri/.gradle/caches/transforms-2/files-2.1/04686bfe0e7a68c449b97a4e16f8348e/core-1.5.0-beta02/AndroidManifest.xml:24:18-86
+21-->[androidx.core:core:1.6.0-beta01] /Users/gouri/.gradle/caches/transforms-2/files-2.1/1353076bffdf27eb2c2693939725e9db/core-1.6.0-beta01/AndroidManifest.xml:24:18-86
 22        android:debuggable="true"
 23        android:hardwareAccelerated="true"
-23-->/Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:13:9-43
+23-->/Users/gouri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:13:9-43
 24        android:icon="@mipmap/ic_launcher"
-24-->/Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:14:9-43
+24-->/Users/gouri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:14:9-43
 25        android:label="@string/app_name"
-25-->/Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:15:9-41
+25-->/Users/gouri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:15:9-41
 26        android:requestLegacyExternalStorage="true"
-26-->/Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:16:9-52
+26-->/Users/gouri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:16:9-52
 27        android:roundIcon="@mipmap/ic_launcher_round"
-27-->/Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:17:9-54
+27-->/Users/gouri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:17:9-54
 28        android:supportsRtl="true"
-28-->/Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:18:9-35
+28-->/Users/gouri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:18:9-35
 29        android:testOnly="true"
 30        android:theme="@style/AppTheme"
-30-->/Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:19:9-40
+30-->/Users/gouri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:19:9-40
 31        android:usesCleartextTraffic="true" >
-31-->/Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:20:9-44
-32        <activity android:name="com.one4ll.xplayer.MainActivity2" />
-32-->/Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:21:9-50
-32-->/Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:21:19-48
+31-->/Users/gouri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:20:9-44
+32        <activity android:name="com.one4ll.xplayer.FullImageActivity" />
+32-->/Users/gouri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:21:9-55
+32-->/Users/gouri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:21:19-52
 33        <activity
-33-->/Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:22:9-31:20
+33-->/Users/gouri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:22:9-31:20
 34            android:name="com.one4ll.xplayer.GalleryActivity"
-34-->/Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:23:13-44
+34-->/Users/gouri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:23:13-44
 35            android:theme="@style/AppTheme.NoActionBar" >
-35-->/Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:24:13-56
+35-->/Users/gouri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:24:13-56
 36            <intent-filter>
-36-->/Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:25:13-30:29
+36-->/Users/gouri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:25:13-30:29
 37                <action android:name="android.intent.action.MAIN" />
-37-->/Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:26:17-69
-37-->/Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:26:25-66
+37-->/Users/gouri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:26:17-69
+37-->/Users/gouri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:26:25-66
 38
 39                <category android:name="android.intent.category.DEFAULT" />
-39-->/Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:27:17-76
-39-->/Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:27:27-73
+39-->/Users/gouri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:27:17-76
+39-->/Users/gouri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:27:27-73
 40                <category android:name="android.intent.category.LAUNCHER" />
-40-->/Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:29:17-77
-40-->/Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:29:27-74
+40-->/Users/gouri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:29:17-77
+40-->/Users/gouri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:29:27-74
 41            </intent-filter>
 42        </activity>
 43        <activity android:name="com.one4ll.xplayer.AllFilesList" />
-43-->/Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:32:9-50
-43-->/Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:32:19-47
+43-->/Users/gouri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:32:9-50
+43-->/Users/gouri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:32:19-47
 44        <activity android:name="com.one4ll.xplayer.DownloadActivity" />
-44-->/Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:33:9-54
-44-->/Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:33:19-51
+44-->/Users/gouri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:33:9-54
+44-->/Users/gouri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:33:19-51
 45        <activity
-45-->/Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:34:9-50:20
+45-->/Users/gouri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:34:9-50:20
 46            android:name="com.one4ll.xplayer.MainActivity"
-46-->/Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:35:13-41
+46-->/Users/gouri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:35:13-41
 47            android:screenOrientation="landscape"
-47-->/Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:36:13-50
+47-->/Users/gouri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:36:13-50
 48            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" >
-48-->/Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:37:13-72
+48-->/Users/gouri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:37:13-72
 49            <intent-filter>
-49-->/Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:38:13-49:29
+49-->/Users/gouri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:38:13-49:29
 50                <action android:name="android.intent.action.VIEW" />
-50-->/Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:39:17-69
-50-->/Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:39:25-66
+50-->/Users/gouri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:39:17-69
+50-->/Users/gouri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:39:25-66
 51
 52                <category android:name="android.intent.category.DEFAULT" />
-52-->/Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:27:17-76
-52-->/Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:27:27-73
+52-->/Users/gouri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:27:17-76
+52-->/Users/gouri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:27:27-73
 53
 54                <data android:scheme="http" />
-54-->/Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:43:17-47
-54-->/Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:43:23-44
+54-->/Users/gouri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:43:17-47
+54-->/Users/gouri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:43:23-44
 55                <data android:scheme="https" />
-55-->/Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:43:17-47
-55-->/Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:43:23-44
+55-->/Users/gouri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:43:17-47
+55-->/Users/gouri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:43:23-44
 56                <data android:scheme="content" />
-56-->/Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:43:17-47
-56-->/Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:43:23-44
+56-->/Users/gouri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:43:17-47
+56-->/Users/gouri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:43:23-44
 57                <data android:scheme="file" />
-57-->/Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:43:17-47
-57-->/Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:43:23-44
+57-->/Users/gouri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:43:17-47
+57-->/Users/gouri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:43:23-44
 58                <data android:scheme="asset" />
-58-->/Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:43:17-47
-58-->/Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:43:23-44
+58-->/Users/gouri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:43:17-47
+58-->/Users/gouri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:43:23-44
 59                <data android:mimeType="video/*" />
-59-->/Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:43:17-47
-59-->/Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:48:23-49
+59-->/Users/gouri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:43:17-47
+59-->/Users/gouri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:48:23-49
 60            </intent-filter>
 61        </activity>
 62
 63        <service
-63-->[com.squareup.leakcanary:leakcanary-android:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/c0c2c6565e68ab696483eb83b15d59b2/jetified-leakcanary-android-2.4/AndroidManifest.xml:23:9-25:40
+63-->[com.squareup.leakcanary:leakcanary-android:2.4] /Users/gouri/.gradle/caches/transforms-2/files-2.1/da56cd3a0d913e868d74119d05d41a7b/jetified-leakcanary-android-2.4/AndroidManifest.xml:23:9-25:40
 64            android:name="leakcanary.internal.HeapAnalyzerService"
-64-->[com.squareup.leakcanary:leakcanary-android:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/c0c2c6565e68ab696483eb83b15d59b2/jetified-leakcanary-android-2.4/AndroidManifest.xml:24:13-67
+64-->[com.squareup.leakcanary:leakcanary-android:2.4] /Users/gouri/.gradle/caches/transforms-2/files-2.1/da56cd3a0d913e868d74119d05d41a7b/jetified-leakcanary-android-2.4/AndroidManifest.xml:24:13-67
 65            android:exported="false" />
-65-->[com.squareup.leakcanary:leakcanary-android:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/c0c2c6565e68ab696483eb83b15d59b2/jetified-leakcanary-android-2.4/AndroidManifest.xml:25:13-37
+65-->[com.squareup.leakcanary:leakcanary-android:2.4] /Users/gouri/.gradle/caches/transforms-2/files-2.1/da56cd3a0d913e868d74119d05d41a7b/jetified-leakcanary-android-2.4/AndroidManifest.xml:25:13-37
 66        <service
-66-->[androidx.room:room-runtime:2.2.5] /Users/gauri/.gradle/caches/transforms-2/files-2.1/992db3e2a15b3165aa9307f26e155cec/room-runtime-2.2.5/AndroidManifest.xml:25:9-28:40
+66-->[androidx.room:room-runtime:2.2.5] /Users/gouri/.gradle/caches/transforms-2/files-2.1/ac271766e1967b6b0c99ee610186c3db/room-runtime-2.2.5/AndroidManifest.xml:25:9-28:40
 67            android:name="androidx.room.MultiInstanceInvalidationService"
-67-->[androidx.room:room-runtime:2.2.5] /Users/gauri/.gradle/caches/transforms-2/files-2.1/992db3e2a15b3165aa9307f26e155cec/room-runtime-2.2.5/AndroidManifest.xml:26:13-74
+67-->[androidx.room:room-runtime:2.2.5] /Users/gouri/.gradle/caches/transforms-2/files-2.1/ac271766e1967b6b0c99ee610186c3db/room-runtime-2.2.5/AndroidManifest.xml:26:13-74
 68            android:directBootAware="true"
-68-->[androidx.room:room-runtime:2.2.5] /Users/gauri/.gradle/caches/transforms-2/files-2.1/992db3e2a15b3165aa9307f26e155cec/room-runtime-2.2.5/AndroidManifest.xml:27:13-43
+68-->[androidx.room:room-runtime:2.2.5] /Users/gouri/.gradle/caches/transforms-2/files-2.1/ac271766e1967b6b0c99ee610186c3db/room-runtime-2.2.5/AndroidManifest.xml:27:13-43
 69            android:exported="false" />
-69-->[androidx.room:room-runtime:2.2.5] /Users/gauri/.gradle/caches/transforms-2/files-2.1/992db3e2a15b3165aa9307f26e155cec/room-runtime-2.2.5/AndroidManifest.xml:28:13-37
+69-->[androidx.room:room-runtime:2.2.5] /Users/gouri/.gradle/caches/transforms-2/files-2.1/ac271766e1967b6b0c99ee610186c3db/room-runtime-2.2.5/AndroidManifest.xml:28:13-37
 70
 71        <provider
-71-->[androidx.lifecycle:lifecycle-process:2.2.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/69d9bf48442a34e6d14ac40e4ffd3218/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:25:9-29:43
+71-->[androidx.lifecycle:lifecycle-process:2.2.0] /Users/gouri/.gradle/caches/transforms-2/files-2.1/81b3423094070ef5df0a7e26207c2ded/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:25:9-29:43
 72            android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"
-72-->[androidx.lifecycle:lifecycle-process:2.2.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/69d9bf48442a34e6d14ac40e4ffd3218/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:26:13-79
+72-->[androidx.lifecycle:lifecycle-process:2.2.0] /Users/gouri/.gradle/caches/transforms-2/files-2.1/81b3423094070ef5df0a7e26207c2ded/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:26:13-79
 73            android:authorities="com.one4ll.xplayer.lifecycle-process"
-73-->[androidx.lifecycle:lifecycle-process:2.2.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/69d9bf48442a34e6d14ac40e4ffd3218/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:27:13-69
+73-->[androidx.lifecycle:lifecycle-process:2.2.0] /Users/gouri/.gradle/caches/transforms-2/files-2.1/81b3423094070ef5df0a7e26207c2ded/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:27:13-69
 74            android:exported="false"
-74-->[androidx.lifecycle:lifecycle-process:2.2.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/69d9bf48442a34e6d14ac40e4ffd3218/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:28:13-37
+74-->[androidx.lifecycle:lifecycle-process:2.2.0] /Users/gouri/.gradle/caches/transforms-2/files-2.1/81b3423094070ef5df0a7e26207c2ded/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:28:13-37
 75            android:multiprocess="true" />
-75-->[androidx.lifecycle:lifecycle-process:2.2.0] /Users/gauri/.gradle/caches/transforms-2/files-2.1/69d9bf48442a34e6d14ac40e4ffd3218/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:29:13-40
+75-->[androidx.lifecycle:lifecycle-process:2.2.0] /Users/gouri/.gradle/caches/transforms-2/files-2.1/81b3423094070ef5df0a7e26207c2ded/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:29:13-40
 76        <provider
-76-->[com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/2f11145721b0e7c79316ab442aaae5da/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:29:9-37:20
+76-->[com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gouri/.gradle/caches/transforms-2/files-2.1/dbad5aad522d8a151b45130fba0deb19/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:29:9-37:20
 77            android:name="leakcanary.internal.LeakCanaryFileProvider"
-77-->[com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/2f11145721b0e7c79316ab442aaae5da/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:30:13-70
+77-->[com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gouri/.gradle/caches/transforms-2/files-2.1/dbad5aad522d8a151b45130fba0deb19/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:30:13-70
 78            android:authorities="com.squareup.leakcanary.fileprovider.com.one4ll.xplayer"
-78-->[com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/2f11145721b0e7c79316ab442aaae5da/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:31:13-88
+78-->[com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gouri/.gradle/caches/transforms-2/files-2.1/dbad5aad522d8a151b45130fba0deb19/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:31:13-88
 79            android:exported="false"
-79-->[com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/2f11145721b0e7c79316ab442aaae5da/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:32:13-37
+79-->[com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gouri/.gradle/caches/transforms-2/files-2.1/dbad5aad522d8a151b45130fba0deb19/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:32:13-37
 80            android:grantUriPermissions="true" >
-80-->[com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/2f11145721b0e7c79316ab442aaae5da/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:33:13-47
+80-->[com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gouri/.gradle/caches/transforms-2/files-2.1/dbad5aad522d8a151b45130fba0deb19/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:33:13-47
 81            <meta-data
-81-->[com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/2f11145721b0e7c79316ab442aaae5da/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:34:13-36:66
+81-->[com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gouri/.gradle/caches/transforms-2/files-2.1/dbad5aad522d8a151b45130fba0deb19/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:34:13-36:66
 82                android:name="android.support.FILE_PROVIDER_PATHS"
-82-->[com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/2f11145721b0e7c79316ab442aaae5da/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:35:17-67
+82-->[com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gouri/.gradle/caches/transforms-2/files-2.1/dbad5aad522d8a151b45130fba0deb19/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:35:17-67
 83                android:resource="@xml/leak_canary_file_paths" />
-83-->[com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/2f11145721b0e7c79316ab442aaae5da/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:36:17-63
+83-->[com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gouri/.gradle/caches/transforms-2/files-2.1/dbad5aad522d8a151b45130fba0deb19/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:36:17-63
 84        </provider>
 85
 86        <activity
-86-->[com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/2f11145721b0e7c79316ab442aaae5da/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:39:9-44:66
+86-->[com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gouri/.gradle/caches/transforms-2/files-2.1/dbad5aad522d8a151b45130fba0deb19/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:39:9-44:66
 87            android:name="leakcanary.internal.activity.LeakActivity"
-87-->[com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/2f11145721b0e7c79316ab442aaae5da/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:40:13-69
+87-->[com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gouri/.gradle/caches/transforms-2/files-2.1/dbad5aad522d8a151b45130fba0deb19/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:40:13-69
 88            android:icon="@mipmap/leak_canary_icon"
-88-->[com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/2f11145721b0e7c79316ab442aaae5da/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:41:13-52
+88-->[com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gouri/.gradle/caches/transforms-2/files-2.1/dbad5aad522d8a151b45130fba0deb19/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:41:13-52
 89            android:label="@string/leak_canary_display_activity_label"
-89-->[com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/2f11145721b0e7c79316ab442aaae5da/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:42:13-71
+89-->[com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gouri/.gradle/caches/transforms-2/files-2.1/dbad5aad522d8a151b45130fba0deb19/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:42:13-71
 90            android:taskAffinity="com.squareup.leakcanary.com.one4ll.xplayer"
-90-->[com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/2f11145721b0e7c79316ab442aaae5da/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:43:13-76
+90-->[com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gouri/.gradle/caches/transforms-2/files-2.1/dbad5aad522d8a151b45130fba0deb19/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:43:13-76
 91            android:theme="@style/leak_canary_LeakCanary.Base" />
-91-->[com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/2f11145721b0e7c79316ab442aaae5da/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:44:13-63
+91-->[com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gouri/.gradle/caches/transforms-2/files-2.1/dbad5aad522d8a151b45130fba0deb19/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:44:13-63
 92
 93        <activity-alias
-93-->[com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/2f11145721b0e7c79316ab442aaae5da/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:46:9-62:26
+93-->[com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gouri/.gradle/caches/transforms-2/files-2.1/dbad5aad522d8a151b45130fba0deb19/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:46:9-62:26
 94            android:name="leakcanary.internal.activity.LeakLauncherActivity"
-94-->[com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/2f11145721b0e7c79316ab442aaae5da/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:47:13-77
+94-->[com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gouri/.gradle/caches/transforms-2/files-2.1/dbad5aad522d8a151b45130fba0deb19/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:47:13-77
 95            android:banner="@drawable/leak_canary_tv_icon"
-95-->[com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/2f11145721b0e7c79316ab442aaae5da/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:48:13-59
+95-->[com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gouri/.gradle/caches/transforms-2/files-2.1/dbad5aad522d8a151b45130fba0deb19/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:48:13-59
 96            android:enabled="@bool/leak_canary_add_launcher_icon"
-96-->[com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/2f11145721b0e7c79316ab442aaae5da/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:49:13-66
+96-->[com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gouri/.gradle/caches/transforms-2/files-2.1/dbad5aad522d8a151b45130fba0deb19/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:49:13-66
 97            android:icon="@mipmap/leak_canary_icon"
-97-->[com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/2f11145721b0e7c79316ab442aaae5da/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:50:13-52
+97-->[com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gouri/.gradle/caches/transforms-2/files-2.1/dbad5aad522d8a151b45130fba0deb19/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:50:13-52
 98            android:label="@string/leak_canary_display_activity_label"
-98-->[com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/2f11145721b0e7c79316ab442aaae5da/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:51:13-71
+98-->[com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gouri/.gradle/caches/transforms-2/files-2.1/dbad5aad522d8a151b45130fba0deb19/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:51:13-71
 99            android:targetActivity="leakcanary.internal.activity.LeakActivity"
-99-->[com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/2f11145721b0e7c79316ab442aaae5da/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:52:13-79
+99-->[com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gouri/.gradle/caches/transforms-2/files-2.1/dbad5aad522d8a151b45130fba0deb19/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:52:13-79
 100            android:taskAffinity="com.squareup.leakcanary.com.one4ll.xplayer"
-100-->[com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/2f11145721b0e7c79316ab442aaae5da/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:53:13-76
+100-->[com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gouri/.gradle/caches/transforms-2/files-2.1/dbad5aad522d8a151b45130fba0deb19/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:53:13-76
 101            android:theme="@style/leak_canary_LeakCanary.Base" >
-101-->[com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/2f11145721b0e7c79316ab442aaae5da/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:54:13-63
+101-->[com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gouri/.gradle/caches/transforms-2/files-2.1/dbad5aad522d8a151b45130fba0deb19/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:54:13-63
 102            <intent-filter>
-102-->[com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/2f11145721b0e7c79316ab442aaae5da/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:55:13-61:29
+102-->[com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gouri/.gradle/caches/transforms-2/files-2.1/dbad5aad522d8a151b45130fba0deb19/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:55:13-61:29
 103                <action android:name="android.intent.action.MAIN" />
-103-->/Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:26:17-69
-103-->/Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:26:25-66
+103-->/Users/gouri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:26:17-69
+103-->/Users/gouri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:26:25-66
 104
 105                <category android:name="android.intent.category.LAUNCHER" />
-105-->/Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:29:17-77
-105-->/Users/gauri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:29:27-74
+105-->/Users/gouri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:29:17-77
+105-->/Users/gouri/Documents/code/XPlayer/app/src/main/AndroidManifest.xml:29:27-74
 106                <!-- Android TV launcher intent -->
 107                <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
-107-->[com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/2f11145721b0e7c79316ab442aaae5da/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:60:17-86
-107-->[com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/2f11145721b0e7c79316ab442aaae5da/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:60:27-83
+107-->[com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gouri/.gradle/caches/transforms-2/files-2.1/dbad5aad522d8a151b45130fba0deb19/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:60:17-86
+107-->[com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gouri/.gradle/caches/transforms-2/files-2.1/dbad5aad522d8a151b45130fba0deb19/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:60:27-83
 108            </intent-filter>
 109        </activity-alias>
 110
 111        <activity
-111-->[com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/2f11145721b0e7c79316ab442aaae5da/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:64:9-70:68
+111-->[com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gouri/.gradle/caches/transforms-2/files-2.1/dbad5aad522d8a151b45130fba0deb19/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:64:9-70:68
 112            android:name="leakcanary.internal.RequestStoragePermissionActivity"
-112-->[com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/2f11145721b0e7c79316ab442aaae5da/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:65:13-80
+112-->[com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gouri/.gradle/caches/transforms-2/files-2.1/dbad5aad522d8a151b45130fba0deb19/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:65:13-80
 113            android:excludeFromRecents="true"
-113-->[com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/2f11145721b0e7c79316ab442aaae5da/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:66:13-46
+113-->[com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gouri/.gradle/caches/transforms-2/files-2.1/dbad5aad522d8a151b45130fba0deb19/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:66:13-46
 114            android:icon="@mipmap/leak_canary_icon"
-114-->[com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/2f11145721b0e7c79316ab442aaae5da/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:67:13-52
+114-->[com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gouri/.gradle/caches/transforms-2/files-2.1/dbad5aad522d8a151b45130fba0deb19/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:67:13-52
 115            android:label="@string/leak_canary_storage_permission_activity_label"
-115-->[com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/2f11145721b0e7c79316ab442aaae5da/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:68:13-82
+115-->[com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gouri/.gradle/caches/transforms-2/files-2.1/dbad5aad522d8a151b45130fba0deb19/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:68:13-82
 116            android:taskAffinity="com.squareup.leakcanary.com.one4ll.xplayer"
-116-->[com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/2f11145721b0e7c79316ab442aaae5da/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:69:13-76
+116-->[com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gouri/.gradle/caches/transforms-2/files-2.1/dbad5aad522d8a151b45130fba0deb19/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:69:13-76
 117            android:theme="@style/leak_canary_Theme.Transparent" />
-117-->[com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/2f11145721b0e7c79316ab442aaae5da/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:70:13-65
+117-->[com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gouri/.gradle/caches/transforms-2/files-2.1/dbad5aad522d8a151b45130fba0deb19/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:70:13-65
 118
 119        <receiver android:name="leakcanary.internal.NotificationReceiver" />
-119-->[com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/2f11145721b0e7c79316ab442aaae5da/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:72:9-77
-119-->[com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/2f11145721b0e7c79316ab442aaae5da/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:72:19-74
+119-->[com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gouri/.gradle/caches/transforms-2/files-2.1/dbad5aad522d8a151b45130fba0deb19/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:72:9-77
+119-->[com.squareup.leakcanary:leakcanary-android-core:2.4] /Users/gouri/.gradle/caches/transforms-2/files-2.1/dbad5aad522d8a151b45130fba0deb19/jetified-leakcanary-android-core-2.4/AndroidManifest.xml:72:19-74
 120
 121        <provider
-121-->[com.squareup.leakcanary:leakcanary-object-watcher-android:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/234493d74cb64d6e43f50dbb0be9df0e/jetified-leakcanary-object-watcher-android-2.4/AndroidManifest.xml:8:9-12:40
+121-->[com.squareup.leakcanary:leakcanary-object-watcher-android:2.4] /Users/gouri/.gradle/caches/transforms-2/files-2.1/6ab8d2ebbb275e033b17dbbd3949bbef/jetified-leakcanary-object-watcher-android-2.4/AndroidManifest.xml:8:9-12:40
 122            android:name="leakcanary.internal.AppWatcherInstaller$MainProcess"
-122-->[com.squareup.leakcanary:leakcanary-object-watcher-android:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/234493d74cb64d6e43f50dbb0be9df0e/jetified-leakcanary-object-watcher-android-2.4/AndroidManifest.xml:9:13-79
+122-->[com.squareup.leakcanary:leakcanary-object-watcher-android:2.4] /Users/gouri/.gradle/caches/transforms-2/files-2.1/6ab8d2ebbb275e033b17dbbd3949bbef/jetified-leakcanary-object-watcher-android-2.4/AndroidManifest.xml:9:13-79
 123            android:authorities="com.one4ll.xplayer.leakcanary-installer"
-123-->[com.squareup.leakcanary:leakcanary-object-watcher-android:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/234493d74cb64d6e43f50dbb0be9df0e/jetified-leakcanary-object-watcher-android-2.4/AndroidManifest.xml:10:13-72
+123-->[com.squareup.leakcanary:leakcanary-object-watcher-android:2.4] /Users/gouri/.gradle/caches/transforms-2/files-2.1/6ab8d2ebbb275e033b17dbbd3949bbef/jetified-leakcanary-object-watcher-android-2.4/AndroidManifest.xml:10:13-72
 124            android:enabled="@bool/leak_canary_watcher_auto_install"
-124-->[com.squareup.leakcanary:leakcanary-object-watcher-android:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/234493d74cb64d6e43f50dbb0be9df0e/jetified-leakcanary-object-watcher-android-2.4/AndroidManifest.xml:11:13-69
+124-->[com.squareup.leakcanary:leakcanary-object-watcher-android:2.4] /Users/gouri/.gradle/caches/transforms-2/files-2.1/6ab8d2ebbb275e033b17dbbd3949bbef/jetified-leakcanary-object-watcher-android-2.4/AndroidManifest.xml:11:13-69
 125            android:exported="false" />
-125-->[com.squareup.leakcanary:leakcanary-object-watcher-android:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/234493d74cb64d6e43f50dbb0be9df0e/jetified-leakcanary-object-watcher-android-2.4/AndroidManifest.xml:12:13-37
+125-->[com.squareup.leakcanary:leakcanary-object-watcher-android:2.4] /Users/gouri/.gradle/caches/transforms-2/files-2.1/6ab8d2ebbb275e033b17dbbd3949bbef/jetified-leakcanary-object-watcher-android-2.4/AndroidManifest.xml:12:13-37
 126        <provider
-126-->[com.squareup.leakcanary:plumber-android:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/c73916ac188c97ce27bf48f5824f3e04/jetified-plumber-android-2.4/AndroidManifest.xml:8:9-12:40
+126-->[com.squareup.leakcanary:plumber-android:2.4] /Users/gouri/.gradle/caches/transforms-2/files-2.1/8c55c3c43f0492da77dda498dc4e5b64/jetified-plumber-android-2.4/AndroidManifest.xml:8:9-12:40
 127            android:name="leakcanary.internal.PlumberInstaller"
-127-->[com.squareup.leakcanary:plumber-android:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/c73916ac188c97ce27bf48f5824f3e04/jetified-plumber-android-2.4/AndroidManifest.xml:9:13-64
+127-->[com.squareup.leakcanary:plumber-android:2.4] /Users/gouri/.gradle/caches/transforms-2/files-2.1/8c55c3c43f0492da77dda498dc4e5b64/jetified-plumber-android-2.4/AndroidManifest.xml:9:13-64
 128            android:authorities="com.one4ll.xplayer.plumber-installer"
-128-->[com.squareup.leakcanary:plumber-android:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/c73916ac188c97ce27bf48f5824f3e04/jetified-plumber-android-2.4/AndroidManifest.xml:10:13-69
+128-->[com.squareup.leakcanary:plumber-android:2.4] /Users/gouri/.gradle/caches/transforms-2/files-2.1/8c55c3c43f0492da77dda498dc4e5b64/jetified-plumber-android-2.4/AndroidManifest.xml:10:13-69
 129            android:enabled="@bool/leak_canary_plumber_auto_install"
-129-->[com.squareup.leakcanary:plumber-android:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/c73916ac188c97ce27bf48f5824f3e04/jetified-plumber-android-2.4/AndroidManifest.xml:11:13-69
+129-->[com.squareup.leakcanary:plumber-android:2.4] /Users/gouri/.gradle/caches/transforms-2/files-2.1/8c55c3c43f0492da77dda498dc4e5b64/jetified-plumber-android-2.4/AndroidManifest.xml:11:13-69
 130            android:exported="false" />
-130-->[com.squareup.leakcanary:plumber-android:2.4] /Users/gauri/.gradle/caches/transforms-2/files-2.1/c73916ac188c97ce27bf48f5824f3e04/jetified-plumber-android-2.4/AndroidManifest.xml:12:13-37
+130-->[com.squareup.leakcanary:plumber-android:2.4] /Users/gouri/.gradle/caches/transforms-2/files-2.1/8c55c3c43f0492da77dda498dc4e5b64/jetified-plumber-android-2.4/AndroidManifest.xml:12:13-37
 131    </application>
 132
 133</manifest>

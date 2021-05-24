@@ -1,10 +1,10 @@
-#Mon Mar 01 01:46:18 IST 2021
+#Sun May 23 23:51:56 PDT 2021
 path.2=classes2.dex
 path.1=classes.dex
 path.0=classes.dex
 renamed.2=classes3.dex
 renamed.1=classes2.dex
 renamed.0=classes.dex
-base.2=/Users/gauri/Documents/code/XPlayer/app/build/intermediates/dex/debug/mergeExtDexDebug/classes2.dex
-base.1=/Users/gauri/Documents/code/XPlayer/app/build/intermediates/dex/debug/mergeProjectDexDebug/classes.dex
-base.0=/Users/gauri/Documents/code/XPlayer/app/build/intermediates/dex/debug/mergeExtDexDebug/classes.dex
+base.2=/Users/gouri/Documents/code/XPlayer/app/build/intermediates/dex/debug/mergeExtDexDebug/classes2.dex
+base.1=/Users/gouri/Documents/code/XPlayer/app/build/intermediates/dex/debug/mergeProjectDexDebug/classes.dex
+base.0=/Users/gouri/Documents/code/XPlayer/app/build/intermediates/dex/debug/mergeExtDexDebug/classes.dex

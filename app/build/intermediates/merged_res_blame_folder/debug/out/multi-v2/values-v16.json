@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v16/values-v16.xml",
+            "outputFile": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v16/values-v16.xml",
             "map": [
                 {
-                    "source": "/Users/gauri/.gradle/caches/transforms-2/files-2.1/04686bfe0e7a68c449b97a4e16f8348e/core-1.5.0-beta02/res/values-v16/values-v16.xml",
+                    "source": "/Users/gouri/.gradle/caches/transforms-2/files-2.1/1353076bffdf27eb2c2693939725e9db/core-1.6.0-beta01/res/values-v16/values-v16.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -14,7 +14,7 @@
                     }
                 },
                 {
-                    "source": "/Users/gauri/.gradle/caches/transforms-2/files-2.1/48f2240119b11f16e77505b0fa7fdaf7/appcompat-1.1.0/res/values-v16/values-v16.xml",
+                    "source": "/Users/gouri/.gradle/caches/transforms-2/files-2.1/dd77cbedb728e3f7b500bc4dc61c5817/appcompat-1.1.0/res/values-v16/values-v16.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

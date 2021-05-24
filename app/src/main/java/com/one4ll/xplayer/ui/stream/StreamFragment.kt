@@ -19,13 +19,12 @@ import com.one4ll.xplayer.adapter.StreamsRecyclerViewAdapter
 import com.one4ll.xplayer.database.MediaDatabase
 import com.one4ll.xplayer.databinding.FragmentStreamBinding
 import com.one4ll.xplayer.helpers.VIDEO_PATH
+import com.one4ll.xplayer.helpers.baseViewModel
 import com.one4ll.xplayer.models.Streams
-import kotlinx.android.synthetic.main.fragment_stream.*
 import kotlinx.android.synthetic.main.fragment_stream.view.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
-import java.util.*
 
 
 /**
@@ -51,7 +50,7 @@ class StreamFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         setRecycleView()
         lifecycleScope.launch {
-            viewModel.streamsList.collect {
+            baseViewModel.streamsList.collect {
                 adapter.setNotes(it)
             }
         }
@@ -61,7 +60,7 @@ class StreamFragment : Fragment() {
                 val intent = Intent(binding.root.context, MainActivity::class.java)
                 intent.putExtra(VIDEO_PATH, url.toString())
                 lifecycleScope.launch {
-                    insertStreamsIntoDatabase(viewModel.db, Streams(url.toString(), System.currentTimeMillis()))
+                    insertStreamsIntoDatabase(baseViewModel.db, Streams(url.toString(), System.currentTimeMillis()))
                 }
                 Log.d(TAG, "onCreateView: stream url path $url")
                 binding.root.context.startActivity(intent)
@@ -80,7 +79,7 @@ class StreamFragment : Fragment() {
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 Log.d(TAG, "onSwiped: direction $direction")
                 lifecycleScope.launch {
-                    viewModel.db.streamsDao().removeById(adapter.getStreamAtPosition(viewHolder.adapterPosition).id!!)
+                    baseViewModel.db.streamsDao().removeById(adapter.getStreamAtPosition(viewHolder.adapterPosition).id!!)
                     adapter.notifyDataSetChanged()
                 }
             }

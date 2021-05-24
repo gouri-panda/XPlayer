@@ -29,7 +29,7 @@
         android:testOnly="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true" >
-        <activity android:name="com.one4ll.xplayer.MainActivity2" />
+        <activity android:name="com.one4ll.xplayer.FullImageActivity" />
         <activity
             android:name="com.one4ll.xplayer.GalleryActivity"
             android:theme="@style/AppTheme.NoActionBar" >

@@ -14,21 +14,13 @@ import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
 
 class MusicViewModel(private val app: Application) : AndroidViewModel(app) {
-    var musicUriList: MutableLiveData<List<Media>> = MutableLiveData()
 
     init {
         viewModelScope.launch {
-            getMusicListFromStorage()
         }
     }
 
-    suspend fun getMusicListFromStorage() {
-        withContext(IO) {
-            val externalMusicUri: Deferred<ArrayList<Media>> = async { getExternalContentMusicUri(app.baseContext) }
-            val internalMusicUri: Deferred<ArrayList<Media>> = async { getInternalContentMusicUri(app.baseContext) }
-            musicUriList.postValue(externalMusicUri.await() + internalMusicUri.await())
-        }
-    }
+
 
 
 }

@@ -1,78 +1,70 @@
 [
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/nav_header_main.xml",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/src/main/res/layout/nav_header_main.xml"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/activity_main.xml",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/src/main/res/layout/activity_main.xml"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_video.xml",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/src/main/res/layout/fragment_video.xml"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/app_bar_main.xml",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/src/main/res/layout/app_bar_main.xml"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_gallery.xml",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/src/main/res/layout/fragment_gallery.xml"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_gallery.xml",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/src/main/res/layout/fragment_gallery.xml"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/activity_gallery_view.xml",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/src/main/res/layout/activity_gallery_view.xml"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_music.xml",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/src/main/res/layout/fragment_music.xml"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/activity_main2.xml",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/src/main/res/layout/activity_main2.xml"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/activity_all_files_list.xml",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/src/main/res/layout/activity_all_files_list.xml"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_music.xml",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/src/main/res/layout/fragment_music.xml"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/streams_list.xml",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/src/main/res/layout/streams_list.xml"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/video_list.xml",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/src/main/res/layout/video_list.xml"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/activity_full_image.xml",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/src/main/res/layout/activity_full_image.xml"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/layout_exoplayer_control_views.xml",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/src/main/res/layout/layout_exoplayer_control_views.xml"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_video.xml",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/src/main/res/layout/fragment_video.xml"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_full_image.xml",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/src/main/res/layout/fragment_full_image.xml"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/file_list_in_grid.xml",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/src/main/res/layout/file_list_in_grid.xml"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/app_bar_main.xml",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/src/main/res/layout/app_bar_main.xml"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_stream.xml",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/src/main/res/layout/fragment_stream.xml"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/activity_all_files_list.xml",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/src/main/res/layout/activity_all_files_list.xml"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/content_main.xml",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/src/main/res/layout/content_main.xml"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/custom_controller.xml",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/src/main/res/layout/custom_controller.xml"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/activity_download.xml",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/src/main/res/layout/activity_download.xml"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/streams_list.xml",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/src/main/res/layout/streams_list.xml"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/video_list.xml",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/src/main/res/layout/video_list.xml"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/activity_download.xml",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/src/main/res/layout/activity_download.xml"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/nav_header_main.xml",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/src/main/res/layout/nav_header_main.xml"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/content_main.xml",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/src/main/res/layout/content_main.xml"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/activity_gallery_view.xml",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/src/main/res/layout/activity_gallery_view.xml"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_crop_image.xml",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/src/main/res/layout/fragment_crop_image.xml"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/custom_controller.xml",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/src/main/res/layout/custom_controller.xml"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/file_list_in_grid.xml",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/src/main/res/layout/file_list_in_grid.xml"
-    },
-    {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_stream.xml",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/src/main/res/layout/fragment_stream.xml"
-    },
-    {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/activity_main.xml",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/src/main/res/layout/activity_main.xml"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/layout_exoplayer_control_views.xml",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/src/main/res/layout/layout_exoplayer_control_views.xml"
     }
 ]

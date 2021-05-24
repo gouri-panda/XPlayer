@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.one4ll.xplayer.Media
 import com.one4ll.xplayer.adapter.MusicRecyclerViewAdapter
 import com.one4ll.xplayer.databinding.FragmentMusicBinding
+import com.one4ll.xplayer.helpers.baseViewModel
 import kotlinx.android.synthetic.main.fragment_music.view.*
 import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.launch
@@ -37,7 +38,7 @@ class SlideshowFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         musicRecyclerViewAdapter = MusicRecyclerViewAdapter(listOf(), lifecycleScope)
-        musicViewModel.musicUriList.observe(viewLifecycleOwner, Observer { musicUriList ->
+        baseViewModel.musicUriList.observe(viewLifecycleOwner, Observer { musicUriList ->
             if (musicUriList != null) {
                 Log.d(TAG, "onCreateView: ex size ${musicUriList.size}")
                 lifecycleScope.launch {

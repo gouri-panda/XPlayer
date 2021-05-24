@@ -1,398 +1,378 @@
 [
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/mipmap-xhdpi_ic_launcher_foreground.png.flat",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/src/main/res/mipmap-xhdpi/ic_launcher_foreground.png"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable-xxxhdpi_ic_icon_pause.png.flat",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/build/generated/res/pngs/debug/drawable-xxxhdpi/ic_icon_pause.png"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable-anydpi-v24_ic_launcher_foreground.xml.flat",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/build/generated/res/pngs/debug/drawable-anydpi-v24/ic_launcher_foreground.xml"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable-anydpi-v24_ic_icon_rewind.xml.flat",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/build/generated/res/pngs/debug/drawable-anydpi-v24/ic_icon_rewind.xml"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable-xxxhdpi_ic_icon_play.png.flat",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/build/generated/res/pngs/debug/drawable-xxxhdpi/ic_icon_play.png"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/mipmap-hdpi_ic_launcher_foreground.png.flat",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/src/main/res/mipmap-hdpi/ic_launcher_foreground.png"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/raw_basic_logo_svg.svg.flat",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/src/main/res/raw/basic_logo_svg.svg"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable-xhdpi_ic_icon_pause.png.flat",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/build/generated/res/pngs/debug/drawable-xhdpi/ic_icon_pause.png"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable_ic_baseline_audiotrack_24.xml.flat",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/src/main/res/drawable/ic_baseline_audiotrack_24.xml"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/mipmap-xhdpi_ic_launcher_round.png.flat",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable-hdpi_ic_icon_pause.png.flat",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/build/generated/res/pngs/debug/drawable-hdpi/ic_icon_pause.png"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/menu_activity_main_drawer.xml.flat",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/src/main/res/menu/activity_main_drawer.xml"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/raw_video.mp4.flat",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/src/main/res/raw/video.mp4"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/layout_video_list.xml.flat",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/src/main/res/layout/video_list.xml"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/layout_fragment_video.xml.flat",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/src/main/res/layout/fragment_video.xml"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable-anydpi-v24_ic_icon_play.xml.flat",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/build/generated/res/pngs/debug/drawable-anydpi-v24/ic_icon_play.xml"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/menu_test_item_select_listener.xml.flat",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/src/main/res/menu/test_item_select_listener.xml"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/navigation_mobile_navigation.xml.flat",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/src/main/res/navigation/mobile_navigation.xml"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable-hdpi_ic_icon_play.png.flat",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/build/generated/res/pngs/debug/drawable-hdpi/ic_icon_play.png"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/menu_gallery_view.xml.flat",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/src/main/res/menu/gallery_view.xml"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/layout_nav_header_main.xml.flat",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/src/main/res/layout/nav_header_main.xml"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable_ic_menu_camera.xml.flat",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/src/main/res/drawable/ic_menu_camera.xml"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable-anydpi-v24_ic_icon_play.xml.flat",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/build/generated/res/pngs/debug/drawable-anydpi-v24/ic_icon_play.xml"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable-xhdpi_ic_icon_play.png.flat",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/build/generated/res/pngs/debug/drawable-xhdpi/ic_icon_play.png"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable_loading_animation.xml.flat",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/src/main/res/drawable/loading_animation.xml"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi_ic_launcher_round.png.flat",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable-xxhdpi_ic_icon_fastforward.png.flat",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/build/generated/res/pngs/debug/drawable-xxhdpi/ic_icon_fastforward.png"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable-hdpi_ic_icon_play.png.flat",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/build/generated/res/pngs/debug/drawable-hdpi/ic_icon_play.png"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/anim_recycler_view_from_bottom_to_top.xml.flat",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/src/main/res/anim/recycler_view_from_bottom_to_top.xml"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable-anydpi-v24_ic_launcher_foreground.xml.flat",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/build/generated/res/pngs/debug/drawable-anydpi-v24/ic_launcher_foreground.xml"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/layout_content_main.xml.flat",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/src/main/res/layout/content_main.xml"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/src/main/res/mipmap-xxhdpi/ic_launcher.png"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable-xhdpi_ic_icon_pause.png.flat",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/build/generated/res/pngs/debug/drawable-xhdpi/ic_icon_pause.png"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/raw_basic_logo_svg.svg.flat",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/src/main/res/raw/basic_logo_svg.svg"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/layout_video_list.xml.flat",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/src/main/res/layout/video_list.xml"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/raw_basic_logo.png.flat",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/src/main/res/raw/basic_logo.png"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable-xxxhdpi_ic_icon_rewind.png.flat",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/build/generated/res/pngs/debug/drawable-xxxhdpi/ic_icon_rewind.png"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/mipmap-mdpi_ic_launcher_round.png.flat",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/src/main/res/mipmap-mdpi/ic_launcher_round.png"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable-hdpi_ic_icon_down_arrow.png.flat",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/build/generated/res/pngs/debug/drawable-hdpi/ic_icon_down_arrow.png"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable_ic_more_vert_48px.xml.flat",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/src/main/res/drawable/ic_more_vert_48px.xml"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable-xxhdpi_ic_icon_rewind.png.flat",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/build/generated/res/pngs/debug/drawable-xxhdpi/ic_icon_rewind.png"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable_ic_baseline_audiotrack_24.xml.flat",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/src/main/res/drawable/ic_baseline_audiotrack_24.xml"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable_ic_menu_gallery.xml.flat",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/src/main/res/drawable/ic_menu_gallery.xml"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/mipmap-mdpi_ic_launcher.png.flat",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/src/main/res/mipmap-mdpi/ic_launcher.png"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/navigation_mobile_navigation.xml.flat",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/src/main/res/navigation/mobile_navigation.xml"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/menu_test_item_select_listener.xml.flat",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/src/main/res/menu/test_item_select_listener.xml"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable-xxhdpi_ic_icon_down_arrow.png.flat",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/build/generated/res/pngs/debug/drawable-xxhdpi/ic_icon_down_arrow.png"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/mipmap-xxhdpi_ic_launcher_round.png.flat",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi_ic_launcher_round.png.flat",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/raw_normallogo.svg.flat",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/src/main/res/raw/normallogo.svg"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable-ldpi_ic_icon_fastforward.png.flat",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/build/generated/res/pngs/debug/drawable-ldpi/ic_icon_fastforward.png"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable-anydpi-v24_ic_icon_pause.xml.flat",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/build/generated/res/pngs/debug/drawable-anydpi-v24/ic_icon_pause.xml"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable_bg_round_rect_white_50.xml.flat",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/src/main/res/drawable/bg_round_rect_white_50.xml"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/anim_recycler_view_from_bottom_to_top.xml.flat",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/src/main/res/anim/recycler_view_from_bottom_to_top.xml"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/mipmap-mdpi_ic_launcher_foreground.png.flat",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/src/main/res/mipmap-mdpi/ic_launcher_foreground.png"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable_bg_round_rect_white_50.xml.flat",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/src/main/res/drawable/bg_round_rect_white_50.xml"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable-hdpi_ic_icon_fastforward.png.flat",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/build/generated/res/pngs/debug/drawable-hdpi/ic_icon_fastforward.png"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable-mdpi_ic_icon_down_arrow.png.flat",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/build/generated/res/pngs/debug/drawable-mdpi/ic_icon_down_arrow.png"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable-ldpi_ic_icon_down_arrow.png.flat",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/build/generated/res/pngs/debug/drawable-ldpi/ic_icon_down_arrow.png"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable-anydpi-v24_ic_icon_down_arrow.xml.flat",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/build/generated/res/pngs/debug/drawable-anydpi-v24/ic_icon_down_arrow.xml"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/layout_streams_list.xml.flat",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/src/main/res/layout/streams_list.xml"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable-xxxhdpi_ic_icon_rewind.png.flat",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/build/generated/res/pngs/debug/drawable-xxxhdpi/ic_icon_rewind.png"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/mipmap-hdpi_ic_launcher_round.png.flat",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/src/main/res/mipmap-hdpi/ic_launcher_round.png"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable-xxxhdpi_ic_icon_fastforward.png.flat",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/build/generated/res/pngs/debug/drawable-xxxhdpi/ic_icon_fastforward.png"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable_ic_launcher_background.xml.flat",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/src/main/res/drawable/ic_launcher_background.xml"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable-ldpi_ic_icon_rewind.png.flat",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/build/generated/res/pngs/debug/drawable-ldpi/ic_icon_rewind.png"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable_ic_launcher_foreground.xml.flat",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/src/main/res/drawable/ic_launcher_foreground.xml"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/mipmap-xhdpi_ic_launcher_foreground.png.flat",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/src/main/res/mipmap-xhdpi/ic_launcher_foreground.png"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/layout_activity_all_files_list.xml.flat",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/src/main/res/layout/activity_all_files_list.xml"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable-mdpi_ic_icon_pause.png.flat",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/build/generated/res/pngs/debug/drawable-mdpi/ic_icon_pause.png"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/layout_activity_main2.xml.flat",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/src/main/res/layout/activity_main2.xml"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable-xxhdpi_ic_icon_play.png.flat",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/build/generated/res/pngs/debug/drawable-xxhdpi/ic_icon_play.png"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/mipmap-anydpi-v26_ic_launcher.xml.flat",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/raw_video.mp4.flat",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/src/main/res/raw/video.mp4"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/raw_basic_logo.png.flat",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/src/main/res/raw/basic_logo.png"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/src/main/res/mipmap-xhdpi/ic_launcher.png"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable-anydpi-v24_ic_icon_fastforward.xml.flat",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/build/generated/res/pngs/debug/drawable-anydpi-v24/ic_icon_fastforward.xml"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/layout_fragment_stream.xml.flat",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/src/main/res/layout/fragment_stream.xml"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/layout_file_list_in_grid.xml.flat",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/src/main/res/layout/file_list_in_grid.xml"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable_ic_baseline_send_24.xml.flat",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/src/main/res/drawable/ic_baseline_send_24.xml"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable-xxxhdpi_ic_icon_pause.png.flat",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/build/generated/res/pngs/debug/drawable-xxxhdpi/ic_icon_pause.png"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/layout_activity_main.xml.flat",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/src/main/res/layout/activity_main.xml"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/layout_fragment_stream.xml.flat",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/src/main/res/layout/fragment_stream.xml"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/raw_normal_logo.png.flat",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/src/main/res/raw/normal_logo.png"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/layout_fragment_gallery.xml.flat",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/src/main/res/layout/fragment_gallery.xml"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/layout_streams_list.xml.flat",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/src/main/res/layout/streams_list.xml"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable-mdpi_ic_icon_fastforward.png.flat",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/build/generated/res/pngs/debug/drawable-mdpi/ic_icon_fastforward.png"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable-ldpi_ic_icon_down_arrow.png.flat",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/build/generated/res/pngs/debug/drawable-ldpi/ic_icon_down_arrow.png"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/layout_fragment_full_image.xml.flat",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/src/main/res/layout/fragment_full_image.xml"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable-xhdpi_ic_icon_rewind.png.flat",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/build/generated/res/pngs/debug/drawable-xhdpi/ic_icon_rewind.png"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/layout_activity_download.xml.flat",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/src/main/res/layout/activity_download.xml"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/layout_activity_all_files_list.xml.flat",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/src/main/res/layout/activity_all_files_list.xml"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi_ic_launcher_foreground.png.flat",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/src/main/res/mipmap-xxxhdpi/ic_launcher_foreground.png"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/mipmap-mdpi_ic_launcher_foreground.png.flat",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/src/main/res/mipmap-mdpi/ic_launcher_foreground.png"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi_ic_launcher.png.flat",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable-xxhdpi_ic_icon_down_arrow.png.flat",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/build/generated/res/pngs/debug/drawable-xxhdpi/ic_icon_down_arrow.png"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable-mdpi_ic_icon_down_arrow.png.flat",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/build/generated/res/pngs/debug/drawable-mdpi/ic_icon_down_arrow.png"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/layout_content_main.xml.flat",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/src/main/res/layout/content_main.xml"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/mipmap-hdpi_ic_launcher.png.flat",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/src/main/res/mipmap-hdpi/ic_launcher.png"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable-ldpi_ic_icon_fastforward.png.flat",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/build/generated/res/pngs/debug/drawable-ldpi/ic_icon_fastforward.png"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/menu_activity_main_drawer.xml.flat",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/src/main/res/menu/activity_main_drawer.xml"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi_ic_launcher_foreground.png.flat",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/src/main/res/mipmap-xxxhdpi/ic_launcher_foreground.png"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable_ic_menu_camera.xml.flat",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/src/main/res/drawable/ic_menu_camera.xml"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable_ic_menu_gallery.xml.flat",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/src/main/res/drawable/ic_menu_gallery.xml"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable_ic_menu_slideshow.xml.flat",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/src/main/res/drawable/ic_menu_slideshow.xml"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/layout_custom_controller.xml.flat",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/src/main/res/layout/custom_controller.xml"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/mipmap-hdpi_ic_launcher_foreground.png.flat",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/src/main/res/mipmap-hdpi/ic_launcher_foreground.png"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable-mdpi_ic_icon_fastforward.png.flat",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/build/generated/res/pngs/debug/drawable-mdpi/ic_icon_fastforward.png"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable-hdpi_ic_icon_rewind.png.flat",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/build/generated/res/pngs/debug/drawable-hdpi/ic_icon_rewind.png"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable-hdpi_ic_icon_fastforward.png.flat",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/build/generated/res/pngs/debug/drawable-hdpi/ic_icon_fastforward.png"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/mipmap-xxhdpi_ic_launcher.png.flat",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/src/main/res/mipmap-xxhdpi/ic_launcher.png"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable_ic_cross_white.xml.flat",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/src/main/res/drawable/ic_cross_white.xml"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable-xhdpi_ic_icon_down_arrow.png.flat",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/build/generated/res/pngs/debug/drawable-xhdpi/ic_icon_down_arrow.png"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable_ic_lock_white_24dp.xml.flat",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/src/main/res/drawable/ic_lock_white_24dp.xml"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable-mdpi_ic_icon_play.png.flat",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/build/generated/res/pngs/debug/drawable-mdpi/ic_icon_play.png"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable_ic_broken_image.xml.flat",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/src/main/res/drawable/ic_broken_image.xml"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable_ic_launcher_background.xml.flat",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/src/main/res/drawable/ic_launcher_background.xml"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/mipmap-xxhdpi_ic_launcher_round.png.flat",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/layout_activity_gallery_view.xml.flat",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/src/main/res/layout/activity_gallery_view.xml"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable-mdpi_ic_icon_rewind.png.flat",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/build/generated/res/pngs/debug/drawable-mdpi/ic_icon_rewind.png"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/layout_fragment_music.xml.flat",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/src/main/res/layout/fragment_music.xml"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable-anydpi-v24_ic_icon_rewind.xml.flat",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/build/generated/res/pngs/debug/drawable-anydpi-v24/ic_icon_rewind.xml"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable-hdpi_ic_icon_pause.png.flat",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/build/generated/res/pngs/debug/drawable-hdpi/ic_icon_pause.png"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable-xxxhdpi_ic_icon_down_arrow.png.flat",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/build/generated/res/pngs/debug/drawable-xxxhdpi/ic_icon_down_arrow.png"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/layout_layout_exoplayer_control_views.xml.flat",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/src/main/res/layout/layout_exoplayer_control_views.xml"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable-xxxhdpi_ic_icon_fastforward.png.flat",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/build/generated/res/pngs/debug/drawable-xxxhdpi/ic_icon_fastforward.png"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable_black_more_transparent.xml.flat",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/src/main/res/drawable/black_more_transparent.xml"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/layout_fragment_music.xml.flat",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/src/main/res/layout/fragment_music.xml"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable-xxhdpi_ic_icon_fastforward.png.flat",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/build/generated/res/pngs/debug/drawable-xxhdpi/ic_icon_fastforward.png"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable-xhdpi_ic_icon_play.png.flat",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/build/generated/res/pngs/debug/drawable-xhdpi/ic_icon_play.png"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable-xhdpi_ic_icon_fastforward.png.flat",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/build/generated/res/pngs/debug/drawable-xhdpi/ic_icon_fastforward.png"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/raw_normallogo.svg.flat",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/src/main/res/raw/normallogo.svg"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/layout_fragment_gallery.xml.flat",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/src/main/res/layout/fragment_gallery.xml"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable-anydpi-v24_ic_icon_down_arrow.xml.flat",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/build/generated/res/pngs/debug/drawable-anydpi-v24/ic_icon_down_arrow.xml"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable-xxxhdpi_ic_icon_down_arrow.png.flat",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/build/generated/res/pngs/debug/drawable-xxxhdpi/ic_icon_down_arrow.png"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/menu_gallery_view.xml.flat",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/src/main/res/menu/gallery_view.xml"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable-ldpi_ic_icon_play.png.flat",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/build/generated/res/pngs/debug/drawable-ldpi/ic_icon_play.png"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/mipmap-xhdpi_ic_launcher_round.png.flat",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/layout_activity_download.xml.flat",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/src/main/res/layout/activity_download.xml"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable_loading_img.xml.flat",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/src/main/res/drawable/loading_img.xml"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable_side_nav_bar.xml.flat",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/src/main/res/drawable/side_nav_bar.xml"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable_ic_more_vert_48px.xml.flat",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/src/main/res/drawable/ic_more_vert_48px.xml"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable_ic_basic_logo_svg.xml.flat",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/src/main/res/drawable/ic_basic_logo_svg.xml"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/layout_custom_controller.xml.flat",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/src/main/res/layout/custom_controller.xml"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable-xhdpi_ic_icon_fastforward.png.flat",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/build/generated/res/pngs/debug/drawable-xhdpi/ic_icon_fastforward.png"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/layout_file_list_in_grid.xml.flat",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/src/main/res/layout/file_list_in_grid.xml"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable-xhdpi_ic_icon_down_arrow.png.flat",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/build/generated/res/pngs/debug/drawable-xhdpi/ic_icon_down_arrow.png"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable_ic_menu_slideshow.xml.flat",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/src/main/res/drawable/ic_menu_slideshow.xml"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable_ic_basic_logo_svg.xml.flat",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/src/main/res/drawable/ic_basic_logo_svg.xml"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable-mdpi_ic_icon_rewind.png.flat",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/build/generated/res/pngs/debug/drawable-mdpi/ic_icon_rewind.png"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/layout_app_bar_main.xml.flat",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/src/main/res/layout/app_bar_main.xml"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable-xxhdpi_ic_icon_pause.png.flat",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/build/generated/res/pngs/debug/drawable-xxhdpi/ic_icon_pause.png"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable_ic_baseline_send_24.xml.flat",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/src/main/res/drawable/ic_baseline_send_24.xml"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/layout_app_bar_main.xml.flat",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/src/main/res/layout/app_bar_main.xml"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable_black_more_transparent.xml.flat",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/src/main/res/drawable/black_more_transparent.xml"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable_ic_cross_white.xml.flat",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/src/main/res/drawable/ic_cross_white.xml"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable-xxhdpi_ic_icon_play.png.flat",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/build/generated/res/pngs/debug/drawable-xxhdpi/ic_icon_play.png"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable-ldpi_ic_icon_pause.png.flat",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/build/generated/res/pngs/debug/drawable-ldpi/ic_icon_pause.png"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/layout_layout_exoplayer_control_views.xml.flat",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/src/main/res/layout/layout_exoplayer_control_views.xml"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable-mdpi_ic_icon_pause.png.flat",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/build/generated/res/pngs/debug/drawable-mdpi/ic_icon_pause.png"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable-xxhdpi_ic_icon_rewind.png.flat",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/build/generated/res/pngs/debug/drawable-xxhdpi/ic_icon_rewind.png"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable-ldpi_ic_icon_play.png.flat",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/build/generated/res/pngs/debug/drawable-ldpi/ic_icon_play.png"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable_ic_launcher_foreground.xml.flat",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/src/main/res/drawable/ic_launcher_foreground.xml"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/mipmap-xhdpi_ic_launcher.png.flat",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/src/main/res/mipmap-xhdpi/ic_launcher.png"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/mipmap-hdpi_ic_launcher_round.png.flat",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/src/main/res/mipmap-hdpi/ic_launcher_round.png"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable-ldpi_ic_icon_rewind.png.flat",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/build/generated/res/pngs/debug/drawable-ldpi/ic_icon_rewind.png"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/layout_nav_header_main.xml.flat",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/src/main/res/layout/nav_header_main.xml"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/layout_fragment_video.xml.flat",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/src/main/res/layout/fragment_video.xml"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable-xhdpi_ic_icon_rewind.png.flat",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/build/generated/res/pngs/debug/drawable-xhdpi/ic_icon_rewind.png"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/mipmap-hdpi_ic_launcher.png.flat",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/src/main/res/mipmap-hdpi/ic_launcher.png"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/mipmap-xxhdpi_ic_launcher_foreground.png.flat",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/src/main/res/mipmap-xxhdpi/ic_launcher_foreground.png"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable-hdpi_ic_icon_rewind.png.flat",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/build/generated/res/pngs/debug/drawable-hdpi/ic_icon_rewind.png"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable_side_nav_bar.xml.flat",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/src/main/res/drawable/side_nav_bar.xml"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/mipmap-xxhdpi_ic_launcher_foreground.png.flat",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/src/main/res/mipmap-xxhdpi/ic_launcher_foreground.png"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable-anydpi-v24_ic_icon_pause.xml.flat",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/build/generated/res/pngs/debug/drawable-anydpi-v24/ic_icon_pause.xml"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable-hdpi_ic_icon_down_arrow.png.flat",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/build/generated/res/pngs/debug/drawable-hdpi/ic_icon_down_arrow.png"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable-mdpi_ic_icon_play.png.flat",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/build/generated/res/pngs/debug/drawable-mdpi/ic_icon_play.png"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable_ic_lock_white_24dp.xml.flat",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/src/main/res/drawable/ic_lock_white_24dp.xml"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/mipmap-mdpi_ic_launcher.png.flat",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/src/main/res/mipmap-mdpi/ic_launcher.png"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/layout_activity_full_image.xml.flat",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/src/main/res/layout/activity_full_image.xml"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/layout_fragment_crop_image.xml.flat",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/src/main/res/layout/fragment_crop_image.xml"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable-xxxhdpi_ic_icon_play.png.flat",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/build/generated/res/pngs/debug/drawable-xxxhdpi/ic_icon_play.png"
     },
     {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/mipmap-mdpi_ic_launcher_round.png.flat",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/src/main/res/mipmap-mdpi/ic_launcher_round.png"
-    },
-    {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable-ldpi_ic_icon_pause.png.flat",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/build/generated/res/pngs/debug/drawable-ldpi/ic_icon_pause.png"
-    },
-    {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/raw_normal_logo.png.flat",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/src/main/res/raw/normal_logo.png"
-    },
-    {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/layout_activity_main.xml.flat",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/src/main/res/layout/activity_main.xml"
-    },
-    {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable-xxhdpi_ic_icon_pause.png.flat",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/build/generated/res/pngs/debug/drawable-xxhdpi/ic_icon_pause.png"
-    },
-    {
-        "merged": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/layout_activity_gallery_view.xml.flat",
-        "source": "/Users/gauri/Documents/code/XPlayer/app/src/main/res/layout/activity_gallery_view.xml"
+        "merged": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/res/merged/debug/drawable-anydpi-v24_ic_icon_fastforward.xml.flat",
+        "source": "/Users/gouri/Documents/code/XPlayer/app/build/generated/res/pngs/debug/drawable-anydpi-v24/ic_icon_fastforward.xml"
     }
 ]

@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-h720dp-v13/values-h720dp-v13.xml",
+            "outputFile": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-h720dp-v13/values-h720dp-v13.xml",
             "map": [
                 {
-                    "source": "/Users/gauri/.gradle/caches/transforms-2/files-2.1/48f2240119b11f16e77505b0fa7fdaf7/appcompat-1.1.0/res/values-h720dp-v13/values-h720dp-v13.xml",
+                    "source": "/Users/gouri/.gradle/caches/transforms-2/files-2.1/dd77cbedb728e3f7b500bc4dc61c5817/appcompat-1.1.0/res/values-h720dp-v13/values-h720dp-v13.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

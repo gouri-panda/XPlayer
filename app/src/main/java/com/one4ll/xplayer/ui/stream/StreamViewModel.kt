@@ -13,15 +13,11 @@ import kotlinx.coroutines.launch
 
 @ExperimentalCoroutinesApi
 class StreamViewModel(application: Application) : AndroidViewModel(application) {
-    private var _streamList: MutableStateFlow<List<Streams>> = MutableStateFlow(emptyList())
-    var streamsList: StateFlow<List<Streams>> = _streamList
-    var db: MediaDatabase = MediaDatabase.getInstance(application)
+
 
     init {
         viewModelScope.launch {
-            db.streamsDao().getAllByTime().collect {
-                _streamList.value = it
-            }
+
 
 
         }

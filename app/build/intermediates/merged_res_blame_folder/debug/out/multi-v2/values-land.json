@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-land/values-land.xml",
+            "outputFile": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-land/values-land.xml",
             "map": [
                 {
-                    "source": "/Users/gauri/.gradle/caches/transforms-2/files-2.1/48f2240119b11f16e77505b0fa7fdaf7/appcompat-1.1.0/res/values-land/values-land.xml",
+                    "source": "/Users/gouri/.gradle/caches/transforms-2/files-2.1/dd77cbedb728e3f7b500bc4dc61c5817/appcompat-1.1.0/res/values-land/values-land.xml",
                     "from": {
                         "startLines": "2,3,4",
                         "startColumns": "4,4,4",
@@ -14,7 +14,7 @@
                     }
                 },
                 {
-                    "source": "/Users/gauri/.gradle/caches/transforms-2/files-2.1/45649c2f16bee944daae044a45332e0b/material-1.1.0/res/values-land/values-land.xml",
+                    "source": "/Users/gouri/.gradle/caches/transforms-2/files-2.1/69e3b89e3d80e925b5a165787a5f8a86/material-1.1.0/res/values-land/values-land.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,24,30",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",

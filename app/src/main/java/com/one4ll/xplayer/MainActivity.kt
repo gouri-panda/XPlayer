@@ -18,7 +18,10 @@ import android.view.GestureDetector
 import android.view.MotionEvent
 import android.view.View
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import com.google.android.exoplayer2.*
 import com.google.android.exoplayer2.source.MediaSource
 import com.google.android.exoplayer2.source.ProgressiveMediaSource
@@ -31,6 +34,7 @@ import com.one4ll.xplayer.databinding.ActivityMainBinding
 import com.one4ll.xplayer.helpers.*
 import kotlinx.android.synthetic.main.activity_main.view.*
 import kotlinx.android.synthetic.main.layout_exoplayer_control_views.view.*
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 private const val TAG = "MainActivity"
 
@@ -42,6 +46,7 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
     private val audioManager by lazy { getSystemService(Context.AUDIO_SERVICE) as AudioManager }
     private val brightness by lazy { Settings.System.getInt(contentResolver, Settings.System.SCREEN_BRIGHTNESS) }
     private lateinit var binding: ActivityMainBinding
+
 
     private var simpleExoPlayer: SimpleExoPlayer? = null
     override fun onCreate(savedInstanceState: Bundle?) {

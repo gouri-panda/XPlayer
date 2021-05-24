@@ -1,29 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/gauri/Documents/code/XPlayer/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v21/values-v21.xml",
+            "outputFile": "/Users/gouri/Documents/code/XPlayer/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v21/values-v21.xml",
             "map": [
                 {
-                    "source": "/Users/gauri/.gradle/caches/transforms-2/files-2.1/2f11145721b0e7c79316ab442aaae5da/jetified-leakcanary-android-core-2.4/res/values-v21/values-v21.xml",
-                    "from": {
-                        "startLines": "2,6",
-                        "startColumns": "4,4",
-                        "startOffsets": "55,313",
-                        "endLines": "5,9",
-                        "endColumns": "10,10",
-                        "endOffsets": "308,535"
-                    },
-                    "to": {
-                        "startLines": "375,379",
-                        "startColumns": "4,4",
-                        "startOffsets": "27284,27542",
-                        "endLines": "378,382",
-                        "endColumns": "10,10",
-                        "endOffsets": "27537,27764"
-                    }
-                },
-                {
-                    "source": "/Users/gauri/.gradle/caches/transforms-2/files-2.1/04686bfe0e7a68c449b97a4e16f8348e/core-1.5.0-beta02/res/values-v21/values-v21.xml",
+                    "source": "/Users/gouri/.gradle/caches/transforms-2/files-2.1/1353076bffdf27eb2c2693939725e9db/core-1.6.0-beta01/res/values-v21/values-v21.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,13",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4",
@@ -42,7 +23,7 @@
                     }
                 },
                 {
-                    "source": "/Users/gauri/.gradle/caches/transforms-2/files-2.1/45649c2f16bee944daae044a45332e0b/material-1.1.0/res/values-v21/values-v21.xml",
+                    "source": "/Users/gouri/.gradle/caches/transforms-2/files-2.1/69e3b89e3d80e925b5a165787a5f8a86/material-1.1.0/res/values-v21/values-v21.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,15,16,19,24,35,41,47,53,59,65,69,72,75,78,81,85",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -61,7 +42,26 @@
                     }
                 },
                 {
-                    "source": "/Users/gauri/.gradle/caches/transforms-2/files-2.1/b6488df5ac797b6bae99c3a844c2552c/media-1.0.1/res/values-v21/values-v21.xml",
+                    "source": "/Users/gouri/.gradle/caches/transforms-2/files-2.1/dbad5aad522d8a151b45130fba0deb19/jetified-leakcanary-android-core-2.4/res/values-v21/values-v21.xml",
+                    "from": {
+                        "startLines": "2,6",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,313",
+                        "endLines": "5,9",
+                        "endColumns": "10,10",
+                        "endOffsets": "308,535"
+                    },
+                    "to": {
+                        "startLines": "375,379",
+                        "startColumns": "4,4",
+                        "startOffsets": "27284,27542",
+                        "endLines": "378,382",
+                        "endColumns": "10,10",
+                        "endOffsets": "27537,27764"
+                    }
+                },
+                {
+                    "source": "/Users/gouri/.gradle/caches/transforms-2/files-2.1/1ffa8c278006ac6c5ac7f0989c02542c/media-1.0.1/res/values-v21/values-v21.xml",
                     "from": {
                         "startLines": "2,5,8,11",
                         "startColumns": "4,4,4,4",
@@ -80,7 +80,7 @@
                     }
                 },
                 {
-                    "source": "/Users/gauri/.gradle/caches/transforms-2/files-2.1/48f2240119b11f16e77505b0fa7fdaf7/appcompat-1.1.0/res/values-v21/values-v21.xml",
+                    "source": "/Users/gouri/.gradle/caches/transforms-2/files-2.1/dd77cbedb728e3f7b500bc4dc61c5817/appcompat-1.1.0/res/values-v21/values-v21.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,17,19,20,21,22,24,26,27,28,29,30,32,34,36,38,40,42,43,48,50,52,53,54,56,58,59,60,61,62,63,106,109,152,155,158,160,162,164,167,171,174,175,176,179,180,181,182,183,184,187,188,190,192,194,196,200,202,203,204,205,207,211,213,215,216,217,218,219,220,222,223,224,234,235,236,248",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
