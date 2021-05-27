@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.one4ll.xplayer.Media
 import com.one4ll.xplayer.adapter.ImageRecyclerViewAdapter
 import com.one4ll.xplayer.databinding.FragmentGalleryBinding
-import com.one4ll.xplayer.helpers.baseViewModel
 import kotlinx.android.synthetic.main.fragment_gallery.view.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.collect
@@ -24,7 +23,7 @@ private const val TAG = "imageFragment"
 class GalleryFragment : Fragment() {
 
     private lateinit var binding: FragmentGalleryBinding
-
+    private val viewModel: ImageFragmentViewHolder by viewModels()
     private var imageRecyclerViewAdapter: ImageRecyclerViewAdapter? = null
 
     override fun onCreateView(
@@ -39,9 +38,22 @@ class GalleryFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         lifecycleScope.launch {
-            baseViewModel.imageUri.collect {
-                setAdapterToUi(it)
+            viewModel.state.collect { state ->
+                when (state) {
+                    ImageFragmentState.Loading -> {
+                        binding.progressBar.visibility = View.VISIBLE
+                    }
+                    is ImageFragmentState.ImageLoadedSuccess -> {
+                        binding.progressBar.visibility = View.GONE
+                        setAdapterToUi(state.imagesList)
+                    }
+                    is ImageFragmentState.Error -> {
+                        binding.errorTextView.visibility = View.VISIBLE
+                        binding.errorTextView.text = state.message
+                    }
+                }
             }
+
         }
     }
 
@@ -52,7 +64,5 @@ class GalleryFragment : Fragment() {
             this.adapter = imageRecyclerViewAdapter
             layoutManager = LinearLayoutManager(binding.root.context, LinearLayoutManager.VERTICAL, false)
         }
-
     }
-
 }

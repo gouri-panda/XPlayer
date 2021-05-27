@@ -16,7 +16,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collect
 
 @ExperimentalCoroutinesApi
-class BaseViewModel(val app: Application) : AndroidViewModel(app) {
+open class BaseViewModel(val app: Application) : AndroidViewModel(app) {
     private var _imageUri: MutableStateFlow<List<Media>> = MutableStateFlow(emptyList())
     var imageUri: StateFlow<List<Media>> = _imageUri
     var musicUriList: MutableLiveData<List<Media>> = MutableLiveData()
