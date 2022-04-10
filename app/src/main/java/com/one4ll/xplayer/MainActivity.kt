@@ -51,7 +51,6 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
             Settings.System.SCREEN_BRIGHTNESS
         )
     }
-    private lateinit var binding: ActivityMainBinding
 
     private var simpleExoPlayer: SimpleExoPlayer? = null
     override fun onCreate(savedInstanceState: Bundle?) {
