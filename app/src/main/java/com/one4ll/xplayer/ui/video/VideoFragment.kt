@@ -16,7 +16,6 @@ import androidx.lifecycle.lifecycleScope
 import com.one4ll.xplayer.Media
 import com.one4ll.xplayer.compose.MediaCard
 import com.one4ll.xplayer.helpers.*
-import kotlinx.android.synthetic.main.fragment_video.view.*
 import kotlinx.coroutines.*
 import kotlinx.coroutines.Dispatchers.IO
 

@@ -2,10 +2,9 @@
 
 buildscript {
     ext {
-        kotlin_version = '1.5.10'
-        composeVersion = '1.0.0'
+        kotlin_version = '1.6.10'
+        composeVersion = '1.1.1'
         composeSnapshot = '6765009'
-        compose_version = '1.0.0'
     }
 
     repositories {

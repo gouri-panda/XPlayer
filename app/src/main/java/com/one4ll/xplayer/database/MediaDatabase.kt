@@ -9,7 +9,8 @@ import com.one4ll.xplayer.models.*
 
 @Database(
     entities = [Video::class, Image::class, Music::class, Streams::class, Favorite::class],
-    version = 1
+    version = 1,
+    exportSchema = false
 )
 @TypeConverters(Converters::class)
 abstract class MediaDatabase : RoomDatabase() {

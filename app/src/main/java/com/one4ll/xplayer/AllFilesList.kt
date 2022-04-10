@@ -8,11 +8,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.one4ll.xplayer.adapter.VideoRecyclerViewAdapter
 import com.one4ll.xplayer.database.MediaDatabase
 import com.one4ll.xplayer.helpers.*
 import com.one4ll.xplayer.models.Video
-import kotlinx.android.synthetic.main.activity_all_files_list.*
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -25,21 +25,24 @@ private const val TAG = "MainActivity"
 class AllFilesList : AppCompatActivity() {
     private var thumbnail = File("")
     private lateinit var videoRecyclerViewAdapter: VideoRecyclerViewAdapter
+
     @Inject
-    private lateinit var mediaDatabase: MediaDatabase
+    lateinit var mediaDatabase: MediaDatabase
+    private lateinit var videoListRecyclerView: RecyclerView
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_all_files_list)
+        videoListRecyclerView = findViewById(R.id.video_list_recycler_view)
         thumbnail.delete()
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
         val videoList: ArrayList<Media> = ArrayList()
         videoRecyclerViewAdapter = VideoRecyclerViewAdapter(this, videoList, lifecycleScope)
 
-        video_list_recycler_view.layoutManager =
+        videoListRecyclerView.layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        video_list_recycler_view.adapter = videoRecyclerViewAdapter
+        videoListRecyclerView.adapter = videoRecyclerViewAdapter
         if (readAndWriteExternalStoragePermission()) {
             getVideoList()
         }
