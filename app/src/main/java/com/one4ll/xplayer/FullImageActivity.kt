@@ -30,7 +30,8 @@ class FullImageActivity : AppCompatActivity(), View.OnTouchListener, GestureDete
         val path = intent.getStringExtra(IMAGE_PATH)
         Log.d(TAG, "onCreate: image path $path")
         binding.root.full_image_view.setImageURI(Uri.parse(path))
-        scaleGestureDetector = ScaleGestureDetector(this, ScaleGestureListener(scaleEffect, binding.root.full_image_view))
+        scaleGestureDetector = ScaleGestureDetector(this, ScaleGestureListener(scaleEffect,
+                binding.root.full_image_view))
         gestureDetector = GestureDetector(this, this)
         binding.root.full_image_view.setOnTouchListener(this)
     }

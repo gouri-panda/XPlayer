@@ -31,6 +31,7 @@ class ImageRecyclerViewAdapter(var list: List<Media>, var activity: Activity, va
     }
 
 
+
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         // TODO: 10/07/20 fix when go to down to up
         holder.imageView.setImageBitmap(null)
