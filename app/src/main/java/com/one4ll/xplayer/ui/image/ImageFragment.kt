@@ -23,7 +23,7 @@ private const val TAG = "imageFragment"
 class GalleryFragment : Fragment() {
 
     private lateinit var binding: FragmentGalleryBinding
-    private val viewModel: ImageFragmentViewHolder by viewModels()
+    private val viewModel: ImageFragmentStateViewModel by viewModels()
     private var imageRecyclerViewAdapter: ImageRecyclerViewAdapter? = null
 
     override fun onCreateView(

@@ -17,6 +17,7 @@ import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.io.File
+import javax.inject.Inject
 
 private const val READ_AND_WRITE_STORAGE_PERMISSION = 3
 private const val TAG = "MainActivity"
@@ -24,6 +25,7 @@ private const val TAG = "MainActivity"
 class AllFilesList : AppCompatActivity() {
     private var thumbnail = File("")
     private lateinit var videoRecyclerViewAdapter: VideoRecyclerViewAdapter
+    @Inject
     private lateinit var mediaDatabase: MediaDatabase
 
 
@@ -35,9 +37,9 @@ class AllFilesList : AppCompatActivity() {
         val videoList: ArrayList<Media> = ArrayList()
         videoRecyclerViewAdapter = VideoRecyclerViewAdapter(this, videoList, lifecycleScope)
 
-        video_list_recycler_view.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        video_list_recycler_view.layoutManager =
+            LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         video_list_recycler_view.adapter = videoRecyclerViewAdapter
-        mediaDatabase = MediaDatabase.getInstance(this)
         if (readAndWriteExternalStoragePermission()) {
             getVideoList()
         }
@@ -78,7 +80,12 @@ class AllFilesList : AppCompatActivity() {
     private fun readAndWriteExternalStoragePermission(): Boolean {
         if (IS_MARSHMALLOW_OR_LETTER()) {
             if (!havePermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
-                askPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE, permissionId = READ_AND_WRITE_STORAGE_PERMISSION)
+                askPermission(
+                    this,
+                    Manifest.permission.READ_EXTERNAL_STORAGE,
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                    permissionId = READ_AND_WRITE_STORAGE_PERMISSION
+                )
                 return false
             }
         }
@@ -89,9 +96,9 @@ class AllFilesList : AppCompatActivity() {
      * After receiving permissions checks it checks  if the permission is granted or not, if we have permission then it gets video list
      */
     override fun onRequestPermissionsResult(
-            requestCode: Int,
-            permissions: Array<out String>,
-            grantResults: IntArray
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         when (requestCode) {
@@ -109,7 +116,6 @@ class AllFilesList : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         mediaDatabase.close()
-        MediaDatabase.destroyInstance()
     }
 
 }

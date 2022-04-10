@@ -14,6 +14,7 @@ import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collect
+import javax.inject.Inject
 
 @ExperimentalCoroutinesApi
 open class BaseViewModel(val app: Application) : AndroidViewModel(app) {
@@ -22,7 +23,8 @@ open class BaseViewModel(val app: Application) : AndroidViewModel(app) {
     var musicUriList: MutableLiveData<List<Media>> = MutableLiveData()
     private var _streamList: MutableStateFlow<List<Streams>> = MutableStateFlow(emptyList())
     var streamsList: StateFlow<List<Streams>> = _streamList
-    var db: MediaDatabase = MediaDatabase.getInstance(app)
+    @Inject
+    lateinit var db: MediaDatabase
 
 
     init {
@@ -39,8 +41,10 @@ open class BaseViewModel(val app: Application) : AndroidViewModel(app) {
     private suspend fun getImageUri(): List<Media> {
         var exImageUri = emptyList<Media>()
         withContext(Dispatchers.IO) {
-            val externalContentImageUriJob = async { getExternalContentImageUri(app.applicationContext) }
-            val internalContentImageUriJob: Deferred<ArrayList<Media>> = async { getInternalContentImageUri(app.applicationContext) }
+            val externalContentImageUriJob =
+                async { getExternalContentImageUri(app.applicationContext) }
+            val internalContentImageUriJob: Deferred<ArrayList<Media>> =
+                async { getInternalContentImageUri(app.applicationContext) }
             exImageUri = externalContentImageUriJob.await() + internalContentImageUriJob.await()
         }
         return exImageUri
@@ -48,8 +52,10 @@ open class BaseViewModel(val app: Application) : AndroidViewModel(app) {
 
     suspend fun getMusicListFromStorage() {
         withContext(Dispatchers.IO) {
-            val externalMusicUri: Deferred<ArrayList<Media>> = async { getExternalContentMusicUri(app.baseContext) }
-            val internalMusicUri: Deferred<ArrayList<Media>> = async { getInternalContentMusicUri(app.baseContext) }
+            val externalMusicUri: Deferred<ArrayList<Media>> =
+                async { getExternalContentMusicUri(app.baseContext) }
+            val internalMusicUri: Deferred<ArrayList<Media>> =
+                async { getInternalContentMusicUri(app.baseContext) }
             musicUriList.postValue(externalMusicUri.await() + internalMusicUri.await())
         }
     }

@@ -29,18 +29,26 @@ import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory
 import com.google.android.exoplayer2.util.Util
 import com.one4ll.xplayer.databinding.ActivityMainBinding
 import com.one4ll.xplayer.helpers.*
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.view.*
 import kotlinx.android.synthetic.main.layout_exoplayer_control_views.view.*
 
 private const val TAG = "MainActivity"
 
-class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.OnDoubleTapListener, GestureDetector.OnGestureListener, AudioManager.OnAudioFocusChangeListener {
+@AndroidEntryPoint
+class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.OnDoubleTapListener,
+    GestureDetector.OnGestureListener, AudioManager.OnAudioFocusChangeListener {
     private lateinit var gestureDetector: GestureDetector
     private lateinit var videoUriPath: String
     private var screenWidth: Int? = null
     private var screenHeight: Int? = null
     private val audioManager by lazy { getSystemService(Context.AUDIO_SERVICE) as AudioManager }
-    private val brightness by lazy { Settings.System.getInt(contentResolver, Settings.System.SCREEN_BRIGHTNESS) }
+    private val brightness by lazy {
+        Settings.System.getInt(
+            contentResolver,
+            Settings.System.SCREEN_BRIGHTNESS
+        )
+    }
     private lateinit var binding: ActivityMainBinding
 
     private var simpleExoPlayer: SimpleExoPlayer? = null
@@ -63,12 +71,15 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
             Log.d(TAG, "onCreate: action view intent called $videoUriPath")
         } else {
             videoUriPath = intent.getStringExtra(VIDEO_PATH)
-                    ?: throw IllegalArgumentException(getString(R.string.videoPathShouldnotNull))
+                ?: throw IllegalArgumentException(getString(R.string.videoPathShouldnotNull))
         }
         setVideoTitle()
         setViews()
 
-        val dataSourceFactory: DataSource.Factory = DefaultDataSourceFactory(this, Util.getUserAgent(this@MainActivity, getString(R.string.app_name)))
+        val dataSourceFactory: DataSource.Factory = DefaultDataSourceFactory(
+            this,
+            Util.getUserAgent(this@MainActivity, getString(R.string.app_name))
+        )
         Log.d(TAG, "onCreate: video path $videoUriPath")
         lateinit var mediaSource: MediaSource
         val options = BitmapFactory.Options()
@@ -77,9 +88,13 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
         val width = decode?.width
         val height = decode?.height
         options.inJustDecodeBounds = false
-        Log.d(TAG, "onCreate: video uri decode file width $width video uri decode file height $height")
+        Log.d(
+            TAG,
+            "onCreate: video uri decode file width $width video uri decode file height $height"
+        )
         mediaSource =
-                ProgressiveMediaSource.Factory(dataSourceFactory).createMediaSource(Uri.parse(videoUriPath))
+            ProgressiveMediaSource.Factory(dataSourceFactory)
+                .createMediaSource(Uri.parse(videoUriPath))
         simpleExoPlayer!!.prepare(mediaSource)
 
         simpleExoPlayer!!.playWhenReady = true
@@ -106,7 +121,12 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
             Log.d(TAG, "onTimelineChanged: timeline $timeline , manifest $manifest, reason $reason")
         }
 
-        override fun onTracksChanged(trackGroups: TrackGroupArray, trackSelections: TrackSelectionArray) {}
+        override fun onTracksChanged(
+            trackGroups: TrackGroupArray,
+            trackSelections: TrackSelectionArray
+        ) {
+        }
+
         override fun onLoadingChanged(isLoading: Boolean) {
         }
 
@@ -114,7 +134,11 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
             when (playbackState) {
                 Player.STATE_READY -> {
                     binding.root.goto_duration.visibility = View.INVISIBLE
-                    audioManager.requestAudioFocus(this@MainActivity, AudioManager.STREAM_MUSIC, AudioManager.AUDIOFOCUS_GAIN)
+                    audioManager.requestAudioFocus(
+                        this@MainActivity,
+                        AudioManager.STREAM_MUSIC,
+                        AudioManager.AUDIOFOCUS_GAIN
+                    )
                     Log.d(TAG, "onPlayerStateChanged: state ready")
                 }
                 Player.STATE_BUFFERING -> {
@@ -222,7 +246,8 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
 
     override fun onSingleTapUp(e: MotionEvent?): Boolean {
         if (binding.root.player_view?.controllerAutoShow != null) {
-            binding.root.player_view?.controllerAutoShow = !binding.root.player_view!!.controllerAutoShow
+            binding.root.player_view?.controllerAutoShow =
+                !binding.root.player_view!!.controllerAutoShow
         }
         return true
     }
@@ -231,25 +256,37 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
         return true
     }
 
-    override fun onFling(e1: MotionEvent?, e2: MotionEvent?, velocityX: Float, velocityY: Float): Boolean {
+    override fun onFling(
+        e1: MotionEvent?,
+        e2: MotionEvent?,
+        velocityX: Float,
+        velocityY: Float
+    ): Boolean {
         Log.d(TAG, "onFling: velocity x $velocityX velocity y $velocityY")
         return true
     }
 
     @SuppressLint("SetTextI18n")
-    override fun onScroll(motionEvent1: MotionEvent?, motionEvent2: MotionEvent?, distanceX: Float, distanceY: Float): Boolean {
+    override fun onScroll(
+        motionEvent1: MotionEvent?,
+        motionEvent2: MotionEvent?,
+        distanceX: Float,
+        distanceY: Float
+    ): Boolean {
         Log.d(TAG, "onScroll: motion event 1$motionEvent1")
         Log.d(TAG, "onScroll: motion event 2 $motionEvent2")
         binding.root.goto_duration.visibility = View.VISIBLE
         val currentPosition = simpleExoPlayer?.currentPosition ?: 0
         if (motionEvent2?.x!! - motionEvent1?.x!! >= 100) {
             //forward
-            binding.root.goto_duration.text = "Forward  +20.00s\n\t\t ${convertDuration(currentPosition)}s"
+            binding.root.goto_duration.text =
+                "Forward  +20.00s\n\t\t ${convertDuration(currentPosition)}s"
             simpleExoPlayer?.seekTo(currentPosition + 20000)
 
         } else if (motionEvent1.x - motionEvent2.x >= 100) {
             //backward
-            binding.root.goto_duration.text = "BackWard -20.00s\n\t\t ${convertDuration(currentPosition)}"
+            binding.root.goto_duration.text =
+                "BackWard -20.00s\n\t\t ${convertDuration(currentPosition)}"
             simpleExoPlayer?.seekTo(currentPosition - 20000)
         } else {
             val rawX = motionEvent1.rawX
