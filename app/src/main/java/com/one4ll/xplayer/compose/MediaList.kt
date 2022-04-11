@@ -74,14 +74,16 @@ fun MediaItem(
             Column(modifier = Modifier.weight(0.6F)) {
                 Text(
                     text = mediaItem.name,
-                    modifier = Modifier.padding(
-                        top = 4.dp,
-                        start = 8.dp,
-                        end = 8.dp,
-                        bottom = 4.dp
-                    ).clickable {
-                        onClickMediaItems(mediaItem)
-                    },
+                    modifier = Modifier
+                        .padding(
+                            top = 4.dp,
+                            start = 8.dp,
+                            end = 8.dp,
+                            bottom = 4.dp
+                        )
+                        .clickable {
+                            onClickMediaItems(mediaItem)
+                        },
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis
                 )
@@ -98,11 +100,11 @@ fun MediaItem(
 
 @Composable
 fun ItemMenu(modifier: Modifier = Modifier) {
-        Icon(
-            modifier = modifier,
-            imageVector = Icons.Rounded.MoreVert,
-            contentDescription = "More option"
-        )
+    Icon(
+        modifier = modifier,
+        imageVector = Icons.Rounded.MoreVert,
+        contentDescription = "More option"
+    )
 }
 
 
