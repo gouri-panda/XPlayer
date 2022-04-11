@@ -46,7 +46,7 @@ fun MediaItem(modifier: Modifier = Modifier, item: Media) {
     Box {
         Row {
             Column(
-                modifier = Modifier
+                modifier = modifier
                     .padding(4.dp)
                     .weight(0.3F)
             ) {
@@ -76,7 +76,7 @@ fun MediaItem(modifier: Modifier = Modifier, item: Media) {
 
 @Composable
 fun ItemMenu(modifier: Modifier = Modifier, onClick: () -> Unit = {}) {
-    IconButton(onClick = onClick) {
+    IconButton(onClick = onClick, modifier = modifier) {
         Icon(imageVector = Icons.Rounded.MoreVert, contentDescription = "More option")
     }
 }
