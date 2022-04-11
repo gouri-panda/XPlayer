@@ -1,6 +1,8 @@
 package com.one4ll.xplayer.compose
 
+import android.util.Log
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.LinearProgressIndicator
@@ -8,7 +10,6 @@ import androidx.compose.material.Surface
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.MoreVert
 import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -31,7 +32,13 @@ fun MediaList(modifier: Modifier = Modifier, items: List<Media>) {
                 item {
                     MediaItem(
                         modifier,
-                        item = item
+                        mediaItem = item,
+                        onClickMediaItems = {
+                            Log.d("gouri", "clicked media items")
+                        },
+                        onClickMenuItem = {
+                            Log.d("gouri", "menu item clicked ")
+                        }
                     )
                 }
             }
@@ -42,44 +49,62 @@ fun MediaList(modifier: Modifier = Modifier, items: List<Media>) {
 }
 
 @Composable
-fun MediaItem(modifier: Modifier = Modifier, item: Media) {
+fun MediaItem(
+    modifier: Modifier = Modifier,
+    mediaItem: Media,
+    onClickMediaItems: (Media) -> Unit,
+    onClickMenuItem: (Media) -> Unit
+) {
     Box {
         Row {
             Column(
                 modifier = modifier
                     .padding(4.dp)
                     .weight(0.3F)
+                    .clickable {
+                        onClickMediaItems(mediaItem)
+                    }
             ) {
                 Image(
                     painter = painterResource(id = R.drawable.exo_icon_circular_play),
-                    contentDescription = ""
+                    contentDescription = "",
                 )
                 MediaProgressBar(progress = 0.3F)
             }
             Column(modifier = Modifier.weight(0.6F)) {
                 Text(
-                    text = item.name,
+                    text = mediaItem.name,
                     modifier = Modifier.padding(
                         top = 4.dp,
                         start = 8.dp,
                         end = 8.dp,
                         bottom = 4.dp
-                    ),
+                    ).clickable {
+                        onClickMediaItems(mediaItem)
+                    },
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis
                 )
             }
-            ItemMenu(modifier = Modifier.weight(0.1F))
+            ItemMenu(modifier = Modifier
+                .weight(0.1F)
+                .padding(end = 4.dp)
+                .clickable {
+                    onClickMenuItem(mediaItem)
+                })
         }
     }
 }
 
 @Composable
-fun ItemMenu(modifier: Modifier = Modifier, onClick: () -> Unit = {}) {
-    IconButton(onClick = onClick, modifier = modifier) {
-        Icon(imageVector = Icons.Rounded.MoreVert, contentDescription = "More option")
-    }
+fun ItemMenu(modifier: Modifier = Modifier) {
+        Icon(
+            modifier = modifier,
+            imageVector = Icons.Rounded.MoreVert,
+            contentDescription = "More option"
+        )
 }
+
 
 @Composable
 fun MediaProgressBar(
