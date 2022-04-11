@@ -105,6 +105,7 @@ class VideoFragment : Fragment() {
             val internalContentVideoJob: Deferred<ArrayList<Media>> =
                 async { getInternalContentVideoUri(requireContext()) }
             videoUriLists = externalContentVideoJob.await() + internalContentVideoJob.await()
+
         }
     }
 

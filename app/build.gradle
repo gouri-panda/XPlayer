@@ -2,8 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'dagger.hilt.android.plugin'
-//apply plugin: 'org.jetbrains.kotlin.android.extensions'
-
+apply plugin: 'io.gitlab.arturbosch.detekt'
 
 
 android {
@@ -53,7 +52,9 @@ android {
     }
 
 }
-
+detekt {
+    baseline = project.file("detekt_baseline.xml")
+}
 dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.navigation:navigation-fragment:2.3.5'
@@ -88,6 +89,9 @@ dependencies {
 //    releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.6.2'
 //    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.4'
 
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.2.0"
+    detekt("io.gitlab.arturbosch.detekt:detekt-formatting:1.1.1")
+    detekt("io.gitlab.arturbosch.detekt:detekt-cli:1.1.1")
 
     // Compose
     implementation "androidx.compose.runtime:runtime:$rootProject.composeVersion"
