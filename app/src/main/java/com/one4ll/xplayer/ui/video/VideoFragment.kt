@@ -1,23 +1,26 @@
 package com.one4ll.xplayer.ui.video
 
 import android.Manifest
+import android.content.Intent
 import android.content.pm.PackageManager
-import android.graphics.Bitmap
 import android.os.Bundle
 import android.util.Log.d
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.ui.platform.ComposeView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.compose.rememberNavController
+import com.one4ll.xplayer.MainActivity
 import com.one4ll.xplayer.Media
-import com.one4ll.xplayer.compose.MediaCard
+import com.one4ll.xplayer.compose.MediaList
 import com.one4ll.xplayer.helpers.*
-import kotlinx.coroutines.*
+import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 private const val TAG = "homeFragment"
 private const val STORAGE_PERMISSION = 2
@@ -33,20 +36,11 @@ class VideoFragment : Fragment() {
     ): View {
         return ComposeView(requireContext()).apply {
             setContent {
-                LazyColumn {
-                    items(videoUriLists) { videoUri ->
-                        MediaCard(media = videoUri) { path ->
-                            var bitmap: Bitmap? = null
-                            lifecycleScope.launch {
-                                withContext(IO) {
-                                    bitmap = createBitmapThumbnailFromVideoFile(path)
-                                }
-                            }
-                            return@MediaCard bitmap
-
-                        }
-                    }
-                }
+                MediaList(items = videoUriLists, onClickMediaItems = { media ->
+                    val intent = Intent(context, MainActivity::class.java)
+                    intent.putExtra(VIDEO_PATH, media.path)
+                    context.startActivity(intent)
+                }, onClickMenuItem = {})
             }
         }
     }

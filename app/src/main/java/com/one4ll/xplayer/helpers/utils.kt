@@ -4,11 +4,14 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Bitmap
 import android.media.ThumbnailUtils
+import android.os.Build
 import android.os.CancellationSignal
 import android.provider.MediaStore
+import android.util.Log
 import android.util.Size
 import android.view.View
 import android.widget.ImageView
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.one4ll.xplayer.Media
@@ -431,9 +434,48 @@ suspend fun Context.setVideoThumbNail(filePath: String, imageView: ImageView) {
     }
 }
 
-fun createBitmapThumbnailFromVideoFile(filePath: String) =
-    ThumbnailUtils.createVideoThumbnail(File(filePath), Size(200, 200), CancellationSignal())
+/**
+ * Creates a thumbNail for the given video file
+ * @param filePath The  video filePath we wanna convert into ThumbNail
+ * @param imageView where we wanna set the Thumbnail
+ */
+@Suppress("DEPRECATION")
+@SuppressLint("NewApi")
+suspend fun Context.getBitmapFromVideoFile(filePath: String): Bitmap? {
+    val bitmap = withContext(IO) {
+        if (IS_Q_OR_LETTER()) {
+            createBitmapThumbnailFromVideoFile(filePath)
 
+        } else {
+            ThumbnailUtils.createAudioThumbnail(filePath, MediaStore.Images.Thumbnails.MINI_KIND)
+        }
+    }
+    return bitmap
+
+}
+
+@RequiresApi(Build.VERSION_CODES.Q)
+fun createBitmapThumbnailFromVideoFile(filePath: String): Bitmap? {
+    val cancellationSignal = CancellationSignal()
+    val bitmap: Bitmap?
+    try {
+        bitmap =
+            ThumbnailUtils.createVideoThumbnail(File(filePath), Size(200, 200), cancellationSignal)
+        cancellationSignal.setOnCancelListener {
+            Log.d("XPlayer", "createBitmapThumbnailFromVideoFile: cancellation signal ")
+        }
+        Log.d("XPlayer", "createBitmapThumbnailFromVideoFile: passed")
+        return bitmap
+
+    } catch (e: Exception) {
+        Log.d("XPlayer", "createBitmapThumbnailFromVideoFile: ${e.message} ")
+    } finally {
+        cancellationSignal.cancel()
+        Log.d("XPlayer", "createBitmapThumbnailFromVideoFile: cancellation signal canceled ")
+
+    }
+    return null
+}
 
 /**
  * Creates a thumbNail for the given image file
