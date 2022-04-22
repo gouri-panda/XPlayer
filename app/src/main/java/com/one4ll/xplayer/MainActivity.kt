@@ -2,9 +2,7 @@ package com.one4ll.xplayer
 
 import android.Manifest
 import android.annotation.SuppressLint
-import android.content.Context
 import android.content.Intent
-import android.graphics.BitmapFactory
 import android.media.AudioManager
 import android.net.Uri
 import android.os.Bundle
@@ -16,17 +14,15 @@ import android.view.MotionEvent
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.google.android.exoplayer2.*
+import com.google.android.exoplayer2.SimpleExoPlayer
 import com.google.android.exoplayer2.source.MediaSource
 import com.google.android.exoplayer2.source.ProgressiveMediaSource
-import com.google.android.exoplayer2.source.TrackGroupArray
-import com.google.android.exoplayer2.trackselection.TrackSelectionArray
 import com.google.android.exoplayer2.ui.PlayerView
 import com.google.android.exoplayer2.upstream.DataSource
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory
 import com.google.android.exoplayer2.util.Util
+import com.one4ll.xplayer.custom.CustomPlayerEventListener
 import com.one4ll.xplayer.helpers.*
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -53,6 +49,7 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
 
     @Inject
     lateinit var audioManager: AudioManager
+
     @Inject
     lateinit var simpleExoPlayer: SimpleExoPlayer
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -93,6 +90,11 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
         simpleExoPlayer.prepare(mediaSource)
 
         simpleExoPlayer.playWhenReady = true
+        val eventListener = CustomPlayerEventListener(
+            goToTextView = goToTextView,
+            playerView = playerView,
+            simpleExoPlayer = simpleExoPlayer
+        )
         simpleExoPlayer.addListener(eventListener)
 
     }
@@ -106,69 +108,6 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
         videoTitle.text = videoUriPath.getTitleFromVideoPath()
     }
 
-    private val eventListener: Player.EventListener = object : Player.EventListener {
-        override fun onTimelineChanged(timeline: Timeline, reason: Int) {
-            Log.d(TAG, "onTimelineChanged: timeline $timeline reason $reason")
-        }
-
-        override fun onTimelineChanged(timeline: Timeline, manifest: Any?, reason: Int) {
-            Log.d(TAG, "onTimelineChanged: timeline $timeline , manifest $manifest, reason $reason")
-        }
-
-
-        override fun onTracksChanged(
-            trackGroups: TrackGroupArray,
-            trackSelections: TrackSelectionArray
-        ) {
-        }
-
-        override fun onLoadingChanged(isLoading: Boolean) {
-        }
-
-
-        override fun onPlayerStateChanged(playWhenReady: Boolean, playbackState: Int) {
-            when (playbackState) {
-                Player.STATE_READY -> {
-                    goToTextView.visibility = View.INVISIBLE
-                    // TODO: is the requestAudioFocus necessary here??
-//                    audioManager.requestAudioFocus(
-//                        this@MainActivity,
-//                        AudioManager.STREAM_MUSIC,
-//                        AudioManager.AUDIOFOCUS_GAIN
-//                    )
-                    Log.d(TAG, "onPlayerStateChanged: state ready")
-                }
-                Player.STATE_BUFFERING -> {
-                    Log.d(TAG, "onPlayerStateChanged: buffering")
-                }
-                Player.STATE_ENDED -> {
-                    playerView.keepScreenOn = false
-                    simpleExoPlayer.playWhenReady = false
-                    Log.d(TAG, "onPlayerStateChanged: state ended")
-                }
-                Player.STATE_IDLE -> {
-                    //todo
-                }
-            }
-        }
-
-        override fun onPlaybackSuppressionReasonChanged(playbackSuppressionReason: Int) {}
-        override fun onIsPlayingChanged(isPlaying: Boolean) {
-            Log.d(TAG, "onIsPlayingChanged: isPlaying$isPlaying")
-            if (!isPlaying) {
-                playerView.keepScreenOn = false
-            }
-        }
-
-        override fun onRepeatModeChanged(repeatMode: Int) {}
-        override fun onPlayerError(error: ExoPlaybackException) {
-            Log.d(TAG, "onPlayerError:" + error.message).also { error.printStackTrace() }
-            Toast.makeText(this@MainActivity, error.message, Toast.LENGTH_LONG).show()
-        }
-
-        override fun onPositionDiscontinuity(reason: Int) {}
-        override fun onPlaybackParametersChanged(playbackParameters: PlaybackParameters) {}
-    }
 
     override fun onAudioFocusChange(focusChange: Int) {
         when (focusChange) {
