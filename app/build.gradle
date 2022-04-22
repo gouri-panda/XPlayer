@@ -126,5 +126,8 @@ dependencies {
     //Coil
     implementation 'io.coil-kt:coil-compose:2.0.0-rc02'
 
+    testImplementation 'junit:junit:4.12'
+
+
 
 }
