@@ -9,6 +9,7 @@
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
 
     <application
+        android:name=".XPlayerApplication"
         android:allowBackup="true"
         android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"
@@ -18,14 +19,20 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity
+            android:name=".ui.video.TestingComposeActivity"
+            android:exported="true"
+            android:label="@string/title_activity_testing_compose"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".FullImageActivity" />
         <activity
             android:name=".GalleryActivity"
+            android:exported="true"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.DEFAULT" />
 
+                <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -33,6 +40,7 @@
         <activity android:name=".DownloadActivity" />
         <activity
             android:name=".MainActivity"
+            android:exported="true"
             android:screenOrientation="landscape"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
             <intent-filter>

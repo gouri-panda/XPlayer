@@ -1,25 +1,22 @@
 package com.one4ll.xplayer.ui.video
 
 import android.Manifest
-import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Log.d
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.compose.ui.platform.ComposeView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
+import com.one4ll.xplayer.MainActivity
 import com.one4ll.xplayer.Media
-import com.one4ll.xplayer.adapter.VideoRecyclerViewAdapter
-import com.one4ll.xplayer.databinding.FragmentVideoBinding
+import com.one4ll.xplayer.compose.MediaList
 import com.one4ll.xplayer.helpers.*
-import kotlinx.android.synthetic.main.fragment_video.view.*
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers.IO
-import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -28,26 +25,30 @@ private const val TAG = "homeFragment"
 private const val STORAGE_PERMISSION = 2
 
 // TODO how to set permission with Android view model??
+// TODO add grid or linear layout
 class VideoFragment : Fragment() {
-    //    private val videoViewModel: VideoViewModel by viewModels()
-    private lateinit var binding: FragmentVideoBinding
+    private var videoUriLists = emptyList<Media>()
     override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View {
-        binding = FragmentVideoBinding.inflate(layoutInflater)
-        return binding.root
+        return ComposeView(requireContext()).apply {
+            setContent {
+                MediaList(items = videoUriLists, onClickMediaItems = { media ->
+                    val intent = Intent(context, MainActivity::class.java)
+                    intent.putExtra(VIDEO_PATH, media.path)
+                    context.startActivity(intent)
+                }, onClickMenuItem = {})
+            }
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         askPermissionForVideoList()
-
-//        val brightness = Settings.System.getInt(root.context.contentResolver, Settings.System.SCREEN_BRIGHTNESS)
-//        d(TAG, "onScroll: brightness $brightness")
     }
 
-    //we will ask  once for videos ,images and audios
+//  We will ask  once for videos ,images and audios
     /**
      * Asks permission about read and write  if The device is below marshmallow then  no need to ask
      * we already have permission
@@ -59,10 +60,12 @@ class VideoFragment : Fragment() {
             } else {
 //                ask permission nicely!!
                 activity?.let { activity ->
-                    askPermission(activity,
-                            Manifest.permission.READ_EXTERNAL_STORAGE,
-                            Manifest.permission.WRITE_SETTINGS,
-                            permissionId = STORAGE_PERMISSION)
+                    askPermission(
+                        activity,
+                        Manifest.permission.READ_EXTERNAL_STORAGE,
+                        Manifest.permission.WRITE_SETTINGS,
+                        permissionId = STORAGE_PERMISSION
+                    )
                 }
             }
         } else {
@@ -71,7 +74,11 @@ class VideoFragment : Fragment() {
 
     }
 
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
         d(TAG, "onRequestPermissionsResult: ")
         if (requestCode == STORAGE_PERMISSION) {
             if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
@@ -87,33 +94,12 @@ class VideoFragment : Fragment() {
     private suspend fun getVideoList() {
         withContext(IO) {
             val externalContentVideoJob: Deferred<ArrayList<Media>> =
-                    async { getExternalContentVideoUri(binding.root.context) }
+                async { getExternalContentVideoUri(requireContext()) }
             val internalContentVideoJob: Deferred<ArrayList<Media>> =
-                    async { getInternalContentVideoUri(binding.root.context) }
-            val contentUri = externalContentVideoJob.await() + internalContentVideoJob.await()
-            setAdapter(contentUri)
+                async { getInternalContentVideoUri(requireContext()) }
+            videoUriLists = externalContentVideoJob.await() + internalContentVideoJob.await()
+
         }
     }
 
-    /**
-     * Sets the adapter
-     */
-    private suspend fun setAdapter(videoList: List<Media>) {
-        withContext(Main) {
-            d(TAG, "setAdapter: thread ${Thread.currentThread().name}")
-            val sharedPreferences = binding.root.context.getSharedPreferences(SHARED_PREF_SETTINGS, Context.MODE_PRIVATE)
-            if (sharedPreferences.getBoolean(IS_GRID_LAYOUT, false)) {
-                val adapter = activity?.let { VideoRecyclerViewAdapter(it, videoList, lifecycleScope) }
-                binding.root.video_list_recycler_view.adapter = adapter
-                val gridLayoutManager = GridLayoutManager(binding.root.context, 2)
-                binding.root.video_list_recycler_view.layoutManager = gridLayoutManager
-            } else {
-                val adapter = activity?.let { VideoRecyclerViewAdapter(it, videoList, lifecycleScope) }
-                binding.root.video_list_recycler_view.apply {
-                    this.adapter = adapter
-                    layoutManager = LinearLayoutManager(binding.root.context, LinearLayoutManager.VERTICAL, false)
-                }
-            }
-        }
-    }
 }

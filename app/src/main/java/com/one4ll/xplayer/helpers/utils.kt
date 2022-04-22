@@ -4,11 +4,15 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Bitmap
 import android.media.ThumbnailUtils
+import android.net.Uri
+import android.os.Build
 import android.os.CancellationSignal
 import android.provider.MediaStore
+import android.util.Log
 import android.util.Size
 import android.view.View
 import android.widget.ImageView
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.one4ll.xplayer.Media
@@ -64,30 +68,32 @@ fun convertDuration(duration: Long): String {
  *         default sort order, which may be unordered.
  * @return the arrayList of [Media]
  */
-fun getInternalContentVideoUri(context: Context,
-                               projection: Array<out String?>? = null,
-                               selection: String? = null,
-                               selectionArgs: Array<out String?>? = null,
-                               sortOrder: String? = null)
+fun getInternalContentVideoUri(
+    context: Context,
+    projection: Array<out String?>? = null,
+    selection: String? = null,
+    selectionArgs: Array<out String?>? = null,
+    sortOrder: String? = null
+)
         : ArrayList<Media> {
     val videoList = ArrayList<Media>()
     val videoInternalCursor = context.contentResolver.query(
-            MediaStore.Video.Media.INTERNAL_CONTENT_URI,
-            projection,
-            selection,
-            selectionArgs,
-            sortOrder
+        MediaStore.Video.Media.INTERNAL_CONTENT_URI,
+        projection,
+        selection,
+        selectionArgs,
+        sortOrder
     )
     videoInternalCursor?.let {
         while (it.moveToNext()) {
             val videoName =
-                    it.getString(videoInternalCursor.getColumnIndex(MediaStore.Video.VideoColumns.DISPLAY_NAME))
+                it.getString(videoInternalCursor.getColumnIndex(MediaStore.Video.VideoColumns.DISPLAY_NAME))
             val duration =
-                    it.getString(videoInternalCursor.getColumnIndex(MediaStore.Video.VideoColumns.DURATION))
+                it.getString(videoInternalCursor.getColumnIndex(MediaStore.Video.VideoColumns.DURATION))
             val size =
-                    it.getString(videoInternalCursor.getColumnIndex(MediaStore.Video.VideoColumns.SIZE))
+                it.getString(videoInternalCursor.getColumnIndex(MediaStore.Video.VideoColumns.SIZE))
             @Suppress("DEPRECATION") val path =
-                    it.getString(videoInternalCursor.getColumnIndex(MediaStore.Video.VideoColumns.DATA))
+                it.getString(videoInternalCursor.getColumnIndex(MediaStore.Video.VideoColumns.DATA))
             try {
 //                    val bitmap = ThumbnailUtils.createVideoThumbnail(
 //                            path,
@@ -121,32 +127,34 @@ fun getInternalContentVideoUri(context: Context,
  *         default sort order, which may be unordered.
  * @return the arrayList of [Media]
  */
-fun getExternalContentVideoUri(context: Context,
-                               projection: Array<out String?>? = null,
-                               selection: String? = null,
-                               selectionArgs: Array<out String?>? = null,
-                               sortOrder: String? = null): ArrayList<Media> {
+fun getExternalContentVideoUri(
+    context: Context,
+    projection: Array<out String?>? = null,
+    selection: String? = null,
+    selectionArgs: Array<out String?>? = null,
+    sortOrder: String? = null
+): ArrayList<Media> {
     val videoList = ArrayList<Media>()
     //query from content resolver
     val videoExternalCursor = context.contentResolver.query(
-            MediaStore.Video.Media.EXTERNAL_CONTENT_URI,
-            projection,
-            selection,
-            selectionArgs,
-            sortOrder
+        MediaStore.Video.Media.EXTERNAL_CONTENT_URI,
+        projection,
+        selection,
+        selectionArgs,
+        sortOrder
     )
 
     //iterating cursor to get Video list
     videoExternalCursor?.let {
         while (it.moveToNext()) {
             val videoName =
-                    it.getString(videoExternalCursor.getColumnIndex(MediaStore.Video.VideoColumns.DISPLAY_NAME))
+                it.getString(videoExternalCursor.getColumnIndex(MediaStore.Video.VideoColumns.DISPLAY_NAME))
             val duration =
-                    it.getString(videoExternalCursor.getColumnIndex(MediaStore.Video.VideoColumns.DURATION))
+                it.getString(videoExternalCursor.getColumnIndex(MediaStore.Video.VideoColumns.DURATION))
             val size =
-                    it.getString(videoExternalCursor.getColumnIndex(MediaStore.Video.VideoColumns.SIZE))
+                it.getString(videoExternalCursor.getColumnIndex(MediaStore.Video.VideoColumns.SIZE))
             @Suppress("DEPRECATION") val path =
-                    it.getString(videoExternalCursor.getColumnIndex(MediaStore.Video.Media.DATA))
+                it.getString(videoExternalCursor.getColumnIndex(MediaStore.Video.Media.DATA))
             try {
                 val n = convertDuration(duration.toLong())
                 val video = Media(videoName, n, size, path)
@@ -177,33 +185,35 @@ fun getExternalContentVideoUri(context: Context,
  *         default sort order, which may be unordered.
  * @return the arrayList of [Media]
  */
-fun getExternalContentImageUri(context: Context,
-                               projection: Array<out String?>? = null,
-                               selection: String? = null,
-                               selectionArgs: Array<out String?>? = null,
-                               sortOrder: String? = null): ArrayList<Media> {
+fun getExternalContentImageUri(
+    context: Context,
+    projection: Array<out String?>? = null,
+    selection: String? = null,
+    selectionArgs: Array<out String?>? = null,
+    sortOrder: String? = null
+): ArrayList<Media> {
     val videoList = ArrayList<Media>()
     //video projection
     //query from content resolver
     val imageExternalCursor = context.contentResolver.query(
-            MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
-            projection,
-            selection,
-            selectionArgs,
-            sortOrder
+        MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
+        projection,
+        selection,
+        selectionArgs,
+        sortOrder
     )
 
     //iterating cursor to get Video list
     imageExternalCursor?.let {
         while (it.moveToNext()) {
             val videoName =
-                    it.getString(imageExternalCursor.getColumnIndex(MediaStore.Images.ImageColumns.DISPLAY_NAME))
+                it.getString(imageExternalCursor.getColumnIndex(MediaStore.Images.ImageColumns.DISPLAY_NAME))
             val duration =
-                    it.getString(imageExternalCursor.getColumnIndex(MediaStore.Images.ImageColumns.DATE_TAKEN))
+                it.getString(imageExternalCursor.getColumnIndex(MediaStore.Images.ImageColumns.DATE_TAKEN))
             val size =
-                    it.getString(imageExternalCursor.getColumnIndex(MediaStore.Images.ImageColumns.SIZE))
+                it.getString(imageExternalCursor.getColumnIndex(MediaStore.Images.ImageColumns.SIZE))
             @Suppress("DEPRECATION") val path =
-                    it.getString(imageExternalCursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA))
+                it.getString(imageExternalCursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA))
             try {
                 val n = convertDuration(duration.toLong())
                 val video = Media(videoName, n, size, path)
@@ -234,33 +244,35 @@ fun getExternalContentImageUri(context: Context,
  * @param context of the the application
  * @return the arrayList of [Media]
  */
-fun getInternalContentImageUri(context: Context,
-                               projection: Array<out String?>? = null,
-                               selection: String? = null,
-                               selectionArgs: Array<out String?>? = null,
-                               sortOrder: String? = null): ArrayList<Media> {
+fun getInternalContentImageUri(
+    context: Context,
+    projection: Array<out String?>? = null,
+    selection: String? = null,
+    selectionArgs: Array<out String?>? = null,
+    sortOrder: String? = null
+): ArrayList<Media> {
     val videoList = ArrayList<Media>()
     //video projection
     //query from content resolver
     val imageExternalCursor = context.contentResolver.query(
-            MediaStore.Images.Media.INTERNAL_CONTENT_URI,
-            projection,
-            selection,
-            selectionArgs,
-            sortOrder
+        MediaStore.Images.Media.INTERNAL_CONTENT_URI,
+        projection,
+        selection,
+        selectionArgs,
+        sortOrder
     )
 
     //iterating cursor to get Video list
     imageExternalCursor?.let {
         while (it.moveToNext()) {
             val videoName =
-                    it.getString(imageExternalCursor.getColumnIndex(MediaStore.Images.ImageColumns.DISPLAY_NAME))
+                it.getString(imageExternalCursor.getColumnIndex(MediaStore.Images.ImageColumns.DISPLAY_NAME))
             val duration =
-                    it.getString(imageExternalCursor.getColumnIndex(MediaStore.Images.ImageColumns.DATE_TAKEN))
+                it.getString(imageExternalCursor.getColumnIndex(MediaStore.Images.ImageColumns.DATE_TAKEN))
             val size =
-                    it.getString(imageExternalCursor.getColumnIndex(MediaStore.Images.ImageColumns.SIZE))
+                it.getString(imageExternalCursor.getColumnIndex(MediaStore.Images.ImageColumns.SIZE))
             @Suppress("DEPRECATION") val path =
-                    it.getString(imageExternalCursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA))
+                it.getString(imageExternalCursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA))
             try {
                 val n = convertDuration(duration.toLong())
                 val video = Media(videoName, n, size, path)
@@ -292,31 +304,33 @@ fun getInternalContentImageUri(context: Context,
  * @return the arrayList of [Media]
  */
 @Suppress("unused")
-fun getInternalContentMusicUri(context: Context, projection: Array<out String?>? = null,
-                               selection: String? = null, selectionArgs: Array<out String?>? = null,
-                               sortOrder: String? = null): ArrayList<Media> {
+fun getInternalContentMusicUri(
+    context: Context, projection: Array<out String?>? = null,
+    selection: String? = null, selectionArgs: Array<out String?>? = null,
+    sortOrder: String? = null
+): ArrayList<Media> {
     val videoList = ArrayList<Media>()
     //video projection
     //query from content resolver
     val musicExternalCursor = context.contentResolver.query(
-            MediaStore.Audio.Media.INTERNAL_CONTENT_URI,
-            projection,
-            selection,
-            selectionArgs,
-            sortOrder
+        MediaStore.Audio.Media.INTERNAL_CONTENT_URI,
+        projection,
+        selection,
+        selectionArgs,
+        sortOrder
     )
 
     //iterating cursor to get Video list
     musicExternalCursor?.let {
         while (it.moveToNext()) {
             val videoName =
-                    it.getString(musicExternalCursor.getColumnIndex(MediaStore.Audio.AudioColumns.DISPLAY_NAME))
+                it.getString(musicExternalCursor.getColumnIndex(MediaStore.Audio.AudioColumns.DISPLAY_NAME))
             val duration =
-                    it.getString(musicExternalCursor.getColumnIndex(MediaStore.Audio.AudioColumns.DURATION))
+                it.getString(musicExternalCursor.getColumnIndex(MediaStore.Audio.AudioColumns.DURATION))
             val size =
-                    it.getString(musicExternalCursor.getColumnIndex(MediaStore.Audio.AudioColumns.SIZE))
+                it.getString(musicExternalCursor.getColumnIndex(MediaStore.Audio.AudioColumns.SIZE))
             @Suppress("DEPRECATION") val path =
-                    it.getString(musicExternalCursor.getColumnIndex(MediaStore.Audio.AudioColumns.DATA))
+                it.getString(musicExternalCursor.getColumnIndex(MediaStore.Audio.AudioColumns.DATA))
             try {
                 val n = convertDuration(duration.toLong())
                 val video = Media(videoName, n, size, path)
@@ -348,33 +362,35 @@ fun getInternalContentMusicUri(context: Context, projection: Array<out String?>?
  * @return the arrayList of [Media]
  */
 @Suppress("unused")
-fun getExternalContentMusicUri(context: Context,
-                               projection: Array<out String?>? = null,
-                               selection: String? = null,
-                               selectionArgs: Array<out String?>? = null,
-                               sortOrder: String? = null): ArrayList<Media> {
+fun getExternalContentMusicUri(
+    context: Context,
+    projection: Array<out String?>? = null,
+    selection: String? = null,
+    selectionArgs: Array<out String?>? = null,
+    sortOrder: String? = null
+): ArrayList<Media> {
     val videoList = ArrayList<Media>()
     //video projection
     //query from content resolver
     val musicExternalCursor = context.contentResolver.query(
-            MediaStore.Audio.Media.EXTERNAL_CONTENT_URI,
-            projection,
-            selection,
-            selectionArgs,
-            sortOrder
+        MediaStore.Audio.Media.EXTERNAL_CONTENT_URI,
+        projection,
+        selection,
+        selectionArgs,
+        sortOrder
     )
 
     //iterating cursor to get Video list
     musicExternalCursor?.let {
         while (it.moveToNext()) {
             val videoName =
-                    it.getString(musicExternalCursor.getColumnIndex(MediaStore.Audio.AudioColumns.DISPLAY_NAME))
+                it.getString(musicExternalCursor.getColumnIndex(MediaStore.Audio.AudioColumns.DISPLAY_NAME))
             val duration =
-                    it.getString(musicExternalCursor.getColumnIndex(MediaStore.Audio.AudioColumns.DURATION))
+                it.getString(musicExternalCursor.getColumnIndex(MediaStore.Audio.AudioColumns.DURATION))
             val size =
-                    it.getString(musicExternalCursor.getColumnIndex(MediaStore.Audio.AudioColumns.SIZE))
+                it.getString(musicExternalCursor.getColumnIndex(MediaStore.Audio.AudioColumns.SIZE))
             @Suppress("DEPRECATION") val path =
-                    it.getString(musicExternalCursor.getColumnIndex(MediaStore.Audio.AudioColumns.DATA))
+                it.getString(musicExternalCursor.getColumnIndex(MediaStore.Audio.AudioColumns.DATA))
             try {
                 val n = convertDuration(duration.toLong())
                 val video = Media(videoName, n, size, path)
@@ -409,7 +425,7 @@ suspend fun Context.setVideoThumbNail(file: File, imageView: ImageView) {
 suspend fun Context.setVideoThumbNail(filePath: String, imageView: ImageView) {
     withContext(IO) {
         val bitmap = if (IS_Q_OR_LETTER()) {
-            getBitmapThumbnailFromVideoFile(filePath)
+            createBitmapThumbnailFromVideoFile(filePath)
         } else {
             ThumbnailUtils.createAudioThumbnail(filePath, MediaStore.Images.Thumbnails.MINI_KIND)
         }
@@ -419,8 +435,48 @@ suspend fun Context.setVideoThumbNail(filePath: String, imageView: ImageView) {
     }
 }
 
-private fun getBitmapThumbnailFromVideoFile(filePath: String) =
-        ThumbnailUtils.createVideoThumbnail(File(filePath), Size(200, 200), CancellationSignal())
+/**
+ * Creates a thumbNail for the given video file
+ * @param filePath The  video filePath we wanna convert into ThumbNail
+ * @param imageView where we wanna set the Thumbnail
+ */
+@Suppress("DEPRECATION")
+@SuppressLint("NewApi")
+suspend fun Context.getBitmapFromVideoFile(filePath: String): Bitmap? {
+    val bitmap = withContext(IO) {
+        if (IS_Q_OR_LETTER()) {
+            createBitmapThumbnailFromVideoFile(filePath)
+
+        } else {
+            ThumbnailUtils.createAudioThumbnail(filePath, MediaStore.Images.Thumbnails.MINI_KIND)
+        }
+    }
+    return bitmap
+
+}
+
+@RequiresApi(Build.VERSION_CODES.Q)
+fun createBitmapThumbnailFromVideoFile(filePath: String): Bitmap? {
+    val cancellationSignal = CancellationSignal()
+    val bitmap: Bitmap?
+    try {
+        bitmap =
+            ThumbnailUtils.createVideoThumbnail(File(filePath), Size(200, 200), cancellationSignal)
+        cancellationSignal.setOnCancelListener {
+            Log.d("XPlayer", "createBitmapThumbnailFromVideoFile: cancellation signal ")
+        }
+        Log.d("XPlayer", "createBitmapThumbnailFromVideoFile: passed")
+        return bitmap
+
+    } catch (e: Exception) {
+        Log.d("XPlayer", "createBitmapThumbnailFromVideoFile: ${e.message} ")
+    } finally {
+        cancellationSignal.cancel()
+        Log.d("XPlayer", "createBitmapThumbnailFromVideoFile: cancellation signal canceled ")
+
+    }
+    return null
+}
 
 /**
  * Creates a thumbNail for the given image file
@@ -442,7 +498,7 @@ suspend fun setImageThumbNail(file: File, imageView: ImageView) {
 suspend fun setImageThumbNail(filePath: String, imageView: ImageView) {
     withContext(IO) {
         val bitmap = if (IS_Q_OR_LETTER()) {
-            getBitmapThumbNailFromImageFile(filePath)
+            createBitmapThumbNailFromImageFile(filePath)
         } else {
             ThumbnailUtils.createAudioThumbnail(filePath, MediaStore.Images.Thumbnails.MINI_KIND)
         }
@@ -452,9 +508,8 @@ suspend fun setImageThumbNail(filePath: String, imageView: ImageView) {
     }
 }
 
-private fun getBitmapThumbNailFromImageFile(filePath: String): Bitmap {
-    return ThumbnailUtils.createImageThumbnail(File(filePath), Size(200, 200), CancellationSignal())
-}
+fun createBitmapThumbNailFromImageFile(filePath: String): Bitmap =
+    ThumbnailUtils.createImageThumbnail(File(filePath), Size(200, 200), CancellationSignal())
 
 /**
  * Creates a thumbNail for the given music file
@@ -476,9 +531,12 @@ suspend fun setMusicThumbNail(file: File, imageView: ImageView) {
 suspend fun setMusicThumbNail(fiePath: String, imageView: ImageView) = withContext(IO) {
     try {
         val bitMap: Bitmap? = if (IS_Q_OR_LETTER()) {
-            getBitmapThumbNailFromAudioFile(fiePath)
+            createBitmapThumbNailFromAudioFile(fiePath)
         } else {
-            ThumbnailUtils.createAudioThumbnail(File(fiePath).absolutePath, MediaStore.Images.Thumbnails.MINI_KIND)
+            ThumbnailUtils.createAudioThumbnail(
+                File(fiePath).absolutePath,
+                MediaStore.Images.Thumbnails.MINI_KIND
+            )
         }
         withContext(Main) {
             Glide.with(imageView.context).load(bitMap).into(imageView)
@@ -491,8 +549,8 @@ suspend fun setMusicThumbNail(fiePath: String, imageView: ImageView) = withConte
 
 }
 
-private fun getBitmapThumbNailFromAudioFile(fiePath: String) =
-        ThumbnailUtils.createAudioThumbnail(File(fiePath), Size(100, 100), null)
+fun createBitmapThumbNailFromAudioFile(fiePath: String) =
+    ThumbnailUtils.createAudioThumbnail(File(fiePath), Size(100, 100), null)
 
 
 /**
@@ -526,3 +584,16 @@ fun AppCompatActivity.showSystemUi(toggleActionVisibility: Boolean) {
             View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
 }
 
+/**
+ * Returns the title of file name from string path
+ */
+fun String.getTitleFromVideoPath(): String {
+    if (this.isBlank()) throw Exception("Path is Blank")
+    return this.substringAfterLast("/").substringBefore(".", "")
+}
+
+
+/**
+ * Returns the title of file name from string Uri
+ */
+fun Uri.getTitleFromURI() = this.toString().getTitleFromVideoPath()

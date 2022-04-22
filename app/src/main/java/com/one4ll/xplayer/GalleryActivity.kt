@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.Gravity
 import android.view.Menu
 import android.view.MenuItem
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.Toolbar
@@ -19,6 +20,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.navigation.NavigationView
 import com.one4ll.xplayer.helpers.IS_GRID_LAYOUT
 import com.one4ll.xplayer.helpers.SHARED_PREF_SETTINGS
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlin.properties.Delegates
 
 
@@ -29,6 +31,8 @@ class GalleryActivity : AppCompatActivity() {
     private lateinit var navController: NavController
     private var isGrid by Delegates.notNull<Boolean>()
     private lateinit var drawerLayout: DrawerLayout
+    @ExperimentalCoroutinesApi
+    val baseViewModel: BaseViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

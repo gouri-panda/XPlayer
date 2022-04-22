@@ -7,10 +7,10 @@ import android.view.GestureDetector
 import android.view.MotionEvent
 import android.view.ScaleGestureDetector
 import android.view.View
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import com.one4ll.xplayer.databinding.ActivityFullImageBinding
 import com.one4ll.xplayer.helpers.IMAGE_PATH
-import kotlinx.android.synthetic.main.activity_full_image.view.*
 import kotlin.math.max
 import kotlin.math.min
 
@@ -22,6 +22,7 @@ class FullImageActivity : AppCompatActivity(), View.OnTouchListener, GestureDete
     private lateinit var scaleGestureDetector: ScaleGestureDetector
     private var scaleEffect: Float = 1.0f
     private var isDoubleTaped = false
+    private lateinit var fullImageView: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,11 +30,11 @@ class FullImageActivity : AppCompatActivity(), View.OnTouchListener, GestureDete
         setContentView(binding.root)
         val path = intent.getStringExtra(IMAGE_PATH)
         Log.d(TAG, "onCreate: image path $path")
-        binding.root.full_image_view.setImageURI(Uri.parse(path))
-        scaleGestureDetector = ScaleGestureDetector(this, ScaleGestureListener(scaleEffect,
-                binding.root.full_image_view))
+        fullImageView = findViewById(R.id.full_image_view)
+        fullImageView.setImageURI(Uri.parse(path))
+        scaleGestureDetector = ScaleGestureDetector(this, ScaleGestureListener(scaleEffect, fullImageView))
         gestureDetector = GestureDetector(this, this)
-        binding.root.full_image_view.setOnTouchListener(this)
+        fullImageView.setOnTouchListener(this)
     }
 
 
@@ -86,9 +87,9 @@ class FullImageActivity : AppCompatActivity(), View.OnTouchListener, GestureDete
         Log.d(TAG, "onDoubleTap: ")
         isDoubleTaped = !isDoubleTaped
         if (!isDoubleTaped) {
-            scalesView(binding.root.full_image_view, 4 * scaleEffect)
+            scalesView(fullImageView, 4 * scaleEffect)
         } else {
-            scalesView(binding.root.full_image_view, 1.0f)
+            scalesView(fullImageView, 1.0f)
         }
         return true
     }

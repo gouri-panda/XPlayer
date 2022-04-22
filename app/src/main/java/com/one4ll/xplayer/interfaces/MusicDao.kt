@@ -18,8 +18,9 @@ interface MusicDao {
     @Insert
     fun insertMusics(image: List<Music>)
 
-    @Query("SELECT * FROM music")
-    fun getAll(): List<Video>
+    // todo add this later
+//    @Query("SELECT * FROM music")
+//    fun getAll(): List<Video>
 
     @Query("DELETE  FROM music")
     fun deleteAll()

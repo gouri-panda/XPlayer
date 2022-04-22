@@ -8,15 +8,16 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.one4ll.xplayer.adapter.VideoRecyclerViewAdapter
 import com.one4ll.xplayer.database.MediaDatabase
 import com.one4ll.xplayer.helpers.*
 import com.one4ll.xplayer.models.Video
-import kotlinx.android.synthetic.main.activity_all_files_list.*
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.io.File
+import javax.inject.Inject
 
 private const val READ_AND_WRITE_STORAGE_PERMISSION = 3
 private const val TAG = "MainActivity"
@@ -24,20 +25,24 @@ private const val TAG = "MainActivity"
 class AllFilesList : AppCompatActivity() {
     private var thumbnail = File("")
     private lateinit var videoRecyclerViewAdapter: VideoRecyclerViewAdapter
-    private lateinit var mediaDatabase: MediaDatabase
+
+    @Inject
+    lateinit var mediaDatabase: MediaDatabase
+    private lateinit var videoListRecyclerView: RecyclerView
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_all_files_list)
+        videoListRecyclerView = findViewById(R.id.video_list_recycler_view)
         thumbnail.delete()
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
         val videoList: ArrayList<Media> = ArrayList()
         videoRecyclerViewAdapter = VideoRecyclerViewAdapter(this, videoList, lifecycleScope)
 
-        video_list_recycler_view.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        video_list_recycler_view.adapter = videoRecyclerViewAdapter
-        mediaDatabase = MediaDatabase.getInstance(this)
+        videoListRecyclerView.layoutManager =
+            LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        videoListRecyclerView.adapter = videoRecyclerViewAdapter
         if (readAndWriteExternalStoragePermission()) {
             getVideoList()
         }
@@ -78,7 +83,12 @@ class AllFilesList : AppCompatActivity() {
     private fun readAndWriteExternalStoragePermission(): Boolean {
         if (IS_MARSHMALLOW_OR_LETTER()) {
             if (!havePermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
-                askPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE, permissionId = READ_AND_WRITE_STORAGE_PERMISSION)
+                askPermission(
+                    this,
+                    Manifest.permission.READ_EXTERNAL_STORAGE,
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                    permissionId = READ_AND_WRITE_STORAGE_PERMISSION
+                )
                 return false
             }
         }
@@ -89,9 +99,9 @@ class AllFilesList : AppCompatActivity() {
      * After receiving permissions checks it checks  if the permission is granted or not, if we have permission then it gets video list
      */
     override fun onRequestPermissionsResult(
-            requestCode: Int,
-            permissions: Array<out String>,
-            grantResults: IntArray
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         when (requestCode) {
@@ -109,7 +119,6 @@ class AllFilesList : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         mediaDatabase.close()
-        MediaDatabase.destroyInstance()
     }
 
 }
