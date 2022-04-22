@@ -27,9 +27,9 @@ import com.google.android.exoplayer2.ui.PlayerView
 import com.google.android.exoplayer2.upstream.DataSource
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory
 import com.google.android.exoplayer2.util.Util
-import com.one4ll.xplayer.databinding.ActivityMainBinding
 import com.one4ll.xplayer.helpers.*
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 private const val TAG = "MainActivity"
 
@@ -44,7 +44,6 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
     private lateinit var videoTitle: TextView
     private var screenWidth: Int? = null
     private var screenHeight: Int? = null
-    private val audioManager by lazy { getSystemService(Context.AUDIO_SERVICE) as AudioManager }
     private val brightness by lazy {
         Settings.System.getInt(
             contentResolver,
@@ -52,7 +51,10 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
         )
     }
 
-    private var simpleExoPlayer: SimpleExoPlayer? = null
+    @Inject
+    lateinit var audioManager: AudioManager
+    @Inject
+    lateinit var simpleExoPlayer: SimpleExoPlayer
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -66,7 +68,6 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
         screenWidth = displayMetrics.widthPixels
         screenHeight = displayMetrics.heightPixels
         Log.d(TAG, "onCreate: screen width $screenWidth ,screen  height $screenHeight")
-        simpleExoPlayer = SimpleExoPlayer.Builder(this).build()
         gestureDetector = GestureDetector(this, this)
         playerView.player = simpleExoPlayer
         if (intent.action != null && intent.action == Intent.ACTION_VIEW) {
@@ -84,25 +85,15 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
             this,
             Util.getUserAgent(this@MainActivity, getString(R.string.app_name))
         )
-        Log.d(TAG, "onCreate: video path $videoUriPath")
+        Log.d(TAG, "onCreate: Video Path $videoUriPath")
         lateinit var mediaSource: MediaSource
-        val options = BitmapFactory.Options()
-        options.inJustDecodeBounds = true
-        val decode = BitmapFactory.decodeFile(videoUriPath, options)
-        val width = decode?.width
-        val height = decode?.height
-        options.inJustDecodeBounds = false
-        Log.d(
-            TAG,
-            "onCreate: video uri decode file width $width video uri decode file height $height"
-        )
         mediaSource =
             ProgressiveMediaSource.Factory(dataSourceFactory)
                 .createMediaSource(Uri.parse(videoUriPath))
-        simpleExoPlayer!!.prepare(mediaSource)
+        simpleExoPlayer.prepare(mediaSource)
 
-        simpleExoPlayer!!.playWhenReady = true
-        simpleExoPlayer!!.addListener(eventListener)
+        simpleExoPlayer.playWhenReady = true
+        simpleExoPlayer.addListener(eventListener)
 
     }
 
@@ -112,8 +103,7 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
     }
 
     private fun setVideoTitle() {
-        val title = videoUriPath.substringAfterLast("/").substringBefore(".", "")
-        videoTitle.text = title
+        videoTitle.text = videoUriPath.getTitleFromVideoPath()
     }
 
     private val eventListener: Player.EventListener = object : Player.EventListener {
@@ -140,11 +130,12 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
             when (playbackState) {
                 Player.STATE_READY -> {
                     goToTextView.visibility = View.INVISIBLE
-                    audioManager.requestAudioFocus(
-                        this@MainActivity,
-                        AudioManager.STREAM_MUSIC,
-                        AudioManager.AUDIOFOCUS_GAIN
-                    )
+                    // TODO: is the requestAudioFocus necessary here??
+//                    audioManager.requestAudioFocus(
+//                        this@MainActivity,
+//                        AudioManager.STREAM_MUSIC,
+//                        AudioManager.AUDIOFOCUS_GAIN
+//                    )
                     Log.d(TAG, "onPlayerStateChanged: state ready")
                 }
                 Player.STATE_BUFFERING -> {
@@ -152,7 +143,7 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
                 }
                 Player.STATE_ENDED -> {
                     playerView.keepScreenOn = false
-                    simpleExoPlayer?.playWhenReady = false
+                    simpleExoPlayer.playWhenReady = false
                     Log.d(TAG, "onPlayerStateChanged: state ended")
                 }
                 Player.STATE_IDLE -> {
@@ -182,21 +173,15 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
     override fun onAudioFocusChange(focusChange: Int) {
         when (focusChange) {
             AudioManager.AUDIOFOCUS_GAIN_TRANSIENT_MAY_DUCK -> {
-                simpleExoPlayer?.playWhenReady = true
+                simpleExoPlayer.playWhenReady = true
             }
             AudioManager.AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK -> {
-                simpleExoPlayer?.playWhenReady = false
+                simpleExoPlayer.playWhenReady = false
             }
             AudioManager.AUDIOFOCUS_LOSS -> {
-                simpleExoPlayer?.playWhenReady = false
+                simpleExoPlayer.playWhenReady = false
             }
         }
-    }
-
-
-    override fun onDestroy() {
-        simpleExoPlayer!!.release()
-        super.onDestroy()
     }
 
 
@@ -220,16 +205,12 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
             val middle = screenWidth!! / 2
             if (rawX < middle) {
                 Log.d(TAG, "forwardAndBackWardVideoOnDoubleClick: left side")
-                val currentPosition = simpleExoPlayer?.currentPosition
-                if (currentPosition != null) {
-                    simpleExoPlayer?.seekTo(currentPosition - SKIP_DURATION)
-                }
+                val currentPosition = simpleExoPlayer.currentPosition
+                simpleExoPlayer.seekTo(currentPosition - SKIP_DURATION)
             } else {
                 Log.d(TAG, "forwardAndBackWardVideoOnDoubleClick: right side")
-                val currentPosition = simpleExoPlayer?.currentPosition
-                if (currentPosition != null) {
-                    simpleExoPlayer?.seekTo(currentPosition + SKIP_DURATION)
-                }
+                val currentPosition = simpleExoPlayer.currentPosition
+                simpleExoPlayer.seekTo(currentPosition + SKIP_DURATION)
 
             }
         }
@@ -283,13 +264,13 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
             //forward
             goToTextView.text =
                 "Forward  +20.00s\n\t\t ${convertDuration(currentPosition)}s"
-            simpleExoPlayer?.seekTo(currentPosition + 20000)
+            simpleExoPlayer.seekTo(currentPosition + 20000)
 
         } else if (motionEvent1.x - motionEvent2.x >= 100) {
             //backward
             goToTextView.text =
                 "BackWard -20.00s\n\t\t ${convertDuration(currentPosition)}"
-            simpleExoPlayer?.seekTo(currentPosition - 20000)
+            simpleExoPlayer.seekTo(currentPosition - 20000)
         } else {
             val rawX = motionEvent1.rawX
             val middle = screenWidth!! / 2
@@ -350,6 +331,6 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
 
     override fun onPause() {
         super.onPause()
-        simpleExoPlayer?.playWhenReady = false
+        simpleExoPlayer.playWhenReady = false
     }
 }

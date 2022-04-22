@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Bitmap
 import android.media.ThumbnailUtils
+import android.net.Uri
 import android.os.Build
 import android.os.CancellationSignal
 import android.provider.MediaStore
@@ -583,3 +584,12 @@ fun AppCompatActivity.showSystemUi(toggleActionVisibility: Boolean) {
             View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
 }
 
+/**
+ * Returns the title of file name from string path
+ */
+fun String.getTitleFromVideoPath() = this.substringAfterLast("/").substringBefore(".", "")
+
+/**
+ * Returns the title of file name from string Uri
+ */
+fun Uri.getTitleFromURI() = this.toString().getTitleFromVideoPath()

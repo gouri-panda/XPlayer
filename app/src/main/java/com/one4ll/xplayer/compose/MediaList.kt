@@ -77,7 +77,7 @@ fun MediaItem(
             ) {
 
                 val localContext = LocalContext.current
-                val coroutineScope = rememberCoroutineScope()
+//                val coroutineScope = rememberCoroutineScope()
                 val thumbnail: MutableState<Bitmap?> = remember {
                     mutableStateOf(null)
                 }
@@ -88,9 +88,10 @@ fun MediaItem(
                         .error(R.drawable.exo_controls_pause)
                         .build()
                 )
-                coroutineScope.launch {
-                    thumbnail.value = localContext.getBitmapFromVideoFile(mediaItem.path)
-                }
+                // TODO: Create thumbnail for each files
+//                coroutineScope.launch {
+//                    thumbnail.value = localContext.getBitmapFromVideoFile(mediaItem.path)
+//                }
 
                 if (painter.state is AsyncImagePainter.State.Loading) {
                     Image(

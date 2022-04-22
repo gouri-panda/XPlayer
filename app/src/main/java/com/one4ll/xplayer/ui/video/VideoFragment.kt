@@ -11,7 +11,6 @@ import android.view.ViewGroup
 import androidx.compose.ui.platform.ComposeView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.compose.rememberNavController
 import com.one4ll.xplayer.MainActivity
 import com.one4ll.xplayer.Media
 import com.one4ll.xplayer.compose.MediaList
@@ -49,7 +48,7 @@ class VideoFragment : Fragment() {
         askPermissionForVideoList()
     }
 
-//we will ask  once for videos ,images and audios
+//  We will ask  once for videos ,images and audios
     /**
      * Asks permission about read and write  if The device is below marshmallow then  no need to ask
      * we already have permission
@@ -102,32 +101,5 @@ class VideoFragment : Fragment() {
 
         }
     }
-
-    /**
-     * Sets the adapter
-     */
-//todo add grid layout or linear layout in compose
-//    private suspend fun setAdapter(videoList: List<Media>) {
-//        withContext(Main) {
-//            d(TAG, "setAdapter: thread ${Thread.currentThread().name}")
-//            val sharedPreferences = binding.root.context.getSharedPreferences(
-//                SHARED_PREF_SETTINGS,
-//                Context.MODE_PRIVATE
-//            )
-//            if (sharedPreferences.getBoolean(IS_GRID_LAYOUT, false)) {
-//                val adapter =
-//                    activity?.let { VideoRecyclerViewAdapter(it, videoList, lifecycleScope) }
-//                binding.root.video_list_recycler_view.adapter = adapter
-//                val gridLayoutManager = GridLayoutManager(binding.root.context, 2)
-//                binding.root.video_list_recycler_view.layoutManager = gridLayoutManager
-//            } else {
-//                setc
-//                LazyColumn {
-//
-//                }
-//                MediaCard(media = videoList)
-//            }
-//        }
-//    }
 
 }
