@@ -76,7 +76,7 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
                 ?: throw IllegalArgumentException(getString(R.string.videoPathShouldnotNull))
         }
         setVideoTitle()
-        setViews()
+        setViewListener()
 
         val dataSourceFactory: DataSource.Factory = DefaultDataSourceFactory(
             this,
@@ -99,7 +99,7 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
 
     }
 
-    private fun setViews() {
+    private fun setViewListener() {
         playerView.setOnTouchListener(this)
         crossImageView.setOnClickListener { finish() }
     }
@@ -143,11 +143,11 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
         if (rawX != null) {
             val middle = screenWidth!! / 2
             if (rawX < middle) {
-                Log.d(TAG, "forwardAndBackWardVideoOnDoubleClick: left side")
+                Log.d(TAG, "forwardAndBackWardVideoOnDoubleClick: Left side")
                 val currentPosition = simpleExoPlayer.currentPosition
                 simpleExoPlayer.seekTo(currentPosition - SKIP_DURATION)
             } else {
-                Log.d(TAG, "forwardAndBackWardVideoOnDoubleClick: right side")
+                Log.d(TAG, "forwardAndBackWardVideoOnDoubleClick: Right side")
                 val currentPosition = simpleExoPlayer.currentPosition
                 simpleExoPlayer.seekTo(currentPosition + SKIP_DURATION)
 
@@ -249,6 +249,7 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, GestureDetector.
         audioManager.adjustVolume(AudioManager.ADJUST_RAISE, AudioManager.FLAG_PLAY_SOUND)
     }
 
+    // TODO: Add brightness control
     private fun decreaseBrightness() {
         Log.d(TAG, "decreaseBrightness:")
     }
