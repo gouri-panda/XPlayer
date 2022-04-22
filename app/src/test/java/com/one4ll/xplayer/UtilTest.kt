@@ -4,7 +4,6 @@ import com.one4ll.xplayer.helpers.convertDuration
 import com.one4ll.xplayer.helpers.getTitleFromVideoPath
 import org.junit.Test
 import org.junit.Assert.*
-import java.time.LocalTime
 
 
 class UtilTest {
@@ -32,9 +31,15 @@ class UtilTest {
 
     @Test
     fun `check convert duration from long to string`() {
-        val duration = 3600000L
-        val stringDuration = convertDuration(duration)
+        var duration = 3600000L
+        var stringDuration = convertDuration(duration)
         assertEquals("1:00:00", stringDuration)
+        duration = 3660000L
+        stringDuration = convertDuration(duration)
+        assertEquals("1:1:00", stringDuration)
+        duration = 3720000L
+        stringDuration = convertDuration(duration)
+        assertEquals("1:2:00", stringDuration)
     }
 
 
