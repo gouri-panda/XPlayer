@@ -587,7 +587,11 @@ fun AppCompatActivity.showSystemUi(toggleActionVisibility: Boolean) {
 /**
  * Returns the title of file name from string path
  */
-fun String.getTitleFromVideoPath() = this.substringAfterLast("/").substringBefore(".", "")
+fun String.getTitleFromVideoPath(): String {
+    if (this.isBlank()) throw Exception("Path is Blank")
+    return this.substringAfterLast("/").substringBefore(".", "")
+}
+
 
 /**
  * Returns the title of file name from string Uri

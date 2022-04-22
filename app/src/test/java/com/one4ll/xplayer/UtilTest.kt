@@ -2,11 +2,15 @@ package com.one4ll.xplayer
 
 import com.one4ll.xplayer.helpers.convertDuration
 import com.one4ll.xplayer.helpers.getTitleFromVideoPath
-import org.junit.Test
 import org.junit.Assert.*
+import org.junit.Rule
+import org.junit.Test
+import org.junit.rules.ExpectedException
 
 
 class UtilTest {
+    @get:Rule
+    val exception: ExpectedException = ExpectedException.none()
 
     @Test
     fun `check title video path from string`() {
@@ -27,6 +31,22 @@ class UtilTest {
         val path = "android/emulated/0/download/amazing_video"
         val title = path.getTitleFromVideoPath()
         assertEquals("", title)
+    }
+
+    @Test
+    fun `check title if path is blank`() {
+        val path = "     "
+        exception.expect(Exception("Path is Blank")::class.java)
+        path.getTitleFromVideoPath()
+
+    }
+
+    @Test
+    fun `check title if path is empty`() {
+        val path = ""
+        exception.expect(Exception("Path is Blank")::class.java)
+        path.getTitleFromVideoPath()
+
     }
 
     @Test
