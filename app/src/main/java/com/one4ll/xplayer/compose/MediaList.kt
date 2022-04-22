@@ -7,8 +7,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material.LinearProgressIndicator
-import androidx.compose.material.Surface
+import androidx.compose.material3.Surface
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.MoreVert
 import androidx.compose.material3.Icon
@@ -29,7 +28,6 @@ import coil.compose.rememberAsyncImagePainter
 import coil.request.ImageRequest
 import com.one4ll.xplayer.Media
 import com.one4ll.xplayer.R
-import com.one4ll.xplayer.helpers.getBitmapFromVideoFile
 import kotlinx.coroutines.*
 
 @Composable
@@ -171,7 +169,7 @@ fun MediaProgressBar(
     backgroundColor: Color = Color.White,
     color: Color = Color.Red
 ) {
-    LinearProgressIndicator(
+    CustomLinearProgressIndicator(
         modifier = modifier,
         progress = progress,
         backgroundColor = backgroundColor,
